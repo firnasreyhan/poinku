@@ -55,7 +55,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['login'] = 'LoginController';
 
-// $route['admin'] = 'admin/overview';
 $route['aturan'] = 'admin/AturanController';
 $route['aturan/insert'] = 'admin/AturanController/insert';
 $route['aturan/delete'] = 'admin/AturanController/delete';

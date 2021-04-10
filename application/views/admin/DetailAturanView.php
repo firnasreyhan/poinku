@@ -2,29 +2,33 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-2 text-gray-800"><?php echo $detail_aturan[0]->TAHUN . ' - ' . $detail_aturan[0]->KETERANGAN; ?></h1>
+    </div>
+    <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="row">
-                <div class="col-6">
-                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                </div>
-                <div class="col-6">
-                    <a data-toggle="modal" data-target="#mdlAdd" style="float:right;" class="btn btn-primary btn-icon-split">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        <span class="text">Tambah</span>
-                    </a>
+                <div class="col">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="pills-nilai-tab" data-toggle="pill" href="#pills-nilai" role="tab" aria-controls="pills-nilai" aria-selected="true" style="text-align: center;">Nilai</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-poin-tab" data-toggle="pill" href="#pills-poin" role="tab" aria-controls="pills-poin" aria-selected="false" style="text-align: center;">Poin</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-mahasiswa-tab" data-toggle="pill" href="#pills-mahasiswa" role="tab" aria-controls="pills-mahasiswa" aria-selected="false" style="text-align: center;">Mahasiswa</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <!-- <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -43,40 +47,154 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <?php
-                        $no = 1;
-                        foreach ($aturans as $key) {
-                        ?>
-                            <tr>
-                                <td><?php echo $no; ?></td>
-                                <td><?php echo $key->TAHUN; ?></td>
-                                <td><?php echo $key->KETERANGAN; ?></td>
-                                <td>
-                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-warning btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-edit"></i>
-                                        </span>
-                                    </a>
-                                    &nbsp;
-                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-warning btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-edit"></i>
-                                        </span>
-                                    </a>
-                                    &nbsp;
-                                    <a data-toggle="modal" data-target="#mdlDelete" data-id="<?php echo $key->ID_ATURAN; ?>" class="btn btn-danger btn-icon-split mdlDelete">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php
-                            $no++;
-                        }
-                        ?>
+                        
                     </tbody>
                 </table>
+            </div> -->
+            <!-- Tab Navigation -->
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-nilai" role="tabpanel" aria-labelledby="pills-nilai-tab">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Daftar Nilai</h6>
+                                <a data-toggle="modal" data-target="#mdlAdd" style="float:right;" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                    <span class="text">Tambah</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="table-nilai" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Role Name</th>
+                                            <th>Parent Role</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Role Name</th>
+                                            <th>Parent Role</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>...</td>
+                                            <td>...</td>
+                                            <td>...</td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    <button type="button" class="btn btn-primary">Edit</button>
+                                                    <button type="button" class="btn btn-danger">Hapus</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-poin" role="tabpanel" aria-labelledby="pills-poin-tab">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Daftar Poin</h6>
+                                <a data-toggle="modal" data-target="#mdlAdd" style="float:right;" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                    <span class="text">Tambah</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="table-poin" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>User</th>
+                                            <th>Role Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>User</th>
+                                            <th>Role Name</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>...</td>
+                                            <td>...</td>
+                                            <td>...</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-mahasiswa" role="tabpanel" aria-labelledby="pills-mahasiswa-tab">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Daftar Mahasiswa</h6>
+                                <a data-toggle="modal" data-target="#mdlAdd" style="float:right;" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                    <span class="text">Tambah</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="table-mahasiswa" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Master Approval Name</th>
+                                            <th>Next Role</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Master Approval Name</th>
+                                            <th>Next Role</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>...</td>
+                                            <td>...</td>
+                                            <td>...</td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    <button type="button" class="btn btn-primary">Edit</button>
+                                                    <button type="button" class="btn btn-danger">Hapus</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -2,16 +2,16 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+    <h1 class="h3 mb-2 text-gray-800">Aturan</h1>
+    <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="row">
                 <div class="col-6">
-                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Daftar Aturan</h6>
                 </div>
                 <div class="col-6">
                     <a data-toggle="modal" data-target="#mdlAdd" style="float:right;" class="btn btn-primary btn-icon-split">
@@ -52,9 +52,9 @@
                                 <td><?php echo $key->TAHUN; ?></td>
                                 <td><?php echo $key->KETERANGAN; ?></td>
                                 <td>
-                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-warning btn-icon-split">
+                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-success btn-icon-split">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-external-link-alt"></i>
                                         </span>
                                     </a>
                                     &nbsp;
