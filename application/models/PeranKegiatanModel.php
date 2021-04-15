@@ -10,6 +10,11 @@ class PeranKegiatanModel extends CI_Model
         return $this->db->where('ID_PERAN !=', '1')->get('peran')->result();
     }
 
+    public function get()
+    {
+        return $this->db->get('peran')->result();
+    }
+
     public function insert($param)
     {
         return $this->db->insert('peran', $param);

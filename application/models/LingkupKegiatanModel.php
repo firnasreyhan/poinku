@@ -9,6 +9,11 @@ class LingkupKegiatanModel extends CI_Model {
         return $this->db->where('ID_LINGKUP !=', '1')->get('lingkup')->result();
     }
 
+    public function get()
+    {
+        return $this->db->get('lingkup')->result();
+    }
+
     public function insert($param)
     {
         return $this->db->insert('lingkup', $param);

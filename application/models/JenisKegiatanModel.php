@@ -10,6 +10,11 @@ class JenisKegiatanModel extends CI_Model
         return $this->db->where('ID_JENIS !=', '1')->get('jenis')->result();
     }
 
+    public function get()
+    {
+        return $this->db->get('jenis')->result();
+    }
+
     public function insert($param)
     {
         return $this->db->insert('jenis', $param);

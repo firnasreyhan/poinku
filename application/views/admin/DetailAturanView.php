@@ -58,7 +58,7 @@
                         <div class="card-header py-3">
                             <div class="d-sm-flex align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">Daftar Nilai</h6>
-                                <a data-toggle="modal" data-target="#mdlAdd" style="float:right;" class="btn btn-primary btn-icon-split">
+                                <a data-toggle="modal" data-target="#mdlAddNilai" style="float:right;" class="btn btn-primary btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
@@ -71,32 +71,48 @@
                                 <table class="table table-bordered" id="table-nilai" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Role Name</th>
-                                            <th>Parent Role</th>
-                                            <th>Action</th>
+                                            <th>Nilai</th>
+                                            <th>Poin Minimal</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Role Name</th>
-                                            <th>Parent Role</th>
-                                            <th>Action</th>
+                                            <th>Nilai</th>
+                                            <th>Poin Minimal</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>
-                                                <div class="btn-group" role="group">
-                                                    <button type="button" class="btn btn-primary">Edit</button>
-                                                    <button type="button" class="btn btn-danger">Hapus</button>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        foreach ($nilai as $key) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $key->NILAI; ?></td>
+                                                <td><?php echo $key->POIN_MINIMAL; ?></td>
+                                                <td>
+                                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_NILAI); ?>" class="btn btn-success btn-icon-split">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-external-link-alt"></i>
+                                                        </span>
+                                                    </a>
+                                                    &nbsp;
+                                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_NILAI); ?>" class="btn btn-warning btn-icon-split">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-edit"></i>
+                                                        </span>
+                                                    </a>
+                                                    &nbsp;
+                                                    <a data-toggle="modal" data-target="#mdlDeleteNilai" data-id="<?php echo $key->ID_NILAI; ?>" data-aturan="<?php echo $key->ID_ATURAN; ?>" class="btn btn-danger btn-icon-split mdlDeleteNilai">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-trash"></i>
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -108,7 +124,7 @@
                         <div class="card-header py-3">
                             <div class="d-sm-flex align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">Daftar Poin</h6>
-                                <a data-toggle="modal" data-target="#mdlAdd" style="float:right;" class="btn btn-primary btn-icon-split">
+                                <a href="<?php echo site_url("aturan/poin/" . $detail_aturan[0]->ID_ATURAN); ?>" style="float:right;" class="btn btn-primary btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
@@ -121,24 +137,48 @@
                                 <table class="table table-bordered" id="table-poin" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>User</th>
-                                            <th>Role Name</th>
+                                            <th>Jenis</th>
+                                            <th>Lingkup</th>
+                                            <th>Peran</th>
+                                            <th>Poin</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>User</th>
-                                            <th>Role Name</th>
+                                            <th>Jenis</th>
+                                            <th>Lingkup</th>
+                                            <th>Peran</th>
+                                            <th>Poin</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                        </tr>
+                                        <?php
+                                        foreach ($poin as $key) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $key->JENIS; ?></td>
+                                                <td><?php echo $key->LINGKUP; ?></td>
+                                                <td><?php echo $key->PERAN; ?></td>
+                                                <td><?php echo $key->POIN; ?></td>
+                                                <td>
+                                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_POIN); ?>" class="btn btn-warning btn-icon-split">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-edit"></i>
+                                                        </span>
+                                                    </a>
+                                                    &nbsp;
+                                                    <a data-toggle="modal" data-target="#mdlDeletePoin" data-id="<?php echo $key->ID_POIN; ?>" class="btn btn-danger btn-icon-split mdlDeletePoin">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-trash"></i>
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -205,26 +245,27 @@
 </div>
 <!-- End of Main Content -->
 
-<!-- Modal Add -->
-<div class="modal fade" id="mdlAdd" tabindex="-1" aria-labelledby="mdlAdd" aria-hidden="true">
+<!-- Modal Add Nilai -->
+<div class="modal fade" id="mdlAddNilai" tabindex="-1" aria-labelledby="mdlAddNilai" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="mdlAdd">Tambah Aturan</h5>
+                <h5 class="modal-title" id="mdlAddNilai">Tambah Nilai</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo site_url("aturan/insert"); ?>" enctype="multipart/form-data" method="post">
+            <form action="<?php echo site_url("nilai/insert"); ?>" enctype="multipart/form-data" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="TAHUN" placeholder="Tahun" required>
+                        <input type="text" class="form-control" name="NILAI" placeholder="Nilai" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="KETERANGAN" placeholder="Keterangan" required>
+                        <input type="number" class="form-control" name="POIN_MINIMAL" placeholder="Poin Minimal" required>
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <input value="<?php echo $detail_aturan[0]->ID_ATURAN; ?>" type="hidden" class="form-control" name="ID_ATURAN">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
@@ -233,8 +274,8 @@
     </div>
 </div>
 
-<!-- Modal Delete -->
-<div class="modal fade" id="mdlDelete" tabindex="-1" aria-labelledby="mdlDelete" aria-hidden="true">
+<!-- Modal Delete Nilai -->
+<div class="modal fade" id="mdlDeleteNilai" tabindex="-1" aria-labelledby="mdlDeleteNilai" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -243,12 +284,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo site_url("aturan/delete"); ?>" enctype="multipart/form-data" method="post">
+            <form action="<?php echo site_url("nilai/delete"); ?>" enctype="multipart/form-data" method="post">
                 <div class="modal-body">
                     <p>Apakah anda yakin ingin mengahpus data ini?</p>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" class="form-control" name="ID_ATURAN" placeholder="Keterangan" id="INPUT_ID_ATURAN">
+                    <input type="hidden" class="form-control" name="ID_NILAI" placeholder="Keterangan" id="INPUT_ID_NILAI">
+                    <input value="<?php echo $detail_aturan[0]->ID_ATURAN; ?>" type="hidden" class="form-control" name="ID_ATURAN">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-primary">Iya</button>
                 </div>
@@ -257,21 +299,27 @@
     </div>
 </div>
 
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<!-- Modal Delete Poin -->
+<div class="modal fade" id="mdlDeletePoin" tabindex="-1" aria-labelledby="mdlDeletePoin" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                <h5 class="modal-title" id="mdlDeletePoin">Hapus Aturan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
+            <form action="<?php echo site_url("poin/delete"); ?>" enctype="multipart/form-data" method="post">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin mengahpus data ini?</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" class="form-control" name="ID_POIN" placeholder="Keterangan" id="INPUT_ID_POIN">
+                    <input value="<?php echo $detail_aturan[0]->ID_ATURAN; ?>" type="hidden" class="form-control" name="ID_ATURAN">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary">Iya</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -280,8 +328,19 @@
 <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
 
 <script>
-    $('#dataTable tbody').on('click', '.mdlDelete', function() {
+    $(document).ready(function() {
+        $('#table-nilai').DataTable();
+        $('#table-poin').DataTable();
+        $('#table-mahasiswa').DataTable();
+    });
+
+    $('#table-nilai tbody').on('click', '.mdlDeleteNilai', function() {
         const id = $(this).data('id')
-        $('#INPUT_ID_ATURAN').val(id)
+        $('#INPUT_ID_NILAI').val(id)
+    })
+
+    $('#table-poin tbody').on('click', '.mdlDeletePoin', function() {
+        const id = $(this).data('id')
+        $('#INPUT_ID_POIN').val(id)
     })
 </script>
