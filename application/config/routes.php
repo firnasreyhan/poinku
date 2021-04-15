@@ -86,3 +86,5 @@ $route['aturan/poin/(:any)'] = 'admin/AturanController/insertMultiplePoin/$1';
 $route['aturan/ajxGetData'] = 'admin/AturanController/ajxGetDataMaster';
 $route['poin/insert'] = 'admin/AturanController/insertPoin';
 $route['poin/delete'] = 'admin/AturanController/deletePoin';
+$route['aturan/poin/update/(:any)'] = 'admin/AturanController/detailPoin/$1';
+$route['poin/update'] = 'admin/AturanController/updatePoin';

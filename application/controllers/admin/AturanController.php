@@ -95,18 +95,39 @@ class AturanController extends CI_Controller
                 $this->load->view('template/footer');
         }
 
+        public function detailPoin($param)
+        {
+                $data['detail_poin'] = $this->PoinModel->getDetailPoin(['ID_POIN' => $param]);
+                $data['jenis'] = $this->JenisKegiatanModel->get();
+                $data['lingkup'] = $this->LingkupKegiatanModel->get();
+                $data['peran'] = $this->PeranKegiatanModel->get();
+                $this->load->view('template/header');
+                $this->load->view('template/sidebar');
+                $this->load->view('template/topbar');
+                $this->load->view('admin/PoinUpdateView', $data);
+                $this->load->view('template/footer');
+        }
+
         public function update()
         {
                 $data = $_POST;
                 $this->AturanModel->update($data);
                 redirect('aturan');
         }
-        public function ajxGetDataMaster(){
+
+        public function updatePoin()
+        {
+                $data = $_POST;
+                $this->PoinModel->update($data);
+                redirect('aturan/detail/' . $data['ID_ATURAN']);
+        }
+
+        public function ajxGetDataMaster()
+        {
                 $data['jenis'] = $this->JenisKegiatanModel->get();
                 $data['lingkup'] = $this->LingkupKegiatanModel->get();
                 $data['peran'] = $this->PeranKegiatanModel->get();
                 echo json_encode($data);
-
         }
 }
 
