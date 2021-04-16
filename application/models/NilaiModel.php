@@ -24,6 +24,11 @@ class NilaiModel extends CI_Model {
         return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->get('nilai')->result();
     }
 
+    public function getDetailNilai($param)
+    {
+        return $this->db->where('ID_NILAI', $param['ID_NILAI'])->get('nilai')->result();
+    }
+
     public function update($param)
     {
         return $this->db->where('ID_NILAI', $param['ID_NILAI'])->update('nilai', $param);

@@ -81,10 +81,12 @@ $route['perankegiatan/update'] = 'admin/PeranKegiatanController/update';
 
 $route['nilai/insert'] = 'admin/AturanController/insertNilai';
 $route['nilai/delete'] = 'admin/AturanController/deleteNilai';
+$route['aturan/nilai/update/(:any)'] = 'admin/AturanController/detailNilai/$1';
+$route['nilai/update'] = 'admin/AturanController/updateNilai';
 
 $route['aturan/poin/(:any)'] = 'admin/AturanController/insertMultiplePoin/$1';
 $route['aturan/ajxGetData'] = 'admin/AturanController/ajxGetDataMaster';
 $route['poin/insert'] = 'admin/AturanController/insertPoin';
 $route['poin/delete'] = 'admin/AturanController/deletePoin';
 $route['aturan/poin/update/(:any)'] = 'admin/AturanController/detailPoin/$1';
-$route['poin/update'] = 'admin/AturanController/updatePoin';
+$route['poin/update'] = 'admin/AturanController/update';

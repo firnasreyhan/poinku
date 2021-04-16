@@ -108,6 +108,16 @@ class AturanController extends CI_Controller
                 $this->load->view('template/footer');
         }
 
+        public function detailNilai($param)
+        {
+                $data['detail_nilai'] = $this->NilaiModel->getDetailNilai(['ID_NILAI' => $param]);
+                $this->load->view('template/header');
+                $this->load->view('template/sidebar');
+                $this->load->view('template/topbar');
+                $this->load->view('admin/NilaiUpdateView', $data);
+                $this->load->view('template/footer');
+        }
+
         public function update()
         {
                 $data = $_POST;
@@ -119,6 +129,13 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->PoinModel->update($data);
+                redirect('aturan/detail/' . $data['ID_ATURAN']);
+        }
+
+        public function updateNilai()
+        {
+                $data = $_POST;
+                $this->NilaiModel->update($data);
                 redirect('aturan/detail/' . $data['ID_ATURAN']);
         }
 
