@@ -14,6 +14,7 @@ class AturanController extends CI_Controller
                 $this->load->model('JenisKegiatanModel');
                 $this->load->model('LingkupKegiatanModel');
                 $this->load->model('PeranKegiatanModel');
+                $this->load->model('KriteriaModel');
         }
 
 
@@ -49,6 +50,13 @@ class AturanController extends CI_Controller
                 redirect('aturan/detail/' . $data['FORM'][0]['ID_ATURAN']);
         }
 
+        public function insertKriteria()
+        {
+                $data = $_POST;
+                $this->KriteriaModel->insertBatch($data['FORM']);
+                redirect('aturan/nilai/kriteria/' . $data['FORM'][0]['ID_NILAI']);
+        }
+
         public function insertMultiplePoin($param)
         {
                 $data['aturan'] = $param;
@@ -59,6 +67,18 @@ class AturanController extends CI_Controller
                 $this->load->view('template/sidebar');
                 $this->load->view('template/topbar');
                 $this->load->view('admin/InsertPoinView', $data);
+                $this->load->view('template/footer');
+        }
+
+        public function insertMultipleKriteria($param)
+        {
+                $data['nilai'] = $param;
+                $data['jenis'] = $this->JenisKegiatanModel->get();
+                $data['lingkup'] = $this->LingkupKegiatanModel->get();
+                $this->load->view('template/header');
+                $this->load->view('template/sidebar');
+                $this->load->view('template/topbar');
+                $this->load->view('admin/InsertKriteriaView', $data);
                 $this->load->view('template/footer');
         }
 
@@ -81,6 +101,13 @@ class AturanController extends CI_Controller
                 $data = $_POST;
                 $this->PoinModel->delete($data);
                 redirect('aturan/detail/' . $data['ID_ATURAN']);
+        }
+
+        public function deleteKriteria()
+        {
+                $data = $_POST;
+                $this->KriteriaModel->delete($data);
+                redirect('aturan/nilai/kriteria/' . $data['ID_NILAI']);
         }
 
         public function detail($param)
@@ -118,6 +145,29 @@ class AturanController extends CI_Controller
                 $this->load->view('template/footer');
         }
 
+        public function detailKriteria($param)
+        {
+                $data['detail_kriteria'] = $this->KriteriaModel->getDetailKriteria(['ID_KRITERIA' => $param]);
+                $data['jenis'] = $this->JenisKegiatanModel->get();
+                $data['lingkup'] = $this->LingkupKegiatanModel->get();
+                $this->load->view('template/header');
+                $this->load->view('template/sidebar');
+                $this->load->view('template/topbar');
+                $this->load->view('admin/KriteriaUpdateView', $data);
+                $this->load->view('template/footer');
+        }
+        
+        public function kriteria($param)
+        {
+                $data['nilai'] = $param;
+                $data['kriteria'] = $this->KriteriaModel->getDetail(['ID_NILAI' => $param]);
+                $this->load->view('template/header');
+                $this->load->view('template/sidebar');
+                $this->load->view('template/topbar');
+                $this->load->view('admin/KriteriaView', $data);
+                $this->load->view('template/footer');
+        }
+
         public function update()
         {
                 $data = $_POST;
@@ -137,6 +187,13 @@ class AturanController extends CI_Controller
                 $data = $_POST;
                 $this->NilaiModel->update($data);
                 redirect('aturan/detail/' . $data['ID_ATURAN']);
+        }
+
+        public function updateKriteria()
+        {
+                $data = $_POST;
+                $this->KriteriaModel->update($data);
+                redirect('aturan/nilai/kriteria/' . $data['ID_NILAI']);
         }
 
         public function ajxGetDataMaster()

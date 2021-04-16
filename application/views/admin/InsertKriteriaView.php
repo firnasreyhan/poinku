@@ -13,7 +13,7 @@
         <div class="card-header py-3">
             <div class="row">
                 <div class="col-6">
-                    <h6 class="m-0 font-weight-bold text-primary">Daftar Poin</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Daftar Kriteria</h6>
                 </div>
                 <!-- <div class="col-6">
                     <a data-toggle="modal" data-target="#mdlAdd" style="float:right;" class="btn btn-primary btn-icon-split">
@@ -28,7 +28,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="form-group">
-                    <form method="POST" action="<?php echo site_url('poin/insert') ?>">
+                    <form method="POST" action="<?php echo site_url('kriteria/insert') ?>">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dynamic_field">
                                 <thead>
@@ -36,8 +36,7 @@
                                         <th>No</th>
                                         <th>Jenis</th>
                                         <th>Lingkup</th>
-                                        <th>Peran</th>
-                                        <th>Poin</th>
+                                        <th>Jumlah</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -46,8 +45,7 @@
                                         <th>No</th>
                                         <th>Jenis</th>
                                         <th>Lingkup</th>
-                                        <th>Peran</th>
-                                        <th>Poin</th>
+                                        <th>Jumlah</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </tfoot>
@@ -79,19 +77,8 @@
                                             </select>
                                         </td>
                                         <td>
-                                            <select name="FORM[0][ID_PERAN]" class="form-control" id="exampleFormControlSelect1">
-                                                <?php
-                                                foreach ($peran as $key) {
-                                                ?>
-                                                    <option value="<?php echo $key->ID_PERAN ?>"><?php echo $key->PERAN; ?></option>
-                                                <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input type="number" name="FORM[0][POIN]" placeholder="Poin" class="form-control name_list" required />
-                                            <input type="hidden" name="FORM[0][ID_ATURAN]" value="<?php echo $aturan ?>" />
+                                            <input type="number" name="FORM[0][JUMLAH]" placeholder="Jumlah" class="form-control name_list" required />
+                                            <input type="hidden" name="FORM[0][ID_NILAI]" value="<?php echo $nilai ?>" />
                                         </td>
                                         <td></td>
                                     </tr>
@@ -103,7 +90,7 @@
                                         <span class="icon text-white-50">
                                             <i class="fas fa-plus"></i>
                                         </span>
-                                        <span class="text">Tambah Daftar Poin</span>
+                                        <span class="text">Tambah Daftar Kriteria</span>
                                     </a>
                                     &nbsp;
                                     <input type="submit" id="submit" class="btn btn-primary" value="Simpan" />
@@ -148,7 +135,6 @@
                 dataType: 'json',
                 success: (res) => {
                     const htmlJenis = res.jenis.map(obj => (`<option value="${obj.ID_JENIS}">${obj.JENIS}</option>`))
-                    const htmlPeran = res.peran.map(obj => (`<option value="${obj.ID_PERAN}">${obj.PERAN}</option>`))
                     const htmlLingkup = res.lingkup.map(obj => (`<option value="${obj.ID_LINGKUP}">${obj.LINGKUP}</option>`))
                     $('#dynamic_field').append(
                         `<tr id="row-${i}" class="dynamic-added">
@@ -166,13 +152,8 @@
                                 </select>
                             </td>
                             <td>
-                                <select name="FORM[${i}][ID_PERAN]" class="form-control" id="exampleFormControlSelect1">
-                                    ${htmlPeran.toString()}
-                                </select>
-                            </td>
-                            <td>
-                                <input type="number" name="FORM[${i}][POIN]" placeholder="Poin" class="form-control name_list" required/>
-                                <input type="hidden" name="FORM[${i}][ID_ATURAN]" value="<?php echo $aturan ?>" />
+                                <input type="number" name="FORM[${i}][JUMLAH]" placeholder="Jumlah" class="form-control name_list" required/>
+                                <input type="hidden" name="FORM[${i}][ID_NILAI]" value="<?php echo $nilai ?>" />
                             </td>
                             <td>
                                 <button type="button" id="${i}" class="btn btn-danger btn_remove">X</button>
