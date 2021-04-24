@@ -11,6 +11,8 @@ class TugasKhusus extends RestController {
     {
         parent::__construct();
         $this->load->model('TugasKhususModel');
+        $this->load->model('KontenModel');
+        $this->load->model('KegiatanModel');
     }
     
 
@@ -65,50 +67,36 @@ class TugasKhusus extends RestController {
             'TANGGAL_KEGIATAN'    => $param['tanggal'],
             'BUKTI'    => $link,
         );
-        $this->TugasKhususModel->insert($dataStore);
+        $id = $this->TugasKhususModel->insert($dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'id_tugas_khusus' => $id], 200);
+    }
+
+    public function konten_post()
+    {
+        $param = $this->post();
+
+        $dataStore = array(
+            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
+            'MEDIA_KONTEN '     => $param['media'],
+            'JENIS_KONTEN '     => $param['jenis']
+        );
+
+        $this->KontenModel->insert($dataStore);
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
     }
 
-    // public function upload_post()
-    // {
-    //     $param = $this->post();
+    public function kegiatan_post()
+    {
+        $param = $this->post();
 
-    //     $newPath = 'uploads/sertifikat/' . $param['nrp'] . '/' . $param['jenis'] . '/';
-    //     if (!is_dir($newPath)) {
-    //         mkdir($newPath, 0777, TRUE);
-    //     }
+        $dataStore = array(
+            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
+            'KETERANGAN  '     => $param['keterangan']
+        );
 
-    //     $config['upload_path'] = $newPath; //path folder
-    //     $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-    //     $config['file_name'] = time(); //Enkripsi nama yang terupload
-
-    //     $this->upload->initialize($config);
-    //     if (!empty($_FILES['file']['name'])) {
-    //         if ($this->upload->do_upload('file')) {
-    //             $gbr = $this->upload->data();
-    //             //Compress Image
-    //             $config['image_library'] = 'gd2';
-    //             $config['source_image'] = $newPath . $gbr['file_name'];
-    //             $config['create_thumb'] = FALSE;
-    //             $config['maintain_ratio'] = true;
-    //             $config['quality']= '100%';
-    //             // $config['width'] = 600;
-    //             // $config['height']= 400;
-    //             $config['new_image'] = $newPath . $gbr['file_name'];
-    //             $this->load->library('image_lib', $config);
-    //             $this->image_lib->resize();
-
-    //             $gambar = $gbr['file_name'];
-
-    //             $link = base_url($newPath . $gambar);
-    //         }
-    //     } else {
-    //         return base_url('images/ttd/default.png');
-    //     }
-
-    //     $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'data' => ['LINK' => $link]], 200);
-    // }
-
+        $this->KegiatanModel->insert($dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+    }
 }
 
 /* End of file TugasKhusus.php */

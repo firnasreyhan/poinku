@@ -2,21 +2,17 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class TugasKhususModel extends CI_Model
+class KontenModel extends CI_Model
 {
 
     public function get($param)
     {
-        return $this->db->where('NRP =', $param['NRP'])->get('tugas_khusus')->result();
+        return $this->db->where('ID_TUGAS_KHUSUS  =', $param['ID_TUGAS_KHUSUS '])->get('konten')->result();
     }
 
     public function insert($param)
     {
-        $this->db->insert('tugas_khusus', $param);
-        $insert_id = $this->db->insert_id();
-
-        return  $insert_id;
-        // return $this->db->insert('tugas_khusus', $param);
+        return $this->db->insert('konten', $param);
     }
 
     // public function delete($param)
@@ -35,5 +31,5 @@ class TugasKhususModel extends CI_Model
     // }
 }
 
-/* End of file TugasKhususModel.php */
+/* End of file KontenModel.php */
 ?>
