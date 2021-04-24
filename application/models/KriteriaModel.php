@@ -27,7 +27,7 @@ class KriteriaModel extends CI_Model
 
     public function getDetail($param)
     {
-        return $this->db->where('ID_NILAI', $param['ID_NILAI'])->get('view_kriteria')->result();
+        return $this->db->where('ID_NILAI', $param['ID_NILAI'])->order_by("JENIS", "asc")->get('view_kriteria')->result();
     }
 
     public function getDetailKriteria($param)

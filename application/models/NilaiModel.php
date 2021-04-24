@@ -21,7 +21,7 @@ class NilaiModel extends CI_Model {
 
     public function getDetail($param)
     {
-        return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->get('nilai')->result();
+        return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->order_by("POIN_MINIMAL", "desc")->get('nilai')->result();
     }
 
     public function getDetailNilai($param)
