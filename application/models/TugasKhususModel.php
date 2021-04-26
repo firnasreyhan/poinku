@@ -10,6 +10,21 @@ class TugasKhususModel extends CI_Model
         return $this->db->where('NRP =', $param['NRP'])->get('tugas_khusus')->result();
     }
 
+    public function getPoin($param)
+    {
+        return $this->db->where('NRP =', $param['NRP'])->where('ID_JENIS =', $param['ID_JENIS'])->order_by("TANGGAL_DATA", "desc")->get('view_tugas_khusus')->result();
+    }
+
+    public function getTotalPoin($param)
+    {
+        return $this->db->where('NRP =', $param['NRP'])->select_sum('POIN')->get('view_tugas_khusus')->row_array();
+    }
+
+    public function getJenisTugasKhusus($param)
+    {
+        return $this->db->where('NRP =', $param['NRP'])->order_by("JENIS", "ASC")->get('view_jenis_tugas_khusus')->result();
+    }
+
     public function insert($param)
     {
         $this->db->insert('tugas_khusus', $param);
@@ -29,10 +44,10 @@ class TugasKhususModel extends CI_Model
     //     return $this->db->where('ID_JENIS', $param['ID_JENIS'])->get('jenis')->result();
     // }
 
-    // public function update($param)
-    // {
-    //     return $this->db->where('ID_JENIS', $param['ID_JENIS'])->update('jenis', $param);
-    // }
+    public function update($param)
+    {
+        return $this->db->where('ID_TUGAS_KHUSUS', $param['ID_TUGAS_KHUSUS'])->update('tugas_khusus', $param);
+    }
 }
 
 /* End of file TugasKhususModel.php */

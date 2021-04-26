@@ -6,7 +6,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TugasKhusus extends RestController {
 
-    
     public function __construct()
     {
         parent::__construct();
@@ -15,13 +14,62 @@ class TugasKhusus extends RestController {
         $this->load->model('KegiatanModel');
     }
     
-
-    public function index()
+    public function index_post()
     {
-        
+        $param = $this->post();
+
+        $dataStore = array(
+            'NRP'         => $param['nrp'],
+            'ID_JENIS'    => $param['jenis'],
+            'ID_LINGKUP'    => $param['lingkup'],
+            'ID_PERAN'    => $param['peran'],
+            'JUDUL'    => $param['judul'],
+            'TANGGAL_KEGIATAN'    => $param['tanggal']
+        );
+        $id = $this->TugasKhususModel->insert($dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'id_tugas_khusus' => $id], 200);
     }
 
-    public function insert_post()
+    public function konten_post()
+    {
+        $param = $this->post();
+
+        $dataStore = array(
+            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
+            'MEDIA_KONTEN '     => $param['media'],
+            'JENIS_KONTEN '     => $param['jenis']
+        );
+
+        $this->KontenModel->insert($dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+    }
+
+    public function kegiatan_post()
+    {
+        $param = $this->post();
+
+        $dataStore = array(
+            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
+            'KETERANGAN  '     => $param['keterangan']
+        );
+
+        $this->KegiatanModel->insert($dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+    }
+
+    public function buktiKonten_post()
+    {
+        $param = $this->post();
+
+        $dataStore = array(
+            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
+            'BUKTI '            => $param['bukti']
+        );
+        $this->TugasKhususModel->update($dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+    }
+
+    public function buktiKegiatan_post()
     {
         $param = $this->post();
 
@@ -59,43 +107,59 @@ class TugasKhusus extends RestController {
         }
 
         $dataStore = array(
+            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
+            'BUKTI '            => $link 
+        );
+
+        $this->TugasKhususModel->update($dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+    }
+
+    public function poin_get()
+    {
+        $param = $this->get();
+        $dataStore = array(
             'NRP'         => $param['nrp'],
-            'ID_JENIS'    => $param['jenis'],
-            'ID_LINGKUP'    => $param['lingkup'],
-            'ID_PERAN'    => $param['peran'],
-            'JUDUL'    => $param['judul'],
-            'TANGGAL_KEGIATAN'    => $param['tanggal'],
-            'BUKTI'    => $link,
+            'ID_JENIS'         => $param['jenis'],
         );
-        $id = $this->TugasKhususModel->insert($dataStore);
-        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'id_tugas_khusus' => $id], 200);
+        $poins = $this->TugasKhususModel->getPoin($dataStore);
+        if ($poins != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $poins], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
     }
 
-    public function konten_post()
+    public function totalPoin_get()
     {
-        $param = $this->post();
-
+        $param = $this->get();
         $dataStore = array(
-            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
-            'MEDIA_KONTEN '     => $param['media'],
-            'JENIS_KONTEN '     => $param['jenis']
+            'NRP'         => $param['nrp']
         );
 
-        $this->KontenModel->insert($dataStore);
-        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+        $poins = $this->TugasKhususModel->getTotalPoin($dataStore);
+        
+        if ($poins['POIN'] != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'POIN' => $poins['POIN']], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
     }
 
-    public function kegiatan_post()
+    public function jenisTugasKhusus_get()
     {
-        $param = $this->post();
-
+        $param = $this->get();
         $dataStore = array(
-            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
-            'KETERANGAN  '     => $param['keterangan']
+            'NRP'         => $param['nrp']
         );
 
-        $this->KegiatanModel->insert($dataStore);
-        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+        $data = $this->TugasKhususModel->getJenisTugasKhusus($dataStore);
+        
+        if ($data != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
     }
 }
 

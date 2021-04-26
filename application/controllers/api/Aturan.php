@@ -24,29 +24,15 @@ class Aturan extends RestController
         }
     }
 
-    // public function detail_get()
-    // {
-    //     $param = $this->get();
-    //     $dataStore = array(
-    //         'ID_ATURAN'         => $param['id'],
-    //     );
-    //     $aturan = $this->AturanModel->getDetail($dataStore);
-    //     if ($aturan != null) {
-    //         $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $aturan], 200);
-    //     } else {
-    //         $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
-    //     }
-    // }
-
-    public function kriteria_get()
+    public function detail_get()
     {
         $param = $this->get();
         $dataStore = array(
-            'ID_NILAI'         => $param['id'],
+            'ID_ATURAN'         => $param['id'],
         );
-        $kriterias = $this->KriteriaModel->getDetail($dataStore);
-        if ($kriterias != null) {
-            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $kriterias], 200);
+        $aturan = $this->AturanModel->getDetail($dataStore);
+        if ($aturan != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $aturan], 200);
         } else {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
@@ -75,6 +61,20 @@ class Aturan extends RestController
         $poins = $this->PoinModel->getDetail($dataStore);
         if ($poins != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $poins], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
+    }
+
+    public function kriteria_get()
+    {
+        $param = $this->get();
+        $dataStore = array(
+            'ID_NILAI'         => $param['id'],
+        );
+        $kriterias = $this->KriteriaModel->getDetail($dataStore);
+        if ($kriterias != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $kriterias], 200);
         } else {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
