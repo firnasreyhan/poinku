@@ -27,7 +27,7 @@ class TugasKhusus extends RestController {
             'TANGGAL_KEGIATAN'    => $param['tanggal']
         );
         $id = $this->TugasKhususModel->insert($dataStore);
-        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'id_tugas_khusus' => $id], 200);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'ID_TUGAS_KHUSUS' => $id], 200);
     }
 
     public function konten_post()
@@ -129,6 +129,48 @@ class TugasKhusus extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
+    
+    public function detail_get()
+    {
+        $param = $this->get();
+        $dataStore = array(
+            'ID_TUGAS_KHUSUS'         => $param['id']
+        );
+        $data = $this->TugasKhususModel->getDetail($dataStore);
+        if ($data != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
+    }
+
+    public function kegiatan_get()
+    {
+        $param = $this->get();
+        $dataStore = array(
+            'ID_TUGAS_KHUSUS'         => $param['id']
+        );
+        $data = $this->TugasKhususModel->getKegiatan($dataStore);
+        if ($data != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
+    }
+
+    public function konten_get()
+    {
+        $param = $this->get();
+        $dataStore = array(
+            'ID_TUGAS_KHUSUS'         => $param['id']
+        );
+        $data = $this->TugasKhususModel->getKonten($dataStore);
+        if ($data != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
+    }
 
     public function totalPoin_get()
     {
@@ -154,6 +196,22 @@ class TugasKhusus extends RestController {
         );
 
         $data = $this->TugasKhususModel->getJenisTugasKhusus($dataStore);
+        
+        if ($data != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
+    }
+    
+    public function kriteriaTugasKhusus_get()
+    {
+        $param = $this->get();
+        $dataStore = array(
+            'NRP'         => $param['nrp']
+        );
+
+        $data = $this->TugasKhususModel->getKriteriaTugasKhusus($dataStore);
         
         if ($data != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);

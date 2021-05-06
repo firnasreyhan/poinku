@@ -26,6 +26,36 @@ class Mahasiswa extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
+    
+    public function insert_post()
+    {
+        $param = $this->post();
+
+        $dataStore = array(
+            'NRP'           => $param['nrp'],
+            'EMAIL'         => $param['email'],
+            'ID_ATURAN'     => $param['aturan'],
+            'PRODI'         => $param['prodi'],
+            'ANGKATAN'      => $param['angkatan'],
+            'TOKEN'      => $param['token']
+        );
+
+        $data = $this->MahasiswaModel->insert($dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'data' => $data], 200);
+    }
+    
+    public function updateToken_post()
+    {
+        $param = $this->post();
+
+        $dataStore = array(
+            'NRP'           => $param['nrp'],
+            'TOKEN'         => $param['token']
+        );
+
+        $this->MahasiswaModel->updateToken($dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+    }
 
     // public function konten_post()
     // {

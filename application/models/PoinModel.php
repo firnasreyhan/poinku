@@ -27,7 +27,8 @@ class PoinModel extends CI_Model
 
     public function getDetail($param)
     {
-        return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->order_by("JENIS", "asc")->get('view_poin')->result();
+        // return $this->db->query('SELECT * FROM view_poin WHERE ID_ATURAN = '.$param['ID_ATURAN'].' ORDER BY JENIS ASC, POIN ASC')->result();
+        return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->order_by("JENIS, POIN", "asc")->get('view_poin')->result();
     }
 
     public function getDetailPoin($param)

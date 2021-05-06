@@ -11,7 +11,18 @@ class MahasiswaModel extends CI_Model {
 
     public function get($param)
     {
-        return $this->db->where('NRP', $param['NRP'])->get('mahasiswa')->row_array();
+        return $this->db->where('NRP', $param['NRP'])->get('view_mahasiswa')->row_array();
+    }
+    
+    public function insert($param)
+    {
+        $this->db->insert('mahasiswa', $param);
+        return $this->get($param);
+    }
+    
+    public function updateToken($param)
+    {
+        return $this->db->where('NRP', $param['NRP'])->update('mahasiswa', $param);
     }
 
 }
