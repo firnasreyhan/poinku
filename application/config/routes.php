@@ -49,11 +49,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'LoginController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['login'] = 'LoginController';
+$route['login/aksiLogin'] = 'LoginController/aksiLogin';
+$route['logout'] = 'LoginController/logout';
 
 $route['aturan'] = 'admin/AturanController';
 $route['aturan/insert'] = 'admin/AturanController/insert';
@@ -97,3 +99,16 @@ $route['aturan/nilai/kriteria/update/(:any)'] = 'admin/AturanController/detailKr
 $route['kriteria/update'] = 'admin/AturanController/updateKriteria';
 $route['aturan/poin/kriteria/insert/(:any)'] = 'admin/AturanController/insertMultipleKriteria/$1';
 $route['kriteria/insert'] = 'admin/AturanController/insertKriteria';
+
+//Event Manager Role
+
+$route['dashboardEvent'] = 'eventManager/DashboardEventController';
+
+$route['daftarEvent'] = 'eventManager/DaftarEventController';
+$route['daftarEvent/insert'] = 'eventManager/DaftarEventController/insert';
+$route['daftarEvent/delete'] = 'eventManager/DaftarEventController/delete';
+$route['daftarEvent/update/(:any)'] = 'eventManager/DaftarEventController/viewUpdate/$1';
+$route['daftarEvent/detail/(:any)'] = 'eventManager/DaftarEventController/detail/$1';
+$route['daftarEvent/update'] = 'eventManagers/DaftarEventController/update';
+
+$route['kalenderEvent'] = 'eventManager/KalenderEventController';
