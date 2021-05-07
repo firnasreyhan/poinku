@@ -8,6 +8,8 @@
         <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
     </a>
 
+    <?php if($this->session->userdata('role') == "Admin"){?>
+    
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
@@ -134,7 +136,48 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Validasi</span></a>
     </li>
+    
+    
+    <?php }else if($this->session->userdata('role') == "Event Manager"){ ?>
 
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('dashboardEvent')?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Manajemen
+    </div>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('daftarEvent')?>">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Daftar Event</span></a>
+    </li>
+
+    
+    <hr class="sidebar-divider">
+
+   
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('kalenderEvent')?>">
+            <i class="fas fa-fw fa-calendar"></i>
+            <span>Kalender Event</span></a>
+    </li>
+
+    <?php }?>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
