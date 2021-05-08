@@ -27,7 +27,25 @@ class TugasKhusus extends RestController {
             'TANGGAL_KEGIATAN'    => $param['tanggal']
         );
         $id = $this->TugasKhususModel->insert($dataStore);
+        
+        require $_SERVER['DOCUMENT_ROOT'] . '/poinku/vendor/autoload.php';
+
+        $options = array(
+            'cluster' => 'ap1',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e6c40e4a096f5b8864c8',
+            '56ec36eebb15bd0a9669',
+            '1200741',
+            $options
+        );
+
+        $data['notif'] = 'daskl';
+        $pusher->trigger('my-channel', 'my-event', $data);
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'ID_TUGAS_KHUSUS' => $id], 200);
+        
+
     }
 
     public function konten_post()
@@ -55,6 +73,7 @@ class TugasKhusus extends RestController {
 
         $this->KegiatanModel->insert($dataStore);
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+
     }
 
     public function buktiKonten_post()

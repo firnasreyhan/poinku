@@ -9,16 +9,18 @@ class KalenderEventController extends CI_Controller {
     {
         parent::__construct();
         //Do your magic here
-        $this->load->model('LoginModel');
+        $this->load->model('KalenderEventModel');
         
     }
     
     public function index()
     {
+        $data['event'] = $this->KalenderEventModel->getAll();
+
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('template/topbar');
-        $this->load->view('eventManager/KalenderEventView');
+        $this->load->view('eventManager/KalenderEventView', $data);
 		$this->load->view('template/footer');
     }
 

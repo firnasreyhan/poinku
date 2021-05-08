@@ -13,15 +13,16 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="<?php echo site_url("jeniskegiatan/update"); ?>" enctype="multipart/form-data" method="post">
+                            <form action="<?php echo site_url("daftarEvent/update"); ?>" enctype="multipart/form-data" method="post">
                                 <?php foreach($detail_event as $data){ ?>
                                 <div class="modal-body">    
                                     <div class="form-group">
                                         <label>Jenis Event</label>
+                                        <input type="hidden" class="form-control" name="IDEVENT" value="<?php echo $data->ID_EVENT?>" placeholder="Judul" required>
                                         <select class="form-control" name="JENISEVENT" placeholder="Jenis Event" required>
                                             <option value="">-- Pilih Jenis Event --</option>
                                             <?php foreach($jenis as $dataa){ ?>
-                                                <option value="<?php echo $data->ID_JENIS?>" <?php if($data->ID_JENIS==$dataa->ID_JENIS) echo 'selected="selected"'; ?>><?php echo $data->JENIS?></option>
+                                                <option value="<?php echo $dataa->ID_JENIS?>" <?php if($dataa->ID_JENIS==$data->ID_JENIS) echo 'selected="selected"'; ?>><?php echo $dataa->JENIS?></option>
                                             <?php }?>
                                         </select>
                                     </div>
@@ -30,7 +31,7 @@
                                         <select class="form-control" name="LINGKUP" placeholder="Lingkup" required>
                                             <option value="">-- Pilih Lingkup Event --</option>
                                             <?php foreach($lingkup as $dataa){ ?>
-                                                <option value="<?php echo $data->ID_LINGKUP?>" <?php if($data->ID_LINGKUP==$dataa->ID_LINGKUP) echo 'selected="selected"'; ?>><?php echo $data->LINGKUP?></option>
+                                                <option value="<?php echo $dataa->ID_LINGKUP?>" <?php if($dataa->ID_LINGKUP==$data->ID_LINGKUP) echo 'selected="selected"'; ?>><?php echo $dataa->LINGKUP?></option>
                                             <?php }?>
                                         </select>
                                     </div>
@@ -56,7 +57,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Poster</label>
-                                        <input type="file" class="form-control" name="POSTER" value="<?php echo $data->POSTER?>" placeholder="Lingkup" required>
+                                        <input type="file" class="form-control" name="POSTER" value="<?php echo $data->POSTER?>" placeholder="Lingkup">
                                         <img src="<?php echo $data->POSTER?>" width="400">
                                     </div>
                                     <div class="form-group">
