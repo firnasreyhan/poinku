@@ -11,6 +11,29 @@
 
     <title>Master</title>
 
+    
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script>
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('e6c40e4a096f5b8864c8', {
+            cluster: 'ap1',
+            forceTLS: true
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+            xhr = $.ajax({
+                method: 'POST',
+                url: "<?php echo base_url() ?>/NotifikasiController/listNotifikasi",
+                success: function(response) {
+                    $('.list-pemberitahuan').html(response);
+                }
+            })
+        });
+
+    </script>
+
     <!-- Custom fonts for this template -->
     <link href="<?php echo base_url('assets/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
     <link
@@ -27,6 +50,9 @@
     <link rel="icon" href="<?= base_url('assets/img/favicon/favicon-32x32.png'); ?>" sizes="32x32"> -->
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <!-- Kalendar -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/calendar/css/dncalendar-skin.min.css">
     
 </head>
 

@@ -38,9 +38,9 @@ class DaftarEventModel extends CI_Model {
         return $this->db->get()->result();
     }
 
-    public function update($param)
+    public function update($param, $idEvent)
     {
-        return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->update('aturan', $param);
+        return $this->db->where('ID_EVENT', $idEvent)->update('event', $param);
     }
 
 }

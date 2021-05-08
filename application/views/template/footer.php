@@ -40,6 +40,8 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/calendar/js/dncalendar.min.js"></script>
+
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
 <!-- Core plugin JavaScript-->
@@ -54,6 +56,7 @@
 
 <!-- Page level custom scripts -->
 <script src="<?php echo base_url('js/demo/datatables-demo.js') ?>"></script>
+
 
 </body>
 
