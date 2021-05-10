@@ -18,6 +18,11 @@ class DaftarEventModel extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function getActiveEvent()
+    {
+        return $this->db->get('view_event')->result();
+    }
+
     public function insert($param)
     {
         return $this->db->insert('event', $param);
