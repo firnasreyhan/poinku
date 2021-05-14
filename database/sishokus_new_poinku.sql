@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Waktu pembuatan: 11 Bulan Mei 2021 pada 01.48
--- Versi server: 5.7.34-log
--- Versi PHP: 7.3.27
+-- Host: 127.0.0.1
+-- Generation Time: May 14, 2021 at 05:51 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `aturan`
+-- Table structure for table `aturan`
 --
 
 CREATE TABLE `aturan` (
@@ -35,7 +34,7 @@ CREATE TABLE `aturan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `aturan`
+-- Dumping data for table `aturan`
 --
 
 INSERT INTO `aturan` (`ID_ATURAN`, `TAHUN`, `KETERANGAN`) VALUES
@@ -45,7 +44,7 @@ INSERT INTO `aturan` (`ID_ATURAN`, `TAHUN`, `KETERANGAN`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE `event` (
@@ -60,24 +59,24 @@ CREATE TABLE `event` (
   `JAM_SELESAI` time DEFAULT NULL,
   `POSTER` varchar(500) DEFAULT NULL,
   `KUOTA` int(11) DEFAULT NULL,
-  `PENDAFTAR` int(11) NOT NULL DEFAULT '0',
+  `PENDAFTAR` int(11) NOT NULL DEFAULT 0,
   `TANGGAL_DATA` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `event`
+-- Dumping data for table `event`
 --
 
 INSERT INTO `event` (`ID_EVENT`, `EMAIL`, `ID_JENIS`, `ID_LINGKUP`, `JUDUL`, `DESKRIPSI`, `TANGGAL_ACARA`, `JAM_MULAI`, `JAM_SELESAI`, `POSTER`, `KUOTA`, `PENDAFTAR`, `TANGGAL_DATA`) VALUES
 (4, NULL, 8, 10, '183921woeiqo', 'dioaidjask', '2021-05-07', '08:59:00', '08:59:00', 'http://localhost/poinku/assets/img/event/13.PNG', 89321, 0, '2021-05-08 13:04:21'),
 (5, NULL, 5, 7, 'djak', 'kjdakj', '2021-05-08', '20:00:00', '21:59:00', 'http://localhost/poinku/assets/img/event/14.PNG', 321, 0, '2021-05-08 13:04:06'),
-(6, 'eventmanager@poinku.com', 4, 6, 'Coaching Clinic – Strategi Sukses Lolos Hibah Pengabdian DRPM 2021', 'dajk', '2021-05-13', '23:09:00', '00:09:00', 'https://www.stiki.ac.id/wp-content/uploads/2021/04/Coaching-Clinic-Strategi-Sukses-2-300x300.jpeg', 100, 1, '2021-05-08 16:09:25'),
-(7, 'eventmanager@poinku.com', 9, 6, 'Business Talk #2 Go International with Sociopreneurship', 'djask', '2021-05-11', '00:13:00', '00:17:00', 'https://www.stiki.ac.id/wp-content/uploads/2021/04/Business-Talk-2-300x300.jpeg', 90, 0, '2021-05-08 16:14:05');
+(6, 'eventmanager@poinku.com', 4, 6, 'Coaching Clinic – Strategi Sukses Lolos Hibah Pengabdian DRPM 2021', 'dajk', '2021-05-13', '23:09:00', '00:09:00', 'https://www.stiki.ac.id/wp-content/uploads/2021/04/Coaching-Clinic-Strategi-Sukses-2-300x300.jpeg', 100, 0, '2021-05-08 16:09:25'),
+(7, 'eventmanager@poinku.com', 9, 6, 'Business Talk #2 Go International with Sociopreneurship', 'djask', '2021-05-11', '00:13:00', '00:17:00', 'https://www.stiki.ac.id/wp-content/uploads/2021/04/Business-Talk-2-300x300.jpeg', 90, 1, '2021-05-08 16:14:05');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis`
+-- Table structure for table `jenis`
 --
 
 CREATE TABLE `jenis` (
@@ -86,7 +85,7 @@ CREATE TABLE `jenis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `jenis`
+-- Dumping data for table `jenis`
 --
 
 INSERT INTO `jenis` (`ID_JENIS`, `JENIS`) VALUES
@@ -108,7 +107,7 @@ INSERT INTO `jenis` (`ID_JENIS`, `JENIS`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kegiatan`
+-- Table structure for table `kegiatan`
 --
 
 CREATE TABLE `kegiatan` (
@@ -118,7 +117,7 @@ CREATE TABLE `kegiatan` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kegiatan`
+-- Dumping data for table `kegiatan`
 --
 
 INSERT INTO `kegiatan` (`ID_KEGIATAN`, `ID_TUGAS_KHUSUS`, `KETERANGAN`) VALUES
@@ -131,7 +130,7 @@ INSERT INTO `kegiatan` (`ID_KEGIATAN`, `ID_TUGAS_KHUSUS`, `KETERANGAN`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kondisi_kriteria`
+-- Table structure for table `kondisi_kriteria`
 --
 
 CREATE TABLE `kondisi_kriteria` (
@@ -142,7 +141,7 @@ CREATE TABLE `kondisi_kriteria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kondisi_kriteria`
+-- Dumping data for table `kondisi_kriteria`
 --
 
 INSERT INTO `kondisi_kriteria` (`ID_KONDISI_KRITERIA`, `ID_JENIS`, `ID_NILAI`, `KONDISI`) VALUES
@@ -151,7 +150,7 @@ INSERT INTO `kondisi_kriteria` (`ID_KONDISI_KRITERIA`, `ID_JENIS`, `ID_NILAI`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `konten`
+-- Table structure for table `konten`
 --
 
 CREATE TABLE `konten` (
@@ -162,7 +161,7 @@ CREATE TABLE `konten` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `konten`
+-- Dumping data for table `konten`
 --
 
 INSERT INTO `konten` (`ID_KONTEN`, `ID_TUGAS_KHUSUS`, `MEDIA_KONTEN`, `JENIS_KONTEN`) VALUES
@@ -171,7 +170,7 @@ INSERT INTO `konten` (`ID_KONTEN`, `ID_TUGAS_KHUSUS`, `MEDIA_KONTEN`, `JENIS_KON
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kriteria`
+-- Table structure for table `kriteria`
 --
 
 CREATE TABLE `kriteria` (
@@ -183,7 +182,7 @@ CREATE TABLE `kriteria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kriteria`
+-- Dumping data for table `kriteria`
 --
 
 INSERT INTO `kriteria` (`ID_KRITERIA`, `ID_NILAI`, `ID_JENIS`, `ID_LINGKUP`, `JUMLAH`) VALUES
@@ -207,7 +206,7 @@ INSERT INTO `kriteria` (`ID_KRITERIA`, `ID_NILAI`, `ID_JENIS`, `ID_LINGKUP`, `JU
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `lingkup`
+-- Table structure for table `lingkup`
 --
 
 CREATE TABLE `lingkup` (
@@ -216,7 +215,7 @@ CREATE TABLE `lingkup` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `lingkup`
+-- Dumping data for table `lingkup`
 --
 
 INSERT INTO `lingkup` (`ID_LINGKUP`, `LINGKUP`) VALUES
@@ -236,7 +235,7 @@ INSERT INTO `lingkup` (`ID_LINGKUP`, `LINGKUP`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mahasiswa`
+-- Table structure for table `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -247,12 +246,12 @@ CREATE TABLE `mahasiswa` (
   `ANGKATAN` varchar(4) DEFAULT NULL,
   `NILAI` varchar(3) DEFAULT 'E',
   `TANGGAL_VALIDASI` timestamp NULL DEFAULT NULL,
-  `STATUS` tinyint(1) DEFAULT '0',
+  `STATUS` tinyint(1) DEFAULT 0,
   `TOKEN` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `mahasiswa`
+-- Dumping data for table `mahasiswa`
 --
 
 INSERT INTO `mahasiswa` (`NRP`, `EMAIL`, `ID_ATURAN`, `PRODI`, `ANGKATAN`, `NILAI`, `TANGGAL_VALIDASI`, `STATUS`, `TOKEN`) VALUES
@@ -263,7 +262,7 @@ INSERT INTO `mahasiswa` (`NRP`, `EMAIL`, `ID_ATURAN`, `PRODI`, `ANGKATAN`, `NILA
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nilai`
+-- Table structure for table `nilai`
 --
 
 CREATE TABLE `nilai` (
@@ -274,7 +273,7 @@ CREATE TABLE `nilai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `nilai`
+-- Dumping data for table `nilai`
 --
 
 INSERT INTO `nilai` (`ID_NILAI`, `ID_ATURAN`, `NILAI`, `POIN_MINIMAL`) VALUES
@@ -285,7 +284,7 @@ INSERT INTO `nilai` (`ID_NILAI`, `ID_ATURAN`, `NILAI`, `POIN_MINIMAL`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `peran`
+-- Table structure for table `peran`
 --
 
 CREATE TABLE `peran` (
@@ -294,7 +293,7 @@ CREATE TABLE `peran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `peran`
+-- Dumping data for table `peran`
 --
 
 INSERT INTO `peran` (`ID_PERAN`, `PERAN`) VALUES
@@ -310,7 +309,7 @@ INSERT INTO `peran` (`ID_PERAN`, `PERAN`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `poin`
+-- Table structure for table `poin`
 --
 
 CREATE TABLE `poin` (
@@ -323,7 +322,7 @@ CREATE TABLE `poin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `poin`
+-- Dumping data for table `poin`
 --
 
 INSERT INTO `poin` (`ID_POIN`, `ID_ATURAN`, `ID_JENIS`, `ID_LINGKUP`, `ID_PERAN`, `POIN`) VALUES
@@ -389,26 +388,26 @@ INSERT INTO `poin` (`ID_POIN`, `ID_ATURAN`, `ID_JENIS`, `ID_LINGKUP`, `ID_PERAN`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `presensi`
+-- Table structure for table `presensi`
 --
 
 CREATE TABLE `presensi` (
   `ID_PRESENSI` int(11) NOT NULL,
   `EMAIL` varchar(50) NOT NULL,
   `ID_EVENT` int(11) NOT NULL,
-  `STATUS` int(11) DEFAULT '0',
-  `WAKTU_PRESENSI` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+  `STATUS` int(11) DEFAULT 0,
+  `WAKTU_PRESENSI` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `presensi`
+-- Dumping data for table `presensi`
 --
 
 INSERT INTO `presensi` (`ID_PRESENSI`, `EMAIL`, `ID_EVENT`, `STATUS`, `WAKTU_PRESENSI`) VALUES
-(4, '171111079@mhs.stiki.ac.id', 6, 0, '0000-00-00 00:00:00');
+(11, '171111020@mhs.stiki.ac.id', 7, 0, '0000-00-00 00:00:00');
 
 --
--- Trigger `presensi`
+-- Triggers `presensi`
 --
 DELIMITER $$
 CREATE TRIGGER `DELETE_DATA` AFTER DELETE ON `presensi` FOR EACH ROW UPDATE event SET event.PENDAFTAR = event.PENDAFTAR - 1 WHERE event.ID_EVENT = old.ID_EVENT
@@ -422,7 +421,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `role`
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -431,7 +430,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`ID_ROLE`, `ROLE`) VALUES
@@ -442,7 +441,7 @@ INSERT INTO `role` (`ID_ROLE`, `ROLE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tugas_khusus`
+-- Table structure for table `tugas_khusus`
 --
 
 CREATE TABLE `tugas_khusus` (
@@ -454,43 +453,22 @@ CREATE TABLE `tugas_khusus` (
   `JUDUL` varchar(280) DEFAULT NULL,
   `TANGGAL_KEGIATAN` date DEFAULT NULL,
   `BUKTI` varchar(255) DEFAULT NULL,
-  `TANGGAL_DATA` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `STATUS_VALIDASI` int(11) NOT NULL DEFAULT '0',
+  `TANGGAL_DATA` timestamp NULL DEFAULT current_timestamp(),
+  `STATUS_VALIDASI` int(11) NOT NULL DEFAULT 0,
   `TANGGAL_VALIDASI` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tugas_khusus`
+-- Dumping data for table `tugas_khusus`
 --
 
 INSERT INTO `tugas_khusus` (`ID_TUGAS_KHUSUS`, `NRP`, `ID_JENIS`, `ID_LINGKUP`, `ID_PERAN`, `JUDUL`, `TANGGAL_KEGIATAN`, `BUKTI`, `TANGGAL_DATA`, `STATUS_VALIDASI`, `TANGGAL_VALIDASI`) VALUES
-(1, '171111079', 2, 1, 2, 'Judul', '2021-04-28', 'https://cdn.idntimes.com/content-images/post/20210424/10-881bce895ca6c08611f7387e27548f38_600x400.JPG', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(2, '171111079', 2, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(3, '171111079', 2, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(4, '171111079', 3, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(5, '171111079', 3, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(6, '171111079', 4, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(7, '171111079', 4, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(9, '171111079', 6, 3, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(10, '171111079', 6, 3, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(11, '171111079', 7, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(12, '171111079', 7, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(13, '171111079', 13, 1, 1, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(14, '171111079', 15, 1, 1, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(15, '171111079', 6, 1, 1, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:05:19', 0, '0000-00-00 00:00:00'),
-(16, '171111079', 5, 3, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:19:32', 0, '0000-00-00 00:00:00'),
-(17, '171111079', 6, 13, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:19:32', 0, '0000-00-00 00:00:00'),
-(18, '171111079', 7, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:19:32', 0, '0000-00-00 00:00:00'),
-(19, '171111079', 2, 1, 1, 'asd', '2021-05-08', NULL, '2021-05-08 16:38:45', 0, '0000-00-00 00:00:00'),
-(20, '171111079', 2, 1, 1, 'qwe', '2021-05-08', NULL, '2021-05-08 16:43:04', 0, '0000-00-00 00:00:00'),
-(21, '171111079', 2, 1, 1, 'poi', '2021-05-09', 'http://s4ishoku.site/new_poinku/uploads/sertifikat/171111079/2/1620493517.JPEG', '2021-05-08 17:05:16', 0, '0000-00-00 00:00:00'),
-(22, '171111079', 2, 1, 1, 'poi', '2021-05-09', 'http://s4ishoku.site/new_poinku/uploads/sertifikat/171111079/2/1620493540.JPEG', '2021-05-08 17:05:38', 0, '0000-00-00 00:00:00'),
-(23, '171111079', 2, 1, 1, 'poi', '2021-05-09', 'http://s4ishoku.site/new_poinku/uploads/sertifikat/171111079/2/1620493694.JPEG', '2021-05-08 17:08:12', 0, '0000-00-00 00:00:00');
+(38, '171111079', 2, 2, 2, 'Judul', '2021-12-12', NULL, '2021-05-14 01:55:28', 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -502,7 +480,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`EMAIL`, `ID_ROLE`, `PASSWORD`, `NAMA`, `TELEPON`) VALUES
@@ -513,8 +491,8 @@ INSERT INTO `user` (`EMAIL`, `ID_ROLE`, `PASSWORD`, `NAMA`, `TELEPON`) VALUES
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_event`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_event`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_event` (
 `ID_EVENT` int(11)
@@ -536,8 +514,8 @@ CREATE TABLE `view_event` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_jenis_tugas_khusus`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_jenis_tugas_khusus`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_jenis_tugas_khusus` (
 `NRP` varchar(15)
@@ -550,8 +528,8 @@ CREATE TABLE `view_jenis_tugas_khusus` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_kriteria`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_kriteria`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_kriteria` (
 `ID_KRITERIA` int(11)
@@ -568,8 +546,8 @@ CREATE TABLE `view_kriteria` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_kriteria_tugas_khusus`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_kriteria_tugas_khusus`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_kriteria_tugas_khusus` (
 `NRP` varchar(15)
@@ -581,8 +559,8 @@ CREATE TABLE `view_kriteria_tugas_khusus` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_mahasiswa`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_mahasiswa`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_mahasiswa` (
 `NRP` varchar(15)
@@ -601,8 +579,8 @@ CREATE TABLE `view_mahasiswa` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_poin`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_poin`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_poin` (
 `ID_POIN` int(11)
@@ -616,8 +594,8 @@ CREATE TABLE `view_poin` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_tugas_khusus`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_tugas_khusus`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_tugas_khusus` (
 `ID_TUGAS_KHUSUS` int(11)
@@ -640,34 +618,34 @@ CREATE TABLE `view_tugas_khusus` (
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_event`
+-- Structure for view `view_event`
 --
 DROP TABLE IF EXISTS `view_event`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_event`  AS  select `event`.`ID_EVENT` AS `ID_EVENT`,`event`.`EMAIL` AS `EMAIL`,`event`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`event`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`event`.`JUDUL` AS `JUDUL`,`event`.`DESKRIPSI` AS `DESKRIPSI`,`event`.`TANGGAL_ACARA` AS `TANGGAL_ACARA`,`event`.`JAM_MULAI` AS `JAM_MULAI`,`event`.`JAM_SELESAI` AS `JAM_SELESAI`,`event`.`POSTER` AS `POSTER`,`event`.`KUOTA` AS `KUOTA`,`event`.`PENDAFTAR` AS `PENDAFTAR` from ((`event` join `jenis` on((`event`.`ID_JENIS` = `jenis`.`ID_JENIS`))) join `lingkup` on(((`event`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`) and (concat(`event`.`TANGGAL_ACARA`,' ',`event`.`JAM_MULAI`) >= now())))) order by `event`.`TANGGAL_DATA` desc ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_event`  AS  select `event`.`ID_EVENT` AS `ID_EVENT`,`event`.`EMAIL` AS `EMAIL`,`event`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`event`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`event`.`JUDUL` AS `JUDUL`,`event`.`DESKRIPSI` AS `DESKRIPSI`,`event`.`TANGGAL_ACARA` AS `TANGGAL_ACARA`,`event`.`JAM_MULAI` AS `JAM_MULAI`,`event`.`JAM_SELESAI` AS `JAM_SELESAI`,`event`.`POSTER` AS `POSTER`,`event`.`KUOTA` AS `KUOTA`,`event`.`PENDAFTAR` AS `PENDAFTAR` from ((`event` join `jenis` on(`event`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`event`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP` and concat(`event`.`TANGGAL_ACARA`,' ',`event`.`JAM_MULAI`) >= current_timestamp())) order by `event`.`TANGGAL_DATA` desc ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_jenis_tugas_khusus`
+-- Structure for view `view_jenis_tugas_khusus`
 --
 DROP TABLE IF EXISTS `view_jenis_tugas_khusus`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_jenis_tugas_khusus`  AS  select `view_tugas_khusus`.`NRP` AS `NRP`,`jenis`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,count(`view_tugas_khusus`.`ID_JENIS`) AS `TOTAL`,sum(`view_tugas_khusus`.`POIN`) AS `JUMLAH` from (`jenis` join `view_tugas_khusus` on((`jenis`.`ID_JENIS` = `view_tugas_khusus`.`ID_JENIS`))) group by `view_tugas_khusus`.`ID_JENIS`,`view_tugas_khusus`.`NRP` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_jenis_tugas_khusus`  AS  select `view_tugas_khusus`.`NRP` AS `NRP`,`jenis`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,count(`view_tugas_khusus`.`ID_JENIS`) AS `TOTAL`,sum(`view_tugas_khusus`.`POIN`) AS `JUMLAH` from (`jenis` join `view_tugas_khusus` on(`jenis`.`ID_JENIS` = `view_tugas_khusus`.`ID_JENIS`)) group by `view_tugas_khusus`.`ID_JENIS`,`view_tugas_khusus`.`NRP` ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_kriteria`
+-- Structure for view `view_kriteria`
 --
 DROP TABLE IF EXISTS `view_kriteria`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_kriteria`  AS  select `kriteria`.`ID_KRITERIA` AS `ID_KRITERIA`,`nilai`.`ID_ATURAN` AS `ID_ATURAN`,`kriteria`.`ID_NILAI` AS `ID_NILAI`,`nilai`.`NILAI` AS `NILAI`,`kriteria`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`kriteria`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`kriteria`.`JUMLAH` AS `JUMLAH` from (((`kriteria` join `nilai` on((`kriteria`.`ID_NILAI` = `nilai`.`ID_NILAI`))) join `jenis` on((`kriteria`.`ID_JENIS` = `jenis`.`ID_JENIS`))) join `lingkup` on((`kriteria`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_kriteria`  AS  select `kriteria`.`ID_KRITERIA` AS `ID_KRITERIA`,`nilai`.`ID_ATURAN` AS `ID_ATURAN`,`kriteria`.`ID_NILAI` AS `ID_NILAI`,`nilai`.`NILAI` AS `NILAI`,`kriteria`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`kriteria`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`kriteria`.`JUMLAH` AS `JUMLAH` from (((`kriteria` join `nilai` on(`kriteria`.`ID_NILAI` = `nilai`.`ID_NILAI`)) join `jenis` on(`kriteria`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`kriteria`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_kriteria_tugas_khusus`
+-- Structure for view `view_kriteria_tugas_khusus`
 --
 DROP TABLE IF EXISTS `view_kriteria_tugas_khusus`;
 
@@ -676,42 +654,42 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_mahasiswa`
+-- Structure for view `view_mahasiswa`
 --
 DROP TABLE IF EXISTS `view_mahasiswa`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_mahasiswa`  AS  select `mahasiswa`.`NRP` AS `NRP`,`mahasiswa`.`EMAIL` AS `EMAIL`,`aturan`.`ID_ATURAN` AS `ID_ATURAN`,`aturan`.`TAHUN` AS `TAHUN`,`aturan`.`KETERANGAN` AS `KETERANGAN`,`mahasiswa`.`PRODI` AS `PRODI`,`mahasiswa`.`ANGKATAN` AS `ANGKATAN`,`mahasiswa`.`NILAI` AS `NILAI`,`mahasiswa`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`,`mahasiswa`.`STATUS` AS `STATUS`,`mahasiswa`.`TOKEN` AS `TOKEN` from (`mahasiswa` join `aturan` on((`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_mahasiswa`  AS  select `mahasiswa`.`NRP` AS `NRP`,`mahasiswa`.`EMAIL` AS `EMAIL`,`aturan`.`ID_ATURAN` AS `ID_ATURAN`,`aturan`.`TAHUN` AS `TAHUN`,`aturan`.`KETERANGAN` AS `KETERANGAN`,`mahasiswa`.`PRODI` AS `PRODI`,`mahasiswa`.`ANGKATAN` AS `ANGKATAN`,`mahasiswa`.`NILAI` AS `NILAI`,`mahasiswa`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`,`mahasiswa`.`STATUS` AS `STATUS`,`mahasiswa`.`TOKEN` AS `TOKEN` from (`mahasiswa` join `aturan` on(`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`)) ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_poin`
+-- Structure for view `view_poin`
 --
 DROP TABLE IF EXISTS `view_poin`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_poin`  AS  select `poin`.`ID_POIN` AS `ID_POIN`,`poin`.`ID_ATURAN` AS `ID_ATURAN`,`jenis`.`JENIS` AS `JENIS`,`lingkup`.`LINGKUP` AS `LINGKUP`,`peran`.`PERAN` AS `PERAN`,`poin`.`POIN` AS `POIN` from (((`poin` join `jenis` on((`poin`.`ID_JENIS` = `jenis`.`ID_JENIS`))) join `lingkup` on((`poin`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`))) join `peran` on((`poin`.`ID_PERAN` = `peran`.`ID_PERAN`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_poin`  AS  select `poin`.`ID_POIN` AS `ID_POIN`,`poin`.`ID_ATURAN` AS `ID_ATURAN`,`jenis`.`JENIS` AS `JENIS`,`lingkup`.`LINGKUP` AS `LINGKUP`,`peran`.`PERAN` AS `PERAN`,`poin`.`POIN` AS `POIN` from (((`poin` join `jenis` on(`poin`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`poin`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) join `peran` on(`poin`.`ID_PERAN` = `peran`.`ID_PERAN`)) ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_tugas_khusus`
+-- Structure for view `view_tugas_khusus`
 --
 DROP TABLE IF EXISTS `view_tugas_khusus`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_tugas_khusus`  AS  select `tugas_khusus`.`ID_TUGAS_KHUSUS` AS `ID_TUGAS_KHUSUS`,`tugas_khusus`.`NRP` AS `NRP`,`tugas_khusus`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`tugas_khusus`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`tugas_khusus`.`ID_PERAN` AS `ID_PERAN`,`peran`.`PERAN` AS `PERAN`,`tugas_khusus`.`JUDUL` AS `JUDUL`,`tugas_khusus`.`TANGGAL_KEGIATAN` AS `TANGGAL_KEGIATAN`,`tugas_khusus`.`BUKTI` AS `BUKTI`,`tugas_khusus`.`TANGGAL_DATA` AS `TANGGAL_DATA`,`tugas_khusus`.`STATUS_VALIDASI` AS `STATUS_VALIDASI`,`tugas_khusus`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`,`poin`.`POIN` AS `POIN` from ((((((`tugas_khusus` join `jenis` on((`tugas_khusus`.`ID_JENIS` = `jenis`.`ID_JENIS`))) join `lingkup` on((`tugas_khusus`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`))) join `peran` on((`tugas_khusus`.`ID_PERAN` = `peran`.`ID_PERAN`))) join `mahasiswa` on((`tugas_khusus`.`NRP` = `mahasiswa`.`NRP`))) join `aturan` on((`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`))) left join `poin` on(((`aturan`.`ID_ATURAN` = `poin`.`ID_ATURAN`) and (`tugas_khusus`.`ID_JENIS` = `poin`.`ID_JENIS`) and (`tugas_khusus`.`ID_LINGKUP` = `poin`.`ID_LINGKUP`) and (`tugas_khusus`.`ID_PERAN` = `peran`.`ID_PERAN`)))) group by `tugas_khusus`.`ID_TUGAS_KHUSUS` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_tugas_khusus`  AS  select `tugas_khusus`.`ID_TUGAS_KHUSUS` AS `ID_TUGAS_KHUSUS`,`tugas_khusus`.`NRP` AS `NRP`,`tugas_khusus`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`tugas_khusus`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`tugas_khusus`.`ID_PERAN` AS `ID_PERAN`,`peran`.`PERAN` AS `PERAN`,`tugas_khusus`.`JUDUL` AS `JUDUL`,`tugas_khusus`.`TANGGAL_KEGIATAN` AS `TANGGAL_KEGIATAN`,`tugas_khusus`.`BUKTI` AS `BUKTI`,`tugas_khusus`.`TANGGAL_DATA` AS `TANGGAL_DATA`,`tugas_khusus`.`STATUS_VALIDASI` AS `STATUS_VALIDASI`,`tugas_khusus`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`,`poin`.`POIN` AS `POIN` from ((((((`tugas_khusus` join `jenis` on(`tugas_khusus`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`tugas_khusus`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) join `peran` on(`tugas_khusus`.`ID_PERAN` = `peran`.`ID_PERAN`)) join `mahasiswa` on(`tugas_khusus`.`NRP` = `mahasiswa`.`NRP`)) join `aturan` on(`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`)) left join `poin` on(`aturan`.`ID_ATURAN` = `poin`.`ID_ATURAN` and `tugas_khusus`.`ID_JENIS` = `poin`.`ID_JENIS` and `tugas_khusus`.`ID_LINGKUP` = `poin`.`ID_LINGKUP` and `tugas_khusus`.`ID_PERAN` = `peran`.`ID_PERAN`)) group by `tugas_khusus`.`ID_TUGAS_KHUSUS` ;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `aturan`
+-- Indexes for table `aturan`
 --
 ALTER TABLE `aturan`
   ADD PRIMARY KEY (`ID_ATURAN`);
 
 --
--- Indeks untuk tabel `event`
+-- Indexes for table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`ID_EVENT`),
@@ -720,20 +698,20 @@ ALTER TABLE `event`
   ADD KEY `FK_EVENT_RELATIONS_LINGKUP` (`ID_LINGKUP`);
 
 --
--- Indeks untuk tabel `jenis`
+-- Indexes for table `jenis`
 --
 ALTER TABLE `jenis`
   ADD PRIMARY KEY (`ID_JENIS`);
 
 --
--- Indeks untuk tabel `kegiatan`
+-- Indexes for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
   ADD PRIMARY KEY (`ID_KEGIATAN`),
   ADD KEY `ID_TUGAS_KHUSUS` (`ID_TUGAS_KHUSUS`);
 
 --
--- Indeks untuk tabel `kondisi_kriteria`
+-- Indexes for table `kondisi_kriteria`
 --
 ALTER TABLE `kondisi_kriteria`
   ADD PRIMARY KEY (`ID_KONDISI_KRITERIA`),
@@ -741,14 +719,14 @@ ALTER TABLE `kondisi_kriteria`
   ADD KEY `FK_KONDISI__RELATIONS_JENIS` (`ID_JENIS`);
 
 --
--- Indeks untuk tabel `konten`
+-- Indexes for table `konten`
 --
 ALTER TABLE `konten`
   ADD PRIMARY KEY (`ID_KONTEN`),
   ADD KEY `ID_TUGAS_KHUSUS` (`ID_TUGAS_KHUSUS`);
 
 --
--- Indeks untuk tabel `kriteria`
+-- Indexes for table `kriteria`
 --
 ALTER TABLE `kriteria`
   ADD PRIMARY KEY (`ID_KRITERIA`),
@@ -757,13 +735,13 @@ ALTER TABLE `kriteria`
   ADD KEY `FK_KRITERIA_RELATIONS_NILAI` (`ID_NILAI`);
 
 --
--- Indeks untuk tabel `lingkup`
+-- Indexes for table `lingkup`
 --
 ALTER TABLE `lingkup`
   ADD PRIMARY KEY (`ID_LINGKUP`);
 
 --
--- Indeks untuk tabel `mahasiswa`
+-- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`NRP`),
@@ -771,20 +749,20 @@ ALTER TABLE `mahasiswa`
   ADD KEY `FK_MAHASISW_RELATIONS_ATURAN` (`ID_ATURAN`);
 
 --
--- Indeks untuk tabel `nilai`
+-- Indexes for table `nilai`
 --
 ALTER TABLE `nilai`
   ADD PRIMARY KEY (`ID_NILAI`),
   ADD KEY `FK_NILAI_RELATIONS_ATURAN` (`ID_ATURAN`);
 
 --
--- Indeks untuk tabel `peran`
+-- Indexes for table `peran`
 --
 ALTER TABLE `peran`
   ADD PRIMARY KEY (`ID_PERAN`);
 
 --
--- Indeks untuk tabel `poin`
+-- Indexes for table `poin`
 --
 ALTER TABLE `poin`
   ADD PRIMARY KEY (`ID_POIN`),
@@ -794,7 +772,7 @@ ALTER TABLE `poin`
   ADD KEY `FK_POIN_RELATIONS_ATURAN` (`ID_ATURAN`);
 
 --
--- Indeks untuk tabel `presensi`
+-- Indexes for table `presensi`
 --
 ALTER TABLE `presensi`
   ADD PRIMARY KEY (`ID_PRESENSI`),
@@ -802,13 +780,13 @@ ALTER TABLE `presensi`
   ADD KEY `FK_PRESENSI_RELATIONS_EVENT` (`ID_EVENT`);
 
 --
--- Indeks untuk tabel `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`ID_ROLE`);
 
 --
--- Indeks untuk tabel `tugas_khusus`
+-- Indexes for table `tugas_khusus`
 --
 ALTER TABLE `tugas_khusus`
   ADD PRIMARY KEY (`ID_TUGAS_KHUSUS`),
@@ -818,63 +796,63 @@ ALTER TABLE `tugas_khusus`
   ADD KEY `ID_PERAN` (`ID_PERAN`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`EMAIL`),
   ADD KEY `FK_USER_RELATIONS_ROLE` (`ID_ROLE`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `aturan`
+-- AUTO_INCREMENT for table `aturan`
 --
 ALTER TABLE `aturan`
-  MODIFY `ID_ATURAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_ATURAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `event`
+-- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
   MODIFY `ID_EVENT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `kegiatan`
+-- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
   MODIFY `ID_KEGIATAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `konten`
+-- AUTO_INCREMENT for table `konten`
 --
 ALTER TABLE `konten`
   MODIFY `ID_KONTEN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `kriteria`
+-- AUTO_INCREMENT for table `kriteria`
 --
 ALTER TABLE `kriteria`
   MODIFY `ID_KRITERIA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `presensi`
+-- AUTO_INCREMENT for table `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `ID_PRESENSI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_PRESENSI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `role`
+-- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
   MODIFY `ID_ROLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `tugas_khusus`
+-- AUTO_INCREMENT for table `tugas_khusus`
 --
 ALTER TABLE `tugas_khusus`
-  MODIFY `ID_TUGAS_KHUSUS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID_TUGAS_KHUSUS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

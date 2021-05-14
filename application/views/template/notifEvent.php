@@ -1,7 +1,7 @@
 <?php 
-    $dataNotif      = $this->db->query('SELECT * FROM tugas_khusus WHERE STATUS_VALIDASI = 0 LIMIT 3')->result();
-    $countDataNotif = $this->db->query('SELECT * FROM tugas_khusus WHERE STATUS_VALIDASI = 0')->num_rows();
-    if($this->session->userdata('role') == "Admin"){
+    $dataNotif      = $this->db->query('SELECT event.JUDUL, presensi.EMAIL FROM presensi JOIN event ON event.ID_EVENT = presensi.ID_EVENT WHERE STATUS = 0 LIMIT 3')->result();
+    $countDataNotif = $this->db->query('SELECT * FROM presensi WHERE STATUS = 0')->num_rows();
+    if($this->session->userdata('role') == "Event Manager"){
 ?>
 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <i class="fas fa-bell fa-fw"></i>
@@ -23,8 +23,8 @@
             </div>
         </div>
         <div>
-            <div class="font-weight-bold">NRP <?php echo $data->NRP ?></div>
-            <span class="small text-gray-500">Mengajukan Tugas Khusus '<?php echo $data->JUDUL?>'</span>
+            <div class="font-weight-bold">Email <?php echo $data->EMAIL ?></div>
+            <span class="small text-gray-500">Mendaftar Event '<?php echo $data->JUDUL?>'</span>
         </div>
     </a>
     <?php }?>

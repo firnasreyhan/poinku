@@ -26,7 +26,7 @@ class AturanModel extends CI_Model {
 
     public function getDetail($param)
     {
-        return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->get('aturan')->row_array();
+        return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->get('aturan')->result();
     }
 
     public function update($param)

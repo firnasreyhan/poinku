@@ -9,6 +9,16 @@ class DaftarEventController extends CI_Controller {
     {
         parent::__construct();
         //Do your magic here
+        if($this->session->userdata('role') != 'Event Manager'){
+            $this->session->sess_destroy();
+            redirect('login');
+        }
+
+        if($this->session->userdata('log') != TRUE){
+            $this->session->sess_destroy();
+            redirect('login');
+        }
+
         $this->load->model('DaftarEventModel');
         $this->load->model('JenisKegiatanModel');
         $this->load->model('LingkupKegiatanModel');

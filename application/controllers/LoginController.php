@@ -37,7 +37,7 @@ class LoginController extends CI_Controller {
 			'email' 		=> $emails,
 			'nama' 		    => $nama,
 			'role' 			=> $role,
-			'log' 			=> 'in'
+			'log' 			=> TRUE
 		);
  
 		$this->session->set_userdata($data_session);

@@ -13,6 +13,9 @@
 
     
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    
+    
+
     <script>
         Pusher.logToConsole = true;
 
@@ -23,15 +26,27 @@
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function(data) {
-            xhr = $.ajax({
-                method: 'POST',
-                url: "<?php echo base_url() ?>/NotifikasiController/listNotifikasi",
-                success: function(response) {
-                    $('.list-pemberitahuan').html(response);
-                }
-            })
+            if(data.notif == "tugas khusus"){
+                xhr = $.ajax({
+                    method: 'POST',
+                    url: "<?php echo base_url() ?>/NotifikasiController/listNotifikasiAdmin",
+                    success: function(response) {
+                        $('.list-pemberitahuan').html(response);
+                    }
+                })
+            }else if(data.notif == "event"){
+                xhr = $.ajax({
+                    method: 'POST',
+                    url: "<?php echo base_url() ?>/NotifikasiController/listNotifikasiEvent",
+                    success: function(response) {
+                        $('.list-pemberitahuan').html(response);
+                    }
+                })
+            }else{
+                alert(data.notif);
+            }
+            
         });
-
     </script>
 
     <!-- Custom fonts for this template -->
