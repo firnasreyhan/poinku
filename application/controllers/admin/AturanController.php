@@ -8,6 +8,16 @@ class AturanController extends CI_Controller
         public function __construct()
         {
                 parent::__construct();
+                if($this->session->userdata('role') != 'Admin'){
+                        $this->session->sess_destroy();
+			redirect('login');
+                }
+
+                if($this->session->userdata('log') != TRUE){
+                        $this->session->sess_destroy();
+			redirect('login');
+                }
+
                 $this->load->model('AturanModel');
                 $this->load->model('NilaiModel');
                 $this->load->model('PoinModel');
@@ -63,6 +73,8 @@ class AturanController extends CI_Controller
                 $data['jenis'] = $this->JenisKegiatanModel->get();
                 $data['lingkup'] = $this->LingkupKegiatanModel->get();
                 $data['peran'] = $this->PeranKegiatanModel->get();
+                $data['detail_poin'] = $this->PoinModel->getDetailPoin(['ID_POIN' => $param]);
+
                 $this->load->view('template/header');
                 $this->load->view('template/sidebar');
                 $this->load->view('template/topbar');
@@ -75,6 +87,8 @@ class AturanController extends CI_Controller
                 $data['nilai'] = $param;
                 $data['jenis'] = $this->JenisKegiatanModel->get();
                 $data['lingkup'] = $this->LingkupKegiatanModel->get();
+                $data['detail_kriteria'] = $this->KriteriaModel->getDetailKriteria(['ID_KRITERIA' => $param]);
+                
                 $this->load->view('template/header');
                 $this->load->view('template/sidebar');
                 $this->load->view('template/topbar');
@@ -112,9 +126,26 @@ class AturanController extends CI_Controller
 
         public function detail($param)
         {
-                $data['detail_aturan'] = $this->AturanModel->getDetail(['ID_ATURAN' => $param]);
-                $data['nilai'] = $this->NilaiModel->getDetail(['ID_ATURAN' => $param]);
-                $data['poin'] = $this->PoinModel->getDetail(['ID_ATURAN' => $param]);
+                $detail_aturan = $this->AturanModel->getDetail(['ID_ATURAN' => $param]);
+                $nilai = $this->NilaiModel->getDetail(['ID_ATURAN' => $param]);
+                $poin = $this->PoinModel->getDetail(['ID_ATURAN' => $param]);
+
+                $tahun = null;
+                $keterangan = null;
+                foreach($detail_aturan as $row){
+                        $tahun = $row->TAHUN;
+                        $keterangan = $row->KETERANGAN;
+                }
+
+                $data = [
+                        'tahun' => $tahun,
+                        'keterangan' => $keterangan,
+                        'detail_aturan' => $detail_aturan,
+                        'poin' => $poin,
+                        'nilai' => $nilai
+                ];
+
+                echo '<script>console.log("'.$tahun.'")</script>';
                 $this->load->view('template/header');
                 $this->load->view('template/sidebar');
                 $this->load->view('template/topbar');

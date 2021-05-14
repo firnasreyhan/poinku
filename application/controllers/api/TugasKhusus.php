@@ -41,7 +41,7 @@ class TugasKhusus extends RestController {
             $options
         );
 
-        $data['notif'] = 'daskl';
+        $data['notif'] = 'tugas khusus';
         $pusher->trigger('my-channel', 'my-event', $data);
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'ID_TUGAS_KHUSUS' => $id], 200);
         

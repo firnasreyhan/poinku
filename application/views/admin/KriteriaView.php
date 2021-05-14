@@ -2,8 +2,11 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Kriteria Penilaian</h1>
-
+    <?php if(!empty($kriteria[0]->ID_ATURAN)){?>
+        <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan/detail/'.$kriteria[0]->ID_ATURAN)?>"><i class="fas fa-chevron-left"></i></a> Kriteria Penilaian</h1>
+    <?php }else{ ?>
+        <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan')?>"><i class="fas fa-chevron-left"></i></a> Kriteria Penilaian</h1>
+    <?php }?>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">

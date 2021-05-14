@@ -52,11 +52,6 @@
                                 <td><?php echo $key->TAHUN; ?></td>
                                 <td><?php echo $key->KETERANGAN; ?></td>
                                 <td>
-                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-success btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-external-link-alt"></i>
-                                        </span>
-                                    </a>
                                     &nbsp;
                                     <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
