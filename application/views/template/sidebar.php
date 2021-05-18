@@ -58,7 +58,7 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?php echo site_url('user') ?>">
             <i class="fas fa-fw fa-table"></i>
             <span>User</span></a>
     </li>
@@ -132,11 +132,16 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?php echo site_url('kegiatan') ?>">
             <i class="fas fa-fw fa-table"></i>
-            <span>Validasi</span></a>
+            <span>Validasi Kegiatan</span></a>
     </li>
     
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('tugaskhusus') ?>">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Validasi Tugas Khusus</span></a>
+    </li>
     
     <?php }else if($this->session->userdata('role') == "Event Manager"){ ?>
 

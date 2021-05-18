@@ -81,6 +81,24 @@ $route['perankegiatan/delete'] = 'admin/PeranKegiatanController/delete';
 $route['perankegiatan/update/(:any)'] = 'admin/PeranKegiatanController/detail/$1';
 $route['perankegiatan/update'] = 'admin/PeranKegiatanController/update';
 
+$route['user'] = 'admin/UserController';
+$route['user/insert'] = 'admin/UserController/insert';
+$route['user/delete'] = 'admin/UserController/delete';
+$route['user/update/(:any)'] = 'admin/UserController/detail/$1';
+$route['user/update'] = 'admin/UserController/update';
+
+$route['kegiatan'] = 'admin/KegiatanController';
+$route['kegiatan/insert'] = 'admin/KegiatanController/insert';
+$route['kegiatan/delete'] = 'admin/KegiatanController/delete';
+$route['kegiatan/update/(:any)'] = 'admin/KegiatanController/detail/$1';
+$route['kegiatan/update'] = 'admin/KegiatanController/update';
+
+$route['tugaskhusus'] = 'admin/TugasKhususController';
+$route['tugaskhusus/insert'] = 'admin/TugasKhususController/insert';
+$route['tugaskhusus/delete'] = 'admin/TugasKhususController/delete';
+$route['tugaskhusus/update/(:any)'] = 'admin/TugasKhususController/detail/$1';
+$route['tugaskhusus/update'] = 'admin/TugasKhususController/update';
+
 $route['nilai/insert'] = 'admin/AturanController/insertNilai';
 $route['nilai/delete'] = 'admin/AturanController/deleteNilai';
 $route['aturan/nilai/update/(:any)'] = 'admin/AturanController/detailNilai/$1';

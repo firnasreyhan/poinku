@@ -227,6 +227,13 @@ class AturanController extends CI_Controller
                 redirect('aturan/nilai/kriteria/' . $data['ID_NILAI']);
         }
 
+        public function updateActive()
+        {
+                $data = $_POST;
+                $this->AturanModel->update($data);
+                redirect('aturan');
+        }
+
         public function ajxGetDataMaster()
         {
                 $data['jenis'] = $this->JenisKegiatanModel->get();

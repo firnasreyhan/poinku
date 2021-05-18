@@ -31,6 +31,8 @@
                             <th>No</th>
                             <th>Tahun</th>
                             <th>Keterangan</th>
+                            <th>Kategori</th>
+                            <th>Aktif</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -39,6 +41,8 @@
                             <th>No</th>
                             <th>Tahun</th>
                             <th>Keterangan</th>
+                            <th>Kategori</th>
+                            <th>Aktif</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
@@ -51,7 +55,14 @@
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $key->TAHUN; ?></td>
                                 <td><?php echo $key->KETERANGAN; ?></td>
+                                <td><?php if($key->KATEGORI ==  "0") {echo "Reguler";} else{echo "Profesional";} ?></td>
+                                <td><?php if($key->AKTIF ==  "0") {echo "Tidak Aktif";} else{echo "Aktif";} ?></td>
                                 <td>
+                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-success btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-check-square"></i>
+                                        </span>
+                                    </a>
                                     &nbsp;
                                     <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
@@ -99,6 +110,12 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" name="KETERANGAN" placeholder="Keterangan" required>
+                    </div>
+                    <div class="form-group">
+                        <h5>Kategori</h5>
+                        <input type="radio" name="KATEGORI" value="0" checked /> Reguler
+                        <br/>
+                        <input type="radio" name="KATEGORI" value="1" /> Profesional
                     </div>
                 </div>
                 <div class="modal-footer">

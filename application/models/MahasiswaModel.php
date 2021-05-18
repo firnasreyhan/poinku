@@ -9,6 +9,15 @@ class MahasiswaModel extends CI_Model {
         parent::__construct();
     }
 
+    public function getAll()
+    {
+        $this->db->select('*');
+        $this->db->from('mahasiswa');
+        $this->db->join('aturan', 'mahasiswa.ID_ATURAN = aturan.ID_ATURAN');
+        $this->db->where('mahasiswa.STATUS', '0');
+        return $this->db->get()->result();
+    }
+
     public function get($param)
     {
         return $this->db->where('NRP', $param['NRP'])->get('view_mahasiswa')->row_array();

@@ -42,6 +42,17 @@ class DaftarEventModel extends CI_Model {
         $this->db->where('ID_EVENT', $param);
         return $this->db->get()->result();
     }
+    
+    public function getEventUser($param)
+    {
+        $this->db->select('*');
+        $this->db->from('event');
+        $this->db->join('lingkup', 'event.ID_LINGKUP = lingkup.ID_LINGKUP');
+        $this->db->join('jenis', 'event.ID_JENIS = jenis.ID_JENIS');
+        $this->db->join('presensi', 'event.ID_EVENT = presensi.ID_EVENT');
+        $this->db->where('presensi.EMAIL', $param);
+        return $this->db->get()->result();
+    }
 
     public function update($param, $idEvent)
     {

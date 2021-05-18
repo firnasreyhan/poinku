@@ -23,6 +23,22 @@ class Event extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
+    
+    public function eventUser_get()
+    {
+        $param = $this->get();
+        
+        $dataStore = array(
+            'EMAIL'     => $param['email']
+        );
+        
+        $data = $this->DaftarEventModel->getEventUser($dataStore['EMAIL']);
+        if ($data != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
+    }
 
     public function daftar_post()
     {
@@ -61,7 +77,7 @@ class Event extends RestController {
 
         $dataStore = array(
             'EMAIL'         => $param['email'],
-            'ID_EVENT '     => $param['id']
+            'ID_EVENT'     => $param['id']
         );
 
         $this->PresensiModel->delete($dataStore);
@@ -74,10 +90,26 @@ class Event extends RestController {
         
         $dataStore = array(
             'EMAIL'         => $param['email'],
-            'ID_EVENT '     => $param['id']
+            'ID_EVENT'     => $param['id']
         );
         
         $data = $this->PresensiModel->getPresensi($dataStore);
+        if ($data != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
+    }
+    
+    public function detailEvent_get()
+    {
+        $param = $this->get();
+        
+        $dataStore = array(
+            'ID_EVENT'     => $param['id']
+        );
+        
+        $data = $this->DaftarEventModel->getDetail($dataStore['ID_EVENT']);
         if ($data != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
         } else {

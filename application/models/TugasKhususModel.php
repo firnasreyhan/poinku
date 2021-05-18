@@ -4,6 +4,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class TugasKhususModel extends CI_Model
 {
+    public function getAll()
+    {
+        $this->db->select('*');
+        $this->db->from('tugas_khusus');
+        $this->db->join('mahasiswa', 'tugas_khusus.NRP = mahasiswa.NRP');
+        $this->db->join('jenis', 'tugas_khusus.ID_JENIS = jenis.ID_JENIS');
+        $this->db->join('lingkup', 'tugas_khusus.ID_LINGKUP = lingkup.ID_LINGKUP');
+        $this->db->join('peran', 'tugas_khusus.ID_PERAN = peran.ID_PERAN');
+        $this->db->where('tugas_khusus.STATUS_VALIDASI', '0');
+        return $this->db->get()->result();
+        
+        // return $this->db->where('NRP =', $param['NRP'])->get('tugas_khusus')->result();
+    }
 
     public function get($param)
     {

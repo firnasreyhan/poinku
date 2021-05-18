@@ -13,12 +13,7 @@ class PresensiModel extends CI_Model {
     {
         return $this->db->where($param)->delete('presensi');
     }
-
-    public function getDetail($param)
-    {
-        return $this->db->where($param)->get('presensi')->row_array();
-    }
-
+    
     public function getPresensi($param)
     {
         return $this->db->where($param)->get('presensi')->row_array();
