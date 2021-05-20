@@ -17,6 +17,13 @@ class UserModel extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function getRoles()
+    {
+        $this->db->select('*');
+        $this->db->from('role');
+        return $this->db->get()->result();
+    }
+
     public function insert($param)
     {
         return $this->db->insert('user', $param);
