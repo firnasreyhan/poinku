@@ -107,6 +107,17 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" name="TELEPON" placeholder="Telepon" required>
+                        <input type="hidden" class="form-control" name="PASSWORD" value="<?php echo substr(md5(time()), 0, 7);?>" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" name="ID_ROLE">
+                            <option value="">-- Pilih Role --</option>
+                            <?php 
+                                foreach($roles as $row){
+                            ?>
+                            <option value="<?php echo $row->ID_ROLE?>"><?php echo $row->ROLE?></option>
+                            <?php }?>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

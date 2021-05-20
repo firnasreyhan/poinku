@@ -53,19 +53,19 @@
                                 <td><?php echo $key->PERAN; ?></td>
                                 <td><?php echo $key->JUDUL; ?></td>
                                 <td>
-                                    <a href="<?php echo site_url("tugaskhusus/detail/" . $key->ID_TUGAS_KHUSUS); ?>" class="btn btn-warning btn-icon-split">
+                                    <a href="<?php echo site_url("kegiatan/detail/" . $key->ID_TUGAS_KHUSUS); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-edit"></i>
                                         </span>
                                     </a>
                                     &nbsp;
-                                    <a data-toggle="modal" data-target="#mdlDelete" data-id="<?php echo $key->ID_TUGAS_KHUSUS; ?>" class="btn btn-success btn-icon-split mdlDelete">
+                                    <a data-toggle="modal" data-target="#mdlAcc" data-id="<?php echo $key->ID_TUGAS_KHUSUS; ?>" class="btn btn-success btn-icon-split mdlAcc">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check-square"></i>
                                         </span>
                                     </a>
                                     &nbsp;
-                                    <a data-toggle="modal" data-target="#mdlDelete" data-id="<?php echo $key->ID_TUGAS_KHUSUS; ?>" class="btn btn-danger btn-icon-split mdlDelete">
+                                    <a data-toggle="modal" data-target="#mdlTolak" data-id="<?php echo $key->ID_TUGAS_KHUSUS; ?>" class="btn btn-danger btn-icon-split mdlTolak">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-window-close"></i>
                                         </span>
@@ -119,22 +119,22 @@
     </div>
 </div>
 
-<!-- Modal Delete -->
-<div class="modal fade" id="mdlDelete" tabindex="-1" aria-labelledby="mdlDelete" aria-hidden="true">
+<!-- Modal Acc -->
+<div class="modal fade" id="mdlAcc" tabindex="-1" aria-labelledby="mdlDelete" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="mdlAdd">Hapus User</h5>
+                <h5 class="modal-title" id="mdlAdd">Acc Kegiatan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo site_url("user/delete"); ?>" enctype="multipart/form-data" method="post">
+            <form action="<?php echo site_url("kegiatan/acc"); ?>" enctype="multipart/form-data" method="post">
                 <div class="modal-body">
-                    <p>Apakah anda yakin ingin mengahpus user ini?</p>
+                    <p>Apakah anda yakin ingin acc kegiatan ini?</p>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" class="form-control" name="EMAIL" placeholder="Email" id="INPUT_EMAIL">
+                    <input type="hidden" class="form-control" name="ID_TUGAS_KHUSUS" placeholder="Email" id="INPUT_EMAIL">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-primary">Iya</button>
                 </div>
@@ -143,13 +143,41 @@
     </div>
 </div>
 
+<!-- Modal Tolak -->
+<div class="modal fade" id="mdlTolak" tabindex="-1" aria-labelledby="mdlDelete" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mdlAdd">Tolak Kegiatan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?php echo site_url("kegiatan/tolak"); ?>" enctype="multipart/form-data" method="post">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin tolak kegiatan ini?</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" class="form-control" name="ID_TUGAS_KHUSUS" placeholder="Email" id="ID">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary">Iya</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
 
 <script>
-    $('#dataTable tbody').on('click', '.mdlDelete', function() {
+    $('#dataTable tbody').on('click', '.mdlAcc', function() {
         const id = $(this).data('id')
         $('#INPUT_EMAIL').val(id)
+    })
+
+    $('#dataTable tbody').on('click', '.mdlTolak', function() {
+        const id = $(this).data('id')
+        $('#ID').val(id)
     })
 </script>

@@ -81,6 +81,27 @@ class TugasKhususModel extends CI_Model
     {
         return $this->db->where('ID_TUGAS_KHUSUS', $param['ID_TUGAS_KHUSUS'])->update('tugas_khusus', $param);
     }
+
+    public function acc($data, $where)
+    {
+        return $this->db->set($data)->where($where)->update('tugas_khusus');
+    }
+
+    public function tolak($data, $where)
+    {
+        return $this->db->set($data)->where($where)->update('tugas_khusus');
+    }
+
+    public function detail($idTugasKhusus){
+        $this->db->select('*');
+        $this->db->from('tugas_khusus');
+        $this->db->join('mahasiswa', 'tugas_khusus.NRP = mahasiswa.NRP');
+        $this->db->join('jenis', 'tugas_khusus.ID_JENIS = jenis.ID_JENIS');
+        $this->db->join('lingkup', 'tugas_khusus.ID_LINGKUP = lingkup.ID_LINGKUP');
+        $this->db->join('peran', 'tugas_khusus.ID_PERAN = peran.ID_PERAN');
+        $this->db->where('ID_TUGAS_KHUSUS', $idTugasKhusus);
+        return $this->db->get()->result();
+    }
 }
 
 /* End of file TugasKhususModel.php */

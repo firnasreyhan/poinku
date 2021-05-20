@@ -32,6 +32,72 @@ class KegiatanController extends CI_Controller {
 		$this->load->view('template/footer');
     }
     
+    
+    public function acc()
+	{
+        $data = array(
+            'STATUS_VALIDASI' => 1,
+            'TANGGAL_VALIDASI' => date('Y-m-d H:i:s')
+        );
+
+        $where = array(
+            'ID_TUGAS_KHUSUS' => $this->input->post('ID_TUGAS_KHUSUS'),
+        );
+
+        $this->TugasKhususModel->acc($data, $where);
+
+        $query = $this->db->query('SELECT * FROM tugas_khusus JOIN mahasiswa ON mahasiswa.NRP = tugas_khusus.NRP WHERE ID_TUGAS_KHUSUS="'.$this->input->post('ID_TUGAS_KHUSUS').'"')->result();
+        
+        foreach($query as $data){
+            $token = $data->TOKEN;
+        }
+
+        $dataAccKegiatanNotif = array(
+            'token' => $token,
+        );
+
+        $this->load->view('notifikasi/NotifikasiAccKegiatanView', $dataAccKegiatanNotif);
+        redirect('kegiatan');
+    }
+    
+    public function tolak()
+	{
+        $data = array(
+            'STATUS_VALIDASI' => 2,
+            'TANGGAL_VALIDASI' => date('Y-m-d H:i:s')
+        );
+
+        $where = array(
+            'ID_TUGAS_KHUSUS' => $this->input->post('ID_TUGAS_KHUSUS'),
+        );
+
+        $this->TugasKhususModel->tolak($data, $where);
+        
+        $query = $this->db->query('SELECT * FROM tugas_khusus JOIN mahasiswa ON mahasiswa.NRP = tugas_khusus.NRP WHERE ID_TUGAS_KHUSUS="'.$this->input->post('ID_TUGAS_KHUSUS').'"')->result();
+        
+        foreach($query as $data){
+            $token = $data->TOKEN;
+        }
+
+        $dataTolakKegiatanNotif = array(
+            'token' => $token,
+        );
+
+        $this->load->view('notifikasi/NotifikasiTolakKegiatanView', $dataTolakKegiatanNotif);
+        redirect('kegiatan');
+    }
+    
+    public function detail($idTugasKhusus)
+    {
+        $data['detail_kegiatan'] = $this->TugasKhususModel->detail($idTugasKhusus);
+        $this->load->view('template/header');
+		$this->load->view('template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('admin/DetailValidasiKegiatanView', $data);
+		// $this->load->view('template/modal');
+		$this->load->view('template/footer');
+    }
+
 //     public function insert()
 //     {
 //         $data = $_POST;
