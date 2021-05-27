@@ -57,7 +57,7 @@
                                 <td><?php echo $key->KETERANGAN; ?></td>
                                 <td><?php if($key->KATEGORI ==  "0") {echo "Reguler";} else{echo "Profesional";} ?></td>
                                 <td><?php if($key->AKTIF ==  "0") {echo "Tidak Aktif";} else{echo "Aktif";} ?></td>
-                                <td>
+                                <td style="text-align:right">
                                     <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-success btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check-square"></i>

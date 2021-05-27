@@ -1,5 +1,5 @@
 <?php 
-    $dataNotif      = $this->db->query('SELECT * FROM tugas_khusus WHERE STATUS_VALIDASI = 0 LIMIT 3')->result();
+    $dataNotif      = $this->db->query('SELECT * FROM tugas_khusus WHERE STATUS_VALIDASI = 0 ORDER BY TANGGAL_DATA DESC LIMIT 3')->result();
     $countDataNotif = $this->db->query('SELECT * FROM tugas_khusus WHERE STATUS_VALIDASI = 0')->num_rows();
     if($this->session->userdata('role') == "Admin"){
 ?>
@@ -24,7 +24,7 @@
         </div>
         <div>
             <div class="font-weight-bold">NRP <?php echo $data->NRP ?></div>
-            <span class="small text-gray-500">Mengajukan Tugas Khusus '<?php echo $data->JUDUL?>'</span>
+            <span class="small text-gray-500">Mengajukan Validasi Kegiatan '<?php echo $data->JUDUL?>'</span>
         </div>
     </a>
     <?php }?>

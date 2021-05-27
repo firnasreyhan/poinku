@@ -12,5 +12,10 @@ class NotifikasiController extends CI_Controller {
 	{
 		$this->load->view('template/notifEvent');
     }
+	
+	public function listNotifikasiPengajuan()
+	{
+		$this->load->view('template/notifPengajuan');
+    }
     
 }

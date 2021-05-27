@@ -1,5 +1,5 @@
 <?php 
-    $dataNotif      = $this->db->query('SELECT event.JUDUL, presensi.EMAIL FROM presensi JOIN event ON event.ID_EVENT = presensi.ID_EVENT WHERE STATUS = 0 LIMIT 3')->result();
+    $dataNotif      = $this->db->query('SELECT event.JUDUL, presensi.EMAIL FROM presensi JOIN event ON event.ID_EVENT = presensi.ID_EVENT WHERE STATUS = 0 ORDER BY ID_PRESENSI DESC LIMIT 3')->result();
     $countDataNotif = $this->db->query('SELECT * FROM presensi WHERE STATUS = 0')->num_rows();
     if($this->session->userdata('role') == "Event Manager"){
 ?>

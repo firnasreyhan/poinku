@@ -29,15 +29,20 @@ class AturanModel extends CI_Model {
         return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->get('aturan')->result();
     }
 
+    public function getAturanAtif($param)
+    {
+        return $this->db->where($param)->get('aturan')->row_array();
+    }
+
     public function update($param)
     {
         return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->update('aturan', $param);
     }
 
-    public function setActive($param)
+    public function updateAturanAktif($param)
     {
-        $this->db->where('KATEGORI', $param['KATEGORI'])->update('aturan', 'AKTIF = 0');
-        return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->update('aturan', 'AKTIF = 1');
+        $this->db->where('KATEGORI', $param['KATEGORI'])->set('AKTIF', '0')->update('aturan');
+        return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->set('AKTIF', '1')->update('aturan');
     }
 
 }

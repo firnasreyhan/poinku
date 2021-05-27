@@ -57,6 +57,40 @@ class Mahasiswa extends RestController {
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
     }
 
+    public function pengajuan_put()
+    {
+        $param = $this->put();
+        
+        $dataStore = array(
+            'NILAI'             => $param['nilai'],
+            'TANGGAL_VALIDASI'  => date('Y-m-d H:i:s'),
+            'STATUS'            => 0
+        );
+
+        $where = array(
+            'NRP' => $param['nrp']
+        );
+
+        require $_SERVER['DOCUMENT_ROOT'] . '/poinku/vendor/autoload.php';
+
+        $options = array(
+            'cluster' => 'ap1',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e6c40e4a096f5b8864c8',
+            '56ec36eebb15bd0a9669',
+            '1200741',
+            $options
+        );
+
+        $data['notif'] = 'pengajuan';
+        $pusher->trigger('my-channel', 'my-event', $data);
+
+        $this->MahasiswaModel->pengajuan($dataStore, $where);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+    }
+
     // public function konten_post()
     // {
     //     $param = $this->post();

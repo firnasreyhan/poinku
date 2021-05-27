@@ -42,6 +42,14 @@
                         $('.list-pemberitahuan').html(response);
                     }
                 })
+            }else if(data.notif == "pengajuan"){
+                xhr = $.ajax({
+                    method: 'PUT',
+                    url: "<?php echo base_url() ?>/NotifikasiController/listNotifikasiPengajuan",
+                    success: function(response) {
+                        $('.list-pengajuan').html(response);
+                    }
+                })
             }else{
                 alert(data.notif);
             }

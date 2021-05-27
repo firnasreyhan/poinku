@@ -55,7 +55,7 @@
                                 <td><?php echo $key->JENIS; ?></td>
                                 <td><?php echo $key->LINGKUP; ?></td>
                                 <td><?php echo $key->JUMLAH; ?></td>
-                                <td>
+                                <td style="text-align:right">
                                     <a href="<?php echo site_url("aturan/nilai/kriteria/update/" . $key->ID_KRITERIA); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-edit"></i>

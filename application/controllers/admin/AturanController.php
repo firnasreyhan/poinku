@@ -206,6 +206,13 @@ class AturanController extends CI_Controller
                 redirect('aturan');
         }
 
+        public function updateAturanAktif()
+        {
+                $data = $_POST;
+                $this->AturanModel->updateAturanAktif($data);
+                redirect('aturan');
+        }
+
         public function updatePoin()
         {
                 $data = $_POST;

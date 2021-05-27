@@ -57,8 +57,8 @@
                                 <td><?php echo $key->KETERANGAN; ?></td>
                                 <td><?php if($key->KATEGORI ==  "0") {echo "Reguler";} else{echo "Profesional";} ?></td>
                                 <td><?php if($key->AKTIF ==  "0") {echo "Tidak Aktif";} else{echo "Aktif";} ?></td>
-                                <td>
-                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-success btn-icon-split">
+                                <td style="text-align:right">
+                                    <a data-toggle="modal" data-target="#mdlAktif" data-aturan="<?php echo $key->ID_ATURAN; ?>" data-kategori="<?php echo $key->KATEGORI; ?>" class="btn btn-success btn-icon-split mdlAktif" <?php if($key->AKTIF ==  "1") {echo "hidden";} ?>>
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check-square"></i>
                                         </span>
@@ -151,13 +151,45 @@
     </div>
 </div>
 
+<!-- Modal Aktif -->
+<div class="modal fade" id="mdlAktif" tabindex="-1" aria-labelledby="mdlAktif" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mdlAktif">Aktifkan Aturan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?php echo site_url("aturan/updateAturanAktif"); ?>" enctype="multipart/form-data" method="post">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin mengahpus data ini?</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" class="form-control" name="ID_ATURAN" placeholder="Keterangan" id="INPUT_ATURAN">   
+                    <input type="hidden" class="form-control" name="KATEGORI" placeholder="Keterangan" id="INPUT_ID_KATEGORI">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary">Iya</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
 
 <script>
     $('#dataTable tbody').on('click', '.mdlDelete', function() {
-        const id = $(this).data('id')
-        $('#INPUT_ID_ATURAN').val(id)
+        const id = $(this).data('id');
+        $('#INPUT_ID_ATURAN').val(id);
+    })
+
+    $('#dataTable tbody').on('click', '.mdlAktif', function() {
+        const aturan = $(this).data('aturan');
+        const kategori = $(this).data('kategori');
+
+        $('#INPUT_ATURAN').val(aturan);
+        $('#INPUT_ID_KATEGORI').val(kategori);
     })
 </script>

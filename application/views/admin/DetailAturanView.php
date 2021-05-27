@@ -90,7 +90,7 @@
                                             <tr>
                                                 <td><?php echo $key->NILAI; ?></td>
                                                 <td><?php echo $key->POIN_MINIMAL; ?></td>
-                                                <td>
+                                                <td style="text-align:right">
                                                     <a href="<?php echo site_url("aturan/nilai/kriteria/" . $key->ID_NILAI); ?>" class="btn btn-success btn-icon-split">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-external-link-alt"></i>
@@ -162,7 +162,7 @@
                                                 <td><?php echo $key->LINGKUP; ?></td>
                                                 <td><?php echo $key->PERAN; ?></td>
                                                 <td><?php echo $key->POIN; ?></td>
-                                                <td>
+                                                <td style="text-align:right">
                                                     <a href="<?php echo site_url("aturan/poin/update/" . $key->ID_POIN); ?>" class="btn btn-warning btn-icon-split">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-edit"></i>
@@ -222,7 +222,7 @@
                                             <td>...</td>
                                             <td>...</td>
                                             <td>...</td>
-                                            <td>
+                                            <td style="text-align:right">
                                                 <div class="btn-group" role="group">
                                                     <button type="button" class="btn btn-primary">Edit</button>
                                                     <button type="button" class="btn btn-danger">Hapus</button>

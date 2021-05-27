@@ -52,10 +52,10 @@
                                 <td><?php echo $key->LINGKUP; ?></td>
                                 <td><?php echo $key->PERAN; ?></td>
                                 <td><?php echo $key->JUDUL; ?></td>
-                                <td>
+                                <td style="text-align:right">
                                     <a href="<?php echo site_url("kegiatan/detail/" . $key->ID_TUGAS_KHUSUS); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-external-link-alt"></i>
                                         </span>
                                     </a>
                                     &nbsp;

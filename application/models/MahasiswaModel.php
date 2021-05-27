@@ -34,6 +34,11 @@ class MahasiswaModel extends CI_Model {
         return $this->db->where('NRP', $param['NRP'])->update('mahasiswa', $param);
     }
 
+    public function pengajuan($data, $where)
+    {
+        return $this->db->set($data)->where($where)->update('mahasiswa');
+    }
+
     public function acc($data, $where)
     {
         return $this->db->set($data)->where($where)->update('mahasiswa');

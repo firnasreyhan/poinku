@@ -46,7 +46,7 @@
                             <tr>
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $key->LINGKUP; ?></td>
-                                <td>
+                                <td style="text-align:right">
                                     <a href="<?php echo site_url("lingkupkegiatan/update/" . $key->ID_LINGKUP); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-edit"></i>

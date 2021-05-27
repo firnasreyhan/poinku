@@ -38,6 +38,21 @@ class Aturan extends RestController
         }
     }
 
+    public function aturanAKtif_get()
+    {
+        $param = $this->get();
+        $dataStore = array(
+            'KATEGORI'          => $param['kategori'],
+            'AKTIF'             => 1
+        );
+        $aturan = $this->AturanModel->getAturanAtif($dataStore);
+        if ($aturan != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $aturan], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
+    }
+
     public function nilai_get()
     {
         $param = $this->get();
