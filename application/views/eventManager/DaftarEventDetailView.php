@@ -2,6 +2,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+                    <?php echo $this->session->flashdata('message'); ?>
                     <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('daftarEvent')?>"><i class="fas fa-chevron-left"></i></a> Detail Daftar Event</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -59,6 +60,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <a class="btn btn-success" href="<?php echo site_url('daftarEvent/print/'.$data->ID_EVENT)?>">Kirim Sertifikat</a>
                                 <?php }?>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
     <head>
     <meta charset="utf-8" />
 
-  <title>Reset Password</title>
+  <title>Akun</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style type="text/css">
