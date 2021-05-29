@@ -134,6 +134,7 @@ $route['daftarEvent/insert'] = 'eventManager/DaftarEventController/insert';
 $route['daftarEvent/delete'] = 'eventManager/DaftarEventController/delete';
 $route['daftarEvent/update/(:any)'] = 'eventManager/DaftarEventController/viewUpdate/$1';
 $route['daftarEvent/detail/(:any)'] = 'eventManager/DaftarEventController/detail/$1';
+$route['daftarEvent/print/(:any)'] = 'eventManager/DaftarEventController/print/$1';
 $route['daftarEvent/update'] = 'eventManager/DaftarEventController/aksiUpdate';
 
 $route['kalenderEvent'] = 'eventManager/KalenderEventController';
