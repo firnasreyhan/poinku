@@ -22,6 +22,8 @@ class DaftarEventController extends CI_Controller {
         $this->load->model('DaftarEventModel');
         $this->load->model('JenisKegiatanModel');
         $this->load->model('LingkupKegiatanModel');
+        $this->load->model('PresensiModel');
+        
         $this->load->library('upload');
         
     }
@@ -73,7 +75,7 @@ class DaftarEventController extends CI_Controller {
             'TANGGAL_DATA'  => date('Y-m-d H:i:s')
         );
 
-        $this->DaftarEventModel->insert($data);
+        $idEvent = $this->DaftarEventModel->insert($data);
         
         $query = $this->db->query('SELECT TOKEN FROM mahasiswa WHERE TOKEN IS NOT NULL')->result();
 
@@ -89,6 +91,37 @@ class DaftarEventController extends CI_Controller {
         
         $this->load->view('notifikasi/NotifikasiEventView', $dataPaketNotif);
 
+        $this->updateQRCode($idEvent);
+    }
+
+    public function updateQRCode($idEvent)
+    {
+        $this->load->library('ciqrcode');
+
+        $config['cacheable']	= true; //boolean, the default is true
+        $config['cachedir']		= ''; //string, the default is application/cache/
+        $config['errorlog']		= ''; //string, the default is application/logs/
+        $config['imagedir']     = './assets/img/qr/'; //direktori penyimpanan qr code
+        $config['quality']		= true; //boolean, the default is true
+        $config['size']			= '2048'; //interger, the default is 1024
+        $config['black']		= array(224,255,255); // array, default is array(255,255,255)
+        $config['white']		= array(70,130,180); // array, default is array(0,0,0)
+        $this->ciqrcode->initialize($config);
+ 
+        $image_name = $idEvent.'_QR.png'; //buat name dari qr code sesuai dengan nim
+        
+        $params['data'] = $idEvent;
+        $params['level'] = 'H';
+        $params['size'] = 10;
+        $params['savename'] = FCPATH.$config['imagedir'].$image_name; //simpan image QR CODE ke folder assets/images/
+        $this->ciqrcode->generate($params);
+
+        $dataQR = array(
+            'QR_CODE'         => base_url('assets/img/qr/' . $image_name)
+        );
+
+        $this->DaftarEventModel->update($dataQR, $idEvent);
+ 
         redirect('daftarEvent');
     }
 
@@ -107,8 +140,7 @@ class DaftarEventController extends CI_Controller {
     
     public function detail($idEvent)
 	{
-        $data['jenis']          = $this->JenisKegiatanModel->get();
-        $data['lingkup']        = $this->LingkupKegiatanModel->get();
+        $data['presensi']          = $this->PresensiModel->get($idEvent);
         $data['detail_event']   = $this->DaftarEventModel->getDetail($idEvent);
 
         $this->load->view('template/header');
@@ -186,8 +218,8 @@ class DaftarEventController extends CI_Controller {
     public function print($idEvent)
     {
         //get data database
-        $dataPresensi = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'"')->result();
-        $dataPresensiRow = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'"')->num_rows();
+        $dataPresensi = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND STATUS = 1')->result();
+        $dataPresensiRow = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND STATUS = 1')->num_rows();
         $dataEvent = $this->db->query('SELECT * FROM event WHERE ID_EVENT ="'.$idEvent.'"')->result();
         
         //perulangan berdasarkan data presensi
@@ -197,9 +229,9 @@ class DaftarEventController extends CI_Controller {
             $this->load->library('email');
 
             //substring judul event
-            $str = $dataEvent[0]->JUDUL;
+            $judul = $dataEvent[0]->JUDUL;
             // $judul = str_replace(' ', '_', $str);
-            $judul = $dataEvent[0]->ID_EVENT;
+            $idEvent = $dataEvent[0]->ID_EVENT;
             
             //data untuk sertifikat
             $data = [
@@ -219,19 +251,19 @@ class DaftarEventController extends CI_Controller {
             $orientation = 'landscape';
             
             //lokasi upload sertifikat
-            $path_pdf = 'uploads/event/sertifikat/'.$judul.'/'.$file_pdf.'.pdf';    
+            $path_pdf = 'uploads/event/sertifikat/'.$idEvent.'/'.$file_pdf.'.pdf';    
 
             //compile sertifikat
             $resPdf = $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
-            if(!is_dir('./uploads/event/sertifikat/'.$judul.'')){
-                mkdir('./uploads/event/sertifikat/'.$judul.'', 0777, TRUE);
+            if(!is_dir('./uploads/event/sertifikat/'.$idEvent.'')){
+                mkdir('./uploads/event/sertifikat/'.$idEvent.'', 0777, TRUE);
             }
 
             //simpan sertifikat ke direktori
             file_put_contents($path_pdf, $resPdf);
     
             //ambil data presensi yang baru
-            $dataPresensiBaru = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND EMAIL="'.$email.'"')->result();
+            $dataPresensiBaru = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND EMAIL="'.$email.'" AND STATUS = 1')->result();
             
             //ambil email dari data presensi baru
             foreach($dataPresensiBaru as $dtPresBr){
@@ -239,7 +271,7 @@ class DaftarEventController extends CI_Controller {
             }
 
             $dataUpdateSertifikat = array(
-                'SERTIFIKAT' => base_url().'uploads/event/sertifikat/'.$judul.'/'.$file_pdf.'.pdf'
+                'SERTIFIKAT' => base_url().'uploads/event/sertifikat/'.$idEvent.'/'.$file_pdf.'.pdf'
             );
             
             $where = array(
@@ -252,7 +284,7 @@ class DaftarEventController extends CI_Controller {
             $this->db->update('presensi');
 
             //ambil data presensi dengan sertifikat
-            $dataPresensiBaruSertifikat = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND EMAIL="'.$email.'"')->result();
+            $dataPresensiBaruSertifikat = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND EMAIL="'.$email.'" AND STATUS = 1')->result();
             
             foreach($dataPresensiBaruSertifikat as $dtSer){
                 $sertifikat = $dtSer->SERTIFIKAT;

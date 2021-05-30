@@ -19,6 +19,15 @@ class PresensiModel extends CI_Model {
         return $this->db->where($param)->get('presensi')->row_array();
     }
 
+    public function get($param)
+    {
+        $this->db->select('mahasiswa.EMAIL, mahasiswa.NRP, presensi.STATUS');
+        $this->db->from('presensi');
+        $this->db->join('mahasiswa', 'presensi.EMAIL = mahasiswa.EMAIL');
+        $this->db->where('ID_EVENT', $param);
+        return $this->db->get()->result();
+    }
+
 }
 
 /* End of file PresensiModel.php */

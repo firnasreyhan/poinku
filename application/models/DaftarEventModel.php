@@ -15,6 +15,7 @@ class DaftarEventModel extends CI_Model {
         $this->db->from('event');
         $this->db->join('lingkup', 'event.ID_LINGKUP = lingkup.ID_LINGKUP');
         $this->db->join('jenis', 'event.ID_JENIS = jenis.ID_JENIS');
+        $this->db->order_by("ID_EVENT", "DESC");
         return $this->db->get()->result();
     }
 
@@ -25,7 +26,10 @@ class DaftarEventModel extends CI_Model {
 
     public function insert($param)
     {
-        return $this->db->insert('event', $param);
+        $this->db->insert('event', $param);
+        $insert_id = $this->db->insert_id();
+
+        return $insert_id;
     }
 
     public function delete($param)

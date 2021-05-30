@@ -43,7 +43,7 @@ class LoginController extends CI_Controller {
 		$this->session->set_userdata($data_session);
 
 		if($dataLogin != null){
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Berhasil Login </div>');
+			$this->session->set_flashdata('message', '');
 			if($role == "Admin"){
 				redirect('aturan');
 			}else if($role == "Event Manager"){

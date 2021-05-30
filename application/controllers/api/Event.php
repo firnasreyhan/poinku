@@ -116,21 +116,6 @@ class Event extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
-
-    public function absensi_post()
-    {
-        $param = $this->post();
-
-        $dataStore = array(
-            'EMAIL'         => $param['email'],
-            'ID_EVENT '     => $param['id']
-        );
-
-        $this->PresensiModel->insert($dataStore);
-
-        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
-        
-    }
 }
 
 /* End of file Event.php */
