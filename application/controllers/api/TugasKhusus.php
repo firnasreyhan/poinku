@@ -12,6 +12,8 @@ class TugasKhusus extends RestController {
         $this->load->model('TugasKhususModel');
         $this->load->model('KontenModel');
         $this->load->model('KegiatanModel');
+        $this->load->model('PresensiModel');
+        
     }
     
     public function index_post()
@@ -237,6 +239,39 @@ class TugasKhusus extends RestController {
         } else {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
+    }
+
+    public function presensi_put()
+    {
+        $param = $this->put();
+        
+        $dataStore = array(
+            'STATUS'             => 1
+        );
+
+        $where = array(
+            'EMAIL' => $param['email'],
+            'ID_EVENT' => $param['id'],
+        );
+
+        // require $_SERVER['DOCUMENT_ROOT'] . '/poinku/vendor/autoload.php';
+
+        // $options = array(
+        //     'cluster' => 'ap1',
+        //     'useTLS' => true
+        // );
+        // $pusher = new Pusher\Pusher(
+        //     'e6c40e4a096f5b8864c8',
+        //     '56ec36eebb15bd0a9669',
+        //     '1200741',
+        //     $options
+        // );
+
+        // $data['notif'] = 'pengajuan';
+        // $pusher->trigger('my-channel', 'my-event', $data);
+
+        $this->PresensiModel->update($where, $dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
     }
 }
 

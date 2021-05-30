@@ -28,6 +28,10 @@ class PresensiModel extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function update($where, $param)
+    {
+        return $this->db->where($where)->update('presensi', $param);
+    }
 }
 
 /* End of file PresensiModel.php */
