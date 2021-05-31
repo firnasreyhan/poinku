@@ -7,7 +7,7 @@ class KegiatanModel extends CI_Model
 
     public function get($param)
     {
-        return $this->db->where('ID_TUGAS_KHUSUS  =', $param['ID_TUGAS_KHUSUS '])->get('kegiatan')->result();
+        return $this->db->where('ID_TUGAS_KHUSUS  =', $param['ID_TUGAS_KHUSUS'])->get('kegiatan')->result();
     }
 
     public function insert($param)

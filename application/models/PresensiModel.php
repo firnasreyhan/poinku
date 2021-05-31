@@ -32,6 +32,27 @@ class PresensiModel extends CI_Model {
     {
         return $this->db->where($where)->update('presensi', $param);
     }
+
+    public function getTotalHadir($param)
+    {
+        $this->db->select('*');
+        $this->db->from('event');
+        $this->db->join('presensi', 'event.ID_EVENT = presensi.ID_EVENT');
+        $this->db->where('event.EMAIL', $param);
+        $this->db->where('presensi.STATUS', '1');
+        return $this->db->count_all_results();
+    }
+    
+
+    public function getTotalTidakHadir($param)
+    {
+        $this->db->select('*');
+        $this->db->from('event');
+        $this->db->join('presensi', 'event.ID_EVENT = presensi.ID_EVENT');
+        $this->db->where('event.EMAIL', $param);
+        $this->db->where('presensi.STATUS', '0');
+        return $this->db->count_all_results();
+    }
 }
 
 /* End of file PresensiModel.php */

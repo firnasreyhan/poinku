@@ -63,6 +63,11 @@ class DaftarEventModel extends CI_Model {
         return $this->db->where('ID_EVENT', $idEvent)->update('event', $param);
     }
 
+    public function getTotal($param)
+    {
+        $this->db->where('EMAIL', $param);
+        return $this->db->count_all_results('event');
+    }
 }
 
 /* End of file AturanModel.php */

@@ -7,7 +7,7 @@ class KontenModel extends CI_Model
 
     public function get($param)
     {
-        return $this->db->where('ID_TUGAS_KHUSUS  =', $param['ID_TUGAS_KHUSUS '])->get('konten')->result();
+        return $this->db->where('ID_TUGAS_KHUSUS  =', $param['ID_TUGAS_KHUSUS'])->get('konten')->result();
     }
 
     public function insert($param)

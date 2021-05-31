@@ -88,7 +88,7 @@ class TugasKhususController extends CI_Controller {
     
     public function detail($nrp)
     {
-        $data['detail_tugaskhusus'] = $this->MahasiswaModel->detail($nrp);
+        $data['mahasiswa'] = $this->MahasiswaModel->detail($nrp);
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('template/topbar');

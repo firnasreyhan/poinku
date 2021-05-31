@@ -18,7 +18,8 @@ class KegiatanController extends CI_Controller {
             redirect('login');
         }
         $this->load->model('TugasKhususModel');
-        
+        $this->load->model('KegiatanModel');
+        $this->load->model('KontenModel');
     }
     
     public function index()
@@ -89,7 +90,14 @@ class KegiatanController extends CI_Controller {
     
     public function detail($idTugasKhusus)
     {
+        $dataStore = array(
+            'ID_TUGAS_KHUSUS'         => $idTugasKhusus
+        );
+
         $data['detail_kegiatan'] = $this->TugasKhususModel->detail($idTugasKhusus);
+        $data['kegiatan'] = $this->KegiatanModel->get($dataStore);
+        $data['konten'] = $this->KontenModel->get($dataStore);
+
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('template/topbar');

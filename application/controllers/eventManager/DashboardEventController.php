@@ -21,15 +21,22 @@ class DashboardEventController extends CI_Controller {
         
         echo '<script>console.log("'.$this->session->userdata('role').'")</script>';
         $this->load->model('LoginModel');
+        $this->load->model('DaftarEventModel');
+        $this->load->model('PresensiModel');
         
     }
     
     public function index()
     {
+        $email = $this->session->userdata('email');
+        $data['jumlah_kegiatan'] = $this->DaftarEventModel->getTotal($email);
+        $data['jumlah_hadir'] = $this->PresensiModel->getTotalHadir($email);
+        $data['jumlah_tidak_hadir'] = $this->PresensiModel->getTotalTidakHadir($email);
+        
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('template/topbar');
-        $this->load->view('eventManager/DashboardEventView');
+        $this->load->view('eventManager/DashboardEventView', $data);
 		$this->load->view('template/footer');
     }
 
