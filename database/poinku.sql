@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2021 at 04:34 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: May 31, 2021 at 05:03 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,6 +63,7 @@ CREATE TABLE `event` (
   `POSTER` varchar(500) DEFAULT NULL,
   `KUOTA` int(11) DEFAULT NULL,
   `PENDAFTAR` int(11) NOT NULL DEFAULT 0,
+  `QR_CODE` varchar(250) NOT NULL,
   `TANGGAL_DATA` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -70,11 +71,29 @@ CREATE TABLE `event` (
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`ID_EVENT`, `EMAIL`, `ID_JENIS`, `ID_LINGKUP`, `JUDUL`, `DESKRIPSI`, `TANGGAL_ACARA`, `JAM_MULAI`, `JAM_SELESAI`, `POSTER`, `KUOTA`, `PENDAFTAR`, `TANGGAL_DATA`) VALUES
-(4, NULL, 8, 10, '183921woeiqo', 'dioaidjask', '2021-05-07', '08:59:00', '08:59:00', 'http://localhost/poinku/assets/img/event/13.PNG', 89321, 0, '2021-05-08 13:04:21'),
-(5, NULL, 5, 7, 'djak', 'kjdakj', '2021-05-08', '20:00:00', '21:59:00', 'http://localhost/poinku/assets/img/event/14.PNG', 321, 0, '2021-05-08 13:04:06'),
-(6, 'eventmanager@poinku.com', 4, 6, 'Coaching Clinic – Strategi Sukses Lolos Hibah Pengabdian DRPM 2021', 'Selamat pagi!\r\n\r\nKhusus bapak ibu Dosen yang masih penasaran bagaimana\r\nTrik mudah untuk lolos hibah DRPM\r\nDan masih ingin tau lebih jauh soal mekanisme hibah ini\r\n\r\nMari ikuti webinar “Strategi Sukses Lolos Hibah Pengabdian DRPM 2021” Dengan pembicara Syamsuri, S.T., M.T., Ph. D tim Reviewer nasional pengabdian Institut Teknologi Aditama Surabaya.', '2021-05-22', '23:09:00', '00:09:00', 'https://www.stiki.ac.id/wp-content/uploads/2021/04/Coaching-Clinic-Strategi-Sukses-2-300x300.jpeg', 100, 0, '2021-05-08 16:09:25'),
-(7, 'eventmanager@poinku.com', 9, 6, 'Business Talk 2 Go International with Sociopreneurship', 'djask', '2021-05-11', '00:13:00', '00:17:00', 'https://www.stiki.ac.id/wp-content/uploads/2021/04/Business-Talk-2-300x300.jpeg', 90, 2, '2021-05-08 16:14:05');
+INSERT INTO `event` (`ID_EVENT`, `EMAIL`, `ID_JENIS`, `ID_LINGKUP`, `JUDUL`, `DESKRIPSI`, `TANGGAL_ACARA`, `JAM_MULAI`, `JAM_SELESAI`, `POSTER`, `KUOTA`, `PENDAFTAR`, `QR_CODE`, `TANGGAL_DATA`) VALUES
+(4, NULL, 8, 10, '183921woeiqo', 'dioaidjask', '2021-05-07', '08:59:00', '08:59:00', 'http://localhost/poinku/assets/img/event/13.PNG', 89321, 0, '', '2021-05-08 13:04:21'),
+(5, NULL, 5, 7, 'djak', 'kjdakj', '2021-05-08', '20:00:00', '21:59:00', 'http://localhost/poinku/assets/img/event/14.PNG', 321, 0, '', '2021-05-08 13:04:06'),
+(6, 'eventmanager@poinku.com', 4, 6, 'Coaching Clinic – Strategi Sukses Lolos Hibah Pengabdian DRPM 2021', 'Selamat pagi!\r\n\r\nKhusus bapak ibu Dosen yang masih penasaran bagaimana\r\nTrik mudah untuk lolos hibah DRPM\r\nDan masih ingin tau lebih jauh soal mekanisme hibah ini\r\n\r\nMari ikuti webinar “Strategi Sukses Lolos Hibah Pengabdian DRPM 2021” Dengan pembicara Syamsuri, S.T., M.T., Ph. D tim Reviewer nasional pengabdian Institut Teknologi Aditama Surabaya.', '2021-05-22', '23:09:00', '00:09:00', 'https://www.stiki.ac.id/wp-content/uploads/2021/04/Coaching-Clinic-Strategi-Sukses-2-300x300.jpeg', 100, 0, '', '2021-05-08 16:09:25'),
+(7, 'eventmanager@poinku.com', 9, 6, 'Business Talk 2 Go International with Sociopreneurship', 'djask', '2021-05-11', '00:13:00', '00:17:00', 'https://www.stiki.ac.id/wp-content/uploads/2021/04/Business-Talk-2-300x300.jpeg', 90, 2, '', '2021-05-08 16:14:05'),
+(8, 'eventmanager@poinku.com', 5, 2, 'Abc', 'Abc', '2021-05-31', '13:00:00', '15:00:00', 'http://localhost/poinku/assets/img/event/ComingSoon.png', 100, 0, '', '2021-05-30 16:54:36'),
+(9, 'eventmanager@poinku.com', 2, 2, 'abc', 'abc', '2021-05-31', '13:00:00', '15:00:00', 'http://localhost/poinku/assets/img/event/ComingSoon1.png', 100, 0, '', '2021-05-30 16:56:51'),
+(10, 'eventmanager@poinku.com', 2, 2, 'abca', 'a', '2021-05-31', '13:00:00', '15:00:00', 'http://localhost/poinku/assets/img/event/ComingSoon2.png', 100, 0, '', '2021-05-30 16:59:01'),
+(11, 'eventmanager@poinku.com', 2, 1, 'abc', 'a', '2021-05-31', '13:03:00', '15:00:00', 'http://localhost/poinku/assets/img/event/ComingSoon3.png', 100, 0, '', '2021-05-30 17:08:29'),
+(12, 'eventmanager@poinku.com', 2, 1, 'abca', 'a', '2021-06-01', '13:01:00', '13:02:00', 'http://localhost/poinku/assets/img/event/ComingSoon4.png', 100, 0, '', '2021-05-30 17:11:00'),
+(13, 'eventmanager@poinku.com', 2, 2, 'abc', 'a', '2021-05-31', '13:01:00', '13:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon5.png', 100, 0, '', '2021-05-30 17:13:23'),
+(14, 'eventmanager@poinku.com', 2, 1, 'abca', 'a', '2021-05-31', '13:01:00', '13:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon6.png', 100, 0, '', '2021-05-30 17:16:38'),
+(15, 'eventmanager@poinku.com', 2, 2, 'abc', 'a', '2021-05-31', '13:01:00', '13:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon7.png', 100, 0, '', '2021-05-30 17:19:16'),
+(16, 'eventmanager@poinku.com', 2, 1, 'abc', 'a', '2021-05-31', '13:01:00', '13:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon8.png', 100, 0, '', '2021-05-30 17:26:05'),
+(17, 'eventmanager@poinku.com', 2, 2, 'abca', 'a', '2021-05-31', '13:00:00', '15:00:00', 'http://localhost/poinku/assets/img/event/ComingSoon9.png', 100, 0, '', '2021-05-30 17:28:38'),
+(18, 'eventmanager@poinku.com', 6, 2, 'abc', 'a', '2021-06-01', '13:01:00', '13:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon10.png', 100, 0, '', '2021-05-30 17:31:07'),
+(19, 'eventmanager@poinku.com', 2, 1, 'abca', 'a', '2021-05-31', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon11.png', 100, 0, '', '2021-05-30 17:37:41'),
+(20, 'eventmanager@poinku.com', 2, 1, 'abca', 'a', '2021-05-31', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon12.png', 100, 0, '', '2021-05-30 17:41:02'),
+(21, 'eventmanager@poinku.com', 2, 2, 'abc', 'a', '2021-05-31', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon13.png', 100, 0, '', '2021-05-30 17:53:52'),
+(22, 'eventmanager@poinku.com', 2, 1, 'abc', 'a', '2021-05-31', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon14.png', 100, 0, '', '2021-05-30 17:57:44'),
+(23, 'eventmanager@poinku.com', 2, 1, 'abc', 'a', '2021-05-31', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon15.png', 100, 0, '', '2021-05-30 18:01:53'),
+(24, 'eventmanager@poinku.com', 2, 2, 'QWE', 'qwe', '2021-05-31', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon16.png', 100, 0, 'http://localhost/poinku/assets/img/qr/24_QR.png', '2021-05-30 18:07:30'),
+(25, 'eventmanager@poinku.com', 2, 1, 'abca', '1', '2021-05-24', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon17.png', 100, 0, 'http://localhost/poinku/assets/img/qr/25_QR.png', '2021-05-30 18:28:37');
 
 -- --------------------------------------------------------
 
@@ -408,7 +427,7 @@ CREATE TABLE `presensi` (
 --
 
 INSERT INTO `presensi` (`ID_PRESENSI`, `EMAIL`, `ID_EVENT`, `STATUS`, `WAKTU_PRESENSI`, `SERTIFIKAT`) VALUES
-(9, '171111079@mhs.stiki.ac.id', 7, 0, '2021-05-29 14:23:36', 'http://localhost/poinku/uploads/event/sertifikat/7/171111079.pdf'),
+(9, '171111079@mhs.stiki.ac.id', 7, 1, '2021-05-30 19:04:52', 'http://localhost/poinku/uploads/event/sertifikat/7/171111079.pdf'),
 (13, '171111020@mhs.stiki.ac.id', 7, 0, '2021-05-29 14:16:41', 'http://localhost/poinku/uploads/event/sertifikat/7/171111020.pdf');
 
 --
@@ -489,7 +508,8 @@ INSERT INTO `tugas_khusus` (`ID_TUGAS_KHUSUS`, `NRP`, `ID_JENIS`, `ID_LINGKUP`, 
 (20, '171111079', 2, 1, 1, 'qwe', '2021-05-08', NULL, '2021-05-08 16:43:04', 0, '0000-00-00 00:00:00'),
 (21, '171111079', 2, 1, 1, 'poi', '2021-05-09', 'http://s4ishoku.site/new_poinku/uploads/sertifikat/171111079/2/1620493517.JPEG', '2021-05-08 17:05:16', 0, '0000-00-00 00:00:00'),
 (22, '171111079', 2, 1, 1, 'poi', '2021-05-09', 'http://s4ishoku.site/new_poinku/uploads/sertifikat/171111079/2/1620493540.JPEG', '2021-05-08 17:05:38', 0, '0000-00-00 00:00:00'),
-(23, '171111079', 2, 1, 1, 'poi', '2021-05-09', 'http://s4ishoku.site/new_poinku/uploads/sertifikat/171111079/2/1620493694.JPEG', '2021-05-08 17:08:12', 0, '0000-00-00 00:00:00');
+(23, '171111079', 2, 1, 1, 'poi', '2021-05-09', 'http://s4ishoku.site/new_poinku/uploads/sertifikat/171111079/2/1620493694.JPEG', '2021-05-08 17:08:12', 0, '0000-00-00 00:00:00'),
+(24, '171111079', 1, 1, 1, 'AABC', '2020-01-01', NULL, '2021-05-30 15:36:37', 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -647,7 +667,7 @@ CREATE TABLE `view_tugas_khusus` (
 --
 DROP TABLE IF EXISTS `view_event`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_event`  AS  select `event`.`ID_EVENT` AS `ID_EVENT`,`event`.`EMAIL` AS `EMAIL`,`event`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`event`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`event`.`JUDUL` AS `JUDUL`,`event`.`DESKRIPSI` AS `DESKRIPSI`,`event`.`TANGGAL_ACARA` AS `TANGGAL_ACARA`,`event`.`JAM_MULAI` AS `JAM_MULAI`,`event`.`JAM_SELESAI` AS `JAM_SELESAI`,`event`.`POSTER` AS `POSTER`,`event`.`KUOTA` AS `KUOTA`,`event`.`PENDAFTAR` AS `PENDAFTAR` from ((`event` join `jenis` on(`event`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`event`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP` and concat(`event`.`TANGGAL_ACARA`,' ',`event`.`JAM_MULAI`) >= current_timestamp())) order by `event`.`TANGGAL_DATA` desc ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_event`  AS SELECT `event`.`ID_EVENT` AS `ID_EVENT`, `event`.`EMAIL` AS `EMAIL`, `event`.`ID_JENIS` AS `ID_JENIS`, `jenis`.`JENIS` AS `JENIS`, `event`.`ID_LINGKUP` AS `ID_LINGKUP`, `lingkup`.`LINGKUP` AS `LINGKUP`, `event`.`JUDUL` AS `JUDUL`, `event`.`DESKRIPSI` AS `DESKRIPSI`, `event`.`TANGGAL_ACARA` AS `TANGGAL_ACARA`, `event`.`JAM_MULAI` AS `JAM_MULAI`, `event`.`JAM_SELESAI` AS `JAM_SELESAI`, `event`.`POSTER` AS `POSTER`, `event`.`KUOTA` AS `KUOTA`, `event`.`PENDAFTAR` AS `PENDAFTAR` FROM ((`event` join `jenis` on(`event`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`event`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP` and concat(`event`.`TANGGAL_ACARA`,' ',`event`.`JAM_MULAI`) >= current_timestamp())) ORDER BY `event`.`TANGGAL_DATA` DESC ;
 
 -- --------------------------------------------------------
 
@@ -656,7 +676,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_jenis_tugas_khusus`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_jenis_tugas_khusus`  AS  select `view_tugas_khusus`.`NRP` AS `NRP`,`jenis`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,count(`view_tugas_khusus`.`ID_JENIS`) AS `TOTAL`,sum(`view_tugas_khusus`.`POIN`) AS `JUMLAH` from (`jenis` join `view_tugas_khusus` on(`jenis`.`ID_JENIS` = `view_tugas_khusus`.`ID_JENIS`)) group by `view_tugas_khusus`.`ID_JENIS`,`view_tugas_khusus`.`NRP` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_jenis_tugas_khusus`  AS SELECT `view_tugas_khusus`.`NRP` AS `NRP`, `jenis`.`ID_JENIS` AS `ID_JENIS`, `jenis`.`JENIS` AS `JENIS`, count(`view_tugas_khusus`.`ID_JENIS`) AS `TOTAL`, sum(`view_tugas_khusus`.`POIN`) AS `JUMLAH` FROM (`jenis` join `view_tugas_khusus` on(`jenis`.`ID_JENIS` = `view_tugas_khusus`.`ID_JENIS`)) GROUP BY `view_tugas_khusus`.`ID_JENIS`, `view_tugas_khusus`.`NRP` ;
 
 -- --------------------------------------------------------
 
@@ -665,7 +685,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_kriteria`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_kriteria`  AS  select `kriteria`.`ID_KRITERIA` AS `ID_KRITERIA`,`nilai`.`ID_ATURAN` AS `ID_ATURAN`,`kriteria`.`ID_NILAI` AS `ID_NILAI`,`nilai`.`NILAI` AS `NILAI`,`kriteria`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`kriteria`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`kriteria`.`JUMLAH` AS `JUMLAH` from (((`kriteria` join `nilai` on(`kriteria`.`ID_NILAI` = `nilai`.`ID_NILAI`)) join `jenis` on(`kriteria`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`kriteria`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_kriteria`  AS SELECT `kriteria`.`ID_KRITERIA` AS `ID_KRITERIA`, `nilai`.`ID_ATURAN` AS `ID_ATURAN`, `kriteria`.`ID_NILAI` AS `ID_NILAI`, `nilai`.`NILAI` AS `NILAI`, `kriteria`.`ID_JENIS` AS `ID_JENIS`, `jenis`.`JENIS` AS `JENIS`, `kriteria`.`ID_LINGKUP` AS `ID_LINGKUP`, `lingkup`.`LINGKUP` AS `LINGKUP`, `kriteria`.`JUMLAH` AS `JUMLAH` FROM (((`kriteria` join `nilai` on(`kriteria`.`ID_NILAI` = `nilai`.`ID_NILAI`)) join `jenis` on(`kriteria`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`kriteria`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) ;
 
 -- --------------------------------------------------------
 
@@ -674,7 +694,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_kriteria_tugas_khusus`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_kriteria_tugas_khusus`  AS  select `tugas_khusus`.`NRP` AS `NRP`,`tugas_khusus`.`ID_JENIS` AS `ID_JENIS`,`tugas_khusus`.`ID_LINGKUP` AS `ID_LINGKUP`,count(`tugas_khusus`.`ID_TUGAS_KHUSUS`) AS `JUMLAH` from `tugas_khusus` group by `tugas_khusus`.`NRP`,`tugas_khusus`.`ID_JENIS`,`tugas_khusus`.`ID_LINGKUP` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_kriteria_tugas_khusus`  AS SELECT `tugas_khusus`.`NRP` AS `NRP`, `tugas_khusus`.`ID_JENIS` AS `ID_JENIS`, `tugas_khusus`.`ID_LINGKUP` AS `ID_LINGKUP`, count(`tugas_khusus`.`ID_TUGAS_KHUSUS`) AS `JUMLAH` FROM `tugas_khusus` GROUP BY `tugas_khusus`.`NRP`, `tugas_khusus`.`ID_JENIS`, `tugas_khusus`.`ID_LINGKUP` ;
 
 -- --------------------------------------------------------
 
@@ -683,7 +703,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_mahasiswa`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_mahasiswa`  AS  select `mahasiswa`.`NRP` AS `NRP`,`mahasiswa`.`EMAIL` AS `EMAIL`,`aturan`.`ID_ATURAN` AS `ID_ATURAN`,`aturan`.`TAHUN` AS `TAHUN`,`aturan`.`KETERANGAN` AS `KETERANGAN`,`mahasiswa`.`PRODI` AS `PRODI`,`mahasiswa`.`ANGKATAN` AS `ANGKATAN`,`mahasiswa`.`NILAI` AS `NILAI`,`mahasiswa`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`,`mahasiswa`.`STATUS` AS `STATUS`,`mahasiswa`.`TOKEN` AS `TOKEN` from (`mahasiswa` join `aturan` on(`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_mahasiswa`  AS SELECT `mahasiswa`.`NRP` AS `NRP`, `mahasiswa`.`EMAIL` AS `EMAIL`, `aturan`.`ID_ATURAN` AS `ID_ATURAN`, `aturan`.`TAHUN` AS `TAHUN`, `aturan`.`KETERANGAN` AS `KETERANGAN`, `mahasiswa`.`PRODI` AS `PRODI`, `mahasiswa`.`ANGKATAN` AS `ANGKATAN`, `mahasiswa`.`NILAI` AS `NILAI`, `mahasiswa`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`, `mahasiswa`.`STATUS` AS `STATUS`, `mahasiswa`.`TOKEN` AS `TOKEN` FROM (`mahasiswa` join `aturan` on(`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`)) ;
 
 -- --------------------------------------------------------
 
@@ -692,7 +712,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_poin`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_poin`  AS  select `poin`.`ID_POIN` AS `ID_POIN`,`poin`.`ID_ATURAN` AS `ID_ATURAN`,`jenis`.`JENIS` AS `JENIS`,`lingkup`.`LINGKUP` AS `LINGKUP`,`peran`.`PERAN` AS `PERAN`,`poin`.`POIN` AS `POIN` from (((`poin` join `jenis` on(`poin`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`poin`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) join `peran` on(`poin`.`ID_PERAN` = `peran`.`ID_PERAN`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_poin`  AS SELECT `poin`.`ID_POIN` AS `ID_POIN`, `poin`.`ID_ATURAN` AS `ID_ATURAN`, `jenis`.`JENIS` AS `JENIS`, `lingkup`.`LINGKUP` AS `LINGKUP`, `peran`.`PERAN` AS `PERAN`, `poin`.`POIN` AS `POIN` FROM (((`poin` join `jenis` on(`poin`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`poin`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) join `peran` on(`poin`.`ID_PERAN` = `peran`.`ID_PERAN`)) ;
 
 -- --------------------------------------------------------
 
@@ -701,7 +721,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_tugas_khusus`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_tugas_khusus`  AS  select `tugas_khusus`.`ID_TUGAS_KHUSUS` AS `ID_TUGAS_KHUSUS`,`tugas_khusus`.`NRP` AS `NRP`,`tugas_khusus`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`tugas_khusus`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`tugas_khusus`.`ID_PERAN` AS `ID_PERAN`,`peran`.`PERAN` AS `PERAN`,`tugas_khusus`.`JUDUL` AS `JUDUL`,`tugas_khusus`.`TANGGAL_KEGIATAN` AS `TANGGAL_KEGIATAN`,`tugas_khusus`.`BUKTI` AS `BUKTI`,`tugas_khusus`.`TANGGAL_DATA` AS `TANGGAL_DATA`,`tugas_khusus`.`STATUS_VALIDASI` AS `STATUS_VALIDASI`,`tugas_khusus`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`,`poin`.`POIN` AS `POIN` from ((((((`tugas_khusus` join `jenis` on(`tugas_khusus`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`tugas_khusus`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) join `peran` on(`tugas_khusus`.`ID_PERAN` = `peran`.`ID_PERAN`)) join `mahasiswa` on(`tugas_khusus`.`NRP` = `mahasiswa`.`NRP`)) join `aturan` on(`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`)) left join `poin` on(`aturan`.`ID_ATURAN` = `poin`.`ID_ATURAN` and `tugas_khusus`.`ID_JENIS` = `poin`.`ID_JENIS` and `tugas_khusus`.`ID_LINGKUP` = `poin`.`ID_LINGKUP` and `tugas_khusus`.`ID_PERAN` = `peran`.`ID_PERAN`)) group by `tugas_khusus`.`ID_TUGAS_KHUSUS` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_tugas_khusus`  AS SELECT `tugas_khusus`.`ID_TUGAS_KHUSUS` AS `ID_TUGAS_KHUSUS`, `tugas_khusus`.`NRP` AS `NRP`, `tugas_khusus`.`ID_JENIS` AS `ID_JENIS`, `jenis`.`JENIS` AS `JENIS`, `tugas_khusus`.`ID_LINGKUP` AS `ID_LINGKUP`, `lingkup`.`LINGKUP` AS `LINGKUP`, `tugas_khusus`.`ID_PERAN` AS `ID_PERAN`, `peran`.`PERAN` AS `PERAN`, `tugas_khusus`.`JUDUL` AS `JUDUL`, `tugas_khusus`.`TANGGAL_KEGIATAN` AS `TANGGAL_KEGIATAN`, `tugas_khusus`.`BUKTI` AS `BUKTI`, `tugas_khusus`.`TANGGAL_DATA` AS `TANGGAL_DATA`, `tugas_khusus`.`STATUS_VALIDASI` AS `STATUS_VALIDASI`, `tugas_khusus`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`, `poin`.`POIN` AS `POIN` FROM ((((((`tugas_khusus` join `jenis` on(`tugas_khusus`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`tugas_khusus`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) join `peran` on(`tugas_khusus`.`ID_PERAN` = `peran`.`ID_PERAN`)) join `mahasiswa` on(`tugas_khusus`.`NRP` = `mahasiswa`.`NRP`)) join `aturan` on(`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`)) left join `poin` on(`aturan`.`ID_ATURAN` = `poin`.`ID_ATURAN` and `tugas_khusus`.`ID_JENIS` = `poin`.`ID_JENIS` and `tugas_khusus`.`ID_LINGKUP` = `poin`.`ID_LINGKUP` and `tugas_khusus`.`ID_PERAN` = `peran`.`ID_PERAN`)) GROUP BY `tugas_khusus`.`ID_TUGAS_KHUSUS` ;
 
 --
 -- Indexes for dumped tables
@@ -841,7 +861,7 @@ ALTER TABLE `aturan`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `ID_EVENT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_EVENT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `kegiatan`
@@ -877,7 +897,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `tugas_khusus`
 --
 ALTER TABLE `tugas_khusus`
-  MODIFY `ID_TUGAS_KHUSUS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID_TUGAS_KHUSUS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
