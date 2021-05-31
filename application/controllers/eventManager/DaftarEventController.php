@@ -326,15 +326,14 @@ class DaftarEventController extends CI_Controller {
 
             //cek email sent
             if ($this->email->send()) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                $this->session->set_tempdata('message', '<div class="alert alert-success" role="alert">
                 Terkirim
-              </div>');
+              </div>', 1);
+              redirect('daftarEvent/detail/'.$idEvent);
             } else {
                 echo $this->email->print_debugger();
             }
-        }
-        redirect('daftarEvent/detail/'.$idEvent);
-        
+        }    
     }
 
 }
