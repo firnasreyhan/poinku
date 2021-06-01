@@ -18,6 +18,9 @@ class TugasKhususController extends CI_Controller {
             redirect('login');
         }
         $this->load->model('MahasiswaModel');
+        $this->load->model('TugasKhususModel');
+        $this->load->model('KegiatanModel');
+        $this->load->model('KontenModel');
         
     }
     
@@ -88,11 +91,36 @@ class TugasKhususController extends CI_Controller {
     
     public function detail($nrp)
     {
+        $where = array(
+            'NRP' => $nrp,
+        );
+
         $data['mahasiswa'] = $this->MahasiswaModel->detail($nrp);
+        $data['jenis_tugas_khusus'] = $this->TugasKhususModel->getJenisTugasKhusus($where);
+        $data['tugas_khusus'] = $this->TugasKhususModel->getByNRP($where);
+
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('template/topbar');
 		$this->load->view('admin/DetailValidasiTugasKhususView', $data);
+		// $this->load->view('template/modal');
+		$this->load->view('template/footer');
+    }
+
+    public function detailKegiatan($idTugasKhusus)
+    {
+        $dataStore = array(
+            'ID_TUGAS_KHUSUS'         => $idTugasKhusus
+        );
+
+        $data['detail_kegiatan'] = $this->TugasKhususModel->detail($idTugasKhusus);
+        $data['kegiatan'] = $this->KegiatanModel->get($dataStore);
+        $data['konten'] = $this->KontenModel->get($dataStore);
+
+        $this->load->view('template/header');
+		$this->load->view('template/sidebar');
+		$this->load->view('template/topbar');
+		$this->load->view('admin/DetailKegiatanValidasiTugasKhususView', $data);
 		// $this->load->view('template/modal');
 		$this->load->view('template/footer');
     }

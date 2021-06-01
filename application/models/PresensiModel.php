@@ -33,6 +33,11 @@ class PresensiModel extends CI_Model {
         return $this->db->where($where)->update('presensi', $param);
     }
 
+    public function updateIsSeen()
+    {
+        return $this->db->set('IS_SEEN', '1')->update('presensi');
+    }
+
     public function getTotalHadir($param)
     {
         $this->db->select('*');

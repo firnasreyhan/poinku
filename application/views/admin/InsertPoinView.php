@@ -2,9 +2,10 @@
 <div class="container-fluid"> 
 
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4"> -->
         <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan/detail/'.$detail_poin[0]->ID_ATURAN)?>"><i class="fas fa-chevron-left"></i></a> Tambah Poin</h1>
-    </div>
+    &nbsp;
+    <!-- </div> -->
     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
         For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
 

@@ -18,6 +18,11 @@ class TugasKhususModel extends CI_Model
         // return $this->db->where('NRP =', $param['NRP'])->get('tugas_khusus')->result();
     }
 
+    public function getByNRP($param)
+    {
+        return $this->db->where('NRP =', $param['NRP'])->order_by("JENIS", "ASC")->get('view_tugas_khusus')->result();
+    }
+
     public function get($param)
     {
         return $this->db->where('NRP =', $param['NRP'])->get('tugas_khusus')->result();
@@ -45,7 +50,7 @@ class TugasKhususModel extends CI_Model
 
     public function getTotalPoin($param)
     {
-        return $this->db->where('NRP =', $param['NRP'])->select_sum('POIN')->get('view_tugas_khusus')->row_array();
+        return $this->db->where($param)->select_sum('POIN')->get('view_tugas_khusus')->row_array();
     }
 
     public function getJenisTugasKhusus($param)

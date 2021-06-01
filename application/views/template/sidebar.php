@@ -11,14 +11,14 @@
     <?php if($this->session->userdata('role') == "Admin"){?>
     
     <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+    <!-- <hr class="sidebar-divider my-0"> -->
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
+    <!-- <li class="nav-item">
+        <a class="nav-link" href="">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
-    </li>
+    </li> -->
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -170,12 +170,6 @@
             <span>Daftar Event</span></a>
     </li>
 
-    
-    <hr class="sidebar-divider">
-
-   
-
-    <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('kalenderEvent')?>">
             <i class="fas fa-fw fa-calendar"></i>

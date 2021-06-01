@@ -57,6 +57,8 @@ $route['login'] = 'LoginController';
 $route['login/aksiLogin'] = 'LoginController/aksiLogin';
 $route['logout'] = 'LoginController/logout';
 
+$route['dashboardAdmin'] = 'admin/DashboardAdminController';
+
 $route['aturan'] = 'admin/AturanController';
 $route['aturan/insert'] = 'admin/AturanController/insert';
 $route['aturan/delete'] = 'admin/AturanController/delete';
@@ -105,6 +107,7 @@ $route['tugaskhusus/update'] = 'admin/TugasKhususController/update';
 $route['tugaskhusus/acc'] = 'admin/TugasKhususController/acc';
 $route['tugaskhusus/tolak'] = 'admin/TugasKhususController/tolak';
 $route['tugaskhusus/detail/(:any)'] = 'admin/TugasKhususController/detail/$1';
+$route['tugaskhusus/kegiatan/(:any)'] = 'admin/TugasKhususController/detailKegiatan/$1';
 
 $route['nilai/insert'] = 'admin/AturanController/insertNilai';
 $route['nilai/delete'] = 'admin/AturanController/deleteNilai';

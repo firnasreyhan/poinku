@@ -30,6 +30,8 @@ class DaftarEventController extends CI_Controller {
     
     public function index()
     {
+        $this->PresensiModel->updateIsSeen();
+        
         $data['jenis']      = $this->JenisKegiatanModel->get();
         $data['lingkup']    = $this->LingkupKegiatanModel->get();
         $data['event']      = $this->DaftarEventModel->getAll();

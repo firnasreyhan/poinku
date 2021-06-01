@@ -197,7 +197,8 @@ class TugasKhusus extends RestController {
     {
         $param = $this->get();
         $dataStore = array(
-            'NRP'         => $param['nrp']
+            'NRP'                      => $param['nrp'],
+            'STATUS_VALIDASI'          => 1
         );
 
         $poins = $this->TugasKhususModel->getTotalPoin($dataStore);

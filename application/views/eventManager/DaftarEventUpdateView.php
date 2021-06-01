@@ -3,6 +3,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('daftarEvent')?>"><i class="fas fa-chevron-left"></i></a> Update Daftar Event</h1>
+    &nbsp;
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">

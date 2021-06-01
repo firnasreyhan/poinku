@@ -15,7 +15,7 @@ if ($this->session->userdata('role') == "Admin") {
                 Alerts Center
             </h6>
             <?php foreach ($dataPengajuan as $data) { ?>
-                <a class="dropdown-item d-flex align-items-center notifikasi" href="#">
+                <a class="dropdown-item d-flex align-items-center notifikasi" href="<?php echo site_url('tugaskhusus') ?>">
                     <!-- <a class="dropdown-item d-flex align-items-center notifikasi" href="http://facebook.com"> -->
                     <div class="mr-3">
                         <div class="icon-circle bg-primary">
@@ -28,7 +28,7 @@ if ($this->session->userdata('role') == "Admin") {
                     </div>
                 </a>
             <?php } ?>
-            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+            <a class="dropdown-item text-center small text-gray-500" href="<?php echo site_url('tugaskhusus') ?>">Show All Alerts</a>
         </div>
 <?php }
 } ?>
