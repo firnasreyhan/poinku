@@ -30,11 +30,12 @@ class DaftarEventController extends CI_Controller {
     
     public function index()
     {
+        $email = $this->session->userdata('email');
         $this->PresensiModel->updateIsSeen();
         
         $data['jenis']      = $this->JenisKegiatanModel->get();
         $data['lingkup']    = $this->LingkupKegiatanModel->get();
-        $data['event']      = $this->DaftarEventModel->getAll();
+        $data['event']      = $this->DaftarEventModel->getAll($email);
 
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');
@@ -142,8 +143,11 @@ class DaftarEventController extends CI_Controller {
     
     public function detail($idEvent)
 	{
-        $data['presensi']          = $this->PresensiModel->get($idEvent);
+        $data['presensi']       = $this->PresensiModel->get($idEvent);
         $data['detail_event']   = $this->DaftarEventModel->getDetail($idEvent);
+        $data['kehadiran']      = $this->DaftarEventModel->getDetailTotalKehadiran($idEvent);
+        $data['prodi']      = $this->DaftarEventModel->getDetailTotalProdi($idEvent);
+        $data['angkatan']      = $this->DaftarEventModel->getDetailTotalAngkatan($idEvent);
 
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');

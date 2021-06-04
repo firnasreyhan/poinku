@@ -107,6 +107,11 @@ class TugasKhususModel extends CI_Model
         $this->db->where('ID_TUGAS_KHUSUS', $idTugasKhusus);
         return $this->db->get()->result();
     }
+
+    public function getCountKegiatanByNRP($param)
+    {
+        return $this->db->where('NRP', $param['NRP'])->order_by("JENIS", "ASC")->get('view_jenis_tugas_khusus')->result();
+    }
 }
 
 /* End of file TugasKhususModel.php */

@@ -9,10 +9,11 @@ class DaftarEventModel extends CI_Model {
         parent::__construct();
     }
 
-    public function getAll()
+    public function getAll($param)
     {
         $this->db->select('*');
         $this->db->from('event');
+        $this->db->where('event.EMAIL', $param);
         $this->db->join('lingkup', 'event.ID_LINGKUP = lingkup.ID_LINGKUP');
         $this->db->join('jenis', 'event.ID_JENIS = jenis.ID_JENIS');
         $this->db->order_by("ID_EVENT", "DESC");
@@ -67,6 +68,26 @@ class DaftarEventModel extends CI_Model {
     {
         $this->db->where('EMAIL', $param);
         return $this->db->count_all_results('event');
+    }
+
+    public function getTotalByEvent($param)
+    {
+        return $this->db->query("SELECT event.JUDUL, COUNT(event.ID_EVENT) AS 'JUMLAH' FROM event INNER JOIN presensi ON event.ID_EVENT = presensi.ID_EVENT AND event.EMAIL = '$param' AND presensi.STATUS = 1 GROUP BY event.ID_EVENT")->result();
+    }
+
+    public function getDetailTotalKehadiran($param)
+    {
+        return $this->db->query("SELECT STATUS, COUNT(STATUS) AS 'JUMLAH' FROM presensi WHERE ID_EVENT = '$param' GROUP BY STATUS ORDER BY STATUS DESC")->result();
+    }
+
+    public function getDetailTotalProdi($param)
+    {
+        return $this->db->query("SELECT mahasiswa.PRODI, COUNT(mahasiswa.PRODI) AS 'JUMLAH' FROM presensi INNER JOIN mahasiswa ON presensi.EMAIL = mahasiswa.EMAIL WHERE ID_EVENT = '$param' GROUP BY mahasiswa.PRODI ORDER BY mahasiswa.PRODI ASC")->result();
+    }
+
+    public function getDetailTotalAngkatan($param)
+    {
+        return $this->db->query("SELECT mahasiswa.ANGKATAN, COUNT(mahasiswa.ANGKATAN) AS 'JUMLAH' FROM presensi INNER JOIN mahasiswa ON presensi.EMAIL = mahasiswa.EMAIL WHERE ID_EVENT = '$param' GROUP BY mahasiswa.ANGKATAN ORDER BY mahasiswa.ANGKATAN ASC")->result();
     }
 }
 

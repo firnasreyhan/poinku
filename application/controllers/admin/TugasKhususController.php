@@ -98,6 +98,7 @@ class TugasKhususController extends CI_Controller {
         $data['mahasiswa'] = $this->MahasiswaModel->detail($nrp);
         $data['jenis_tugas_khusus'] = $this->TugasKhususModel->getJenisTugasKhusus($where);
         $data['tugas_khusus'] = $this->TugasKhususModel->getByNRP($where);
+        $data['jumlah_kegiatan'] = $this->TugasKhususModel->getCountKegiatanByNRP($where);
 
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');

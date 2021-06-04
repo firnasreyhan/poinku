@@ -65,6 +65,7 @@ $route['aturan/delete'] = 'admin/AturanController/delete';
 $route['aturan/detail/(:any)'] = 'admin/AturanController/detail/$1';
 $route['aturan/update'] = 'admin/AturanController/update';
 $route['aturan/updateAturanAktif'] = 'admin/AturanController/updateAturanAktif';
+$route['aturan/updateAturanMahasiswa'] = 'admin/AturanController/UpdateMultipleMahasiswa';
 
 $route['jeniskegiatan'] = 'admin/JenisKegiatanController';
 $route['jeniskegiatan/insert'] = 'admin/JenisKegiatanController/insert';
@@ -141,3 +142,10 @@ $route['daftarEvent/print/(:any)'] = 'eventManager/DaftarEventController/print/$
 $route['daftarEvent/update'] = 'eventManager/DaftarEventController/aksiUpdate';
 
 $route['kalenderEvent'] = 'eventManager/KalenderEventController';
+
+//Kaprodi Role
+
+$route['dashboardKaprodi'] = 'kaprodi/DashboardKaprodiController';
+$route['daftarMahasiswa'] = 'kaprodi/KaprodiMahasiswaController';
+$route['daftarMahasiswa/detail/(:any)'] = 'kaprodi/KaprodiMahasiswaController/detail/$1';
+$route['daftarMahasiswa/kegiatan/(:any)'] = 'kaprodi/KaprodiMahasiswaController/detailKegiatan/$1';

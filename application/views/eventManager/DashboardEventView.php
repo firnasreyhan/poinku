@@ -20,7 +20,7 @@
                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_kegiatan; ?></div>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_hadir; ?></div>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    <i class="fas fa-user fa-2x text-gray-300"></i>
                 </div>
             </div>
         </div>
@@ -51,44 +51,29 @@
         <div class="card-body">
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                         Jumlah Kehadiran</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_tidak_hadir; ?></div>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    <i class="fas fa-user fa-2x text-gray-300"></i>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </div>
-<div class="row">
-
+                    <div class="row">
                         <!-- Area Chart -->
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="m-0 font-weight-bold text-primary">Statistik Kehadiran</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-area"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                                        <canvas id="myAreaChart" style="display: block; width: 668px; height: 320px;" width="668" height="320" class="chartjs-render-monitor"></canvas>
-                                    </div>
+                                    <canvas id="chartHadir" height="100px"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -98,36 +83,11 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="m-0 font-weight-bold text-primary">Kehadiran</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                                        <canvas id="myPieChart" style="display: block; width: 301px; height: 245px;" width="301" height="245" class="chartjs-render-monitor"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
-                                        </span>
-                                    </div>
+                                    <canvas id="chartKehadiran" height="214px"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -141,3 +101,56 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/chart.js/Chart.min.js') ?>"></script>
+
+<script>
+    var ctx = document.getElementById('chartHadir').getContext('2d');
+    // const labels = Utils.months({count: 7});
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [
+                <?php 
+                    foreach ($kehadiran_kegiatan as $key) {
+                       echo '"'.$key->JUDUL.'",';
+                    }    
+                ?>
+             ],
+            datasets: [{
+                label: 'Kehadiran',
+                data: [
+                    <?php 
+                    foreach ($kehadiran_kegiatan as $key) {
+                       echo '"'.$key->JUMLAH.'",';
+                    }    
+                ?>
+                ],
+                fill: true,
+                backgroundColor: '#1cc88a',
+                tension: 0.1
+            }]
+        }
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById('chartKehadiran').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Hadir',
+                'Tidak Hadir',
+             ],
+            datasets: [{
+                data: [<?php echo $jumlah_hadir; ?>, <?php echo $jumlah_tidak_hadir; ?>],
+                backgroundColor: [
+                    '#1cc88a',
+                    '#e74a3b',
+                ],
+                hoverOffset: 4
+            }]
+        }
+    });
+</script>

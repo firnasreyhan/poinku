@@ -83,6 +83,48 @@
 
                     </div>
 
+                    <div class="row">
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Kehadiran</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <canvas id="chartKehadiran" height="214px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Program Studi</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <canvas id="chartProdi" height="214px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Angkatan</h6>\
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <canvas id="chartAngkatan" height="214px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <div class="row">
@@ -138,3 +180,119 @@
 
                 </div>
                 <!-- End of Main Content -->
+
+<script src="<?php echo base_url('assets/chart.js/Chart.min.js') ?>"></script>
+
+ <script>
+    var ctx = document.getElementById('chartKehadiran').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                <?php 
+                    foreach ($kehadiran as $key) {
+                        if ($key->STATUS == 1) {
+                            echo "'Hadir',";
+                        } else {
+                            echo "'Tidak Hadir',";
+                        }
+                     }    
+                ?>
+             ],
+            datasets: [{
+                data: [
+                    <?php 
+                        foreach ($kehadiran as $key) {
+                            echo $key->JUMLAH.',';
+                        }    
+                    ?>
+                ],
+                backgroundColor: [
+                    '#1cc88a',
+                    '#e74a3b',
+                ],
+                hoverOffset: 4
+            }]
+        }
+    });
+</script>
+
+<script>
+   var ctx = document.getElementById('chartProdi').getContext('2d');
+   var myChart = new Chart(ctx, {
+       type: 'doughnut',
+       data: {
+           labels: [
+                <?php 
+                   foreach ($prodi as $key) {
+                       echo "'".$key->PRODI."',";
+                   }    
+                ?>
+            ],
+           datasets: [{
+               data: [
+                   <?php 
+                        foreach ($prodi as $key) {
+                            echo $key->JUMLAH.',';
+                        }     
+                   ?>
+               ],
+               backgroundColor: [
+                    '#f34235',
+                    '#3e50b4',
+                    '#4bae4f',
+                    '#fe9700',
+                    '#e81d62',
+                    '#785447',
+                    '#9d9d9d',
+                    '#feea3a',
+                    '#00bbd3',
+                    '#9b26af',
+                    '#009587',
+                    '#5f7c8a',
+               ],
+               hoverOffset: 4
+           }]
+       }
+   });
+</script>
+
+<script>
+   var ctx = document.getElementById('chartAngkatan').getContext('2d');
+   var myChart = new Chart(ctx, {
+       type: 'doughnut',
+       data: {
+           labels: [
+                <?php 
+                   foreach ($angkatan as $key) {
+                       echo "'".$key->ANGKATAN."',";
+                   }    
+                ?>
+            ],
+           datasets: [{
+               data: [
+                   <?php 
+                        foreach ($angkatan as $key) {
+                            echo $key->JUMLAH.',';
+                        }     
+                   ?>
+               ],
+               backgroundColor: [
+                    '#f34235',
+                    '#3e50b4',
+                    '#4bae4f',
+                    '#fe9700',
+                    '#e81d62',
+                    '#785447',
+                    '#9d9d9d',
+                    '#feea3a',
+                    '#00bbd3',
+                    '#9b26af',
+                    '#009587',
+                    '#5f7c8a',
+               ],
+               hoverOffset: 4
+           }]
+       }
+   });
+</script>
