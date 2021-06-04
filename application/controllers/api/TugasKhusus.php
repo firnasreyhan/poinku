@@ -241,39 +241,6 @@ class TugasKhusus extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
-
-    public function presensi_put()
-    {
-        $param = $this->put();
-        
-        $dataStore = array(
-            'STATUS'             => 1
-        );
-
-        $where = array(
-            'EMAIL' => $param['email'],
-            'ID_EVENT' => $param['id'],
-        );
-
-        // require $_SERVER['DOCUMENT_ROOT'] . '/poinku/vendor/autoload.php';
-
-        // $options = array(
-        //     'cluster' => 'ap1',
-        //     'useTLS' => true
-        // );
-        // $pusher = new Pusher\Pusher(
-        //     'e6c40e4a096f5b8864c8',
-        //     '56ec36eebb15bd0a9669',
-        //     '1200741',
-        //     $options
-        // );
-
-        // $data['notif'] = 'pengajuan';
-        // $pusher->trigger('my-channel', 'my-event', $data);
-
-        $this->PresensiModel->update($where, $dataStore);
-        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
-    }
 }
 
 /* End of file TugasKhusus.php */
