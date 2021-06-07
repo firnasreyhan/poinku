@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 31, 2021 at 05:03 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Host: localhost:3306
+-- Generation Time: Jun 07, 2021 at 11:44 AM
+-- Server version: 5.7.34-log
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `poinku`
+-- Database: `sishokus_new_poinku`
 --
 
 -- --------------------------------------------------------
@@ -31,8 +32,8 @@ CREATE TABLE `aturan` (
   `ID_ATURAN` int(11) NOT NULL,
   `TAHUN` varchar(5) DEFAULT NULL,
   `KETERANGAN` varchar(280) DEFAULT NULL,
-  `KATEGORI` int(11) NOT NULL DEFAULT 0,
-  `AKTIF` int(11) NOT NULL DEFAULT 0
+  `KATEGORI` int(11) NOT NULL DEFAULT '0',
+  `AKTIF` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -41,8 +42,8 @@ CREATE TABLE `aturan` (
 
 INSERT INTO `aturan` (`ID_ATURAN`, `TAHUN`, `KETERANGAN`, `KATEGORI`, `AKTIF`) VALUES
 (1, '2022', 'Reguler', 0, 1),
-(3, '20211', 'Profesional', 0, 1),
-(4, '2012', '2017/2018', 1, 0);
+(3, '20211', 'Profesional', 0, 0),
+(4, '2012', '2017/2018', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -56,13 +57,13 @@ CREATE TABLE `event` (
   `ID_JENIS` int(11) DEFAULT NULL,
   `ID_LINGKUP` int(11) DEFAULT NULL,
   `JUDUL` varchar(280) DEFAULT NULL,
-  `DESKRIPSI` longtext DEFAULT NULL,
+  `DESKRIPSI` longtext,
   `TANGGAL_ACARA` date DEFAULT NULL,
   `JAM_MULAI` time DEFAULT NULL,
   `JAM_SELESAI` time DEFAULT NULL,
   `POSTER` varchar(500) DEFAULT NULL,
   `KUOTA` int(11) DEFAULT NULL,
-  `PENDAFTAR` int(11) NOT NULL DEFAULT 0,
+  `PENDAFTAR` int(11) NOT NULL DEFAULT '0',
   `QR_CODE` varchar(250) NOT NULL,
   `TANGGAL_DATA` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -75,7 +76,7 @@ INSERT INTO `event` (`ID_EVENT`, `EMAIL`, `ID_JENIS`, `ID_LINGKUP`, `JUDUL`, `DE
 (4, NULL, 8, 10, '183921woeiqo', 'dioaidjask', '2021-05-07', '08:59:00', '08:59:00', 'http://localhost/poinku/assets/img/event/13.PNG', 89321, 0, '', '2021-05-08 13:04:21'),
 (5, NULL, 5, 7, 'djak', 'kjdakj', '2021-05-08', '20:00:00', '21:59:00', 'http://localhost/poinku/assets/img/event/14.PNG', 321, 0, '', '2021-05-08 13:04:06'),
 (6, 'eventmanager@poinku.com', 4, 6, 'Coaching Clinic – Strategi Sukses Lolos Hibah Pengabdian DRPM 2021', 'Selamat pagi!\r\n\r\nKhusus bapak ibu Dosen yang masih penasaran bagaimana\r\nTrik mudah untuk lolos hibah DRPM\r\nDan masih ingin tau lebih jauh soal mekanisme hibah ini\r\n\r\nMari ikuti webinar “Strategi Sukses Lolos Hibah Pengabdian DRPM 2021” Dengan pembicara Syamsuri, S.T., M.T., Ph. D tim Reviewer nasional pengabdian Institut Teknologi Aditama Surabaya.', '2021-05-22', '23:09:00', '00:09:00', 'https://www.stiki.ac.id/wp-content/uploads/2021/04/Coaching-Clinic-Strategi-Sukses-2-300x300.jpeg', 100, 0, '', '2021-05-08 16:09:25'),
-(7, 'eventmanager@poinku.com', 9, 6, 'Business Talk 2 Go International with Sociopreneurship', 'djask', '2021-05-11', '00:13:00', '00:17:00', 'https://www.stiki.ac.id/wp-content/uploads/2021/04/Business-Talk-2-300x300.jpeg', 90, 2, '', '2021-05-08 16:14:05'),
+(7, 'eventmanager@poinku.com', 9, 6, 'Business Talk 2 Go International with Sociopreneurship', 'djask', '2021-05-11', '00:13:00', '00:17:00', 'https://www.stiki.ac.id/wp-content/uploads/2021/04/Business-Talk-2-300x300.jpeg', 90, 3, '', '2021-05-08 16:14:05'),
 (8, 'eventmanager@poinku.com', 5, 2, 'Abc', 'Abc', '2021-05-31', '13:00:00', '15:00:00', 'http://localhost/poinku/assets/img/event/ComingSoon.png', 100, 0, '', '2021-05-30 16:54:36'),
 (9, 'eventmanager@poinku.com', 2, 2, 'abc', 'abc', '2021-05-31', '13:00:00', '15:00:00', 'http://localhost/poinku/assets/img/event/ComingSoon1.png', 100, 0, '', '2021-05-30 16:56:51'),
 (10, 'eventmanager@poinku.com', 2, 2, 'abca', 'a', '2021-05-31', '13:00:00', '15:00:00', 'http://localhost/poinku/assets/img/event/ComingSoon2.png', 100, 0, '', '2021-05-30 16:59:01'),
@@ -93,7 +94,8 @@ INSERT INTO `event` (`ID_EVENT`, `EMAIL`, `ID_JENIS`, `ID_LINGKUP`, `JUDUL`, `DE
 (22, 'eventmanager@poinku.com', 2, 1, 'abc', 'a', '2021-05-31', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon14.png', 100, 0, '', '2021-05-30 17:57:44'),
 (23, 'eventmanager@poinku.com', 2, 1, 'abc', 'a', '2021-05-31', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon15.png', 100, 0, '', '2021-05-30 18:01:53'),
 (24, 'eventmanager@poinku.com', 2, 2, 'QWE', 'qwe', '2021-05-31', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon16.png', 100, 0, 'http://localhost/poinku/assets/img/qr/24_QR.png', '2021-05-30 18:07:30'),
-(25, 'eventmanager@poinku.com', 2, 1, 'abca', '1', '2021-05-24', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon17.png', 100, 0, 'http://localhost/poinku/assets/img/qr/25_QR.png', '2021-05-30 18:28:37');
+(25, 'eventmanager@poinku.com', 2, 1, 'abca', '1', '2021-05-24', '01:01:00', '01:01:00', 'http://localhost/poinku/assets/img/event/ComingSoon17.png', 100, 0, 'http://localhost/poinku/assets/img/qr/25_QR.png', '2021-05-30 18:28:37'),
+(26, 'eventmanager@poinku.com', 2, 2, 'Judul', 'Desc', '2021-06-08', '13:00:00', '15:00:00', 'http://s4ishoku.site/new_poinku/assets/img/event/43535475.jpg', 100, 1, 'http://s4ishoku.site/new_poinku/assets/img/qr/26_QR.png', '2021-06-07 02:33:34');
 
 -- --------------------------------------------------------
 
@@ -143,31 +145,12 @@ CREATE TABLE `kegiatan` (
 --
 
 INSERT INTO `kegiatan` (`ID_KEGIATAN`, `ID_TUGAS_KHUSUS`, `KETERANGAN`) VALUES
-(1, 8, 'tes'),
+(1, 20, 'tes'),
 (2, 9, 'tes'),
 (3, 21, 'poi'),
 (4, 22, 'poi'),
-(5, 23, 'poi');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kondisi_kriteria`
---
-
-CREATE TABLE `kondisi_kriteria` (
-  `ID_KONDISI_KRITERIA` int(11) NOT NULL,
-  `ID_JENIS` int(11) DEFAULT NULL,
-  `ID_NILAI` int(11) DEFAULT NULL,
-  `KONDISI` varchar(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `kondisi_kriteria`
---
-
-INSERT INTO `kondisi_kriteria` (`ID_KONDISI_KRITERIA`, `ID_JENIS`, `ID_NILAI`, `KONDISI`) VALUES
-(1, 4, 1, 'OR');
+(5, 23, 'poi'),
+(6, 27, 'Saya');
 
 -- --------------------------------------------------------
 
@@ -264,11 +247,12 @@ CREATE TABLE `mahasiswa` (
   `NRP` varchar(15) NOT NULL,
   `EMAIL` varchar(50) DEFAULT NULL,
   `ID_ATURAN` int(11) DEFAULT NULL,
+  `NAMA` varchar(250) NOT NULL,
   `PRODI` varchar(5) DEFAULT NULL,
   `ANGKATAN` varchar(4) DEFAULT NULL,
   `NILAI` varchar(3) DEFAULT 'E',
   `TANGGAL_VALIDASI` timestamp NULL DEFAULT NULL,
-  `STATUS` tinyint(1) DEFAULT 0,
+  `STATUS` tinyint(1) DEFAULT '0',
   `TOKEN` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -276,10 +260,10 @@ CREATE TABLE `mahasiswa` (
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`NRP`, `EMAIL`, `ID_ATURAN`, `PRODI`, `ANGKATAN`, `NILAI`, `TANGGAL_VALIDASI`, `STATUS`, `TOKEN`) VALUES
-('171111001', '171111001@gmail.com', 1, 'TI', '2017', 'E', '2021-04-27 16:15:00', 0, NULL),
-('171111020', '171111020@mhs.stiki.ac.id', 1, 'TI', '2017', 'E', NULL, 0, 'dhvixjq3SHawnWWW3UXbC4:APA91bE9PmB7ieZNeM_fVc4oxZ0eCFEV9Dl485CI861uGxI4I888QfkdnL-F11tV6HeCkLUR-aHCxxpUU9j9DwKzsjyjD9jegJ4xkvjy68sy83wZbCpnczC2KFgZ_wj3pM0ei2p5WqIz'),
-('171111079', '171111079@mhs.stiki.ac.id', 1, 'TI', '2017', 'E', NULL, 0, 'cZURI3E7RFiBU9E-PSo5ZO:APA91bG0t1JK6lBVTOhS_tw16tGtNunQ6C4JgTDo6HBjc5DvY65TmZ_1PmSbMntHPGYfOXZsgWmdVQcTgKyaLvGoiR7v0e26j_7g769nQDSPmwnnAa_lP3MjqTK-A9Ynf2y6UcJsAo71');
+INSERT INTO `mahasiswa` (`NRP`, `EMAIL`, `ID_ATURAN`, `NAMA`, `PRODI`, `ANGKATAN`, `NILAI`, `TANGGAL_VALIDASI`, `STATUS`, `TOKEN`) VALUES
+('171111001', '171111001@gmail.com', 4, '-', 'DKV', '2017', 'E', '2021-06-01 11:39:52', 1, NULL),
+('171111020', '171111020@mhs.stiki.ac.id', 1, 'Ade', 'TI', '2018', 'E', '2021-06-01 11:39:55', 1, 'dhvixjq3SHawnWWW3UXbC4:APA91bE9PmB7ieZNeM_fVc4oxZ0eCFEV9Dl485CI861uGxI4I888QfkdnL-F11tV6HeCkLUR-aHCxxpUU9j9DwKzsjyjD9jegJ4xkvjy68sy83wZbCpnczC2KFgZ_wj3pM0ei2p5WqIz'),
+('171111079', '171111079@mhs.stiki.ac.id', 1, 'Reyhan', 'TI', '2019', 'B+', '2021-06-06 19:51:16', 0, 'ftbisww7RnGkPgxmPJJLLF:APA91bFYQwdqP0GxhDFhCx_wLBuYghymN0BqLKtU0--dPVqtYsLH9AvAvs45SR2T-MGAA6Bm21mkDjpA0BROU_LPcdIav0H7XVeZbJFH09575hXEtWKNjS7AL7_Op9k7_Yc90o3XMpIT');
 
 -- --------------------------------------------------------
 
@@ -417,18 +401,21 @@ CREATE TABLE `presensi` (
   `ID_PRESENSI` int(11) NOT NULL,
   `EMAIL` varchar(50) NOT NULL,
   `ID_EVENT` int(11) NOT NULL,
-  `STATUS` int(11) DEFAULT 0,
-  `WAKTU_PRESENSI` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `SERTIFIKAT` varchar(250) DEFAULT NULL
+  `STATUS` int(11) DEFAULT '0',
+  `WAKTU_PRESENSI` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `SERTIFIKAT` varchar(250) DEFAULT NULL,
+  `IS_SEEN` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `presensi`
 --
 
-INSERT INTO `presensi` (`ID_PRESENSI`, `EMAIL`, `ID_EVENT`, `STATUS`, `WAKTU_PRESENSI`, `SERTIFIKAT`) VALUES
-(9, '171111079@mhs.stiki.ac.id', 7, 1, '2021-05-30 19:04:52', 'http://localhost/poinku/uploads/event/sertifikat/7/171111079.pdf'),
-(13, '171111020@mhs.stiki.ac.id', 7, 0, '2021-05-29 14:16:41', 'http://localhost/poinku/uploads/event/sertifikat/7/171111020.pdf');
+INSERT INTO `presensi` (`ID_PRESENSI`, `EMAIL`, `ID_EVENT`, `STATUS`, `WAKTU_PRESENSI`, `SERTIFIKAT`, `IS_SEEN`) VALUES
+(9, '171111079@mhs.stiki.ac.id', 24, 1, '2021-06-07 02:34:37', 'http://s4ishoku.site/new_poinku/uploads/event/sertifikat/26/171111079.pdf', 1),
+(13, '171111020@mhs.stiki.ac.id', 7, 0, '2021-06-03 18:47:10', 'http://localhost/poinku/uploads/event/sertifikat/7/171111020.pdf', 1),
+(15, '171111001@gmail.com', 6, 1, '2021-06-03 18:47:22', NULL, 1),
+(16, '171111079@mhs.stiki.ac.id', 26, 1, '2021-06-07 03:01:56', 'http://s4ishoku.site/new_poinku/uploads/event/sertifikat/26/171111079.pdf', 1);
 
 --
 -- Triggers `presensi`
@@ -458,9 +445,11 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`ID_ROLE`, `ROLE`) VALUES
-(1, 'Mahasiswa'),
 (2, 'Admin'),
-(3, 'Event Manager');
+(3, 'Event Manager'),
+(4, 'Kaprodi TI'),
+(5, 'Kaprodi SI & MI'),
+(6, 'Kaprodi DKV');
 
 -- --------------------------------------------------------
 
@@ -477,8 +466,8 @@ CREATE TABLE `tugas_khusus` (
   `JUDUL` varchar(280) DEFAULT NULL,
   `TANGGAL_KEGIATAN` date DEFAULT NULL,
   `BUKTI` varchar(255) DEFAULT NULL,
-  `TANGGAL_DATA` timestamp NULL DEFAULT current_timestamp(),
-  `STATUS_VALIDASI` int(11) NOT NULL DEFAULT 0,
+  `TANGGAL_DATA` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `STATUS_VALIDASI` int(11) NOT NULL DEFAULT '0',
   `TANGGAL_VALIDASI` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -487,29 +476,32 @@ CREATE TABLE `tugas_khusus` (
 --
 
 INSERT INTO `tugas_khusus` (`ID_TUGAS_KHUSUS`, `NRP`, `ID_JENIS`, `ID_LINGKUP`, `ID_PERAN`, `JUDUL`, `TANGGAL_KEGIATAN`, `BUKTI`, `TANGGAL_DATA`, `STATUS_VALIDASI`, `TANGGAL_VALIDASI`) VALUES
-(1, '171111079', 2, 1, 2, 'Judul', '2021-04-28', 'https://cdn.idntimes.com/content-images/post/20210424/10-881bce895ca6c08611f7387e27548f38_600x400.JPG', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(2, '171111079', 2, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(3, '171111079', 2, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(4, '171111079', 3, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(5, '171111079', 3, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(6, '171111079', 4, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(7, '171111079', 4, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(9, '171111079', 6, 3, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(10, '171111079', 6, 3, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(11, '171111079', 7, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(12, '171111079', 7, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(13, '171111079', 13, 1, 1, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(14, '171111079', 15, 1, 1, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 0, '0000-00-00 00:00:00'),
-(15, '171111079', 6, 1, 1, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:05:19', 0, '0000-00-00 00:00:00'),
-(16, '171111079', 5, 3, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:19:32', 0, '0000-00-00 00:00:00'),
-(17, '171111079', 6, 13, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:19:32', 0, '0000-00-00 00:00:00'),
-(18, '171111079', 7, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:19:32', 0, '0000-00-00 00:00:00'),
+(1, '171111079', 2, 1, 2, 'Judul', '2021-04-28', 'https://cdn.idntimes.com/content-images/post/20210424/10-881bce895ca6c08611f7387e27548f38_600x400.JPG', '2021-04-27 18:03:44', 1, '2021-06-01 12:20:24'),
+(2, '171111079', 2, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(3, '171111079', 2, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(4, '171111079', 3, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(5, '171111079', 3, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(6, '171111079', 4, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(7, '171111079', 4, 2, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(9, '171111079', 6, 3, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(10, '171111079', 6, 3, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(11, '171111079', 7, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(12, '171111079', 7, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(13, '171111079', 13, 1, 1, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(14, '171111079', 15, 1, 1, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:03:44', 1, '0000-00-00 00:00:00'),
+(15, '171111079', 6, 1, 1, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:05:19', 1, '0000-00-00 00:00:00'),
+(16, '171111079', 5, 3, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:19:32', 1, '0000-00-00 00:00:00'),
+(17, '171111079', 6, 13, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:19:32', 1, '0000-00-00 00:00:00'),
+(18, '171111079', 7, 1, 2, 'Judul', '2021-04-28', 'www.google.com', '2021-04-27 18:19:32', 1, '0000-00-00 00:00:00'),
 (19, '171111079', 2, 1, 1, 'asd', '2021-05-08', NULL, '2021-05-08 16:38:45', 0, '0000-00-00 00:00:00'),
 (20, '171111079', 2, 1, 1, 'qwe', '2021-05-08', NULL, '2021-05-08 16:43:04', 0, '0000-00-00 00:00:00'),
 (21, '171111079', 2, 1, 1, 'poi', '2021-05-09', 'http://s4ishoku.site/new_poinku/uploads/sertifikat/171111079/2/1620493517.JPEG', '2021-05-08 17:05:16', 0, '0000-00-00 00:00:00'),
 (22, '171111079', 2, 1, 1, 'poi', '2021-05-09', 'http://s4ishoku.site/new_poinku/uploads/sertifikat/171111079/2/1620493540.JPEG', '2021-05-08 17:05:38', 0, '0000-00-00 00:00:00'),
 (23, '171111079', 2, 1, 1, 'poi', '2021-05-09', 'http://s4ishoku.site/new_poinku/uploads/sertifikat/171111079/2/1620493694.JPEG', '2021-05-08 17:08:12', 0, '0000-00-00 00:00:00'),
-(24, '171111079', 1, 1, 1, 'AABC', '2020-01-01', NULL, '2021-05-30 15:36:37', 0, '0000-00-00 00:00:00');
+(24, '171111079', 1, 1, 1, 'AABC', '2020-01-01', NULL, '2021-05-30 15:36:37', 0, '0000-00-00 00:00:00'),
+(25, '171111079', 2, 2, 2, 'QWE', '2021-05-31', NULL, '2021-06-06 15:43:20', 1, '2021-06-06 08:43:20'),
+(26, '171111079', 2, 2, 2, 'Judul', '2021-06-08', NULL, '2021-06-07 02:34:17', 1, '2021-06-06 19:34:17'),
+(27, '171111079', 2, 2, 2, 'Judul Mob', '2021-06-07', 'http://s4ishoku.site/new_poinku/uploads/sertifikat/171111079/2/1623033636.JPEG', '2021-06-07 02:40:34', 1, '2021-06-06 19:41:34');
 
 -- --------------------------------------------------------
 
@@ -531,7 +523,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`EMAIL`, `ID_ROLE`, `PASSWORD`, `NAMA`, `TELEPON`) VALUES
 ('admin@poinku.com', 2, 'admin', 'Admin Poinku', NULL),
-('eventmanager@poinku.com', 3, 'event', 'Event Manager', NULL);
+('eventmanager@poinku.com', 3, 'event', 'Event Manager', NULL),
+('kaprodi.ti@poinku.com', 4, 'proditi', 'Kaprodi TI', '085156263732');
 
 -- --------------------------------------------------------
 
@@ -613,6 +606,7 @@ CREATE TABLE `view_mahasiswa` (
 ,`ID_ATURAN` int(11)
 ,`TAHUN` varchar(5)
 ,`KETERANGAN` varchar(280)
+,`NAMA` varchar(250)
 ,`PRODI` varchar(5)
 ,`ANGKATAN` varchar(4)
 ,`NILAI` varchar(3)
@@ -667,7 +661,7 @@ CREATE TABLE `view_tugas_khusus` (
 --
 DROP TABLE IF EXISTS `view_event`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_event`  AS SELECT `event`.`ID_EVENT` AS `ID_EVENT`, `event`.`EMAIL` AS `EMAIL`, `event`.`ID_JENIS` AS `ID_JENIS`, `jenis`.`JENIS` AS `JENIS`, `event`.`ID_LINGKUP` AS `ID_LINGKUP`, `lingkup`.`LINGKUP` AS `LINGKUP`, `event`.`JUDUL` AS `JUDUL`, `event`.`DESKRIPSI` AS `DESKRIPSI`, `event`.`TANGGAL_ACARA` AS `TANGGAL_ACARA`, `event`.`JAM_MULAI` AS `JAM_MULAI`, `event`.`JAM_SELESAI` AS `JAM_SELESAI`, `event`.`POSTER` AS `POSTER`, `event`.`KUOTA` AS `KUOTA`, `event`.`PENDAFTAR` AS `PENDAFTAR` FROM ((`event` join `jenis` on(`event`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`event`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP` and concat(`event`.`TANGGAL_ACARA`,' ',`event`.`JAM_MULAI`) >= current_timestamp())) ORDER BY `event`.`TANGGAL_DATA` DESC ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_event`  AS  select `event`.`ID_EVENT` AS `ID_EVENT`,`event`.`EMAIL` AS `EMAIL`,`event`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`event`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`event`.`JUDUL` AS `JUDUL`,`event`.`DESKRIPSI` AS `DESKRIPSI`,`event`.`TANGGAL_ACARA` AS `TANGGAL_ACARA`,`event`.`JAM_MULAI` AS `JAM_MULAI`,`event`.`JAM_SELESAI` AS `JAM_SELESAI`,`event`.`POSTER` AS `POSTER`,`event`.`KUOTA` AS `KUOTA`,`event`.`PENDAFTAR` AS `PENDAFTAR` from ((`event` join `jenis` on((`event`.`ID_JENIS` = `jenis`.`ID_JENIS`))) join `lingkup` on(((`event`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`) and (concat(`event`.`TANGGAL_ACARA`,' ',`event`.`JAM_MULAI`) >= now())))) order by `event`.`TANGGAL_DATA` desc ;
 
 -- --------------------------------------------------------
 
@@ -676,7 +670,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_jenis_tugas_khusus`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_jenis_tugas_khusus`  AS SELECT `view_tugas_khusus`.`NRP` AS `NRP`, `jenis`.`ID_JENIS` AS `ID_JENIS`, `jenis`.`JENIS` AS `JENIS`, count(`view_tugas_khusus`.`ID_JENIS`) AS `TOTAL`, sum(`view_tugas_khusus`.`POIN`) AS `JUMLAH` FROM (`jenis` join `view_tugas_khusus` on(`jenis`.`ID_JENIS` = `view_tugas_khusus`.`ID_JENIS`)) GROUP BY `view_tugas_khusus`.`ID_JENIS`, `view_tugas_khusus`.`NRP` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_jenis_tugas_khusus`  AS  select `view_tugas_khusus`.`NRP` AS `NRP`,`jenis`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,count(`view_tugas_khusus`.`ID_JENIS`) AS `TOTAL`,sum(`view_tugas_khusus`.`POIN`) AS `JUMLAH` from (`jenis` join `view_tugas_khusus` on((`jenis`.`ID_JENIS` = `view_tugas_khusus`.`ID_JENIS`))) group by `view_tugas_khusus`.`ID_JENIS`,`view_tugas_khusus`.`NRP` ;
 
 -- --------------------------------------------------------
 
@@ -685,7 +679,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_kriteria`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_kriteria`  AS SELECT `kriteria`.`ID_KRITERIA` AS `ID_KRITERIA`, `nilai`.`ID_ATURAN` AS `ID_ATURAN`, `kriteria`.`ID_NILAI` AS `ID_NILAI`, `nilai`.`NILAI` AS `NILAI`, `kriteria`.`ID_JENIS` AS `ID_JENIS`, `jenis`.`JENIS` AS `JENIS`, `kriteria`.`ID_LINGKUP` AS `ID_LINGKUP`, `lingkup`.`LINGKUP` AS `LINGKUP`, `kriteria`.`JUMLAH` AS `JUMLAH` FROM (((`kriteria` join `nilai` on(`kriteria`.`ID_NILAI` = `nilai`.`ID_NILAI`)) join `jenis` on(`kriteria`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`kriteria`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_kriteria`  AS  select `kriteria`.`ID_KRITERIA` AS `ID_KRITERIA`,`nilai`.`ID_ATURAN` AS `ID_ATURAN`,`kriteria`.`ID_NILAI` AS `ID_NILAI`,`nilai`.`NILAI` AS `NILAI`,`kriteria`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`kriteria`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`kriteria`.`JUMLAH` AS `JUMLAH` from (((`kriteria` join `nilai` on((`kriteria`.`ID_NILAI` = `nilai`.`ID_NILAI`))) join `jenis` on((`kriteria`.`ID_JENIS` = `jenis`.`ID_JENIS`))) join `lingkup` on((`kriteria`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`))) ;
 
 -- --------------------------------------------------------
 
@@ -694,7 +688,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_kriteria_tugas_khusus`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_kriteria_tugas_khusus`  AS SELECT `tugas_khusus`.`NRP` AS `NRP`, `tugas_khusus`.`ID_JENIS` AS `ID_JENIS`, `tugas_khusus`.`ID_LINGKUP` AS `ID_LINGKUP`, count(`tugas_khusus`.`ID_TUGAS_KHUSUS`) AS `JUMLAH` FROM `tugas_khusus` GROUP BY `tugas_khusus`.`NRP`, `tugas_khusus`.`ID_JENIS`, `tugas_khusus`.`ID_LINGKUP` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_kriteria_tugas_khusus`  AS  select `tugas_khusus`.`NRP` AS `NRP`,`tugas_khusus`.`ID_JENIS` AS `ID_JENIS`,`tugas_khusus`.`ID_LINGKUP` AS `ID_LINGKUP`,count(`tugas_khusus`.`ID_TUGAS_KHUSUS`) AS `JUMLAH` from `tugas_khusus` where (`tugas_khusus`.`STATUS_VALIDASI` = 1) group by `tugas_khusus`.`NRP`,`tugas_khusus`.`ID_JENIS`,`tugas_khusus`.`ID_LINGKUP` ;
 
 -- --------------------------------------------------------
 
@@ -703,7 +697,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_mahasiswa`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_mahasiswa`  AS SELECT `mahasiswa`.`NRP` AS `NRP`, `mahasiswa`.`EMAIL` AS `EMAIL`, `aturan`.`ID_ATURAN` AS `ID_ATURAN`, `aturan`.`TAHUN` AS `TAHUN`, `aturan`.`KETERANGAN` AS `KETERANGAN`, `mahasiswa`.`PRODI` AS `PRODI`, `mahasiswa`.`ANGKATAN` AS `ANGKATAN`, `mahasiswa`.`NILAI` AS `NILAI`, `mahasiswa`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`, `mahasiswa`.`STATUS` AS `STATUS`, `mahasiswa`.`TOKEN` AS `TOKEN` FROM (`mahasiswa` join `aturan` on(`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_mahasiswa`  AS  select `mahasiswa`.`NRP` AS `NRP`,`mahasiswa`.`EMAIL` AS `EMAIL`,`aturan`.`ID_ATURAN` AS `ID_ATURAN`,`aturan`.`TAHUN` AS `TAHUN`,`aturan`.`KETERANGAN` AS `KETERANGAN`,`mahasiswa`.`NAMA` AS `NAMA`,`mahasiswa`.`PRODI` AS `PRODI`,`mahasiswa`.`ANGKATAN` AS `ANGKATAN`,`mahasiswa`.`NILAI` AS `NILAI`,`mahasiswa`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`,`mahasiswa`.`STATUS` AS `STATUS`,`mahasiswa`.`TOKEN` AS `TOKEN` from (`mahasiswa` join `aturan` on((`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`))) ;
 
 -- --------------------------------------------------------
 
@@ -712,7 +706,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_poin`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_poin`  AS SELECT `poin`.`ID_POIN` AS `ID_POIN`, `poin`.`ID_ATURAN` AS `ID_ATURAN`, `jenis`.`JENIS` AS `JENIS`, `lingkup`.`LINGKUP` AS `LINGKUP`, `peran`.`PERAN` AS `PERAN`, `poin`.`POIN` AS `POIN` FROM (((`poin` join `jenis` on(`poin`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`poin`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) join `peran` on(`poin`.`ID_PERAN` = `peran`.`ID_PERAN`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_poin`  AS  select `poin`.`ID_POIN` AS `ID_POIN`,`poin`.`ID_ATURAN` AS `ID_ATURAN`,`jenis`.`JENIS` AS `JENIS`,`lingkup`.`LINGKUP` AS `LINGKUP`,`peran`.`PERAN` AS `PERAN`,`poin`.`POIN` AS `POIN` from (((`poin` join `jenis` on((`poin`.`ID_JENIS` = `jenis`.`ID_JENIS`))) join `lingkup` on((`poin`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`))) join `peran` on((`poin`.`ID_PERAN` = `peran`.`ID_PERAN`))) ;
 
 -- --------------------------------------------------------
 
@@ -721,7 +715,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_tugas_khusus`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_tugas_khusus`  AS SELECT `tugas_khusus`.`ID_TUGAS_KHUSUS` AS `ID_TUGAS_KHUSUS`, `tugas_khusus`.`NRP` AS `NRP`, `tugas_khusus`.`ID_JENIS` AS `ID_JENIS`, `jenis`.`JENIS` AS `JENIS`, `tugas_khusus`.`ID_LINGKUP` AS `ID_LINGKUP`, `lingkup`.`LINGKUP` AS `LINGKUP`, `tugas_khusus`.`ID_PERAN` AS `ID_PERAN`, `peran`.`PERAN` AS `PERAN`, `tugas_khusus`.`JUDUL` AS `JUDUL`, `tugas_khusus`.`TANGGAL_KEGIATAN` AS `TANGGAL_KEGIATAN`, `tugas_khusus`.`BUKTI` AS `BUKTI`, `tugas_khusus`.`TANGGAL_DATA` AS `TANGGAL_DATA`, `tugas_khusus`.`STATUS_VALIDASI` AS `STATUS_VALIDASI`, `tugas_khusus`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`, `poin`.`POIN` AS `POIN` FROM ((((((`tugas_khusus` join `jenis` on(`tugas_khusus`.`ID_JENIS` = `jenis`.`ID_JENIS`)) join `lingkup` on(`tugas_khusus`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`)) join `peran` on(`tugas_khusus`.`ID_PERAN` = `peran`.`ID_PERAN`)) join `mahasiswa` on(`tugas_khusus`.`NRP` = `mahasiswa`.`NRP`)) join `aturan` on(`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`)) left join `poin` on(`aturan`.`ID_ATURAN` = `poin`.`ID_ATURAN` and `tugas_khusus`.`ID_JENIS` = `poin`.`ID_JENIS` and `tugas_khusus`.`ID_LINGKUP` = `poin`.`ID_LINGKUP` and `tugas_khusus`.`ID_PERAN` = `peran`.`ID_PERAN`)) GROUP BY `tugas_khusus`.`ID_TUGAS_KHUSUS` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_tugas_khusus`  AS  select `tugas_khusus`.`ID_TUGAS_KHUSUS` AS `ID_TUGAS_KHUSUS`,`tugas_khusus`.`NRP` AS `NRP`,`tugas_khusus`.`ID_JENIS` AS `ID_JENIS`,`jenis`.`JENIS` AS `JENIS`,`tugas_khusus`.`ID_LINGKUP` AS `ID_LINGKUP`,`lingkup`.`LINGKUP` AS `LINGKUP`,`tugas_khusus`.`ID_PERAN` AS `ID_PERAN`,`peran`.`PERAN` AS `PERAN`,`tugas_khusus`.`JUDUL` AS `JUDUL`,`tugas_khusus`.`TANGGAL_KEGIATAN` AS `TANGGAL_KEGIATAN`,`tugas_khusus`.`BUKTI` AS `BUKTI`,`tugas_khusus`.`TANGGAL_DATA` AS `TANGGAL_DATA`,`tugas_khusus`.`STATUS_VALIDASI` AS `STATUS_VALIDASI`,`tugas_khusus`.`TANGGAL_VALIDASI` AS `TANGGAL_VALIDASI`,`poin`.`POIN` AS `POIN` from ((((((`tugas_khusus` join `mahasiswa` on((`tugas_khusus`.`NRP` = `mahasiswa`.`NRP`))) join `aturan` on((`mahasiswa`.`ID_ATURAN` = `aturan`.`ID_ATURAN`))) join `jenis` on((`tugas_khusus`.`ID_JENIS` = `jenis`.`ID_JENIS`))) join `lingkup` on((`tugas_khusus`.`ID_LINGKUP` = `lingkup`.`ID_LINGKUP`))) join `peran` on((`tugas_khusus`.`ID_PERAN` = `peran`.`ID_PERAN`))) left join `poin` on(((`tugas_khusus`.`ID_JENIS` = `poin`.`ID_JENIS`) and (`tugas_khusus`.`ID_LINGKUP` = `poin`.`ID_LINGKUP`) and (`tugas_khusus`.`ID_PERAN` = `poin`.`ID_PERAN`)))) group by `tugas_khusus`.`ID_TUGAS_KHUSUS` ;
 
 --
 -- Indexes for dumped tables
@@ -737,10 +731,7 @@ ALTER TABLE `aturan`
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
-  ADD PRIMARY KEY (`ID_EVENT`),
-  ADD KEY `FK_EVENT_RELATIONS_USER` (`EMAIL`),
-  ADD KEY `FK_EVENT_RELATIONS_JENIS` (`ID_JENIS`),
-  ADD KEY `FK_EVENT_RELATIONS_LINGKUP` (`ID_LINGKUP`);
+  ADD PRIMARY KEY (`ID_EVENT`);
 
 --
 -- Indexes for table `jenis`
@@ -752,32 +743,19 @@ ALTER TABLE `jenis`
 -- Indexes for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  ADD PRIMARY KEY (`ID_KEGIATAN`),
-  ADD KEY `ID_TUGAS_KHUSUS` (`ID_TUGAS_KHUSUS`);
-
---
--- Indexes for table `kondisi_kriteria`
---
-ALTER TABLE `kondisi_kriteria`
-  ADD PRIMARY KEY (`ID_KONDISI_KRITERIA`),
-  ADD KEY `FK_KONDISI__RELATIONS_NILAI` (`ID_NILAI`),
-  ADD KEY `FK_KONDISI__RELATIONS_JENIS` (`ID_JENIS`);
+  ADD PRIMARY KEY (`ID_KEGIATAN`);
 
 --
 -- Indexes for table `konten`
 --
 ALTER TABLE `konten`
-  ADD PRIMARY KEY (`ID_KONTEN`),
-  ADD KEY `ID_TUGAS_KHUSUS` (`ID_TUGAS_KHUSUS`);
+  ADD PRIMARY KEY (`ID_KONTEN`);
 
 --
 -- Indexes for table `kriteria`
 --
 ALTER TABLE `kriteria`
-  ADD PRIMARY KEY (`ID_KRITERIA`),
-  ADD KEY `FK_KRITERIA_RELATIONS_JENIS` (`ID_JENIS`),
-  ADD KEY `FK_KRITERIA_RELATIONS_LINGKUP` (`ID_LINGKUP`),
-  ADD KEY `FK_KRITERIA_RELATIONS_NILAI` (`ID_NILAI`);
+  ADD PRIMARY KEY (`ID_KRITERIA`);
 
 --
 -- Indexes for table `lingkup`
@@ -789,16 +767,13 @@ ALTER TABLE `lingkup`
 -- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  ADD PRIMARY KEY (`NRP`),
-  ADD KEY `FK_MAHASISW_RELATIONS_USER` (`EMAIL`),
-  ADD KEY `FK_MAHASISW_RELATIONS_ATURAN` (`ID_ATURAN`);
+  ADD PRIMARY KEY (`NRP`);
 
 --
 -- Indexes for table `nilai`
 --
 ALTER TABLE `nilai`
-  ADD PRIMARY KEY (`ID_NILAI`),
-  ADD KEY `FK_NILAI_RELATIONS_ATURAN` (`ID_ATURAN`);
+  ADD PRIMARY KEY (`ID_NILAI`);
 
 --
 -- Indexes for table `peran`
@@ -810,19 +785,13 @@ ALTER TABLE `peran`
 -- Indexes for table `poin`
 --
 ALTER TABLE `poin`
-  ADD PRIMARY KEY (`ID_POIN`),
-  ADD KEY `FK_POIN_RELATIONS_JENIS` (`ID_JENIS`),
-  ADD KEY `FK_POIN_RELATIONS_PERAN` (`ID_PERAN`),
-  ADD KEY `FK_POIN_RELATIONS_LINGKUP` (`ID_LINGKUP`),
-  ADD KEY `FK_POIN_RELATIONS_ATURAN` (`ID_ATURAN`);
+  ADD PRIMARY KEY (`ID_POIN`);
 
 --
 -- Indexes for table `presensi`
 --
 ALTER TABLE `presensi`
-  ADD PRIMARY KEY (`ID_PRESENSI`),
-  ADD KEY `FK_PRESENSI_RELATIONS_USER` (`EMAIL`),
-  ADD KEY `FK_PRESENSI_RELATIONS_EVENT` (`ID_EVENT`);
+  ADD PRIMARY KEY (`ID_PRESENSI`);
 
 --
 -- Indexes for table `role`
@@ -834,18 +803,13 @@ ALTER TABLE `role`
 -- Indexes for table `tugas_khusus`
 --
 ALTER TABLE `tugas_khusus`
-  ADD PRIMARY KEY (`ID_TUGAS_KHUSUS`),
-  ADD KEY `FK_TUGAS_KH_RELATIONS_MAHASISW` (`NRP`),
-  ADD KEY `ID_JENIS` (`ID_JENIS`),
-  ADD KEY `ID_LINGKUP` (`ID_LINGKUP`),
-  ADD KEY `ID_PERAN` (`ID_PERAN`);
+  ADD PRIMARY KEY (`ID_TUGAS_KHUSUS`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`EMAIL`),
-  ADD KEY `FK_USER_RELATIONS_ROLE` (`ID_ROLE`);
+  ADD PRIMARY KEY (`EMAIL`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -861,13 +825,19 @@ ALTER TABLE `aturan`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `ID_EVENT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ID_EVENT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `jenis`
+--
+ALTER TABLE `jenis`
+  MODIFY `ID_JENIS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `ID_KEGIATAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_KEGIATAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `konten`
@@ -882,22 +852,40 @@ ALTER TABLE `kriteria`
   MODIFY `ID_KRITERIA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `lingkup`
+--
+ALTER TABLE `lingkup`
+  MODIFY `ID_LINGKUP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `nilai`
+--
+ALTER TABLE `nilai`
+  MODIFY `ID_NILAI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `peran`
+--
+ALTER TABLE `peran`
+  MODIFY `ID_PERAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `poin`
+--
+ALTER TABLE `poin`
+  MODIFY `ID_POIN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
 -- AUTO_INCREMENT for table `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `ID_PRESENSI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `role`
---
-ALTER TABLE `role`
-  MODIFY `ID_ROLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_PRESENSI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tugas_khusus`
 --
 ALTER TABLE `tugas_khusus`
-  MODIFY `ID_TUGAS_KHUSUS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID_TUGAS_KHUSUS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
