@@ -3,6 +3,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Lingkup Kegiatan</h1>
+    &nbsp;
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">

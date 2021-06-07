@@ -3,6 +3,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan/nilai/kriteria/'.$detail_kriteria[0]->ID_NILAI)?>"><i class="fas fa-chevron-left"></i></a> Update Kriteria</h1>
+    &nbsp;
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">

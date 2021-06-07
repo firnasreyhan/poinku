@@ -32,6 +32,8 @@ class DashboardEventController extends CI_Controller {
         $data['jumlah_kegiatan'] = $this->DaftarEventModel->getTotal($email);
         $data['jumlah_hadir'] = $this->PresensiModel->getTotalHadir($email);
         $data['jumlah_tidak_hadir'] = $this->PresensiModel->getTotalTidakHadir($email);
+        $data['kegiatan'] = $this->DaftarEventModel->getALl($email);
+        $data['kehadiran_kegiatan'] = $this->DaftarEventModel->getTotalByEvent($email);
         
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');

@@ -2,9 +2,10 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4"> -->
         <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan')?>"><i class="fas fa-chevron-left"></i></a> <?php echo $tahun . ' - ' . $keterangan; ?></h1>
-    </div>
+        &nbsp;
+    <!-- </div> -->
     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
         For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
@@ -190,12 +191,12 @@
                         <div class="card-header py-3">
                             <div class="d-sm-flex align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">Daftar Mahasiswa</h6>
-                                <a data-toggle="modal" data-target="#mdlAdd" style="float:right;" class="btn btn-primary btn-icon-split">
+                                <button style="float:right;" class="btn btn-warning btn-icon-split" id="downloadMultiple" data-toggle="modal" data-target="#mdlDownloadMulti" disabled>
                                     <span class="icon text-white-50">
-                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-edit"></i>
                                     </span>
-                                    <span class="text">Tambah</span>
-                                </a>
+                                    <span class="text">Ubah Aturan</span>
+                                </button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -203,32 +204,65 @@
                                 <table class="table table-bordered" id="table-mahasiswa" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Master Approval Name</th>
-                                            <th>Next Role</th>
-                                            <th>Action</th>
+                                            <th>
+                                                <div class="custom-control custom-checkbox" style="text-align:center;">
+                                                    <input type="checkbox" class="custom-control-input" id="checkAll">
+                                                    <label class="custom-control-label" for="checkAll">Check</label>
+                                                </div>
+                                            </th>
+                                            <th>NRP</th>
+                                            <th>Nama</th>
+                                            <th>Prodi</th>
+                                            <th>Angkatan</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Master Approval Name</th>
-                                            <th>Next Role</th>
-                                            <th>Action</th>
+                                            <th>Check</th>
+                                            <th>NRP</th>
+                                            <th>Nama</th>
+                                            <th>Prodi</th>
+                                            <th>Angkatan</th>
+                                            <th>Status</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td style="text-align:right">
-                                                <div class="btn-group" role="group">
-                                                    <button type="button" class="btn btn-primary">Edit</button>
-                                                    <button type="button" class="btn btn-danger">Hapus</button>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($mahasiswa as $key) {
+                                        ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox" style="text-align:center;">
+                                                        <input type="checkbox" class="custom-control-input checkItem" id="chck_<?php echo $no; ?>" value="<?php echo $key->NRP; ?>">
+                                                        <label class="custom-control-label" for="chck_<?php echo $no; ?>"></label>
+                                                    </div>
+                                                </td>
+                                                <td><?php echo $key->NRP; ?></td>
+                                                <td><?php echo $key->NAMA; ?></td>
+                                                <td><?php echo $key->PRODI; ?></td>
+                                                <td><?php echo $key->ANGKATAN; ?></td>
+                                                <td><?php 
+                                                    if ($key->STATUS == null) {
+                                                        echo "<span class='badge badge-pill badge-warning'>Belum Melakukan Pengajuan Validasi</span>";
+                                                    } else {
+                                                        if ($key->STATUS == 0) {
+                                                            echo "<span class='badge badge-pill badge-warning'>Pengajuan Sedang Diproses</span>";
+                                                        } else {
+                                                            if ($key->STATUS == 1) {
+                                                                echo "<span class='badge badge-pill badge-success'>Pengajuan Tugas Khusus Diterima</span>";
+                                                            } else {
+                                                                echo "<span class='badge badge-pill badge-danger'>Pengajuan Tugas Khusus Ditolak</span>";
+                                                            }
+                                                        }
+                                                    } ?>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        $no++;
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -324,6 +358,51 @@
     </div>
 </div>
 
+<!-- Modal Download Multiple -->
+<div class="modal fade" id="mdlDownloadMulti" tabindex="-1" aria-labelledby="mdlGenerate" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mdlGenerate">Ubah Aturan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?php echo site_url("aturan/updateAturanMahasiswa"); ?>" enctype="multipart/form-data" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <select class="form-control" name="ID_ATURAN">
+                            <option value="">-- Pilih Aturan --</option>
+                            <?php 
+                                foreach($aturan as $row){
+                            ?>
+                            <option value="<?php echo $row->ID_ATURAN?>">
+                            <?php 
+                                $kategori = null;
+                                if ($row->KATEGORI == 0) {
+                                    $kategori = "Reguler";
+                                } else {
+                                    $kategori = "Profesional";
+                                }
+
+                                echo $row->TAHUN." / ".$kategori;
+                            ?>
+                            </option>
+                            <?php }?>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" class="form-control" name="NRP" id="INPUT_NRP">
+                    <input type="hidden" class="form-control" name="ID_ATURAN_AKTIF" value="<?php echo $id_aturan_aktif; ?>">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary">Iya</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- Bootstrap core JavaScript-->
 <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
 
@@ -343,4 +422,30 @@
         const id = $(this).data('id')
         $('#INPUT_ID_POIN').val(id)
     })
+
+    //MultipleItem
+    $('#downloadMultiple').click(function() {
+        const dnIds = $('.checkItem:checkbox:checked').map((_,elm) => elm.value).get()
+        $('#INPUT_NRP').val(dnIds.toString())
+        console.log(dnIds);
+    })
+    $('#checkAll').change(function(){
+        const isChecked = $(this).prop('checked')
+        if(isChecked){
+            $('.checkItem').prop('checked', true)
+        }else{
+            $('.checkItem').prop('checked', false)
+        }
+        buttonMultipleAvailable()
+    })
+    $('.checkItem').change(function(){
+        buttonMultipleAvailable()
+    })
+    const buttonMultipleAvailable = () => {
+        const isChecked             = $('.checkItem:checkbox:checked').prop('checked')
+        if(isChecked)
+            $('#downloadMultiple').attr('disabled', false)
+        else
+            $('#downloadMultiple').attr('disabled', true)
+    }
 </script>

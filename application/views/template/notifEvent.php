@@ -1,6 +1,6 @@
 <?php 
-    $dataNotif      = $this->db->query('SELECT event.JUDUL, presensi.EMAIL FROM presensi JOIN event ON event.ID_EVENT = presensi.ID_EVENT WHERE STATUS = 0 ORDER BY ID_PRESENSI DESC LIMIT 3')->result();
-    $countDataNotif = $this->db->query('SELECT * FROM presensi WHERE STATUS = 0')->num_rows();
+    $dataNotif      = $this->db->query('SELECT event.JUDUL, presensi.EMAIL FROM presensi JOIN event ON event.ID_EVENT = presensi.ID_EVENT WHERE IS_SEEN = 0 ORDER BY ID_PRESENSI DESC LIMIT 3')->result();
+    $countDataNotif = $this->db->query('SELECT * FROM presensi WHERE IS_SEEN = 0')->num_rows();
     if($this->session->userdata('role') == "Event Manager"){
 ?>
 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -15,7 +15,7 @@
         Alerts Center
     </h6>
     <?php foreach($dataNotif as $data){ ?>
-    <a class="dropdown-item d-flex align-items-center notifikasi" href="#">
+    <a class="dropdown-item d-flex align-items-center notifikasi" href="<?php echo site_url('daftarEvent')?>">
     <!-- <a class="dropdown-item d-flex align-items-center notifikasi" href="http://facebook.com"> -->
         <div class="mr-3">
             <div class="icon-circle bg-primary">
@@ -28,6 +28,6 @@
         </div>
     </a>
     <?php }?>
-    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+    <a class="dropdown-item text-center small text-gray-500" href="<?php echo site_url('daftarEvent')?>">Show All Alerts</a>
 </div>
     <?php }}?>

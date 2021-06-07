@@ -35,6 +35,7 @@ class Mahasiswa extends RestController {
             'NRP'           => $param['nrp'],
             'EMAIL'         => $param['email'],
             'ID_ATURAN'     => $param['aturan'],
+            'NAMA'          => $param['nama'],
             'PRODI'         => $param['prodi'],
             'ANGKATAN'      => $param['angkatan'],
             'TOKEN'      => $param['token']
@@ -71,7 +72,7 @@ class Mahasiswa extends RestController {
             'NRP' => $param['nrp']
         );
 
-        require $_SERVER['DOCUMENT_ROOT'] . '/poinku/vendor/autoload.php';
+        require $_SERVER['DOCUMENT_ROOT'] . '/new_poinku/vendor/autoload.php';
 
         $options = array(
             'cluster' => 'ap1',
@@ -89,6 +90,14 @@ class Mahasiswa extends RestController {
 
         $this->MahasiswaModel->pengajuan($dataStore, $where);
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+    }
+    
+    public function removeToken_put()
+    {
+        $param = $this->put();
+
+        $this->MahasiswaModel->removeToken($param['nrp']);
+        $this->response(['status' => true, 'message' => 'Berhasil logout'], 200);
     }
 
     // public function konten_post()

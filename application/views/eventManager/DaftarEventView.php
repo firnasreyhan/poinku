@@ -3,6 +3,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Event</h1>
+    &nbsp;
     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
         For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
@@ -54,10 +55,16 @@
                                 <td><?php echo $data->JENIS; ?></td>
                                 <td><?php echo $data->LINGKUP; ?></td>
                                 <td><?php echo $data->JUDUL; ?></td>
-                                <td>
+                                <td style="text-align:right">
                                     <a title="Detail Event" href="<?php echo site_url("daftarEvent/detail/".$data->ID_EVENT ); ?>" class="btn btn-success btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-external-link-alt"></i>
+                                        </span>
+                                    </a>
+                                    &nbsp;
+                                    <a title="QR Code" data-toggle="modal" data-target="#mdlQRCODE" data-qrcode="<?php echo $data->QR_CODE?>" class="btn btn-primary btn-icon-split mdlQRCODE">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-qrcode"></i>
                                         </span>
                                     </a>
                                     &nbsp;
@@ -180,6 +187,26 @@
     </div>
 </div>
 
+<!-- Modal QR Code -->
+<div class="modal fade" id="mdlQRCODE" tabindex="-1" aria-labelledby="mdlQRCODE" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mdlQRCODE">QR Code</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <img id="INPUT_IMG" width="300">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
@@ -188,5 +215,10 @@
     $('#dataTable tbody').on('click', '.mdlDelete', function() {
         const id = $(this).data('id')
         $('#INPUT_ID_EVENT').val(id)
+    })
+
+    $('#dataTable tbody').on('click', '.mdlQRCODE', function() {
+        const qrcode = $(this).data('qrcode')
+        $('#INPUT_IMG').attr("src",qrcode)
     })
 </script>

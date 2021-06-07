@@ -12,6 +12,7 @@ class Event extends RestController {
         parent::__construct();
         $this->load->model('DaftarEventModel');
         $this->load->model('PresensiModel');
+        $this->load->model('TugasKhususModel');
     }
     
     public function index_get()
@@ -51,7 +52,7 @@ class Event extends RestController {
 
         $this->PresensiModel->insert($dataStore);
 
-        require $_SERVER['DOCUMENT_ROOT'] . '/poinku/vendor/autoload.php';
+        require $_SERVER['DOCUMENT_ROOT'] . '/new_poinku/vendor/autoload.php';
 
         $options = array(
             'cluster' => 'ap1',
@@ -112,6 +113,47 @@ class Event extends RestController {
         $data = $this->DaftarEventModel->getDetail($dataStore['ID_EVENT']);
         if ($data != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
+    }
+    
+    public function absen_put()
+    {
+        $param = $this->put();
+        
+        $dataStore = array(
+            'STATUS'             => 1
+        );
+
+        $where = array(
+            'EMAIL' => $param['email'],
+            'ID_EVENT' => $param['id'],
+        );
+        
+        $detailEvent = $this->DaftarEventModel->getDetail($where['ID_EVENT']);
+        if ($detailEvent != null) {
+            $dataTugasKhusus = array(
+                'NRP'         => $param['nrp'],
+                'ID_JENIS'    => $detailEvent[0]->ID_JENIS,
+                'ID_LINGKUP'    => $detailEvent[0]->ID_LINGKUP,
+                'ID_PERAN'    => 2,
+                'JUDUL'    => $detailEvent[0]->JUDUL,
+                'TANGGAL_KEGIATAN'    => $detailEvent[0]->TANGGAL_ACARA,
+                'STATUS_VALIDASI'    => 1,
+                'TANGGAL_VALIDASI'    => date('Y-m-d H:i:s'),
+            );
+            
+            $id = $this->TugasKhususModel->insert($dataTugasKhusus);
+            
+            if($id != null) {
+                $data = $this->PresensiModel->update($where, $dataStore);
+                if ($data) {
+                    $this->response(['status' => true, 'message' => 'Berhasil Absen'], 200);
+                } else {
+                    $this->response(['status' => false, 'message' => 'Gagal Absen'], 200);
+                }
+            }
         } else {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }

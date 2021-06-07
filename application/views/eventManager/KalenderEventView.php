@@ -2,9 +2,10 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4"> -->
         <h1 class="h3 mb-0 text-gray-800">Kalender Event Manager</h1>
-    </div>
+    &nbsp;
+    <!-- </div> -->
     
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -38,7 +39,7 @@
             dataTitles: { defaultDate: 'Hari ini', today : 'hari ini' },
             notes: [
                     <?php foreach($event as $data){ ?>
-                        { "date": "<?php echo $data->TANGGAL_ACARA?>", "note": ["<?php echo $data->JUDUL ?>"] },
+                        { "date": "<?php echo $data->TANGGAL_ACARA?>", "note": ["<?php echo $data->JUDUL.' ('.substr($data->JAM_MULAI,0,5).' - '.substr($data->JAM_SELESAI,0,5).')' ?>"] },
                     <?php }?>
                     ],
             showNotes: true,

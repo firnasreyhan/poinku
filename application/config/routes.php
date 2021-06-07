@@ -57,12 +57,15 @@ $route['login'] = 'LoginController';
 $route['login/aksiLogin'] = 'LoginController/aksiLogin';
 $route['logout'] = 'LoginController/logout';
 
+$route['dashboardAdmin'] = 'admin/DashboardAdminController';
+
 $route['aturan'] = 'admin/AturanController';
 $route['aturan/insert'] = 'admin/AturanController/insert';
 $route['aturan/delete'] = 'admin/AturanController/delete';
 $route['aturan/detail/(:any)'] = 'admin/AturanController/detail/$1';
 $route['aturan/update'] = 'admin/AturanController/update';
 $route['aturan/updateAturanAktif'] = 'admin/AturanController/updateAturanAktif';
+$route['aturan/updateAturanMahasiswa'] = 'admin/AturanController/UpdateMultipleMahasiswa';
 
 $route['jeniskegiatan'] = 'admin/JenisKegiatanController';
 $route['jeniskegiatan/insert'] = 'admin/JenisKegiatanController/insert';
@@ -105,6 +108,7 @@ $route['tugaskhusus/update'] = 'admin/TugasKhususController/update';
 $route['tugaskhusus/acc'] = 'admin/TugasKhususController/acc';
 $route['tugaskhusus/tolak'] = 'admin/TugasKhususController/tolak';
 $route['tugaskhusus/detail/(:any)'] = 'admin/TugasKhususController/detail/$1';
+$route['tugaskhusus/kegiatan/(:any)'] = 'admin/TugasKhususController/detailKegiatan/$1';
 
 $route['nilai/insert'] = 'admin/AturanController/insertNilai';
 $route['nilai/delete'] = 'admin/AturanController/deleteNilai';
@@ -138,3 +142,10 @@ $route['daftarEvent/print/(:any)'] = 'eventManager/DaftarEventController/print/$
 $route['daftarEvent/update'] = 'eventManager/DaftarEventController/aksiUpdate';
 
 $route['kalenderEvent'] = 'eventManager/KalenderEventController';
+
+//Kaprodi Role
+
+$route['dashboardKaprodi'] = 'kaprodi/DashboardKaprodiController';
+$route['daftarMahasiswa'] = 'kaprodi/KaprodiMahasiswaController';
+$route['daftarMahasiswa/detail/(:any)'] = 'kaprodi/KaprodiMahasiswaController/detail/$1';
+$route['daftarMahasiswa/kegiatan/(:any)'] = 'kaprodi/KaprodiMahasiswaController/detailKegiatan/$1';

@@ -67,7 +67,7 @@
                         Alerts Center
                     </h6>
                     <?php foreach($dataPengajuan as $data){ ?>
-                    <a class="dropdown-item d-flex align-items-center notifikasi" href="#">
+                    <a class="dropdown-item d-flex align-items-center notifikasi" href="<?php echo site_url('tugaskhusus') ?>">
                     <!-- <a class="dropdown-item d-flex align-items-center notifikasi" href="http://facebook.com"> -->
                         <div class="mr-3">
                             <div class="icon-circle bg-primary">
@@ -80,7 +80,7 @@
                         </div>
                     </a>
                     <?php }?>
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                    <a class="dropdown-item text-center small text-gray-500" href="<?php echo site_url('tugaskhusus') ?>">Show All Alerts</a>
                 </div>
                 <?php }?>
             </li>
@@ -107,7 +107,7 @@
                         Alerts Center
                     </h6>
                     <?php foreach($dataNotif as $data){ ?>
-                    <a class="dropdown-item d-flex align-items-center notifikasi" href="#">
+                    <a class="dropdown-item d-flex align-items-center notifikasi" href="<?php echo site_url('kegiatan') ?>">
                     <!-- <a class="dropdown-item d-flex align-items-center notifikasi" href="http://facebook.com"> -->
                         <div class="mr-3">
                             <div class="icon-circle bg-primary">
@@ -120,13 +120,13 @@
                         </div>
                     </a>
                     <?php }?>
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                    <a class="dropdown-item text-center small text-gray-500" href="<?php echo site_url('kegiatan') ?>">Show All Alerts</a>
                 </div>
                 <?php }}?>
                 
                 <?php 
-                    $dataNotif      = $this->db->query('SELECT event.JUDUL, presensi.EMAIL FROM presensi JOIN event ON event.ID_EVENT = presensi.ID_EVENT WHERE STATUS = 0 ORDER BY ID_PRESENSI DESC LIMIT 3')->result();
-                    $countDataNotif = $this->db->query('SELECT * FROM presensi WHERE STATUS = 0')->num_rows();
+                    $dataNotif      = $this->db->query('SELECT event.JUDUL, presensi.EMAIL FROM presensi JOIN event ON event.ID_EVENT = presensi.ID_EVENT WHERE IS_SEEN = 0 ORDER BY ID_PRESENSI DESC LIMIT 3')->result();
+                    $countDataNotif = $this->db->query('SELECT * FROM presensi WHERE IS_SEEN = 0')->num_rows();
                     if($this->session->userdata('role') == "Event Manager"){
                 ?>
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -141,7 +141,7 @@
                         Alerts Center
                     </h6>
                     <?php foreach($dataNotif as $data){ ?>
-                    <a class="dropdown-item d-flex align-items-center notifikasi" href="#">
+                    <a class="dropdown-item d-flex align-items-center notifikasi" href="<?php echo site_url('daftarEvent')?>">
                     <!-- <a class="dropdown-item d-flex align-items-center notifikasi" href="http://facebook.com"> -->
                         <div class="mr-3">
                             <div class="icon-circle bg-primary">
@@ -154,7 +154,7 @@
                         </div>
                     </a>
                     <?php }?>
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                    <a class="dropdown-item text-center small text-gray-500" href="<?php echo site_url('daftarEvent')?>">Show All Alerts</a>
                 </div>
                     <?php }}?>
             </li>
@@ -164,7 +164,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('role')?></span>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('nama')?></span>
                     <img class="img-profile rounded-circle" src="<?php echo base_url()?>assets/img/undraw_profile.svg">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -173,14 +173,14 @@
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
                     </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Settings
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Activity Log
-                    </a>
+                    <!--<a class="dropdown-item" href="#">-->
+                    <!--    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>-->
+                    <!--    Settings-->
+                    <!--</a>-->
+                    <!--<a class="dropdown-item" href="#">-->
+                    <!--    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>-->
+                    <!--    Activity Log-->
+                    <!--</a>-->
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

@@ -15,7 +15,7 @@
         Alerts Center
     </h6>
     <?php foreach($dataNotif as $data){ ?>
-    <a class="dropdown-item d-flex align-items-center notifikasi" href="#">
+    <a class="dropdown-item d-flex align-items-center notifikasi" href="<?php echo site_url('kegiatan') ?>">
     <!-- <a class="dropdown-item d-flex align-items-center notifikasi" href="http://facebook.com"> -->
         <div class="mr-3">
             <div class="icon-circle bg-primary">
@@ -28,6 +28,6 @@
         </div>
     </a>
     <?php }?>
-    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+    <a class="dropdown-item text-center small text-gray-500" href="<?php echo site_url('kegiatan') ?>">Show All Alerts</a>
 </div>
     <?php }}?>

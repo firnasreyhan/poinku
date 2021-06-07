@@ -11,14 +11,14 @@
     <?php if($this->session->userdata('role') == "Admin"){?>
     
     <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+    <!-- <hr class="sidebar-divider my-0"> -->
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
+    <!-- <li class="nav-item">
+        <a class="nav-link" href="">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
-    </li>
+    </li> -->
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -143,7 +143,7 @@
             <span>Validasi Tugas Khusus</span></a>
     </li>
     
-    <?php }else if($this->session->userdata('role') == "Event Manager"){ ?>
+    <?php } else if($this->session->userdata('role') == "Event Manager"){ ?>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -170,19 +170,41 @@
             <span>Daftar Event</span></a>
     </li>
 
-    
-    <hr class="sidebar-divider">
-
-   
-
-    <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('kalenderEvent')?>">
             <i class="fas fa-fw fa-calendar"></i>
             <span>Kalender Event</span></a>
     </li>
+    
+    <?php } else if(substr($this->session->userdata('role'), 0, 7) == "Kaprodi"){ ?>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('dashboardKaprodi')?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Data
+    </div>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('daftarMahasiswa')?>">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Daftar Mahasiswa</span></a>
+    </li>
 
     <?php }?>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

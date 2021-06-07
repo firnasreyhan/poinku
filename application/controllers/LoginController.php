@@ -21,6 +21,7 @@ class LoginController extends CI_Controller {
     public function aksiLogin(){
         $email 		    = $this->input->post('email');
         $password 		= $this->input->post('password');
+		$idRole	        = null;
 		$nama	        = null;
 		$role			= null;
 		$emails			= null;
@@ -28,6 +29,7 @@ class LoginController extends CI_Controller {
 		$dataLogin = $this->db->query('SELECT * FROM user JOIN role ON role.ID_ROLE = user.ID_ROLE WHERE EMAIL = "'.$email.'" && PASSWORD = "'.$password.'"')->result();
 
 		foreach($dataLogin as $data){
+			$idRole 	= $data->ID_ROLE;
 			$role 		= $data->ROLE;
 			$nama 		= $data->NAMA;
 			$emails 	= $data->EMAIL;
@@ -36,6 +38,7 @@ class LoginController extends CI_Controller {
 		$data_session = array(
 			'email' 		=> $emails,
 			'nama' 		    => $nama,
+			'idRole' 		=> $idRole,
 			'role' 			=> $role,
 			'log' 			=> TRUE
 		);
@@ -46,8 +49,10 @@ class LoginController extends CI_Controller {
 			$this->session->set_flashdata('message', '');
 			if($role == "Admin"){
 				redirect('aturan');
-			}else if($role == "Event Manager"){
+			} else if($role == "Event Manager"){
 				redirect('dashboardEvent');
+			} else if(substr($role, 0, 7) == "Kaprodi"){
+				redirect('dashboardKaprodi');
 			}
 		}else{
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Username/ Password Salah! </div>');

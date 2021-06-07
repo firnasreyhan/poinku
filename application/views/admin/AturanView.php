@@ -3,6 +3,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Aturan</h1>
+    &nbsp;
     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
         For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
@@ -58,15 +59,15 @@
                                 <td><?php if($key->KATEGORI ==  "0") {echo "Reguler";} else{echo "Profesional";} ?></td>
                                 <td><?php if($key->AKTIF ==  "0") {echo "Tidak Aktif";} else{echo "Aktif";} ?></td>
                                 <td style="text-align:right">
-                                    <a data-toggle="modal" data-target="#mdlAktif" data-aturan="<?php echo $key->ID_ATURAN; ?>" data-kategori="<?php echo $key->KATEGORI; ?>" class="btn btn-success btn-icon-split mdlAktif" <?php if($key->AKTIF ==  "1") {echo "hidden";} ?>>
+                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-check-square"></i>
+                                            <i class="fas fa-external-link-alt"></i>
                                         </span>
                                     </a>
                                     &nbsp;
-                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-warning btn-icon-split">
+                                    <a data-toggle="modal" data-target="#mdlAktif" data-aturan="<?php echo $key->ID_ATURAN; ?>" data-kategori="<?php echo $key->KATEGORI; ?>" class="btn btn-success btn-icon-split mdlAktif" <?php if($key->AKTIF ==  "1") {echo "hidden";} ?>>
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-check-square"></i>
                                         </span>
                                     </a>
                                     &nbsp;

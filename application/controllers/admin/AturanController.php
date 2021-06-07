@@ -25,6 +25,7 @@ class AturanController extends CI_Controller
                 $this->load->model('LingkupKegiatanModel');
                 $this->load->model('PeranKegiatanModel');
                 $this->load->model('KriteriaModel');
+                $this->load->model('MahasiswaModel');
         }
 
 
@@ -129,6 +130,8 @@ class AturanController extends CI_Controller
                 $detail_aturan = $this->AturanModel->getDetail(['ID_ATURAN' => $param]);
                 $nilai = $this->NilaiModel->getDetail(['ID_ATURAN' => $param]);
                 $poin = $this->PoinModel->getDetail(['ID_ATURAN' => $param]);
+                $mahasiswa = $this->MahasiswaModel->getByAturan(['ID_ATURAN' => $param]);
+                $aturan = $this->AturanModel->getAll();
 
                 $tahun = null;
                 $keterangan = null;
@@ -138,11 +141,14 @@ class AturanController extends CI_Controller
                 }
 
                 $data = [
+                        'id_aturan_aktif' => $param,
                         'tahun' => $tahun,
                         'keterangan' => $keterangan,
                         'detail_aturan' => $detail_aturan,
                         'poin' => $poin,
-                        'nilai' => $nilai
+                        'nilai' => $nilai,
+                        'mahasiswa' => $mahasiswa,
+                        'aturan' => $aturan
                 ];
 
                 echo '<script>console.log("'.$tahun.'")</script>';
@@ -247,6 +253,18 @@ class AturanController extends CI_Controller
                 $data['lingkup'] = $this->LingkupKegiatanModel->get();
                 $data['peran'] = $this->PeranKegiatanModel->get();
                 echo json_encode($data);
+        }
+
+        public function UpdateMultipleMahasiswa()
+        {
+                $data = $_POST;
+
+                $data['NRP'] = explode(',', $data['NRP']);
+
+                $this->MahasiswaModel->updateMultipleAturan($data);
+
+                
+                redirect('aturan/detail/' . $data['ID_ATURAN_AKTIF']);
         }
 }
 
