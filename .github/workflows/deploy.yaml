@@ -16,6 +16,7 @@ jobs:
         key: ${{ secrets.MY_KEY }}
         port: ${{ secrets.PORT }}
         script: |
+          export COMPOSER_ALLOW_SUPERUSER=1
           cd ${{ secrets.DIR }}
           git pull origin deploy
           composer update
