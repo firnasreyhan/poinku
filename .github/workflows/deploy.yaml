@@ -18,3 +18,4 @@ jobs:
         script: |
           cd ${{ secrets.DIR }}
           git pull origin deploy
+	  composer update
