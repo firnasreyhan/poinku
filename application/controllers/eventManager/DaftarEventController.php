@@ -236,66 +236,6 @@ class DaftarEventController extends CI_Controller {
 
     public function print($idEvent)
     {
-        //get data database
-        $dataPresensi = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND STATUS = 1')->result();
-        $dataPresensiRow = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND STATUS = 1')->num_rows();
-        $dataEvent = $this->db->query('SELECT * FROM event WHERE ID_EVENT ="'.$idEvent.'"')->result();
-        
-        //perulangan berdasarkan data presensi
-        for ($i=0; $i < $dataPresensiRow ; $i++) { 
-            
-            $this->load->library('pdfgenerator');
-            $this->load->library('email');
-
-            //substring judul event
-            $judul = $dataEvent[0]->JUDUL;
-            // $judul = str_replace(' ', '_', $str);
-            $idEvent = $dataEvent[0]->ID_EVENT;
-            
-            //data untuk sertifikat
-            $data = [
-                'email' => $dataPresensi[$i]->EMAIL,
-                'judul' => $judul,
-                'penyelenggara' => $this->session->userdata('nama')
-            ];
-
-            //substring email
-            $email = $dataPresensi[$i]->EMAIL;
-            $email_substr = substr($email,0,9);
-
-            //config template untuk sertifikat
-            $html = $this->load->view('template/template_sertifikat', $data, true);	
-            $file_pdf = $email_substr;
-            $paper = 'A4';
-            $orientation = 'landscape';
-            
-            //lokasi upload sertifikat
-            $path_pdf = 'uploads/event/sertifikat/'.$idEvent.'/'.$file_pdf.'.pdf';    
-
-            //compile sertifikat
-            $resPdf = $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
-            if(!is_dir('./uploads/event/sertifikat/'.$idEvent.'')){
-                mkdir('./uploads/event/sertifikat/'.$idEvent.'', 0777, TRUE);
-            }
-
-            //simpan sertifikat ke direktori
-            file_put_contents($path_pdf, $resPdf);
-    
-            //ambil data presensi yang baru
-            $dataPresensiBaru = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND EMAIL="'.$email.'" AND STATUS = 1')->result();
-            
-            //ambil email dari data presensi baru
-            foreach($dataPresensiBaru as $dtPresBr){
-                $dtEmail = $dtPresBr->EMAIL;
-            }
-
-            $dataUpdateSertifikat = array(
-                'SERTIFIKAT' => base_url().'uploads/event/sertifikat/'.$idEvent.'/'.$file_pdf.'.pdf'
-            );
-            
-            $where = array(
-                'EMAIL' => $dtEmail
-            );
         if (!is_dir("assets/img/template_sertifikat/")) {
             mkdir("assets/img/template_sertifikat/", 0777, TRUE);
         }
@@ -303,57 +243,6 @@ class DaftarEventController extends CI_Controller {
         $config = ['upload_path' => './assets/img/template_sertifikat/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
         $this->upload->initialize($config);
 
-            //ambil data presensi dengan sertifikat
-            $dataPresensiBaruSertifikat = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND EMAIL="'.$email.'" AND STATUS = 1')->result();
-            
-            foreach($dataPresensiBaruSertifikat as $dtSer){
-                $sertifikat = $dtSer->SERTIFIKAT;
-            }
-
-            //data untuk email
-            $dataEmail = array(
-                'SERTIFIKAT' => $sertifikat,
-                'EMAIL' => $dtEmail,
-            );
-            
-            //konfigurasi email
-            $config['useragent'] = 'Poinku';
-            $config['protocol'] = 'smtp';
-            
-            $config['smtp_host'] = 'ssl://smtp.googlemail.com';
-            $config['smtp_user'] = 'adm.tomboati@gmail.com'; //gantien dewe
-            $config['smtp_pass'] = 'TomboAti123'; //gantien dewe sesuaino karo email e
-            $config['smtp_port'] = 465; 
-            $config['smtp_timeout'] = 15;
-            $config['wordwrap'] = TRUE;
-            $config['wrapchars'] = 76;
-            $config['mailtype'] = 'html';
-            $config['charset'] = 'utf-8';
-            $config['validate'] = FALSE;
-            $config['priority'] = 3;
-            $config['crlf'] = "\r\n";
-            $config['newline'] = "\r\n";
-            $config['bcc_batch_mode'] = FALSE;
-            $config['bcc_batch_size'] = 200;
-    
-            $this->email->initialize($config);
-            
-            $this->email->from('adm.tomboati@gmail.com', 'Admin Poinku'); 
-            $this->email->to($dtEmail); 
-            $this->email->subject('Sertifikat');
-            $msg =  $this->load->view('template/emailSertifikat',$dataEmail,true);
-            $this->email->message($msg);
-
-            //cek email sent
-            if ($this->email->send()) {
-                $this->session->set_tempdata('message', '<div class="alert alert-success" role="alert">
-                Terkirim
-              </div>', 1);
-              redirect('daftarEvent/detail/'.$idEvent);
-            } else {
-                echo $this->email->print_debugger();
-            }
-        }    
         if($this->upload->do_upload('TEMPLATE_SERTIFIKAT')){ 
 			$dataUpload     = $this->upload->data();
 			$poster         = base_url('assets/img/template_sertifikat/' . $dataUpload['file_name']);
