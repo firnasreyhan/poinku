@@ -182,7 +182,7 @@ class DaftarEventController extends CI_Controller {
         $this->upload->initialize($config);
 
         $idEvent        = $this->input->post('IDEVENT');
-        $email          = $this->input->post('EMAIL');
+        $email          = $this->session->userdata('email');
         $jenisEvent     = $this->input->post('JENISEVENT');
         $lingkup        = $this->input->post('LINGKUP');
         $judul          = $this->input->post('JUDUL');

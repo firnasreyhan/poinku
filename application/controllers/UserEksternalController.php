@@ -41,7 +41,7 @@
             $nama           = $this->input->post('NAMA');
             $idEvent        = $this->input->post('ID_EVENT');
 
-            $presensi = array(
+            $dataPresensi = array(
                 'EMAIL'            => $email,
                 'NAMA'             => $nama,
                 'ID_EVENT'         => $idEvent,
@@ -55,7 +55,7 @@
     
             $presensi = $this->PresensiModel->getPresensi($where);
             if ($presensi == null) {
-                $this->PresensiModel->insert($presensi);
+                $this->PresensiModel->insert($dataPresensi);
                 $this->session->set_tempdata('daftar', '<div class="alert alert-success" role="alert">Anda berhasil mendaftar event ini</div>', 1);
             } else {
                 $this->session->set_tempdata('daftar', '<div class="alert alert-warning" role="alert">Anda telah melakukan pendaftaran pada event ini</div>', 1);
