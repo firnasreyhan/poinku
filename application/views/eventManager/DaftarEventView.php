@@ -134,6 +134,12 @@
                         <textarea class="form-control" name="DESKRIPSI" placeholder="Deskripsi" required></textarea>
                     </div>
                     <div class="form-group">
+                        <input type="text" class="form-control" name="PEMBICARA" placeholder="Pembicara" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="LOKASI" placeholder="Lokasi" required/>
+                    </div>
+                    <div class="form-group">
                         <label>Tanggal Acara</label>
                         <input type="date" class="form-control" name="TANGGALACARA" placeholder="Tanggal Acara" required>
                     </div>

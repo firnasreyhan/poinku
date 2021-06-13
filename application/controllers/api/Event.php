@@ -46,7 +46,9 @@ class Event extends RestController {
 
         $dataStore = array(
             'EMAIL'         => $param['email'],
-            'ID_EVENT '     => $param['id']
+            'NAMA'         => $param['nama'],
+            'ID_EVENT'     => $param['id'],
+            'IS_EKSTERNAL'     => 0
         );
 
         $this->PresensiModel->insert($dataStore);

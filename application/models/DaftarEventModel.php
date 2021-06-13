@@ -80,6 +80,11 @@ class DaftarEventModel extends CI_Model {
         return $this->db->query("SELECT STATUS, COUNT(STATUS) AS 'JUMLAH' FROM presensi WHERE ID_EVENT = '$param' GROUP BY STATUS ORDER BY STATUS DESC")->result();
     }
 
+    public function getDetailTotalPeserta($param)
+    {
+        return $this->db->query("SELECT IS_EKSTERNAL, COUNT(IS_EKSTERNAL) AS 'JUMLAH' FROM presensi WHERE ID_EVENT = '$param' GROUP BY IS_EKSTERNAL ORDER BY IS_EKSTERNAL DESC")->result();
+    }
+
     public function getDetailTotalProdi($param)
     {
         return $this->db->query("SELECT mahasiswa.PRODI, COUNT(mahasiswa.PRODI) AS 'JUMLAH' FROM presensi INNER JOIN mahasiswa ON presensi.EMAIL = mahasiswa.EMAIL WHERE ID_EVENT = '$param' GROUP BY mahasiswa.PRODI ORDER BY mahasiswa.PRODI ASC")->result();
@@ -88,6 +93,14 @@ class DaftarEventModel extends CI_Model {
     public function getDetailTotalAngkatan($param)
     {
         return $this->db->query("SELECT mahasiswa.ANGKATAN, COUNT(mahasiswa.ANGKATAN) AS 'JUMLAH' FROM presensi INNER JOIN mahasiswa ON presensi.EMAIL = mahasiswa.EMAIL WHERE ID_EVENT = '$param' GROUP BY mahasiswa.ANGKATAN ORDER BY mahasiswa.ANGKATAN ASC")->result();
+    }
+
+    public function updateTemplateSertifikat($value, $where)
+    {
+        $this->db->set('TEMPLATE_SERTIFIKAT', $value);
+        $this->db->where('ID_EVENT', $where);
+        $this->db->update('event');
+        return ($this->db->affected_rows() > 0);
     }
 }
 
