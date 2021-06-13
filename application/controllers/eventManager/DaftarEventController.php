@@ -238,6 +238,7 @@ class DaftarEventController extends CI_Controller {
     {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         //get data database
         $dataPresensi = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND STATUS = 1')->result();
         $dataPresensiRow = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND STATUS = 1')->num_rows();
@@ -308,10 +309,16 @@ class DaftarEventController extends CI_Controller {
             mkdir("assets/img/template_sertifikat/", 0777, TRUE);
         }
 >>>>>>> Stashed changes
+=======
+        if (!is_dir("assets/img/template_sertifikat/")) {
+            mkdir("assets/img/template_sertifikat/", 0777, TRUE);
+        }
+>>>>>>> Stashed changes
 
         $config = ['upload_path' => './assets/img/template_sertifikat/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
         $this->upload->initialize($config);
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
             //ambil data presensi dengan sertifikat
@@ -366,6 +373,8 @@ class DaftarEventController extends CI_Controller {
             }
         }    
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         if($this->upload->do_upload('TEMPLATE_SERTIFIKAT')){ 
@@ -533,6 +542,9 @@ class DaftarEventController extends CI_Controller {
             }  
         }  
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
