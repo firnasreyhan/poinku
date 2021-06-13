@@ -1,28 +1,28 @@
 .dncalendar-inactive {
-	opacity: 0.2;
+    opacity: 0.2;
 }
 
 .dncalendar-header {
-	margin: 20px 0;
+    margin: 20px 0;
     position: relative;
 }
 
 .dncalendar-header h2 {
-	color: #434343;
+    color: #434343;
     font-size: 20px;
     line-height: 1;
     text-align: center;
 }
 
 .dncalendar-header .dncalendar-links {
-	height: 19px;
+    height: 19px;
     width: 100%;
     position: absolute;
     top: 2px;
 }
 
 .dncalendar-header .dncalendar-links div {
-	cursor: pointer;
+    cursor: pointer;
     width: 35px;
     height: 35px;
     -webkit-user-select: none;
@@ -32,33 +32,34 @@
 }
 
 .dncalendar-header .dncalendar-links .dncalendar-next-month {
-	position: absolute;
+    position: absolute;
     right: -6px;
-    background: url('http://localhost/kbp/assets/vendor/calendar/images/arrow.png') no-repeat -111px 0px;
+    background: url('http://localhost/poinku/assets/calendar/images/arrow.png') no-repeat -111px 0px;
     background-size: 148px 31px;
 }
 
 .dncalendar-header .dncalendar-links .dncalendar-prev-month {
-	position: absolute;
+    position: absolute;
     left: 10px;
-    background: url('http://localhost/kbp/assets/vendor/calendar/images/arrow.png') no-repeat 0px 0px;
+    background: url('http://localhost/poinku/assets/calendar/images/arrow.png') no-repeat 0px 0px;
     background-size: 148px 31px;
 }
 
 .dncalendar-body {
-	margin: 0 0 10px;
+    margin: 0 0 10px;
 }
 
 .dncalendar-body table {
-	width: 100%;
+    width: 100%;
     text-align: center;
     border-collapse: collapse;
     font-size: 15px;
 }
 
-.dncalendar-body table th, td {
-	display: table-cell;
-	margin: 0;
+.dncalendar-body table th,
+td {
+    display: table-cell;
+    margin: 0;
     padding: 0;
     border: 0;
     font-size: 100%;
@@ -67,89 +68,88 @@
 }
 
 .dncalendar-body thead td {
-	color: #727272;
+    color: #727272;
     font-size: 11px;
     text-transform: uppercase;
     padding: 10px 0;
 }
 
 .dncalendar-body tbody tr td {
-	width: 13%;
-	border-top: 1px solid #ddd;
-	color: #bdbdbd;
-	background: #f8f8f8;
-	text-decoration: none;
-	vertical-align: middle;
+    width: 13%;
+    border-top: 1px solid #ddd;
+    color: #bdbdbd;
+    background: #f8f8f8;
+    text-decoration: none;
+    vertical-align: middle;
 }
 
 .dncalendar-body tbody td#calendarClick {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .dncalendar-body tbody td.calendarClick {
-	color: #434343;
-	background: #fff;
+    color: #434343;
+    background: #fff;
 }
-	
+
 .dncalendar-body tbody td .entry {
-	padding: 11px 0 13px;
-	position: relative
+    padding: 11px 0 13px;
+    position: relative
 }
 
 .dncalendar-body tbody td.calendarClick:active {
-	background: #ddd
+    background: #ddd
 }
 
-.dncalendar-body tbody td .entry:after
-{
-	content:attr(data-title);
-	left:0;
-	position:absolute;
-	font-size:10px;
-	bottom:1px;
-	text-align:center;
-	width:100%
+.dncalendar-body tbody td .entry:after {
+    content: attr(data-title);
+    left: 0;
+    position: absolute;
+    font-size: 10px;
+    bottom: 1px;
+    text-align: center;
+    width: 100%
 }
 
 .dncalendar-body table td.holiday {
-	color: #c55 !important;
+    color: #c55 !important;
 }
 
 .dncalendar-body table td.calendarClick.holiday {
-	color: #d00 !important;
+    color: #d00 !important;
 }
 
 .dncalendar-body table td.default-date {
-	border: 1px solid #96D4FD;
-	color: #96D4FD !important;
-	background: #e6f2fa;
+    border: 1px solid #96D4FD;
+    color: #96D4FD !important;
+    background: #e6f2fa;
 }
 
 .dncalendar-body table td.calendarClick.default-date {
-	border: 1px solid #0d7fcc;
-	color: #0d7fcc !important;
-	background: #e6f2fa;
+    border: 1px solid #0d7fcc;
+    color: #0d7fcc !important;
+    background: #e6f2fa;
 }
 
 .dncalendar-body table td.today-date {
-	border: 1px solid #7EE699;
+    border: 1px solid #7EE699;
     color: #7EE699 !important;
     background: #E9FDEE;
 }
 
 .dncalendar-body table td.calendarClick.today-date {
-	border: 1px solid #0DCC3F;
+    border: 1px solid #0DCC3F;
     color: #0DCC3F !important;
     background: #E9FDEE;
 }
 
 .dncalendar-body table td.note,
 .dncalendar-body table td.calendarClick.note {
-	position: relative;
+    position: relative;
 }
 
 .dncalendar-body table td.note:before {
-	display: block;
+    display: block;
     position: absolute;
     width: 0;
     height: 0;
@@ -163,7 +163,7 @@
 }
 
 .dncalendar-body table td.calendarClick.note:before {
-	display: block;
+    display: block;
     position: absolute;
     width: 0;
     height: 0;
@@ -177,13 +177,13 @@
 }
 
 .dncalendar-note-list {
-	list-style: none;
-	margin-left: 4.5%;
-	margin-bottom: 20px;
-	padding: 0;
-	color: #999
+    list-style: none;
+    margin-left: 4.5%;
+    margin-bottom: 20px;
+    padding: 0;
+    color: #999
 }
 
 .dncalendar-note-list .date {
-	color: #d00
+    color: #d00
 }
