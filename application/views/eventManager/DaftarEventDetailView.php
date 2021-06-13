@@ -302,9 +302,15 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< Updated upstream
 
                 <script src="<?php echo base_url('assets/chart.js/Chart.min.js') ?>"></script>
 
+=======
+
+                <script src="<?php echo base_url('assets/chart.js/Chart.min.js') ?>"></script>
+
+>>>>>>> Stashed changes
                 <script>
                     var ctx = document.getElementById('chartKehadiran').getContext('2d');
                     var myChart = new Chart(ctx, {
@@ -344,6 +350,7 @@
                             }]
                         }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                      }    
                 ?>
              ],
@@ -364,6 +371,7 @@
         }
     });
 </script>
+=======
 =======
                     });
                 </script>
@@ -410,6 +418,165 @@
                 </script>
 
                 <script>
+                    var ctx = document.getElementById('chartProdi').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: [
+                                <?php
+                                foreach ($prodi as $key) {
+                                    echo "'" . $key->PRODI . "',";
+                                }
+                                ?>
+                            ],
+                            datasets: [{
+                                data: [
+                                    <?php
+                                    foreach ($prodi as $key) {
+                                        echo $key->JUMLAH . ',';
+                                    }
+                                    ?>
+                                ],
+                                backgroundColor: [
+                                    '#f34235',
+                                    '#3e50b4',
+                                    '#4bae4f',
+                                    '#fe9700',
+                                    '#e81d62',
+                                    '#785447',
+                                    '#9d9d9d',
+                                    '#feea3a',
+                                    '#00bbd3',
+                                    '#9b26af',
+                                    '#009587',
+                                    '#5f7c8a',
+                                ],
+                                hoverOffset: 4
+                            }]
+                        }
+                    });
+                </script>
+
+                <script>
+                    var ctx = document.getElementById('chartAngkatan').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: [
+                                <?php
+                                foreach ($angkatan as $key) {
+                                    echo "'" . $key->ANGKATAN . "',";
+                                }
+                                ?>
+                            ],
+                            datasets: [{
+                                data: [
+                                    <?php
+                                    foreach ($angkatan as $key) {
+                                        echo $key->JUMLAH . ',';
+                                    }
+                                    ?>
+                                ],
+                                backgroundColor: [
+                                    '#f34235',
+                                    '#3e50b4',
+                                    '#4bae4f',
+                                    '#fe9700',
+                                    '#e81d62',
+                                    '#785447',
+                                    '#9d9d9d',
+                                    '#feea3a',
+                                    '#00bbd3',
+                                    '#9b26af',
+                                    '#009587',
+                                    '#5f7c8a',
+                                ],
+                                hoverOffset: 4
+                            }]
+                        }
+>>>>>>> Stashed changes
+                    });
+                </script>
+
+                <script>
+<<<<<<< Updated upstream
+                    var ctx = document.getElementById('chartPeserta').getContext('2d');
+=======
+                    var ctx = document.getElementById('chartMateri').getContext('2d');
+>>>>>>> Stashed changes
+                    var myChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: [
+                                <?php
+<<<<<<< Updated upstream
+                                foreach ($peserta as $key) {
+                                    if ($key->IS_EKSTERNAL == 1) {
+                                        echo "'Eksternal',";
+                                    } else {
+                                        echo "'Internal',";
+=======
+                                foreach ($materi as $key) {
+                                    if ($key->JAWAB_1 == 5) {
+                                        echo "'Sangat Menarik',";
+                                    } else if ($key->JAWAB_1 == 4) {
+                                        echo "'Manarik',";
+                                    } else if ($key->JAWAB_1 == 3) {
+                                        echo "'Biasa',";
+                                    } else if ($key->JAWAB_1 == 2) {
+                                        echo "'Kurang Menarik',";
+                                    } else if ($key->JAWAB_1 == 1) {
+                                        echo "'Sangat Kurang Menarik',";
+>>>>>>> Stashed changes
+                                    }
+                                }
+                                ?>
+                            ],
+                            datasets: [{
+                                data: [
+                                    <?php
+<<<<<<< Updated upstream
+                                    foreach ($peserta as $key) {
+=======
+                                    foreach ($materi as $key) {
+>>>>>>> Stashed changes
+                                        echo $key->JUMLAH . ',';
+                                    }
+                                    ?>
+                                ],
+                                backgroundColor: [
+                                    <?php
+<<<<<<< Updated upstream
+                                    foreach ($peserta as $key) {
+                                        if ($key->IS_EKSTERNAL == 1) {
+                                            echo "'#5f7c8a',";
+                                        } else {
+                                            echo "'#3e50b4',";
+=======
+                                    foreach ($materi as $key) {
+                                        if ($key->JAWAB_1 == 5) {
+                                            echo "'#feea3a',";
+                                        } else if ($key->JAWAB_1 == 4) {
+                                            echo "'#00bbd3',";
+                                        } else if ($key->JAWAB_1 == 3) {
+                                            echo "'#9b26af',";
+                                        } else if ($key->JAWAB_1 == 2) {
+                                            echo "'#009587',";
+                                        } else if ($key->JAWAB_1 == 1) {
+                                            echo "'#5f7c8a',";
+>>>>>>> Stashed changes
+                                        }
+                                    }
+                                    ?>
+                                ],
+                                hoverOffset: 4
+                            }]
+                        }
+                    });
+                </script>
+
+                <script>
+<<<<<<< Updated upstream
                     var ctx = document.getElementById('chartProdi').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'doughnut',
@@ -544,6 +711,8 @@
                 </script>
 
                 <script>
+=======
+>>>>>>> Stashed changes
                     var ctx = document.getElementById('chartPemateri').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'doughnut',

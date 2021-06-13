@@ -33,7 +33,11 @@ private static $installed = array (
     array (
     ),
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     'reference' => 'f41bcd927c44ca7351ec1457fdf3ee586c2c5d89',
+=======
+    'reference' => '164a5545579f963d11a5c0792abb653f33bde96c',
+>>>>>>> Stashed changes
 =======
     'reference' => '164a5545579f963d11a5c0792abb653f33bde96c',
 >>>>>>> Stashed changes
@@ -58,7 +62,11 @@ private static $installed = array (
       array (
       ),
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       'reference' => 'f41bcd927c44ca7351ec1457fdf3ee586c2c5d89',
+=======
+      'reference' => '164a5545579f963d11a5c0792abb653f33bde96c',
+>>>>>>> Stashed changes
 =======
       'reference' => '164a5545579f963d11a5c0792abb653f33bde96c',
 >>>>>>> Stashed changes
