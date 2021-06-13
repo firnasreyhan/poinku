@@ -236,11 +236,6 @@ class DaftarEventController extends CI_Controller {
 
     public function print($idEvent)
     {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         //get data database
         $dataPresensi = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND STATUS = 1')->result();
         $dataPresensiRow = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND STATUS = 1')->num_rows();
@@ -301,40 +296,13 @@ class DaftarEventController extends CI_Controller {
             $where = array(
                 'EMAIL' => $dtEmail
             );
-=======
         if (!is_dir("assets/img/template_sertifikat/")) {
             mkdir("assets/img/template_sertifikat/", 0777, TRUE);
         }
->>>>>>> Stashed changes
-=======
-        if (!is_dir("assets/img/template_sertifikat/")) {
-            mkdir("assets/img/template_sertifikat/", 0777, TRUE);
-        }
->>>>>>> Stashed changes
-=======
-        if (!is_dir("assets/img/template_sertifikat/")) {
-            mkdir("assets/img/template_sertifikat/", 0777, TRUE);
-        }
->>>>>>> Stashed changes
-=======
-        if (!is_dir("assets/img/template_sertifikat/")) {
-            mkdir("assets/img/template_sertifikat/", 0777, TRUE);
-        }
->>>>>>> Stashed changes
-=======
-        if (!is_dir("assets/img/template_sertifikat/")) {
-            mkdir("assets/img/template_sertifikat/", 0777, TRUE);
-        }
->>>>>>> Stashed changes
 
         $config = ['upload_path' => './assets/img/template_sertifikat/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
         $this->upload->initialize($config);
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
             //ambil data presensi dengan sertifikat
             $dataPresensiBaruSertifikat = $this->db->query('SELECT * FROM presensi WHERE ID_EVENT ="'.$idEvent.'" AND EMAIL="'.$email.'" AND STATUS = 1')->result();
             
@@ -386,15 +354,6 @@ class DaftarEventController extends CI_Controller {
                 echo $this->email->print_debugger();
             }
         }    
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         if($this->upload->do_upload('TEMPLATE_SERTIFIKAT')){ 
 			$dataUpload     = $this->upload->data();
 			$poster         = base_url('assets/img/template_sertifikat/' . $dataUpload['file_name']);
@@ -559,19 +518,6 @@ class DaftarEventController extends CI_Controller {
                 }
             }  
         }  
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     }
 
 }
