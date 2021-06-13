@@ -2,6 +2,10 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class DaftarEventController extends CI_Controller {
 
     
@@ -252,10 +256,10 @@ class DaftarEventController extends CI_Controller {
         $update = $this->DaftarEventModel->updateTemplateSertifikat($poster, $idEvent);
         if ($update == 1) {
             //get data database
-            $dataPresensi = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = $idEvent AND STATUS = 1")->result();
-            $dataPresensiRow = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = $idEvent AND STATUS = 1")->num_rows();
-            $dataEvent = $this->db->query("SELECT * FROM event WHERE ID_EVENT = $idEvent")->result();
-            
+            $dataPresensi = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = 1")->result();
+            $dataPresensiRow = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = 1")->num_rows();
+            $dataEvent = $this->db->query("SELECT * FROM event WHERE ID_EVENT = '$idEvent'")->result();
+
             // perulangan berdasarkan data presensi
             for ($i=0; $i < $dataPresensiRow ; $i++) { 
                 $this->load->library('pdfgenerator');
@@ -301,7 +305,7 @@ class DaftarEventController extends CI_Controller {
                 file_put_contents($path_pdf, $resPdf);
         
                 //ambil data presensi yang baru
-                $dataPresensiBaru = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = $idEvent AND EMAIL= '$email' AND STATUS = 1")->result();
+                $dataPresensiBaru = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1")->result();
                 
                 //ambil email dari data presensi baru
                 foreach($dataPresensiBaru as $dtPresBr){
@@ -322,7 +326,7 @@ class DaftarEventController extends CI_Controller {
                 $this->db->update('presensi');
 
                 //ambil data presensi dengan sertifikat
-                $dataPresensiBaruSertifikat = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = $idEvent AND EMAIL= '$email' AND STATUS = 1")->result();
+                $dataPresensiBaruSertifikat = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1")->result();
                 
                 foreach($dataPresensiBaruSertifikat as $dtSer){
                     $sertifikat = $dtSer->SERTIFIKAT;
@@ -400,8 +404,10 @@ class DaftarEventController extends CI_Controller {
                     $mail->Body    = $this->load->view('template/emailSertifikat',$dataEmail,true);
                 
                     $mail->send();
-                    $this->session->set_tempdata('message', '<div class="alert alert-success" role="alert">Terkirim</div>', 1);
-                    redirect('daftarEvent/detail/'.$idEvent);
+                    if ($i == ($dataPresensiRow - 1)) {
+                        $this->session->set_tempdata('message', '<div class="alert alert-success" role="alert">Terkirim</div>', 1);
+                        redirect('daftarEvent/detail/'.$idEvent);
+                    }
                 } catch (Exception $e) {
                     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                 }
