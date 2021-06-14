@@ -62,6 +62,9 @@ $route['login'] = 'LoginController';
 $route['login/aksiLogin'] = 'LoginController/aksiLogin';
 $route['logout'] = 'LoginController/logout';
 
+$route['profil'] = 'LoginController/profil';
+$route['profilUpdate'] = 'LoginController/updateProfil';
+
 $route['dashboardAdmin'] = 'admin/DashboardAdminController';
 
 $route['aturan'] = 'admin/AturanController';

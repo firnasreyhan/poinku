@@ -17,6 +17,9 @@
                         <div class="card-body">
                             <form action="<?php echo site_url("poin/update"); ?>" enctype="multipart/form-data" method="post">
                                 <div class="modal-body">
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Jenis Kegiatan
+                                    </div>
                                     <div class="form-group">
                                         <select name="ID_JENIS" class="form-control" id="exampleFormControlSelect1">
                                             <?php
@@ -29,6 +32,9 @@
                                             }
                                             ?>
                                         </select>
+                                    </div>
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Lingkup
                                     </div>
                                     <div class="form-group">
                                         <select name="ID_LINGKUP" class="form-control" id="exampleFormControlSelect1">
@@ -43,6 +49,9 @@
                                             ?>
                                         </select>
                                     </div>
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Peran
+                                    </div>
                                     <div class="form-group">
                                         <select name="ID_PERAN" class="form-control" id="exampleFormControlSelect1">
                                             <?php
@@ -55,6 +64,9 @@
                                             }
                                             ?>
                                         </select>
+                                    </div>
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Poin
                                     </div>
                                     <div class="form-group">
                                         <input value="<?php echo $detail_poin[0]->POIN; ?>" type="number" class="form-control" name="POIN" placeholder="Poin" required>

@@ -17,6 +17,9 @@
                         <div class="card-body">
                             <form action="<?php echo site_url("lingkupkegiatan/update"); ?>" enctype="multipart/form-data" method="post">
                                 <div class="modal-body">
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Lingkup
+                                    </div>
                                     <div class="form-group">
                                         <input value="<?php echo $detail_lingkup_kegiatan[0]->LINGKUP; ?>" type="text" class="form-control" name="LINGKUP" placeholder="Jneis Kegiatan" required>
                                     </div>

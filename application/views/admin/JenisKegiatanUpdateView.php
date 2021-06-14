@@ -17,6 +17,9 @@
                         <div class="card-body">
                             <form action="<?php echo site_url("jeniskegiatan/update"); ?>" enctype="multipart/form-data" method="post">
                                 <div class="modal-body">
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Jenis Kegiatan
+                                    </div>
                                     <div class="form-group">
                                         <input value="<?php echo $detail_jenis_kegiatan[0]->JENIS; ?>" type="text" class="form-control" name="JENIS" placeholder="Jneis Kegiatan" required>
                                     </div>

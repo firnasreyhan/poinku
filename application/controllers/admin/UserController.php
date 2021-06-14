@@ -88,19 +88,21 @@ class UserController extends CI_Controller
 
     public function detail($param)
     {
-        $data['detail_jenis_kegiatan'] = $this->JenisKegiatanModel->getDetail(['ID_JENIS' => $param]);
+        $data['user'] = $this->UserModel->getDetail(['EMAIL' => $param]);
+        $data['role'] = $this->UserModel->getROles();
+
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
         $this->load->view('template/topbar');
-        $this->load->view('admin/JenisKegiatanUpdateView', $data);
+        $this->load->view('admin/UserUpdateView', $data);
         $this->load->view('template/footer');
     }
 
     public function update()
     {
         $data = $_POST;
-        $this->JenisKegiatanModel->update($data);
-        redirect('jeniskegiatan');
+        $this->UserModel->update($data);
+        redirect('user');
     }
 }
 

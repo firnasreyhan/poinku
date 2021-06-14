@@ -17,6 +17,9 @@
                         <div class="card-body">
                             <form action="<?php echo site_url("kriteria/update"); ?>" enctype="multipart/form-data" method="post">
                                 <div class="modal-body">
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Jenis Kegiatan
+                                    </div>
                                     <div class="form-group">
                                         <select name="ID_JENIS" class="form-control" id="exampleFormControlSelect1">
                                             <?php
@@ -30,6 +33,9 @@
                                             ?>
                                         </select>
                                     </div>
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Lingkup
+                                    </div>
                                     <div class="form-group">
                                         <select name="ID_LINGKUP" class="form-control" id="exampleFormControlSelect1">
                                             <?php
@@ -42,6 +48,9 @@
                                             }
                                             ?>
                                         </select>
+                                    </div>
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Jumlah
                                     </div>
                                     <div class="form-group">
                                         <input value="<?php echo $detail_kriteria[0]->JUMLAH; ?>" type="number" class="form-control" name="JUMLAH" placeholder="Jumlah" required>

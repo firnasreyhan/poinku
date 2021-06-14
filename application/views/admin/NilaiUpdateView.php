@@ -17,8 +17,14 @@
                         <div class="card-body">
                             <form action="<?php echo site_url("nilai/update"); ?>" enctype="multipart/form-data" method="post">
                                 <div class="modal-body">
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Nilai
+                                    </div>
                                     <div class="form-group">
                                         <input value="<?php echo $detail_nilai[0]->NILAI; ?>" type="text" class="form-control" name="NILAI" placeholder="Jneis Kegiatan" required>
+                                    </div>
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Poin Minimal
                                     </div>
                                     <div class="form-group">
                                         <input value="<?php echo $detail_nilai[0]->POIN_MINIMAL; ?>" type="text" class="form-control" name="POIN_MINIMAL" placeholder="Jneis Kegiatan" required>
