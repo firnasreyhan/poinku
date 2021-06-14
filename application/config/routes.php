@@ -125,7 +125,7 @@ $route['aturan/ajxGetData'] = 'admin/AturanController/ajxGetDataMaster';
 $route['poin/insert'] = 'admin/AturanController/insertPoin';
 $route['poin/delete'] = 'admin/AturanController/deletePoin';
 $route['aturan/poin/update/(:any)'] = 'admin/AturanController/detailPoin/$1';
-$route['poin/update'] = 'admin/AturanController/update';
+$route['poin/update'] = 'admin/AturanController/updatePoin';
 
 $route['aturan/nilai/kriteria/(:any)'] = 'admin/AturanController/kriteria/$1';
 $route['kriteria/delete'] = 'admin/AturanController/deleteKriteria';

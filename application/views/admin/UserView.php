@@ -59,7 +59,7 @@
                                 <td><?php echo $key->NAMA; ?></td>
                                 <td><?php echo $key->TELEPON; ?></td>
                                 <td style="text-align:right">
-                                    <a href="<?php echo site_url("user/detail/" . $key->EMAIL); ?>" class="btn btn-warning btn-icon-split">
+                                    <a href="<?php echo site_url("user/update/" . $key->EMAIL); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-edit"></i>
                                         </span>
