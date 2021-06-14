@@ -1,8 +1,9 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class DaftarEventModel extends CI_Model {
+class DaftarEventModel extends CI_Model
+{
 
     public function __construct()
     {
@@ -47,7 +48,7 @@ class DaftarEventModel extends CI_Model {
         $this->db->where('ID_EVENT', $param);
         return $this->db->get()->result();
     }
-    
+
     public function getEventUser($param)
     {
         $this->db->select('*');
@@ -105,5 +106,3 @@ class DaftarEventModel extends CI_Model {
 }
 
 /* End of file AturanModel.php */
-
-?>

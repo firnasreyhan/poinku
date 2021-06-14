@@ -14,22 +14,4 @@ class KontenModel extends CI_Model
     {
         return $this->db->insert('konten', $param);
     }
-
-    // public function delete($param)
-    // {
-    //     return $this->db->where('ID_JENIS', $param['ID_JENIS'])->delete('jenis');
-    // }
-
-    // public function getDetail($param)
-    // {
-    //     return $this->db->where('ID_JENIS', $param['ID_JENIS'])->get('jenis')->result();
-    // }
-
-    // public function update($param)
-    // {
-    //     return $this->db->where('ID_JENIS', $param['ID_JENIS'])->update('jenis', $param);
-    // }
 }
-
-/* End of file KontenModel.php */
-?>

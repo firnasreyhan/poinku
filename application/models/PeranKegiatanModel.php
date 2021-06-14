@@ -37,4 +37,3 @@ class PeranKegiatanModel extends CI_Model
 }
     
     /* End of file PeranKegiatanModel.php */
-?>

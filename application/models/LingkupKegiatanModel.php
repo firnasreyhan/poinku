@@ -1,8 +1,9 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class LingkupKegiatanModel extends CI_Model {
+class LingkupKegiatanModel extends CI_Model
+{
 
     public function getAll()
     {
@@ -33,9 +34,4 @@ class LingkupKegiatanModel extends CI_Model {
     {
         return $this->db->where('ID_LINGKUP', $param['ID_LINGKUP'])->update('lingkup', $param);
     }
-
 }
-
-/* End of file LingkupKegiatanModel.php */
-
-?>

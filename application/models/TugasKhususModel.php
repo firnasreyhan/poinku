@@ -14,7 +14,7 @@ class TugasKhususModel extends CI_Model
         $this->db->join('peran', 'tugas_khusus.ID_PERAN = peran.ID_PERAN');
         $this->db->where('tugas_khusus.STATUS_VALIDASI', '0');
         return $this->db->get()->result();
-        
+
         // return $this->db->where('NRP =', $param['NRP'])->get('tugas_khusus')->result();
     }
 
@@ -32,7 +32,7 @@ class TugasKhususModel extends CI_Model
     {
         return $this->db->where('NRP =', $param['NRP'])->where('ID_JENIS =', $param['ID_JENIS'])->order_by("TANGGAL_DATA", "desc")->get('view_tugas_khusus')->result();
     }
-    
+
     public function getDetail($param)
     {
         return $this->db->where('ID_TUGAS_KHUSUS =', $param['ID_TUGAS_KHUSUS'])->get('view_tugas_khusus')->row_array();
@@ -57,7 +57,7 @@ class TugasKhususModel extends CI_Model
     {
         return $this->db->where('NRP =', $param['NRP'])->order_by("JENIS", "ASC")->get('view_jenis_tugas_khusus')->result();
     }
-    
+
     public function getKriteriaTugasKhusus($param)
     {
         return $this->db->where('NRP =', $param['NRP'])->order_by("ID_JENIS", "ASC")->get('view_kriteria_tugas_khusus')->result();
@@ -71,16 +71,6 @@ class TugasKhususModel extends CI_Model
         return  $insert_id;
         // return $this->db->insert('tugas_khusus', $param);
     }
-
-    // public function delete($param)
-    // {
-    //     return $this->db->where('ID_JENIS', $param['ID_JENIS'])->delete('jenis');
-    // }
-
-    // public function getDetail($param)
-    // {
-    //     return $this->db->where('ID_JENIS', $param['ID_JENIS'])->get('jenis')->result();
-    // }
 
     public function update($param)
     {
@@ -97,7 +87,8 @@ class TugasKhususModel extends CI_Model
         return $this->db->set($data)->where($where)->update('tugas_khusus');
     }
 
-    public function detail($idTugasKhusus){
+    public function detail($idTugasKhusus)
+    {
         $this->db->select('*');
         $this->db->from('tugas_khusus');
         $this->db->join('mahasiswa', 'tugas_khusus.NRP = mahasiswa.NRP');
@@ -115,4 +106,3 @@ class TugasKhususModel extends CI_Model
 }
 
 /* End of file TugasKhususModel.php */
-?>

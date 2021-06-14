@@ -40,6 +40,3 @@ class KriteriaModel extends CI_Model
         return $this->db->where('ID_KRITERIA', $param['ID_KRITERIA'])->update('kriteria', $param);
     }
 }
-
-/* End of file KriteriaModel.php */
-?>

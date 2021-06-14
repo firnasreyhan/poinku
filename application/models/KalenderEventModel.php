@@ -1,8 +1,9 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class KalenderEventModel extends CI_Model {
+class KalenderEventModel extends CI_Model
+{
 
     public function __construct()
     {
@@ -16,5 +17,3 @@ class KalenderEventModel extends CI_Model {
 }
 
 /* End of file AturanModel.php */
-
-?>
