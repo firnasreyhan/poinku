@@ -2,17 +2,18 @@
 
 use chriskacerguis\RestServer\RestController;
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Lingkup extends RestController {
+class Lingkup extends RestController
+{
 
-    
+
     public function __construct()
     {
         parent::__construct();
         $this->load->model('LingkupKegiatanModel');
     }
-    
+
 
     public function index_get()
     {
@@ -23,9 +24,6 @@ class Lingkup extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
-
 }
 
 /* End of file Lingkup.php */
-
-?>

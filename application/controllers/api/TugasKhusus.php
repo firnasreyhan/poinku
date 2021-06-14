@@ -2,9 +2,10 @@
 
 use chriskacerguis\RestServer\RestController;
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class TugasKhusus extends RestController {
+class TugasKhusus extends RestController
+{
 
     public function __construct()
     {
@@ -13,9 +14,8 @@ class TugasKhusus extends RestController {
         $this->load->model('KontenModel');
         $this->load->model('KegiatanModel');
         $this->load->model('PresensiModel');
-        
     }
-    
+
     public function index_post()
     {
         $param = $this->post();
@@ -29,7 +29,7 @@ class TugasKhusus extends RestController {
             'TANGGAL_KEGIATAN'    => $param['tanggal']
         );
         $id = $this->TugasKhususModel->insert($dataStore);
-        
+
         require $_SERVER['DOCUMENT_ROOT'] . '/poinku/vendor/autoload.php';
 
         $options = array(
@@ -46,8 +46,6 @@ class TugasKhusus extends RestController {
         $data['notif'] = 'tugas khusus';
         $pusher->trigger('my-channel', 'my-event', $data);
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'ID_TUGAS_KHUSUS' => $id], 200);
-        
-
     }
 
     public function konten_post()
@@ -75,7 +73,6 @@ class TugasKhusus extends RestController {
 
         $this->KegiatanModel->insert($dataStore);
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
-
     }
 
     public function buktiKonten_post()
@@ -112,7 +109,7 @@ class TugasKhusus extends RestController {
                 $config['source_image'] = $newPath . $gbr['file_name'];
                 $config['create_thumb'] = FALSE;
                 $config['maintain_ratio'] = true;
-                $config['quality']= '100%';
+                $config['quality'] = '100%';
                 // $config['width'] = 600;
                 // $config['height']= 400;
                 $config['new_image'] = $newPath . $gbr['file_name'];
@@ -129,7 +126,7 @@ class TugasKhusus extends RestController {
 
         $dataStore = array(
             'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
-            'BUKTI '            => $link 
+            'BUKTI '            => $link
         );
 
         $this->TugasKhususModel->update($dataStore);
@@ -150,7 +147,7 @@ class TugasKhusus extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
-    
+
     public function detail_get()
     {
         $param = $this->get();
@@ -202,7 +199,7 @@ class TugasKhusus extends RestController {
         );
 
         $poins = $this->TugasKhususModel->getTotalPoin($dataStore);
-        
+
         if ($poins['POIN'] != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'POIN' => $poins['POIN']], 200);
         } else {
@@ -218,14 +215,14 @@ class TugasKhusus extends RestController {
         );
 
         $data = $this->TugasKhususModel->getJenisTugasKhusus($dataStore);
-        
+
         if ($data != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
         } else {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
-    
+
     public function kriteriaTugasKhusus_get()
     {
         $param = $this->get();
@@ -234,7 +231,7 @@ class TugasKhusus extends RestController {
         );
 
         $data = $this->TugasKhususModel->getKriteriaTugasKhusus($dataStore);
-        
+
         if ($data != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
         } else {
@@ -244,5 +241,3 @@ class TugasKhusus extends RestController {
 }
 
 /* End of file TugasKhusus.php */
-
-?>

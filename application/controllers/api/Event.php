@@ -2,18 +2,19 @@
 
 use chriskacerguis\RestServer\RestController;
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Event extends RestController {
+class Event extends RestController
+{
 
-    
+
     public function __construct()
     {
         parent::__construct();
         $this->load->model('DaftarEventModel');
         $this->load->model('PresensiModel');
     }
-    
+
     public function index_get()
     {
         $data = $this->DaftarEventModel->getActiveEvent();
@@ -23,15 +24,15 @@ class Event extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
-    
+
     public function eventUser_get()
     {
         $param = $this->get();
-        
+
         $dataStore = array(
             'EMAIL'     => $param['email']
         );
-        
+
         $data = $this->DaftarEventModel->getEventUser($dataStore['EMAIL']);
         if ($data != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
@@ -70,7 +71,6 @@ class Event extends RestController {
         $pusher->trigger('my-channel', 'my-event', $data);
 
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
-
     }
 
     public function batal_post()
@@ -89,12 +89,12 @@ class Event extends RestController {
     public function presensi_get()
     {
         $param = $this->get();
-        
+
         $dataStore = array(
             'EMAIL'         => $param['email'],
             'ID_EVENT'     => $param['id']
         );
-        
+
         $data = $this->PresensiModel->getPresensi($dataStore);
         if ($data != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
@@ -102,15 +102,15 @@ class Event extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
-    
+
     public function detailEvent_get()
     {
         $param = $this->get();
-        
+
         $dataStore = array(
             'ID_EVENT'     => $param['id']
         );
-        
+
         $data = $this->DaftarEventModel->getDetail($dataStore['ID_EVENT']);
         if ($data != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
@@ -118,11 +118,11 @@ class Event extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
-    
+
     public function absen_put()
     {
         $param = $this->put();
-        
+
         $dataStore = array(
             'STATUS'             => 1
         );
@@ -132,15 +132,33 @@ class Event extends RestController {
             'ID_EVENT' => $param['id'],
         );
 
-        $data = $this->PresensiModel->update($where, $dataStore);
-        if ($data) {
-            $this->response(['status' => true, 'message' => 'Berhasil Absen'], 200);
+        $detailEvent = $this->DaftarEventModel->getDetail($where['ID_EVENT']);
+        if ($detailEvent != null) {
+            $dataTugasKhusus = array(
+                'NRP'         => $param['nrp'],
+                'ID_JENIS'    => $detailEvent[0]->ID_JENIS,
+                'ID_LINGKUP'    => $detailEvent[0]->ID_LINGKUP,
+                'ID_PERAN'    => 2,
+                'JUDUL'    => $detailEvent[0]->JUDUL,
+                'TANGGAL_KEGIATAN'    => $detailEvent[0]->TANGGAL_ACARA,
+                'STATUS_VALIDASI'    => 1,
+                'TANGGAL_VALIDASI'    => date('Y-m-d H:i:s'),
+            );
+
+            $id = $this->TugasKhususModel->insert($dataTugasKhusus);
+
+            if ($id != null) {
+                $data = $this->PresensiModel->update($where, $dataStore);
+                if ($data) {
+                    $this->response(['status' => true, 'message' => 'Berhasil Absen'], 200);
+                } else {
+                    $this->response(['status' => false, 'message' => 'Gagal Absen'], 200);
+                }
+            }
         } else {
-            $this->response(['status' => false, 'message' => 'Gagal Absen'], 200);
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
 }
 
 /* End of file Event.php */
-
-?>

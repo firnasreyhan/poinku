@@ -2,18 +2,18 @@
 
 use chriskacerguis\RestServer\RestController;
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Peran extends RestController {
+class Peran extends RestController
+{
 
-    
+
     public function __construct()
     {
         parent::__construct();
         $this->load->model('PeranKegiatanModel');
-        
     }
-    
+
 
     public function index_get()
     {
@@ -24,9 +24,6 @@ class Peran extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
-
 }
 
 /* End of file Peran.php */
-
-?>

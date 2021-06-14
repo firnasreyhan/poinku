@@ -9,12 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Master</title>
+    <title>Poinku</title>
 
-    
+
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    
-    
+
+
 
     <script>
         Pusher.logToConsole = true;
@@ -26,7 +26,7 @@
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function(data) {
-            if(data.notif == "tugas khusus"){
+            if (data.notif == "tugas khusus") {
                 xhr = $.ajax({
                     method: 'POST',
                     url: "<?php echo base_url() ?>/NotifikasiController/listNotifikasiAdmin",
@@ -34,7 +34,7 @@
                         $('.list-pemberitahuan').html(response);
                     }
                 })
-            }else if(data.notif == "event"){
+            } else if (data.notif == "event") {
                 xhr = $.ajax({
                     method: 'POST',
                     url: "<?php echo base_url() ?>/NotifikasiController/listNotifikasiEvent",
@@ -42,7 +42,7 @@
                         $('.list-pemberitahuan').html(response);
                     }
                 })
-            }else if(data.notif == "pengajuan"){
+            } else if (data.notif == "pengajuan") {
                 xhr = $.ajax({
                     method: 'PUT',
                     url: "<?php echo base_url() ?>/NotifikasiController/listNotifikasiPengajuan",
@@ -50,18 +50,16 @@
                         $('.list-pengajuan').html(response);
                     }
                 })
-            }else{
+            } else {
                 alert(data.notif);
             }
-            
+
         });
     </script>
 
     <!-- Custom fonts for this template -->
     <link href="<?php echo base_url('assets/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
@@ -73,10 +71,10 @@
     <link rel="icon" href="<?= base_url('assets/img/favicon/favicon-32x32.png'); ?>" sizes="32x32"> -->
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    
+
     <!-- Kalendar -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/calendar/css/dncalendar-skin.min.css">
-    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/calendar/css/dncalendar-skin.min.css">
+
 </head>
 
 <body id="page-top">
