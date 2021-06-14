@@ -35,8 +35,8 @@ class Mahasiswa extends RestController
         $dataStore = array(
             'NRP'           => $param['nrp'],
             'EMAIL'         => $param['email'],
-            'NAMA'         => $param['nama'],
             'ID_ATURAN'     => $param['aturan'],
+            'NAMA'         => $param['nama'],
             'PRODI'         => $param['prodi'],
             'ANGKATAN'      => $param['angkatan'],
             'TOKEN'      => $param['token']
@@ -91,5 +91,13 @@ class Mahasiswa extends RestController
 
         $this->MahasiswaModel->pengajuan($dataStore, $where);
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+    }
+
+    public function removeToken_put()
+    {
+        $param = $this->put();
+
+        $this->MahasiswaModel->removeToken($param['nrp']);
+        $this->response(['status' => true, 'message' => 'Berhasil logout'], 200);
     }
 }

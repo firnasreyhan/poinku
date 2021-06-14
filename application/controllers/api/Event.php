@@ -13,6 +13,7 @@ class Event extends RestController
         parent::__construct();
         $this->load->model('DaftarEventModel');
         $this->load->model('PresensiModel');
+        $this->load->model('TugasKhususModel');
     }
 
     public function index_get()
@@ -47,14 +48,12 @@ class Event extends RestController
 
         $dataStore = array(
             'EMAIL'         => $param['email'],
-            'NAMA'         => $param['nama'],
-            'ID_EVENT'     => $param['id'],
-            'IS_EKSTERNAL'     => 0
+            'ID_EVENT '     => $param['id']
         );
 
         $this->PresensiModel->insert($dataStore);
 
-        require $_SERVER['DOCUMENT_ROOT'] . '/poinku/vendor/autoload.php';
+        require $_SERVER['DOCUMENT_ROOT'] . '/new_poinku/vendor/autoload.php';
 
         $options = array(
             'cluster' => 'ap1',
@@ -160,5 +159,3 @@ class Event extends RestController
         }
     }
 }
-
-/* End of file Event.php */

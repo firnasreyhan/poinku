@@ -38,7 +38,7 @@ class Aturan extends RestController
         }
     }
 
-    public function aturanAktif_get()
+    public function aturanAKtif_get()
     {
         $param = $this->get();
         $dataStore = array(

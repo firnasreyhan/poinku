@@ -22,5 +22,3 @@ class Jenis extends RestController
         }
     }
 }
-    
-    /* End of file Jenis.php */

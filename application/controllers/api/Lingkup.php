@@ -25,5 +25,3 @@ class Lingkup extends RestController
         }
     }
 }
-
-/* End of file Lingkup.php */
