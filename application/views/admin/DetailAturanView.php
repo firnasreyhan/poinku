@@ -3,8 +3,8 @@
 
     <!-- Page Heading -->
     <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4"> -->
-        <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan')?>"><i class="fas fa-chevron-left"></i></a> <?php echo $tahun . ' - ' . $keterangan; ?></h1>
-        &nbsp;
+    <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan') ?>"><i class="fas fa-chevron-left"></i></a> <?php echo $tahun . ' - ' . $keterangan; ?></h1>
+    &nbsp;
     <!-- </div> -->
     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
         For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
@@ -243,7 +243,7 @@
                                                 <td><?php echo $key->NAMA; ?></td>
                                                 <td><?php echo $key->PRODI; ?></td>
                                                 <td><?php echo $key->ANGKATAN; ?></td>
-                                                <td><?php 
+                                                <td><?php
                                                     if ($key->STATUS == null) {
                                                         echo "<span class='badge badge-pill badge-warning'>Belum Melakukan Pengajuan Validasi</span>";
                                                     } else {
@@ -260,7 +260,7 @@
                                                 </td>
                                             </tr>
                                         <?php
-                                        $no++;
+                                            $no++;
                                         }
                                         ?>
                                     </tbody>
@@ -373,22 +373,22 @@
                     <div class="form-group">
                         <select class="form-control" name="ID_ATURAN">
                             <option value="">-- Pilih Aturan --</option>
-                            <?php 
-                                foreach($aturan as $row){
+                            <?php
+                            foreach ($aturan as $row) {
                             ?>
-                            <option value="<?php echo $row->ID_ATURAN?>">
-                            <?php 
-                                $kategori = null;
-                                if ($row->KATEGORI == 0) {
-                                    $kategori = "Reguler";
-                                } else {
-                                    $kategori = "Profesional";
-                                }
+                                <option value="<?php echo $row->ID_ATURAN ?>">
+                                    <?php
+                                    $kategori = null;
+                                    if ($row->KATEGORI == 0) {
+                                        $kategori = "Reguler";
+                                    } else {
+                                        $kategori = "Profesional";
+                                    }
 
-                                echo $row->TAHUN." / ".$kategori;
-                            ?>
-                            </option>
-                            <?php }?>
+                                    echo $row->TAHUN . " / " . $kategori;
+                                    ?>
+                                </option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
@@ -425,25 +425,25 @@
 
     //MultipleItem
     $('#downloadMultiple').click(function() {
-        const dnIds = $('.checkItem:checkbox:checked').map((_,elm) => elm.value).get()
+        const dnIds = $('.checkItem:checkbox:checked').map((_, elm) => elm.value).get()
         $('#INPUT_NRP').val(dnIds.toString())
         console.log(dnIds);
     })
-    $('#checkAll').change(function(){
+    $('#checkAll').change(function() {
         const isChecked = $(this).prop('checked')
-        if(isChecked){
+        if (isChecked) {
             $('.checkItem').prop('checked', true)
-        }else{
+        } else {
             $('.checkItem').prop('checked', false)
         }
         buttonMultipleAvailable()
     })
-    $('.checkItem').change(function(){
+    $('.checkItem').change(function() {
         buttonMultipleAvailable()
     })
     const buttonMultipleAvailable = () => {
-        const isChecked             = $('.checkItem:checkbox:checked').prop('checked')
-        if(isChecked)
+        const isChecked = $('.checkItem:checkbox:checked').prop('checked')
+        if (isChecked)
             $('#downloadMultiple').attr('disabled', false)
         else
             $('#downloadMultiple').attr('disabled', true)

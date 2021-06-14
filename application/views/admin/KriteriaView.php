@@ -2,11 +2,11 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <?php if(!empty($kriteria[0]->ID_ATURAN)){?>
-        <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan/detail/'.$kriteria[0]->ID_ATURAN)?>"><i class="fas fa-chevron-left"></i></a> Kriteria Penilaian</h1>
-    <?php }else{ ?>
-        <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan')?>"><i class="fas fa-chevron-left"></i></a> Kriteria Penilaian</h1>
-    <?php }?>
+    <?php if (!empty($kriteria[0]->ID_ATURAN)) { ?>
+        <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan/detail/' . $kriteria[0]->ID_ATURAN) ?>"><i class="fas fa-chevron-left"></i></a> Kriteria Penilaian</h1>
+    <?php } else { ?>
+        <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan') ?>"><i class="fas fa-chevron-left"></i></a> Kriteria Penilaian</h1>
+    <?php } ?>
     &nbsp;
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -124,7 +124,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" class="form-control" name="ID_KRITERIA" id="INPUT_ID_KRITERIA">
-                    <input type="hidden" class="form-control" name="ID_NILAI" value="<?php echo $kriteria[0]->ID_NILAI?>">
+                    <input type="hidden" class="form-control" name="ID_NILAI" value="<?php echo $kriteria[0]->ID_NILAI ?>">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-primary">Iya</button>
                 </div>

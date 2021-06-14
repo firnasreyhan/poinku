@@ -2,8 +2,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('jeniskegiatan')?>"><i class="fas fa-chevron-left"></i></a> Update Jenis Kegiatan</h1>
-    &nbsp;
+                    <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('jeniskegiatan') ?>"><i class="fas fa-chevron-left"></i></a> Update Jenis Kegiatan</h1>
+                    &nbsp;
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -23,7 +23,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <input value="<?php echo $detail_jenis_kegiatan[0]->ID_JENIS; ?>" type="hidden" class="form-control" name="ID_JENIS" placeholder="Keterangan" id="INPUT_ID_JENIS">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                    <a class="btn btn-secondary" href="<?php echo site_url('jeniskegiatan') ?>">Batal</a>
+                                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button> -->
                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                             </form>

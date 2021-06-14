@@ -2,9 +2,9 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan/detail/'.$detail_nilai[0]->ID_ATURAN)?>"><i class="fas fa-chevron-left"></i></a> Update Nilai</h1>
-    &nbsp;
-                    
+                    <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan/detail/' . $detail_nilai[0]->ID_ATURAN) ?>"><i class="fas fa-chevron-left"></i></a> Update Nilai</h1>
+                    &nbsp;
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -27,7 +27,8 @@
                                 <div class="modal-footer">
                                     <input value="<?php echo $detail_nilai[0]->ID_NILAI; ?>" type="hidden" class="form-control" name="ID_NILAI">
                                     <input value="<?php echo $detail_nilai[0]->ID_ATURAN; ?>" type="hidden" class="form-control" name="ID_ATURAN">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                    <a class="btn btn-secondary" href="<?php echo site_url('aturan/detail/' . $detail_nilai[0]->ID_ATURAN) ?>">Batal</a>
+                                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button> -->
                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                             </form>
