@@ -73,6 +73,7 @@ class UserController extends CI_Controller
         $this->email->message($msg);
 
         if ($this->email->send()) {
+            $this->session->set_tempdata('userView', '<div class="alert alert-success" role="alert">Berhasil menambah user</div>', 1);
             redirect('user');
         } else {
             echo 'error';
@@ -83,6 +84,7 @@ class UserController extends CI_Controller
     {
         $data = $_POST;
         $this->UserModel->delete($data);
+        $this->session->set_tempdata('userView', '<div class="alert alert-danger" role="alert">Berhasil menghapus user</div>', 1);
         redirect('user');
     }
 

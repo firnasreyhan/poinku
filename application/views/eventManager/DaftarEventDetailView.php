@@ -18,11 +18,6 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Data Event</h6>
                                 </div>
                                 <div class="col-6">
-                                    <!-- <a title="Hapus Event" data-toggle="modal" data-target="#mdlDelete" data-id="<?php echo $data->ID_EVENT ?>" class="btn btn-danger btn-icon-split mdlDelete">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </a> -->
                                     <a data-toggle="modal" data-target="#mdlSertifikat" style="float:right;" class="btn btn-primary btn-icon-split mdlSertifikat">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-paper-plane"></i>
@@ -237,6 +232,7 @@
                                             <th>Email</th>
                                             <th>NAMA</th>
                                             <th>Kehadiran</th>
+                                            <th>Kuesioner</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -245,6 +241,7 @@
                                             <th>Email</th>
                                             <th>NAMA</th>
                                             <th>Kehadiran</th>
+                                            <th>Kuesioner</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -261,6 +258,19 @@
                                                     } else {
                                                         echo "<span class='badge badge-pill badge-success'>Hadir</span>";
                                                     } ?></td>
+                                                <td style="text-align:right">
+                                                    <?php
+                                                    if ($key->STATUS == "1") {
+                                                    ?>
+                                                        <a href="<?php echo site_url("daftarEvent/detailKuesioner/" . $detail_event[0]->ID_EVENT . '-' . $key->EMAIL); ?>" class="btn btn-warning btn-icon-split">
+                                                            <span class="icon text-white-50">
+                                                                <i class="fas fa-external-link-alt"></i>
+                                                            </span>
+                                                        </a>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </td>
                                             </tr>
                                         <?php
                                             $no++;
@@ -271,7 +281,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.container-fluid -->
+                </div>
+                <!-- /.container-fluid -->
 
                 </div>
                 <!-- End of Main Content -->

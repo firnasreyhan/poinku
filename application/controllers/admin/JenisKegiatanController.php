@@ -37,6 +37,7 @@ class JenisKegiatanController extends CI_Controller {
     {
         $data = $_POST;
         $this->JenisKegiatanModel->insert($data);
+        $this->session->set_tempdata('jenisKegiatanView', '<div class="alert alert-success" role="alert">Berhasil menambah jenis kegiatan</div>', 1);
         redirect('jeniskegiatan');
     }
 
@@ -44,6 +45,7 @@ class JenisKegiatanController extends CI_Controller {
     {
         $data = $_POST;
         $this->JenisKegiatanModel->delete($data);
+        $this->session->set_tempdata('jenisKegiatanView', '<div class="alert alert-danger" role="alert">Berhasil menghapus jenis kegiatan</div>', 1);
         redirect('jeniskegiatan');
     }
 
@@ -61,6 +63,7 @@ class JenisKegiatanController extends CI_Controller {
 	{
         $data = $_POST;
         $this->JenisKegiatanModel->update($data);
+        $this->session->set_tempdata('jenisKegiatanView', '<div class="alert alert-warning" role="alert">Berhasil mengubah jenis kegiatan</div>', 1);
         redirect('jeniskegiatan');
 	}
 

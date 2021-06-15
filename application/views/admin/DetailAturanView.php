@@ -2,6 +2,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
+    <?php
+    // if ($this->session->flashdata('message')) {
+    echo $this->session->tempdata('detailAturanView');
+    // }
+    // $this->session->sess_destroy(); 
+    ?>
     <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4"> -->
     <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan') ?>"><i class="fas fa-chevron-left"></i></a> <?php echo $tahun . ' - ' . $keterangan; ?></h1>
     &nbsp;

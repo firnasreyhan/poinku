@@ -76,7 +76,7 @@ class LoginController extends CI_Controller
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('admin/ProfilView', $data);
+		$this->load->view('ProfilView', $data);
 		$this->load->view('template/footer');
 	}
 

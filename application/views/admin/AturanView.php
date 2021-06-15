@@ -2,6 +2,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
+    <?php
+    // if ($this->session->flashdata('message')) {
+    echo $this->session->tempdata('aturanView');
+    // }
+    // $this->session->sess_destroy(); 
+    ?>
     <h1 class="h3 mb-2 text-gray-800">Aturan</h1>
     &nbsp;
     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.

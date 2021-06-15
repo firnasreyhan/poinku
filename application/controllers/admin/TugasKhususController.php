@@ -59,6 +59,7 @@ class TugasKhususController extends CI_Controller {
         );
 
         $this->load->view('notifikasi/NotifikasiAccTugasKhususView', $dataAccTugasKhususNotif);
+        $this->session->set_tempdata('tugasKhususView', '<div class="alert alert-success" role="alert">Berhasil validasi tugas khusus</div>', 1);
         redirect('tugaskhusus');
     }
     
@@ -86,6 +87,7 @@ class TugasKhususController extends CI_Controller {
         );
 
         $this->load->view('notifikasi/NotifikasiTolakTugasKhususView', $dataTolakTugasKhususNotif);
+        $this->session->set_tempdata('tugasKhususView', '<div class="alert alert-danger" role="alert">Berhasil menolak tugas khusus</div>', 1);
         redirect('tugaskhusus');
     }
     

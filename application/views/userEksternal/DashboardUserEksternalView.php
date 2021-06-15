@@ -8,7 +8,7 @@
         foreach ($event as $data) {
         ?>
             <div class="col-xl-3 col-md-6 mb-3">
-                <a href="<?php echo site_url("detailKegiatan/".$data->ID_EVENT ); ?>" style="text-decoration:none">
+                <a href="<?php echo site_url("detailKegiatan/" . $data->ID_EVENT); ?>" style="text-decoration:none">
                     <div class="card shadow h-100">
                         <img src="<?php echo $data->POSTER; ?>">
                         <div class="card-body">
@@ -33,7 +33,8 @@
         }
         ?>
     </div>
-    <!-- /.container-fluid -->
+</div>
+<!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->

@@ -2,6 +2,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
+    <?php
+    // if ($this->session->flashdata('message')) {
+    echo $this->session->tempdata('peranKegiatanView');
+    // }
+    // $this->session->sess_destroy(); 
+    ?>
     <h1 class="h3 mb-2 text-gray-800">Peran Kegiatan</h1>
     &nbsp;
 

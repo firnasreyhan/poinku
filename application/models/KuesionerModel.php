@@ -10,6 +10,11 @@ class KuesionerModel extends CI_Model
         return $this->db->insert('kuesioner', $param);
     }
 
+    public function getDetail($param)
+    {
+        return $this->db->where($param)->get('kuesioner')->result();
+    }
+
     public function getMateri($param)
     {
         return $this->db->query("SELECT JAWAB_1, COUNT(JAWAB_1) AS 'JUMLAH' FROM kuesioner WHERE ID_EVENT = '$param' GROUP BY JAWAB_1 ORDER BY JAWAB_1 DESC")->result();

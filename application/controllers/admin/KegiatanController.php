@@ -58,6 +58,7 @@ class KegiatanController extends CI_Controller {
         );
 
         $this->load->view('notifikasi/NotifikasiAccKegiatanView', $dataAccKegiatanNotif);
+        $this->session->set_tempdata('kegiatanView', '<div class="alert alert-success" role="alert">Berhasil validasi kegiatan</div>', 1);
         redirect('kegiatan');
     }
     
@@ -85,6 +86,7 @@ class KegiatanController extends CI_Controller {
         );
 
         $this->load->view('notifikasi/NotifikasiTolakKegiatanView', $dataTolakKegiatanNotif);
+        $this->session->set_tempdata('kegiatanView', '<div class="alert alert-danger" role="alert">Berhasil menolak kegiatan</div>', 1);
         redirect('kegiatan');
     }
     

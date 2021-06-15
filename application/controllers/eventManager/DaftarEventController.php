@@ -135,6 +135,7 @@ class DaftarEventController extends CI_Controller {
 
         $this->DaftarEventModel->update($dataQR, $idEvent);
  
+        $this->session->set_tempdata('daftarEventView', '<div class="alert alert-success" role="alert">Berhasil menambah event</div>', 1);
         redirect('daftarEvent');
     }
 
@@ -173,11 +174,29 @@ class DaftarEventController extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+    public function detailKuesioner($param)
+    {
+        $idEvent = substr($param, 0, strpos($param, '-'));
+        $email = substr($param, strpos($param, '-') + 1);
+
+        $where = array(
+            'EMAIL'         => $email,
+            'ID_EVENT'      => $idEvent
+        );
+
+        $data['kuesioner'] = $this->KuesionerModel->getDetail($where);
+
+        $this->load->view('template/header');
+		$this->load->view('template/sidebar');
+		$this->load->view('template/topbar');
+        $this->load->view('eventManager/DetailKuesionerView', $data);
+		$this->load->view('template/footer');
+    }
+
     public function delete(){
         $idEvent = $this->input->post('IDEVENT');
-
         $this->DaftarEventModel->delete($idEvent);
-        
+        $this->session->set_tempdata('daftarEventView', '<div class="alert alert-danger" role="alert">Berhasil menghapus event</div>', 1);
         redirect('daftarEvent');
     }
 
@@ -235,6 +254,7 @@ class DaftarEventController extends CI_Controller {
             $this->DaftarEventModel->update($dataPoster, $idEvent);
         }
 
+        $this->session->set_tempdata('daftarEventView', '<div class="alert alert-warning" role="alert">Berhasil mengubah event</div>', 1);
         redirect('daftarEvent');
     }
 

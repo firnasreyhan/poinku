@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="EMAIL" placeholder="Email" required>
                                 </div>
-                                <br/>
+                                <br />
                                 <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
                                     Bagaimana tanggapan Anda tentang materi pada kegiatan ini?
                                 </div>
@@ -157,7 +157,7 @@
                                         Sangat Kurang
                                     </label>
                                 </div>
-                                <br/>
+                                <br />
                                 <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
                                     Saran
                                 </div>
@@ -178,8 +178,9 @@
 
         </div>
     </div>
-    &nbsp;
-    <!-- /.container-fluid -->
+</div>
+&nbsp;
+<!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->
