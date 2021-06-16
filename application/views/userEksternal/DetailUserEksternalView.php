@@ -56,10 +56,16 @@
                             <div class="text-md text-dark">
                                 <?php echo $detail_event[0]->DESKRIPSI; ?>
                             </div>
-                            <hr />
-                            <a data-toggle="modal" data-target="#mdlAdd" class="btn btn-primary btn-icon-split" style="width: 100%;">
-                                <span class="text">Daftar</span>
-                            </a>
+                            <?php
+                            if ($detail_event[0]->PENDAFTAR < $detail_event[0]->KUOTA) {
+                            ?>
+                                <hr />
+                                <a data-toggle="modal" data-target="#mdlAdd" class="btn btn-primary btn-icon-split" style="width: 100%;">
+                                    <span class="text">Daftar</span>
+                                </a>
+                            <?php
+                            }
+                            ?>
                         </div>
 
                     </div>
