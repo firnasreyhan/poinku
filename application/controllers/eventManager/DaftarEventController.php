@@ -123,7 +123,7 @@ class DaftarEventController extends CI_Controller {
  
         $image_name = $idEvent.'_QR.png'; //buat name dari qr code sesuai dengan nim
         
-        $params['data'] = $idEvent;
+        $params['data'] = base_url('kuesionerKegiatan/'.$idEvent);
         $params['level'] = 'H';
         $params['size'] = 10;
         $params['savename'] = FCPATH.$config['imagedir'].$image_name; //simpan image QR CODE ke folder assets/images/
@@ -209,6 +209,8 @@ class DaftarEventController extends CI_Controller {
         $jenisEvent     = $this->input->post('JENISEVENT');
         $lingkup        = $this->input->post('LINGKUP');
         $judul          = $this->input->post('JUDUL');
+        $pembicara          = $this->input->post('PEMBICARA');
+        $lokasi          = $this->input->post('LOKASI');
         $deskripsi      = $this->input->post('DESKRIPSI');
         $tanggalAcara   = $this->input->post('TANGGALACARA');
         $jamMulai       = $this->input->post('JAMMULAI');
@@ -226,6 +228,8 @@ class DaftarEventController extends CI_Controller {
             'ID_JENIS'      => $jenisEvent,
             'ID_LINGKUP'    => $lingkup,
             'JUDUL'         => $judul,
+            'PEMBICARA'     => $pembicara,
+            'LOKASI'        => $lokasi,
             'DESKRIPSI'     => $deskripsi,
             'TANGGAL_ACARA' => $tanggalAcara,
             'JAM_MULAI'     => $jamMulai,
@@ -240,6 +244,8 @@ class DaftarEventController extends CI_Controller {
             'ID_JENIS'      => $jenisEvent,
             'ID_LINGKUP'    => $lingkup,
             'JUDUL'         => $judul,
+            'PEMBICARA'     => $pembicara,
+            'LOKASI'        => $lokasi,
             'DESKRIPSI'     => $deskripsi,
             'TANGGAL_ACARA' => $tanggalAcara,
             'JAM_MULAI'     => $jamMulai,

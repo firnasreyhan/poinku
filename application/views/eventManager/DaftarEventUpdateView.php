@@ -47,6 +47,18 @@
                                             <input type="text" class="form-control" name="JUDUL" value="<?php echo $data->JUDUL ?>" placeholder="Judul" required>
                                         </div>
                                         <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                            Pembicara
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="PEMBICARA" value="<?php echo $data->PEMBICARA ?>" placeholder="Pembicara" required>
+                                        </div>
+                                        <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                            Lokasi
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="LOKASI" value="<?php echo $data->LOKASI ?>" placeholder="Lokasi" required>
+                                        </div>
+                                        <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
                                             Deskripsi
                                         </div>
                                         <div class="form-group">

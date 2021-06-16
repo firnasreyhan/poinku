@@ -14,6 +14,8 @@ class Event extends RestController
         $this->load->model('DaftarEventModel');
         $this->load->model('PresensiModel');
         $this->load->model('TugasKhususModel');
+        $this->load->model('KegiatanModel');
+        
     }
 
     public function index_get()
@@ -148,6 +150,12 @@ class Event extends RestController
 
             if ($id != null) {
                 $data = $this->PresensiModel->update($where, $dataStore);
+
+                $dataKegiatan = array(
+                    'ID_TUGAS_KHUSUS'   => $id,
+                    'KETERANGAN'     => $detailEvent[0]->PEMBICARA
+                );
+                $this->KegiatanModel->insert($dataKegiatan);
                 if ($data) {
                     $this->response(['status' => true, 'message' => 'Berhasil Absen'], 200);
                 } else {
