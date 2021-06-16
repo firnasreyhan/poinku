@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'poinku',
+	'hostname' => 'kristomoyo.com',
+	'username' => 'poinku',
+	'password' => '1sampaipoinku',
+	'database' => 'poinku_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
