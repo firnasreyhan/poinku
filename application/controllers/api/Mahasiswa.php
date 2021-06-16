@@ -73,7 +73,7 @@ class Mahasiswa extends RestController
             'NRP' => $param['nrp']
         );
 
-        require $_SERVER['DOCUMENT_ROOT'] . '/new_poinku/vendor/autoload.php';
+        require $_SERVER['DOCUMENT_ROOT'] . '/poinku/vendor/autoload.php';
 
         $options = array(
             'cluster' => 'ap1',

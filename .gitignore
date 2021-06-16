@@ -30,3 +30,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/tests/
 /tests/results/
 uploads/event/sertifikat/7/171111079.pdf
+vendor/
+application/config/database.php
