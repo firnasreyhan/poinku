@@ -15,6 +15,7 @@ class Event extends RestController
         $this->load->model('PresensiModel');
         $this->load->model('TugasKhususModel');
         $this->load->model('KegiatanModel');
+        $this->load->model('KuesionerModel');
         
     }
 
