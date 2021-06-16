@@ -50,6 +50,7 @@ class Event extends RestController
 
         $dataStore = array(
             'EMAIL'         => $param['email'],
+            'NAMA'         => $param['nama'],
             'ID_EVENT '     => $param['id']
         );
 
@@ -117,6 +118,29 @@ class Event extends RestController
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $data], 200);
         } else {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
+    }
+
+    public function kuesioner_post()
+    {
+        $param = $this->post();
+
+        $kuesioner = array(
+            'EMAIL'     => $param['email'],
+            'ID_EVENT'  => $param['id'],
+            'JAWAB_1'   => $param['jwb1'],
+            'JAWAB_2'   => $param['jwb2'],
+            'JAWAB_3'   => $param['jwb3'],
+            'JAWAB_4'   => $param['jwb4'],
+            'JAWAB_5'   => $param['jwb5'],
+            'SARAN'     => $param['saran'],
+        );
+
+        $returnKuesioner =  $this->KuesionerModel->insert($kuesioner);
+        if ($returnKuesioner) {
+            $this->response(['status' => true, 'message' => 'Kuesioner berhasil ditambahkan'], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Kuesioner gagal ditambahkan'], 200);
         }
     }
 

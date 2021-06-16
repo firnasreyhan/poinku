@@ -7,7 +7,8 @@ class KuesionerModel extends CI_Model
 
     public function insert($param)
     {
-        return $this->db->insert('kuesioner', $param);
+        $this->db->insert('kuesioner', $param);
+        return $this->db->affected_rows() > 0;
     }
 
     public function getDetail($param)
