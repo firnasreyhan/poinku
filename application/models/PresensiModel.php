@@ -1,8 +1,9 @@
-<?php 
+<?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class PresensiModel extends CI_Model {
+class PresensiModel extends CI_Model
+{
 
     public function insert($param)
     {
@@ -13,7 +14,7 @@ class PresensiModel extends CI_Model {
     {
         return $this->db->where($param)->delete('presensi');
     }
-    
+
     public function getPresensi($param)
     {
         return $this->db->where($param)->get('presensi')->row_array();
@@ -21,9 +22,7 @@ class PresensiModel extends CI_Model {
 
     public function get($param)
     {
-        $this->db->select('mahasiswa.EMAIL, mahasiswa.NRP, presensi.STATUS');
         $this->db->from('presensi');
-        $this->db->join('mahasiswa', 'presensi.EMAIL = mahasiswa.EMAIL');
         $this->db->where('ID_EVENT', $param);
         return $this->db->get()->result();
     }
@@ -48,7 +47,7 @@ class PresensiModel extends CI_Model {
         $this->db->where('presensi.STATUS', '1');
         return $this->db->count_all_results();
     }
-    
+
 
     public function getTotalTidakHadir($param)
     {
@@ -62,5 +61,3 @@ class PresensiModel extends CI_Model {
 }
 
 /* End of file PresensiModel.php */
-
-?>

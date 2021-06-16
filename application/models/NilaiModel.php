@@ -1,8 +1,9 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class NilaiModel extends CI_Model {
+class NilaiModel extends CI_Model
+{
 
     public function __construct()
     {
@@ -33,9 +34,6 @@ class NilaiModel extends CI_Model {
     {
         return $this->db->where('ID_NILAI', $param['ID_NILAI'])->update('nilai', $param);
     }
-
 }
 
 /* End of file NilaiModel.php */
-
-?>

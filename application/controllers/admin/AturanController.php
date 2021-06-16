@@ -8,14 +8,14 @@ class AturanController extends CI_Controller
         public function __construct()
         {
                 parent::__construct();
-                if($this->session->userdata('role') != 'Admin'){
+                if ($this->session->userdata('role') != 'Admin') {
                         $this->session->sess_destroy();
-			redirect('login');
+                        redirect('login');
                 }
 
-                if($this->session->userdata('log') != TRUE){
+                if ($this->session->userdata('log') != TRUE) {
                         $this->session->sess_destroy();
-			redirect('login');
+                        redirect('login');
                 }
 
                 $this->load->model('AturanModel');
@@ -44,6 +44,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->AturanModel->insert($data);
+                $this->session->set_tempdata('aturanView', '<div class="alert alert-success" role="alert">Berhasil menambah aturan</div>', 1);
                 redirect('aturan');
         }
 
@@ -51,6 +52,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->NilaiModel->insert($data);
+                $this->session->set_tempdata('detailAturanView', '<div class="alert alert-success" role="alert">Berhasil menambah nilai</div>', 1);
                 redirect('aturan/detail/' . $data['ID_ATURAN']);
         }
 
@@ -58,6 +60,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->PoinModel->insertBatch($data['FORM']);
+                $this->session->set_tempdata('detailAturanView', '<div class="alert alert-success" role="alert">Berhasil menambah poin</div>', 1);
                 redirect('aturan/detail/' . $data['FORM'][0]['ID_ATURAN']);
         }
 
@@ -65,6 +68,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->KriteriaModel->insertBatch($data['FORM']);
+                $this->session->set_tempdata('kriteriaView', '<div class="alert alert-success" role="alert">Berhasil menambah kriteria</div>', 1);
                 redirect('aturan/nilai/kriteria/' . $data['FORM'][0]['ID_NILAI']);
         }
 
@@ -89,7 +93,7 @@ class AturanController extends CI_Controller
                 $data['jenis'] = $this->JenisKegiatanModel->get();
                 $data['lingkup'] = $this->LingkupKegiatanModel->get();
                 $data['detail_kriteria'] = $this->KriteriaModel->getDetailKriteria(['ID_KRITERIA' => $param]);
-                
+
                 $this->load->view('template/header');
                 $this->load->view('template/sidebar');
                 $this->load->view('template/topbar');
@@ -101,6 +105,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->AturanModel->delete($data);
+                $this->session->set_tempdata('aturanView', '<div class="alert alert-danger" role="alert">Berhasil menghapus aturan</div>', 1);
                 redirect('aturan');
         }
 
@@ -108,6 +113,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->NilaiModel->delete($data);
+                $this->session->set_tempdata('detailAturanView', '<div class="alert alert-danger" role="alert">Berhasil manghapus nilai</div>', 1);
                 redirect('aturan/detail/' . $data['ID_ATURAN']);
         }
 
@@ -115,6 +121,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->PoinModel->delete($data);
+                $this->session->set_tempdata('detailAturanView', '<div class="alert alert-danger" role="alert">Berhasil menghapus poin</div>', 1);
                 redirect('aturan/detail/' . $data['ID_ATURAN']);
         }
 
@@ -122,6 +129,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->KriteriaModel->delete($data);
+                $this->session->set_tempdata('kriteriaView', '<div class="alert alert-danger" role="alert">Berhasil menghapus kriteria</div>', 1);
                 redirect('aturan/nilai/kriteria/' . $data['ID_NILAI']);
         }
 
@@ -135,7 +143,7 @@ class AturanController extends CI_Controller
 
                 $tahun = null;
                 $keterangan = null;
-                foreach($detail_aturan as $row){
+                foreach ($detail_aturan as $row) {
                         $tahun = $row->TAHUN;
                         $keterangan = $row->KETERANGAN;
                 }
@@ -151,7 +159,7 @@ class AturanController extends CI_Controller
                         'aturan' => $aturan
                 ];
 
-                echo '<script>console.log("'.$tahun.'")</script>';
+                echo '<script>console.log("' . $tahun . '")</script>';
                 $this->load->view('template/header');
                 $this->load->view('template/sidebar');
                 $this->load->view('template/topbar');
@@ -193,11 +201,12 @@ class AturanController extends CI_Controller
                 $this->load->view('admin/KriteriaUpdateView', $data);
                 $this->load->view('template/footer');
         }
-        
+
         public function kriteria($param)
         {
-                $data['nilai'] = $param;
                 $data['kriteria'] = $this->KriteriaModel->getDetail(['ID_NILAI' => $param]);
+                $data['nilai'] = $this->NilaiModel->getDetailNilai(['ID_NILAI' => $param]);
+
                 $this->load->view('template/header');
                 $this->load->view('template/sidebar');
                 $this->load->view('template/topbar');
@@ -216,6 +225,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->AturanModel->updateAturanAktif($data);
+                $this->session->set_tempdata('aturanView', '<div class="alert alert-success" role="alert">Berhasil mengaktifkan aturan</div>', 1);
                 redirect('aturan');
         }
 
@@ -223,6 +233,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->PoinModel->update($data);
+                $this->session->set_tempdata('detailAturanView', '<div class="alert alert-warning" role="alert">Berhasil mengubah poin</div>', 1);
                 redirect('aturan/detail/' . $data['ID_ATURAN']);
         }
 
@@ -230,6 +241,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->NilaiModel->update($data);
+                $this->session->set_tempdata('detailAturanView', '<div class="alert alert-warning" role="alert">Berhasil mengubah nilai</div>', 1);
                 redirect('aturan/detail/' . $data['ID_ATURAN']);
         }
 
@@ -237,6 +249,7 @@ class AturanController extends CI_Controller
         {
                 $data = $_POST;
                 $this->KriteriaModel->update($data);
+                $this->session->set_tempdata('kriteriaView', '<div class="alert alert-warning" role="alert">Berhasil mengubah kriteria</div>', 1);
                 redirect('aturan/nilai/kriteria/' . $data['ID_NILAI']);
         }
 
@@ -258,16 +271,11 @@ class AturanController extends CI_Controller
         public function UpdateMultipleMahasiswa()
         {
                 $data = $_POST;
-
                 $data['NRP'] = explode(',', $data['NRP']);
-
                 $this->MahasiswaModel->updateMultipleAturan($data);
-
-                
+                $this->session->set_tempdata('detailAturanView', '<div class="alert alert-warning" role="alert">Berhasil mengubah aturan mahasiswa</div>', 1);
                 redirect('aturan/detail/' . $data['ID_ATURAN_AKTIF']);
         }
 }
 
 /* End of file AturanController.php */
-
-?>

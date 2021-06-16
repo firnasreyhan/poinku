@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '3638db1f8884c51a936aa9af62bb73d53c75d09d',
+    'reference' => 'ab5b53403696a6c20ef51b17af4710d92424632c',
     'name' => 'codeigniter/framework',
   ),
   'versions' => 
@@ -53,7 +53,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '3638db1f8884c51a936aa9af62bb73d53c75d09d',
+      'reference' => 'ab5b53403696a6c20ef51b17af4710d92424632c',
     ),
     'doctrine/instantiator' => 
     array (
@@ -596,23 +596,9 @@ return $installed[0]['root'];
 
 
 
-
 public static function getRawData()
 {
-@trigger_error('getRawData only returns the first dataset loaded, which may not be what you expect. Use getAllRawData() instead which returns all datasets for all autoloaders present in the process.', E_USER_DEPRECATED);
-
 return self::$installed;
-}
-
-
-
-
-
-
-
-public static function getAllRawData()
-{
-return self::getInstalled();
 }
 
 

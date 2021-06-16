@@ -2,6 +2,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
+    <?php
+    // if ($this->session->flashdata('message')) {
+    echo $this->session->tempdata('userView');
+    // }
+    // $this->session->sess_destroy(); 
+    ?>
     <h1 class="h3 mb-2 text-gray-800">User</h1>
     &nbsp;
     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
@@ -59,7 +65,7 @@
                                 <td><?php echo $key->NAMA; ?></td>
                                 <td><?php echo $key->TELEPON; ?></td>
                                 <td style="text-align:right">
-                                    <a href="<?php echo site_url("user/detail/" . $key->EMAIL); ?>" class="btn btn-warning btn-icon-split">
+                                    <a href="<?php echo site_url("user/update/" . $key->EMAIL); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-edit"></i>
                                         </span>
@@ -108,16 +114,16 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" name="TELEPON" placeholder="Telepon" required>
-                        <input type="hidden" class="form-control" name="PASSWORD" value="<?php echo substr(md5(time()), 0, 7);?>" required>
+                        <input type="hidden" class="form-control" name="PASSWORD" value="<?php echo substr(md5(time()), 0, 7); ?>" required>
                     </div>
                     <div class="form-group">
                         <select class="form-control" name="ID_ROLE">
                             <option value="">-- Pilih Role --</option>
-                            <?php 
-                                foreach($roles as $row){
+                            <?php
+                            foreach ($roles as $row) {
                             ?>
-                            <option value="<?php echo $row->ID_ROLE?>"><?php echo $row->ROLE?></option>
-                            <?php }?>
+                                <option value="<?php echo $row->ID_ROLE ?>"><?php echo $row->ROLE ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>

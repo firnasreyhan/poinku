@@ -2,6 +2,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
+    <?php
+    // if ($this->session->flashdata('message')) {
+    echo $this->session->tempdata('daftarEventView');
+    // }
+    // $this->session->sess_destroy(); 
+    ?>
     <h1 class="h3 mb-2 text-gray-800">Event</h1>
     &nbsp;
     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
@@ -47,8 +53,8 @@
                     </tfoot>
                     <tbody>
                         <?php
-                            $no = 1;
-                            foreach($event as $data){
+                        $no = 1;
+                        foreach ($event as $data) {
                         ?>
                             <tr>
                                 <td><?php echo $no++; ?></td>
@@ -56,25 +62,25 @@
                                 <td><?php echo $data->LINGKUP; ?></td>
                                 <td><?php echo $data->JUDUL; ?></td>
                                 <td style="text-align:right">
-                                    <a title="Detail Event" href="<?php echo site_url("daftarEvent/detail/".$data->ID_EVENT ); ?>" class="btn btn-success btn-icon-split">
+                                    <a title="Detail Event" href="<?php echo site_url("daftarEvent/detail/" . $data->ID_EVENT); ?>" class="btn btn-success btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-external-link-alt"></i>
                                         </span>
                                     </a>
                                     &nbsp;
-                                    <a title="QR Code" data-toggle="modal" data-target="#mdlQRCODE" data-qrcode="<?php echo $data->QR_CODE?>" class="btn btn-primary btn-icon-split mdlQRCODE">
+                                    <a title="QR Code" data-toggle="modal" data-target="#mdlQRCODE" data-qrcode="<?php echo $data->QR_CODE ?>" class="btn btn-primary btn-icon-split mdlQRCODE">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-qrcode"></i>
                                         </span>
                                     </a>
                                     &nbsp;
-                                    <a title="Edit Event" href="<?php echo site_url("daftarEvent/update/".$data->ID_EVENT); ?>" class="btn btn-warning btn-icon-split">
+                                    <a title="Edit Event" href="<?php echo site_url("daftarEvent/update/" . $data->ID_EVENT); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-edit"></i>
                                         </span>
                                     </a>
                                     &nbsp;
-                                    <a title="Hapus Event" data-toggle="modal" data-target="#mdlDelete" data-id="<?php echo $data->ID_EVENT?>" class="btn btn-danger btn-icon-split mdlDelete">
+                                    <a title="Hapus Event" data-toggle="modal" data-target="#mdlDelete" data-id="<?php echo $data->ID_EVENT ?>" class="btn btn-danger btn-icon-split mdlDelete">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
                                         </span>
@@ -82,7 +88,7 @@
                                 </td>
                             </tr>
                         <?php
-                            }
+                        }
                         ?>
                     </tbody>
                 </table>
@@ -109,22 +115,22 @@
             <form action="<?php echo site_url("daftarEvent/insert"); ?>" enctype="multipart/form-data" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="hidden" class="form-control" value="<?php echo $this->session->userdata('email')?>" name="EMAIL" placeholder="Email" required>
+                        <input type="hidden" class="form-control" value="<?php echo $this->session->userdata('email') ?>" name="EMAIL" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         <select class="form-control" name="JENISEVENT" placeholder="Jenis Event" required>
                             <option value="">-- Pilih Jenis Event --</option>
-                            <?php foreach($jenis as $data){ ?>
-                                <option value="<?php echo $data->ID_JENIS?>"><?php echo $data->JENIS?></option>
-                            <?php }?>
+                            <?php foreach ($jenis as $data) { ?>
+                                <option value="<?php echo $data->ID_JENIS ?>"><?php echo $data->JENIS ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control" name="LINGKUP" placeholder="Lingkup" required>
                             <option value="">-- Pilih Lingkup Event --</option>
-                            <?php foreach($lingkup as $data){ ?>
-                                <option value="<?php echo $data->ID_LINGKUP?>"><?php echo $data->LINGKUP?></option>
-                            <?php }?>
+                            <?php foreach ($lingkup as $data) { ?>
+                                <option value="<?php echo $data->ID_LINGKUP ?>"><?php echo $data->LINGKUP ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
@@ -132,6 +138,12 @@
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" name="DESKRIPSI" placeholder="Deskripsi" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="PEMBICARA" placeholder="Pembicara" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="LOKASI" placeholder="Lokasi" required />
                     </div>
                     <div class="form-group">
                         <label>Tanggal Acara</label>
@@ -219,6 +231,6 @@
 
     $('#dataTable tbody').on('click', '.mdlQRCODE', function() {
         const qrcode = $(this).data('qrcode')
-        $('#INPUT_IMG').attr("src",qrcode)
+        $('#INPUT_IMG').attr("src", qrcode)
     })
 </script>

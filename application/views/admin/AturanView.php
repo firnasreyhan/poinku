@@ -2,6 +2,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
+    <?php
+    // if ($this->session->flashdata('message')) {
+    echo $this->session->tempdata('aturanView');
+    // }
+    // $this->session->sess_destroy(); 
+    ?>
     <h1 class="h3 mb-2 text-gray-800">Aturan</h1>
     &nbsp;
     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
@@ -56,8 +62,16 @@
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $key->TAHUN; ?></td>
                                 <td><?php echo $key->KETERANGAN; ?></td>
-                                <td><?php if($key->KATEGORI ==  "0") {echo "Reguler";} else{echo "Profesional";} ?></td>
-                                <td><?php if($key->AKTIF ==  "0") {echo "Tidak Aktif";} else{echo "Aktif";} ?></td>
+                                <td><?php if ($key->KATEGORI ==  "0") {
+                                        echo "Reguler";
+                                    } else {
+                                        echo "Profesional";
+                                    } ?></td>
+                                <td><?php if ($key->AKTIF ==  "0") {
+                                        echo "Tidak Aktif";
+                                    } else {
+                                        echo "Aktif";
+                                    } ?></td>
                                 <td style="text-align:right">
                                     <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
@@ -65,7 +79,9 @@
                                         </span>
                                     </a>
                                     &nbsp;
-                                    <a data-toggle="modal" data-target="#mdlAktif" data-aturan="<?php echo $key->ID_ATURAN; ?>" data-kategori="<?php echo $key->KATEGORI; ?>" class="btn btn-success btn-icon-split mdlAktif" <?php if($key->AKTIF ==  "1") {echo "hidden";} ?>>
+                                    <a data-toggle="modal" data-target="#mdlAktif" data-aturan="<?php echo $key->ID_ATURAN; ?>" data-kategori="<?php echo $key->KATEGORI; ?>" class="btn btn-success btn-icon-split mdlAktif" <?php if ($key->AKTIF ==  "1") {
+                                                                                                                                                                                                                                    echo "hidden";
+                                                                                                                                                                                                                                } ?>>
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check-square"></i>
                                         </span>
@@ -115,7 +131,7 @@
                     <div class="form-group">
                         <h5>Kategori</h5>
                         <input type="radio" name="KATEGORI" value="0" checked /> Reguler
-                        <br/>
+                        <br />
                         <input type="radio" name="KATEGORI" value="1" /> Profesional
                     </div>
                 </div>
@@ -167,7 +183,7 @@
                     <p>Apakah anda yakin ingin mengahpus data ini?</p>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" class="form-control" name="ID_ATURAN" placeholder="Keterangan" id="INPUT_ATURAN">   
+                    <input type="hidden" class="form-control" name="ID_ATURAN" placeholder="Keterangan" id="INPUT_ATURAN">
                     <input type="hidden" class="form-control" name="KATEGORI" placeholder="Keterangan" id="INPUT_ID_KATEGORI">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-primary">Iya</button>

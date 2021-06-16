@@ -2,11 +2,13 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <?php if(!empty($kriteria[0]->ID_ATURAN)){?>
-        <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan/detail/'.$kriteria[0]->ID_ATURAN)?>"><i class="fas fa-chevron-left"></i></a> Kriteria Penilaian</h1>
-    <?php }else{ ?>
-        <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan')?>"><i class="fas fa-chevron-left"></i></a> Kriteria Penilaian</h1>
-    <?php }?>
+    <?php
+    // if ($this->session->flashdata('message')) {
+    echo $this->session->tempdata('kriteriaView');
+    // }
+    // $this->session->sess_destroy(); 
+    ?>
+    <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan/detail/' . $nilai[0]->ID_ATURAN) ?>"><i class="fas fa-chevron-left"></i></a> Kriteria Penilaian</h1>
     &nbsp;
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -16,7 +18,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Daftar Kriteria Penilaian</h6>
                 </div>
                 <div class="col-6">
-                    <a href="<?php echo site_url("aturan/poin/kriteria/insert/" . $nilai); ?>" style="float:right;" class="btn btn-primary btn-icon-split">
+                    <a href="<?php echo site_url("aturan/poin/kriteria/insert/" . $nilai[0]->ID_NILAI); ?>" style="float:right;" class="btn btn-primary btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fas fa-plus"></i>
                         </span>
@@ -83,6 +85,9 @@
 </div>
 <!-- /.container-fluid -->
 
+</div>
+<!-- End of Main Content -->
+
 <!-- Modal Add -->
 <div class="modal fade" id="mdlAdd" tabindex="-1" aria-labelledby="mdlAdd" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -124,7 +129,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" class="form-control" name="ID_KRITERIA" id="INPUT_ID_KRITERIA">
-                    <input type="hidden" class="form-control" name="ID_NILAI" value="<?php echo $kriteria[0]->ID_NILAI?>">
+                    <input type="hidden" class="form-control" name="ID_NILAI" value="<?php echo $kriteria[0]->ID_NILAI ?>">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-primary">Iya</button>
                 </div>

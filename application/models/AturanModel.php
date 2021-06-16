@@ -1,8 +1,9 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class AturanModel extends CI_Model {
+class AturanModel extends CI_Model
+{
 
     public function __construct()
     {
@@ -44,9 +45,6 @@ class AturanModel extends CI_Model {
         $this->db->where('KATEGORI', $param['KATEGORI'])->set('AKTIF', '0')->update('aturan');
         return $this->db->where('ID_ATURAN', $param['ID_ATURAN'])->set('AKTIF', '1')->update('aturan');
     }
-
 }
 
 /* End of file AturanModel.php */
-
-?>

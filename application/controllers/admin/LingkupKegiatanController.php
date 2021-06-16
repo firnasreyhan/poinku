@@ -37,6 +37,7 @@ class LingkupKegiatanController extends CI_Controller {
     {
         $data = $_POST;
         $this->LingkupKegiatanModel->insert($data);
+        $this->session->set_tempdata('lingkupKegiatanView', '<div class="alert alert-success" role="alert">Berhasil menambah lingkup kegiatan</div>', 1);
         redirect('lingkupkegiatan');
     }
 
@@ -44,6 +45,7 @@ class LingkupKegiatanController extends CI_Controller {
     {
         $data = $_POST;
         $this->LingkupKegiatanModel->delete($data);
+        $this->session->set_tempdata('lingkupKegiatanView', '<div class="alert alert-danger" role="alert">Berhasil menghapus lingkup kegiatan</div>', 1);
         redirect('lingkupkegiatan');
     }
 
@@ -61,6 +63,7 @@ class LingkupKegiatanController extends CI_Controller {
 	{
         $data = $_POST;
         $this->LingkupKegiatanModel->update($data);
+        $this->session->set_tempdata('lingkupKegiatanView', '<div class="alert alert-warning" role="alert">Berhasil mengubah lingkup kegiatan</div>', 1);
         redirect('lingkupkegiatan');
 	}
 

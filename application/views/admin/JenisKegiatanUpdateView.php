@@ -2,8 +2,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('jeniskegiatan')?>"><i class="fas fa-chevron-left"></i></a> Update Jenis Kegiatan</h1>
-    &nbsp;
+                    <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('jeniskegiatan') ?>"><i class="fas fa-chevron-left"></i></a> Update Jenis Kegiatan</h1>
+                    &nbsp;
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -17,13 +17,17 @@
                         <div class="card-body">
                             <form action="<?php echo site_url("jeniskegiatan/update"); ?>" enctype="multipart/form-data" method="post">
                                 <div class="modal-body">
+                                    <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
+                                        Jenis Kegiatan
+                                    </div>
                                     <div class="form-group">
                                         <input value="<?php echo $detail_jenis_kegiatan[0]->JENIS; ?>" type="text" class="form-control" name="JENIS" placeholder="Jneis Kegiatan" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <input value="<?php echo $detail_jenis_kegiatan[0]->ID_JENIS; ?>" type="hidden" class="form-control" name="ID_JENIS" placeholder="Keterangan" id="INPUT_ID_JENIS">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                    <a class="btn btn-secondary" href="<?php echo site_url('jeniskegiatan') ?>">Batal</a>
+                                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button> -->
                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                             </form>

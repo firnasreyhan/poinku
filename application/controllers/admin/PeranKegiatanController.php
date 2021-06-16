@@ -35,6 +35,7 @@ class PeranKegiatanController extends CI_Controller {
     {
         $data = $_POST;
         $this->PeranKegiatanModel->insert($data);
+        $this->session->set_tempdata('peranKegiatanView', '<div class="alert alert-success" role="alert">Berhasil menambah peran kegiatan</div>', 1);
         redirect('perankegiatan');
     }
 
@@ -42,6 +43,7 @@ class PeranKegiatanController extends CI_Controller {
     {
         $data = $_POST;
         $this->PeranKegiatanModel->delete($data);
+        $this->session->set_tempdata('peranKegiatanView', '<div class="alert alert-danger" role="alert">Berhasil menghapus peran kegiatan</div>', 1);
         redirect('perankegiatan');
     }
 
@@ -59,6 +61,7 @@ class PeranKegiatanController extends CI_Controller {
 	{
         $data = $_POST;
         $this->PeranKegiatanModel->update($data);
+        $this->session->set_tempdata('peranKegiatanView', '<div class="alert alert-warning" role="alert">Berhasil mengubah peran kegiatan</div>', 1);
         redirect('perankegiatan');
 	}
 

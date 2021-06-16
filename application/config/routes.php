@@ -49,13 +49,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'LoginController';
+$route['default_controller'] = 'UserEksternalController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['daftarUserEksternal'] = 'UserEksternalController/daftar';
+$route['detailKegiatan/(:any)'] = 'UserEksternalController/detail/$1';
+$route['kuesionerKegiatan/(:any)'] = 'UserEksternalController/detailKuesioner/$1';
+$route['kuesionerKegiatanPresensi'] = 'UserEksternalController/presensi';
 
 $route['login'] = 'LoginController';
 $route['login/aksiLogin'] = 'LoginController/aksiLogin';
 $route['logout'] = 'LoginController/logout';
+
+$route['profil'] = 'LoginController/profil';
+$route['profilUpdate'] = 'LoginController/updateProfil';
 
 $route['dashboardAdmin'] = 'admin/DashboardAdminController';
 
@@ -120,7 +128,7 @@ $route['aturan/ajxGetData'] = 'admin/AturanController/ajxGetDataMaster';
 $route['poin/insert'] = 'admin/AturanController/insertPoin';
 $route['poin/delete'] = 'admin/AturanController/deletePoin';
 $route['aturan/poin/update/(:any)'] = 'admin/AturanController/detailPoin/$1';
-$route['poin/update'] = 'admin/AturanController/update';
+$route['poin/update'] = 'admin/AturanController/updatePoin';
 
 $route['aturan/nilai/kriteria/(:any)'] = 'admin/AturanController/kriteria/$1';
 $route['kriteria/delete'] = 'admin/AturanController/deleteKriteria';
@@ -140,6 +148,7 @@ $route['daftarEvent/update/(:any)'] = 'eventManager/DaftarEventController/viewUp
 $route['daftarEvent/detail/(:any)'] = 'eventManager/DaftarEventController/detail/$1';
 $route['daftarEvent/print/(:any)'] = 'eventManager/DaftarEventController/print/$1';
 $route['daftarEvent/update'] = 'eventManager/DaftarEventController/aksiUpdate';
+$route['daftarEvent/detailKuesioner/(:any)'] = 'eventManager/DaftarEventController/detailKuesioner/$1';
 
 $route['kalenderEvent'] = 'eventManager/KalenderEventController';
 
