@@ -30,7 +30,7 @@ class TugasKhusus extends RestController
         );
         $id = $this->TugasKhususModel->insert($dataStore);
 
-        require $_SERVER['DOCUMENT_ROOT'] . '/poinku/vendor/autoload.php';
+        require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 
         $options = array(
             'cluster' => 'ap1',

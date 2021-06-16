@@ -55,7 +55,7 @@ class Event extends RestController
 
         $this->PresensiModel->insert($dataStore);
 
-        require $_SERVER['DOCUMENT_ROOT'] . '/poinku/vendor/autoload.php';
+        require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 
         $options = array(
             'cluster' => 'ap1',
