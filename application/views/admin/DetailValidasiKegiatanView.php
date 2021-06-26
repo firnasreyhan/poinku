@@ -98,7 +98,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img src="<?php echo $detail_kegiatan[0]->BUKTI ?>">
+                                    <img class="img-responsive" src="<?php echo $detail_kegiatan[0]->BUKTI ?>">
                                 </div>
                             </div>
                         </div>
