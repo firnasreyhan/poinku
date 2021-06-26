@@ -74,8 +74,8 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <img src="<?php echo $detail_kegiatan[0]->BUKTI ?>">
+                                <div class="col-md-12" style="text-align: center;">
+                                    <img style="width: 750px;" class="img-responsive" src="<?php echo $detail_kegiatan[0]->BUKTI ?>">
                                 </div>
                             </div>
                         </div>
