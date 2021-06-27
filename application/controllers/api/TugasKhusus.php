@@ -48,9 +48,9 @@ class TugasKhusus extends RestController
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'ID_TUGAS_KHUSUS' => $id], 200);
     }
 
-    public function deleteTugasKhusus_delete()
+    public function deleteTugasKhusus_post()
     {
-        $param = $this->delete();
+        $param = $this->post();
 
         $dataStore = array(
             'ID_TUGAS_KHUSUS'         => $param['id']
