@@ -28,6 +28,11 @@ class TugasKhususModel extends CI_Model
         return $this->db->where('NRP =', $param['NRP'])->get('tugas_khusus')->result();
     }
 
+    public function getIsValidasi($param)
+    {
+        return $this->db->where($param)->get('tugas_khusus')->result();
+    }
+
     public function getPoin($param)
     {
         return $this->db->where('NRP =', $param['NRP'])->where('ID_JENIS =', $param['ID_JENIS'])->order_by("TANGGAL_DATA", "desc")->get('view_tugas_khusus')->result();

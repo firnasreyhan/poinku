@@ -207,6 +207,23 @@ class TugasKhusus extends RestController
         }
     }
 
+    public function isValidasi_get()
+    {
+        $param = $this->get();
+        $dataStore = array(
+            'NRP'                      => $param['nrp'],
+            'STATUS_VALIDASI'          => 0
+        );
+
+        $isValidasi = $this->TugasKhususModel->getIsValidasi($dataStore);
+
+        if ($isValidasi == null) {
+            $this->response(['status' => true, 'message' => 'Tugas khusus siap diajukan'], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Tugas khusus belum siap diajukan'], 200);
+        }
+    }
+
     public function jenisTugasKhusus_get()
     {
         $param = $this->get();
