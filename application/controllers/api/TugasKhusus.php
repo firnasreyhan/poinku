@@ -48,6 +48,20 @@ class TugasKhusus extends RestController
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'ID_TUGAS_KHUSUS' => $id], 200);
     }
 
+    public function deleteTugasKhusus_delete()
+    {
+        $param = $this->delete();
+
+        $dataStore = array(
+            'ID_TUGAS_KHUSUS'         => $param['id']
+        );
+
+        $this->TugasKhususModel->delete($dataStore);
+        $this->KegiatanModel->delete($dataStore);
+        $this->KontenModel->delete($dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil dihapus'], 200);
+    }
+
     public function konten_post()
     {
         $param = $this->post();

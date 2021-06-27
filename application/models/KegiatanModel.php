@@ -14,4 +14,9 @@ class KegiatanModel extends CI_Model
     {
         return $this->db->insert('kegiatan', $param);
     }
+
+    public function delete($param)
+    {
+        return $this->db->where($param)->delete('kegiatan');
+    }
 }

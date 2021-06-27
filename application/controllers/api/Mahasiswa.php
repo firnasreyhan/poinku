@@ -90,7 +90,7 @@ class Mahasiswa extends RestController
         $pusher->trigger('my-channel', 'my-event', $data);
 
         $this->MahasiswaModel->pengajuan($dataStore, $where);
-        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+        $this->response(['status' => true, 'message' => 'Tugas khusus berhasil diajukan'], 200);
     }
     
     public function removeToken_put()

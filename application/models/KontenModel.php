@@ -14,4 +14,9 @@ class KontenModel extends CI_Model
     {
         return $this->db->insert('konten', $param);
     }
+
+    public function delete($param)
+    {
+        return $this->db->where($param)->delete('konten');
+    }
 }
