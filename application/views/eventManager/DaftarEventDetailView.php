@@ -301,7 +301,7 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label>Template Sertifikat</label>
-                                        <input type="file" class="form-control" name="TEMPLATE_SERTIF" required>
+                                        <input type="file" class="form-control" name="TEMPLATE_SERTIFIKAT" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

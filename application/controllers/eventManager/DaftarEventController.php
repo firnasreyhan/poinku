@@ -266,16 +266,18 @@ class DaftarEventController extends CI_Controller {
 
     public function print($idEvent)
     {
-        // if (!is_dir("assets/img/template_sertifikat/")) {
-        //     mkdir("assets/img/template_sertifikat/", 0777, TRUE);
-        // }
+        if (!is_dir("assets/img/template_sertifikat/")) {
+            mkdir("assets/img/template_sertifikat/", 0777, TRUE);
+        }
 
         $config = ['upload_path' => './assets/img/template_sertifikat/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
         $this->upload->initialize($config);
 
-        if($this->upload->do_upload('TEMPLATE_SERTIF')){ 
+        if($this->upload->do_upload('TEMPLATE_SERTIFIKAT')){ 
 			$dataUpload     = $this->upload->data();
 			$poster         = base_url('assets/img/template_sertifikat/' . $dataUpload['file_name']);
+        } else {
+            print_r(array('error' => $this->upload->display_errors()));
         }
 
         $idEvent = $this->input->post('ID_EVENT');
