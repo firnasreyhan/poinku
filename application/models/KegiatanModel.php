@@ -19,4 +19,9 @@ class KegiatanModel extends CI_Model
     {
         return $this->db->where($param)->delete('kegiatan');
     }
+
+    public function update($where, $data)
+    {
+        return $this->db->where($where)->update('kegiatan', $data);
+    }
 }

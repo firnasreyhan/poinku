@@ -85,6 +85,39 @@ class TugasKhusus extends RestController
         $this->response(['status' => true, 'message' => 'Data berhasil diubah'], 200);
     }
 
+    public function updateKonten_post()
+    {
+        $param = $this->post();
+
+        $where = array(
+            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
+        );
+
+        $dataStore = array(
+            'MEDIA_KONTEN '     => $param['media'],
+            'JENIS_KONTEN '     => $param['jenis']
+        );
+
+        $this->KontenModel->update($where, $dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil diubah'], 200);
+    }
+
+    public function updateKegiatan_post()
+    {
+        $param = $this->post();
+
+        $where = array(
+            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
+        );
+
+        $dataStore = array(
+            'KETERANGAN  '     => $param['keterangan']
+        );
+
+        $this->KegiatanModel->update($where, $dataStore);
+        $this->response(['status' => true, 'message' => 'Data berhasil diubah'], 200);
+    }
+
     public function deleteTugasKhusus_post()
     {
         $param = $this->post();

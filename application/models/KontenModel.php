@@ -19,4 +19,9 @@ class KontenModel extends CI_Model
     {
         return $this->db->where($param)->delete('konten');
     }
+
+    public function update($where, $data)
+    {
+        return $this->db->where($where)->update('konten', $data);
+    }
 }
