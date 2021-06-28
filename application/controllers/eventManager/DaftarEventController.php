@@ -28,6 +28,7 @@ class DaftarEventController extends CI_Controller {
         $this->load->model('LingkupKegiatanModel');
         $this->load->model('PresensiModel');
         $this->load->model('KuesionerModel');
+        $this->load->model('TugasKhususModel');
         
         
         $this->load->library('upload');
@@ -208,8 +209,8 @@ class DaftarEventController extends CI_Controller {
         $jenisEvent     = $this->input->post('JENISEVENT');
         $lingkup        = $this->input->post('LINGKUP');
         $judul          = $this->input->post('JUDUL');
-        $pembicara          = $this->input->post('PEMBICARA');
-        $lokasi          = $this->input->post('LOKASI');
+        $pembicara      = $this->input->post('PEMBICARA');
+        $lokasi         = $this->input->post('LOKASI');
         $deskripsi      = $this->input->post('DESKRIPSI');
         $tanggalAcara   = $this->input->post('TANGGALACARA');
         $jamMulai       = $this->input->post('JAMMULAI');
@@ -363,6 +364,18 @@ class DaftarEventController extends CI_Controller {
                     'EMAIL' => $dtEmail,
                 );
                 
+                //update tugas khusus
+                $dataTugasKhusus = $this->db->query("SELECT * FROM tugas_khusus WHERE NRP = '$email_substr' AND JUDUL = '$judul'")->result();
+                $whereTugasKhusus = array(
+                    'ID_TUGAS_KHUSUS'   => $dataTugasKhusus[0]->ID_TUGAS_KHUSUS
+                );
+        
+                $dataStoreTugasKhusus = array(
+                    'BUKTI '            => $sertifikat
+                );
+        
+                $this->TugasKhususModel->update($whereTugasKhusus, $dataStoreTugasKhusus);
+
                 // //konfigurasi email
                 // $config['useragent'] = 'Poinku';
                 // $config['protocol'] = 'smtp';
