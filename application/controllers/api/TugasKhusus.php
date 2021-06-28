@@ -82,7 +82,7 @@ class TugasKhusus extends RestController
 
         $data['notif'] = 'tugas khusus';
         $pusher->trigger('my-channel', 'my-event', $data);
-        $this->response(['status' => true, 'message' => 'Data berhasil diubah', 'ID_TUGAS_KHUSUS' => $id], 200);
+        $this->response(['status' => true, 'message' => 'Data berhasil diubah'], 200);
     }
 
     public function deleteTugasKhusus_post()
