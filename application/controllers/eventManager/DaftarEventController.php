@@ -276,8 +276,6 @@ class DaftarEventController extends CI_Controller {
         if($this->upload->do_upload('TEMPLATE_SERTIFIKAT')){ 
 			$dataUpload     = $this->upload->data();
 			$poster         = base_url('assets/img/template_sertifikat/' . $dataUpload['file_name']);
-        } else {
-            print_r("Error Upload");
         }
 
         $idEvent = $this->input->post('ID_EVENT');
