@@ -95,6 +95,7 @@ class TugasKhususController extends CI_Controller {
     {
         $where = array(
             'NRP' => $nrp,
+            'STATUS_VALIDASI' => 1,
         );
 
         $data['mahasiswa'] = $this->MahasiswaModel->detail($nrp);
