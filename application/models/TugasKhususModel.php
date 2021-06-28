@@ -20,7 +20,7 @@ class TugasKhususModel extends CI_Model
 
     public function getByNRP($param)
     {
-        return $this->db->where('NRP =', $param['NRP'])->order_by("JENIS", "ASC")->get('view_tugas_khusus')->result();
+        return $this->db->where($param)->order_by("JENIS", "ASC")->get('view_tugas_khusus')->result();
     }
 
     public function get($param)
