@@ -82,9 +82,9 @@ class TugasKhususModel extends CI_Model
         return $this->db->where($param)->delete('tugas_khusus');
     }
 
-    public function update($param)
+    public function update($where, $data)
     {
-        return $this->db->where('ID_TUGAS_KHUSUS', $param['ID_TUGAS_KHUSUS'])->update('tugas_khusus', $param);
+        return $this->db->where($where)->update('tugas_khusus', $data);
     }
 
     public function acc($data, $where)

@@ -48,6 +48,43 @@ class TugasKhusus extends RestController
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan', 'ID_TUGAS_KHUSUS' => $id], 200);
     }
 
+    public function updateTugasKhusus_post()
+    {
+        $param = $this->post();
+
+        $where = array(
+            'ID_TUGAS_KHUSUS'    => $param['id_tugas_khusus']
+        );
+
+        $dataStore = array(
+            'ID_JENIS'    => $param['jenis'],
+            'ID_LINGKUP'    => $param['lingkup'],
+            'ID_PERAN'    => $param['peran'],
+            'JUDUL'    => $param['judul'],
+            'TANGGAL_KEGIATAN'    => $param['tanggal'],
+            'STATUS_VALIDASI'    => 0
+        );
+
+        $this->TugasKhususModel->update($where, $dataStore);
+
+        require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+
+        $options = array(
+            'cluster' => 'ap1',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e6c40e4a096f5b8864c8',
+            '56ec36eebb15bd0a9669',
+            '1200741',
+            $options
+        );
+
+        $data['notif'] = 'tugas khusus';
+        $pusher->trigger('my-channel', 'my-event', $data);
+        $this->response(['status' => true, 'message' => 'Data berhasil diubah', 'ID_TUGAS_KHUSUS' => $id], 200);
+    }
+
     public function deleteTugasKhusus_post()
     {
         $param = $this->post();
@@ -93,11 +130,15 @@ class TugasKhusus extends RestController
     {
         $param = $this->post();
 
+        $where = array(
+            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus']
+        );
+
         $dataStore = array(
-            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
             'BUKTI '            => $param['bukti']
         );
-        $this->TugasKhususModel->update($dataStore);
+
+        $this->TugasKhususModel->update($where, $dataStore);
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
     }
 
@@ -138,12 +179,15 @@ class TugasKhusus extends RestController
             return base_url('images/ttd/default.png');
         }
 
+        $where = array(
+            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus']
+        );
+
         $dataStore = array(
-            'ID_TUGAS_KHUSUS'   => $param['id_tugas_khusus'],
             'BUKTI '            => $link
         );
 
-        $this->TugasKhususModel->update($dataStore);
+        $this->TugasKhususModel->update($where, $dataStore);
         $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
     }
 
