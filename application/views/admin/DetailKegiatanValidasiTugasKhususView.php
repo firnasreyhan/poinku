@@ -75,7 +75,17 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12" style="text-align: center;">
+                                    <?php 
+                                        if (strpos($detail_kegiatan[0]->BUKTI, ".pdf")) {
+                                    ?>
+                                    <iframe src="<?php echo $detail_kegiatan[0]->BUKTI ?>" width="100%" style="height:100%"></iframe>
+                                    <?php        
+                                        } else {
+                                    ?>
                                     <img style="width: 750px;" class="img-responsive" src="<?php echo $detail_kegiatan[0]->BUKTI ?>">
+                                    <?php
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>
