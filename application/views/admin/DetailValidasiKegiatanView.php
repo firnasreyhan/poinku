@@ -101,11 +101,11 @@
                                     <?php 
                                         if (strpos($detail_kegiatan[0]->BUKTI, ".pdf")) {
                                     ?>
-                                    <iframe src="<?php echo $detail_kegiatan[0]->BUKTI ?>" width="100%" style="height:750px"></iframe>
+                                    <iframe src="<?php echo $detail_kegiatan[0]->BUKTI ?>" style="height:750px" width="100%"></iframe>
                                     <?php        
                                         } else {
                                     ?>
-                                    <img style="width: 750px;" class="img-responsive" src="<?php echo $detail_kegiatan[0]->BUKTI ?>">
+                                    <img src="<?php echo $detail_kegiatan[0]->BUKTI ?>" class="img-responsive" width="100%">
                                     <?php
                                         }
                                     ?>
