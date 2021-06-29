@@ -78,7 +78,7 @@
                                     <?php 
                                         if (strpos($detail_kegiatan[0]->BUKTI, ".pdf")) {
                                     ?>
-                                    <iframe src="<?php echo $detail_kegiatan[0]->BUKTI ?>" width="100%" style="height:100%"></iframe>
+                                    <iframe src="<?php echo $detail_kegiatan[0]->BUKTI ?>" width="100%" style="height:500px"></iframe>
                                     <?php        
                                         } else {
                                     ?>
