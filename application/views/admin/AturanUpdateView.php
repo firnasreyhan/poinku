@@ -35,6 +35,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
+                                    <input value="<?php echo $detail_aturan[0]->ID_ATURAN; ?>" type="hidden" class="form-control" name="ID_ATURAN">
                                     <a class="btn btn-secondary" href="<?php echo site_url('aturan') ?>">Batal</a>
                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
