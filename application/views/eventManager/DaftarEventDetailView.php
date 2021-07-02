@@ -262,7 +262,7 @@
                                                     <?php
                                                     if ($key->STATUS == "1") {
                                                     ?>
-                                                        <a href="<?php echo site_url("daftarEvent/detailKuesioner/" . $detail_event[0]->ID_EVENT . '-' . $key->EMAIL); ?>" class="btn btn-warning btn-icon-split">
+                                                        <a href="<?php echo site_url("daftarEvent/detailKuesioner/" . $detail_event[0]->ID_EVENT . '-' . $key->EMAIL); ?>" class="btn btn-primary btn-icon-split">
                                                             <span class="icon text-white-50">
                                                                 <i class="fas fa-external-link-alt"></i>
                                                             </span>

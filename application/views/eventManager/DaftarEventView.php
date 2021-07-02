@@ -62,13 +62,13 @@
                                 <td><?php echo $data->LINGKUP; ?></td>
                                 <td><?php echo $data->JUDUL; ?></td>
                                 <td style="text-align:right">
-                                    <a title="Detail Event" href="<?php echo site_url("daftarEvent/detail/" . $data->ID_EVENT); ?>" class="btn btn-success btn-icon-split">
+                                    <a title="Detail Event" href="<?php echo site_url("daftarEvent/detail/" . $data->ID_EVENT); ?>" class="btn btn-primary btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-external-link-alt"></i>
                                         </span>
                                     </a>
                                     &nbsp;
-                                    <a title="QR Code" data-toggle="modal" data-target="#mdlQRCODE" data-qrcode="<?php echo $data->QR_CODE ?>" class="btn btn-primary btn-icon-split mdlQRCODE">
+                                    <a title="QR Code" data-toggle="modal" data-target="#mdlQRCODE" data-qrcode="<?php echo $data->QR_CODE ?>" class="btn btn-dark btn-icon-split mdlQRCODE">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-qrcode"></i>
                                         </span>
