@@ -98,7 +98,7 @@
                                                 <td><?php echo $key->NILAI; ?></td>
                                                 <td><?php echo $key->POIN_MINIMAL; ?></td>
                                                 <td style="text-align:right">
-                                                    <a href="<?php echo site_url("aturan/nilai/kriteria/" . $key->ID_NILAI); ?>" class="btn btn-success btn-icon-split">
+                                                    <a href="<?php echo site_url("aturan/nilai/kriteria/" . $key->ID_NILAI); ?>" class="btn btn-primary btn-icon-split">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-external-link-alt"></i>
                                                         </span>

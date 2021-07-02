@@ -136,7 +136,7 @@
                                                 <td><?php echo $key->PERAN; ?></td>
                                                 <td><?php echo $key->JUDUL; ?></td>
                                                 <td style="text-align:right">
-                                                    <a href="<?php echo site_url("tugaskhusus/kegiatan/" . $key->ID_TUGAS_KHUSUS); ?>" class="btn btn-warning btn-icon-split">
+                                                    <a href="<?php echo site_url("tugaskhusus/kegiatan/" . $key->ID_TUGAS_KHUSUS); ?>" class="btn btn-primary btn-icon-split">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-external-link-alt"></i>
                                                         </span>
