@@ -167,6 +167,17 @@ class AturanController extends CI_Controller
                 $this->load->view('template/footer');
         }
 
+        public function detailAturan($param)
+        {
+                $detail_aturan = $this->AturanModel->getDetail(['ID_ATURAN' => $param]);
+
+                $this->load->view('template/header');
+                $this->load->view('template/sidebar');
+                $this->load->view('template/topbar');
+                $this->load->view('admin/AturanUpdateView', $detail_aturan);
+                $this->load->view('template/footer');
+        }
+
         public function detailPoin($param)
         {
                 $data['detail_poin'] = $this->PoinModel->getDetailPoin(['ID_POIN' => $param]);

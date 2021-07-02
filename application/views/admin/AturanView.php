@@ -79,7 +79,7 @@
                                         </span>
                                     </a>
                                     &nbsp;
-                                    <a href="<?php echo site_url("aturan/detail/" . $key->ID_ATURAN); ?>" class="btn btn-warning btn-icon-split">
+                                    <a href="<?php echo site_url("aturan/detailAturan/" . $key->ID_ATURAN); ?>" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-edit"></i>
                                         </span>

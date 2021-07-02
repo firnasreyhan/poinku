@@ -71,6 +71,7 @@ $route['aturan'] = 'admin/AturanController';
 $route['aturan/insert'] = 'admin/AturanController/insert';
 $route['aturan/delete'] = 'admin/AturanController/delete';
 $route['aturan/detail/(:any)'] = 'admin/AturanController/detail/$1';
+$route['aturan/detailAturan/(:any)'] = 'admin/AturanController/detailAturan/$1';
 $route['aturan/update'] = 'admin/AturanController/update';
 $route['aturan/updateAturanAktif'] = 'admin/AturanController/updateAturanAktif';
 $route['aturan/updateAturanMahasiswa'] = 'admin/AturanController/UpdateMultipleMahasiswa';
