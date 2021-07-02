@@ -86,7 +86,7 @@
                                     </a>
                                     <?php if ($key->AKTIF ==  "0") {
                                         echo "&nbsp;";
-                                    } ?>>
+                                    } ?>
                                     <a data-toggle="modal" data-target="#mdlAktif" data-aturan="<?php echo $key->ID_ATURAN; ?>" data-kategori="<?php echo $key->KATEGORI; ?>" class="btn btn-success btn-icon-split mdlAktif" <?php if ($key->AKTIF ==  "1") {
                                                                                                                                                                                                                                     echo "hidden";
                                                                                                                                                                                                                                 } ?>>
