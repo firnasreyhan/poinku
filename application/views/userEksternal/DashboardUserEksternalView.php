@@ -5,7 +5,7 @@
 
     <div class="row">
         <?php
-        if (count($event) > 0) {
+        if (count($event) < 0) {
             foreach ($event as $data) {
         ?>
                 <div class="col-xl-3 col-md-6 mb-3">
