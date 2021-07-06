@@ -59,7 +59,7 @@
                                     </div>
 
                                     <?php
-                                    if ($data->ID_JENIS == '15') {
+                                    if ($data->ID_JENIS == '14') {
                                     ?>
                                         <div class="col-md-6">
                                             <div class="form-group">
