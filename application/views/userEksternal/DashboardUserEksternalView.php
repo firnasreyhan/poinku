@@ -36,7 +36,7 @@
             ?>
             <div class="col-xl-12 col-md-12 mb-12">
                 <div class="card shadow h-100">
-                    <img src="https://lh3.googleusercontent.com/proxy/uFNuuAXhRjbLTIUHjZa7VY6V2dVi7sE98RwyQAceIkMEmdmIK6vxx14EaSVcZpY3eFB3QcszSGBtPMjmoZydpw6w1Mc1DUz9NU41mts">
+                    <img src="<?php echo base_url("assets/img/undraw_empty_xct9.png"); ?>">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
