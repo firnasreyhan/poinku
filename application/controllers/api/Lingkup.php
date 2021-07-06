@@ -25,7 +25,7 @@ class Lingkup extends RestController
         }
     }
 
-    public function new_get()
+    public function data_get()
     {
         $param = $this->get();
         $lingkup = $this->LingkupKegiatanModel->getNew($param['idAturan'], $param['idJenis']);

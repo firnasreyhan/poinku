@@ -24,6 +24,17 @@ class Peran extends RestController
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
         }
     }
+
+    public function data_get()
+    {
+        $param = $this->get();
+        $peran = $this->PeranKegiatanModel->getNew($param['idAturan'], $param['idJenis'], $param['idLingkup']);
+        if ($peran != null) {
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $peran], 200);
+        } else {
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
+        }
+    }
 }
 
 /* End of file Peran.php */
