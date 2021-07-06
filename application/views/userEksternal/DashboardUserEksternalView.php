@@ -35,8 +35,8 @@
         } else {
             ?>
             <div class="col-xl-12 col-md-12 mb-12">
-                <div class="card shadow h-100">
-                    <img src="<?php echo base_url("assets/img/undraw_empty_xct9.png"); ?>">
+                <div class="card shadow h-100" style="align-items: center;">
+                    <img style="width: 30%;" src="<?php echo base_url("assets/img/undraw_empty_xct9.png"); ?>">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
