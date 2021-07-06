@@ -129,7 +129,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" class="form-control" name="ID_KRITERIA" id="INPUT_ID_KRITERIA">
-                    <input type="hidden" class="form-control" name="ID_NILAI" value="<?php if ($kriteria[0]->ID_NILAI != null) {
+                    <input type="hidden" class="form-control" name="ID_NILAI" value="<?php if (isset($kriteria)) {
                        echo $kriteria[0]->ID_NILAI;
                     } ?>">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
