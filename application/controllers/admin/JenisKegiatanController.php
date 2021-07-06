@@ -24,7 +24,7 @@ class JenisKegiatanController extends CI_Controller {
 
     public function index()
     {
-        $data['jenis_kegiatans'] = $this->JenisKegiatanModel->getAll();
+        $data['jenis_kegiatans'] = $this->JenisKegiatanModel->get();
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('template/topbar');
