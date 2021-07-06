@@ -70,6 +70,10 @@
                                                 <h4>Jenis Konten</h4>
                                                 <p><?php echo $konten[0]->JENIS_KONTEN ?></p>
                                             </div>
+                                            <div class="form-group">
+                                                <h4>Link Konten</h4>
+                                                <p><?php echo $detail_kegiatan[0]->BUKTI ?></p>
+                                            </div>
                                         </div>
                                     <?php
                                     } else {
