@@ -23,7 +23,7 @@
                                         </div>
                                         <div class="form-group">
                                             <h4>Jenis Kegiatan</h4>
-                                            <p><?php echo $data->JENIS ?></p>
+                                            <p><?php echo $data->ID_JENIS ?></p>
                                         </div>
                                         <div class="form-group">
                                             <h4>Lingkup Kegiatan</h4>
