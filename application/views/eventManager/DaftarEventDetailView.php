@@ -17,14 +17,27 @@
                                 <div class="col-6">
                                     <h6 class="m-0 font-weight-bold text-primary">Data Event</h6>
                                 </div>
-                                <div class="col-6">
-                                    <a data-toggle="modal" data-target="#mdlSertifikat" style="float:right;" class="btn btn-primary btn-icon-split mdlSertifikat">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-paper-plane"></i>
-                                        </span>
-                                        <span class="text">Kirim Sertifikat</span>
-                                    </a>
-                                </div>
+                                <?php
+                                $jumlahHadir = 0;
+                                foreach ($presensi as $key) {
+                                    if ($key->STATUS == "1") {
+                                        $jumlahHadir++;
+                                    }
+                                }
+
+                                if ($jumlahHadir > 0) {
+                                ?>
+                                    <div class="col-6">
+                                        <a data-toggle="modal" data-target="#mdlSertifikat" style="float:right;" class="btn btn-primary btn-icon-split mdlSertifikat">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-paper-plane"></i>
+                                            </span>
+                                            <span class="text">Kirim Sertifikat</span>
+                                        </a>
+                                    </div>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="card-body">
