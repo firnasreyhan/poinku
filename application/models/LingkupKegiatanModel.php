@@ -15,6 +15,11 @@ class LingkupKegiatanModel extends CI_Model
         return $this->db->get('lingkup')->result();
     }
 
+    public function getNew($param)
+    {
+        return $this->db->query("SELECT lingkup.ID_LINGKUP, lingkup.LINGKUP FROM lingkup INNER JOIN poin ON lingkup.ID_LINGKUP = poin.ID_LINGKUP AND poin.ID_JENIS = '$param' GROUP BY lingkup.ID_LINGKUP ORDER BY lingkup.LINGKUP ASC")->result();
+    }
+
     public function insert($param)
     {
         return $this->db->insert('lingkup', $param);
