@@ -28,7 +28,7 @@ class Lingkup extends RestController
     public function new_get()
     {
         $param = $this->get();
-        $lingkup = $this->LingkupKegiatanModel->getNew($param['id']);
+        $lingkup = $this->LingkupKegiatanModel->getNew($param['idAturan'], $param['idJenis']);
         if ($lingkup != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $lingkup], 200);
         } else {
