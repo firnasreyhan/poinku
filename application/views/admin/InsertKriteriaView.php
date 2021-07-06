@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4"> -->
-    <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan/nilai/kriteria/' . $detail_kriteria[0]->ID_KRITERIA) ?>"><i class="fas fa-chevron-left"></i></a> Tambah Kriteria</h1>
+    <h1 class="h3 mb-2 text-gray-800"><a href="<?php echo site_url('aturan/nilai/kriteria/' . $nilai) ?>"><i class="fas fa-chevron-left"></i></a> Tambah Kriteria</h1>
     &nbsp;
     <!-- </div> -->
     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
