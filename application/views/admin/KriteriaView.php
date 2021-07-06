@@ -89,7 +89,7 @@
 <!-- End of Main Content -->
 
 <!-- Modal Add -->
-<!-- <div class="modal fade" id="mdlAdd" tabindex="-1" aria-labelledby="mdlAdd" aria-hidden="true">
+<div class="modal fade" id="mdlAdd" tabindex="-1" aria-labelledby="mdlAdd" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -111,10 +111,10 @@
             </form>
         </div>
     </div>
-</div> -->
+</div>
 
 <!-- Modal Delete -->
-<!-- <div class="modal fade" id="mdlDelete" tabindex="-1" aria-labelledby="mdlDelete" aria-hidden="true">
+<div class="modal fade" id="mdlDelete" tabindex="-1" aria-labelledby="mdlDelete" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -129,14 +129,16 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" class="form-control" name="ID_KRITERIA" id="INPUT_ID_KRITERIA">
-                    <input type="hidden" class="form-control" name="ID_NILAI" value="<?php echo $kriteria[0]->ID_NILAI ?>">
+                    <input type="hidden" class="form-control" name="ID_NILAI" value="<?php if ($kriteria[0]->ID_NILAI != null) {
+                       echo $kriteria[0]->ID_NILAI;
+                    } ?>">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-primary">Iya</button>
                 </div>
             </form>
         </div>
     </div>
-</div> -->
+</div>
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
