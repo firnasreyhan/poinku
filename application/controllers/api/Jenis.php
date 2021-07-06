@@ -14,7 +14,7 @@ class Jenis extends RestController
 
     public function index_get()
     {
-        $jenis = $this->JenisKegiatanModel->getAll();
+        $jenis = $this->JenisKegiatanModel->get();
         if ($jenis != null) {
             $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $jenis], 200);
         } else {
