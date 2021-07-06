@@ -5,7 +5,7 @@
 
     <div class="row">
         <?php
-        if (count($even) > 0) {
+        if (count($event) > 0) {
             foreach ($event as $data) {
         ?>
                 <div class="col-xl-3 col-md-6 mb-3">
@@ -34,7 +34,7 @@
             }
         } else {
             ?>
-            <div class="col-xl-3 col-md-6 mb-3">
+            <div class="col-xl-12 col-md-12 mb-12">
                 <div class="card shadow h-100">
                     <img src="https://lh3.googleusercontent.com/proxy/uFNuuAXhRjbLTIUHjZa7VY6V2dVi7sE98RwyQAceIkMEmdmIK6vxx14EaSVcZpY3eFB3QcszSGBtPMjmoZydpw6w1Mc1DUz9NU41mts">
                     <div class="card-body">
