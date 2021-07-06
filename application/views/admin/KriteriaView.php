@@ -114,31 +114,7 @@
 </div>
 
 <!-- Modal Delete -->
-<div class="modal fade" id="mdlDelete" tabindex="-1" aria-labelledby="mdlDelete" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="mdlAdd">Hapus Kriteria</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="<?php echo site_url("kriteria/delete"); ?>" enctype="multipart/form-data" method="post">
-                <div class="modal-body">
-                    <p>Apakah anda yakin ingin mengahpus data ini?</p>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" class="form-control" name="ID_KRITERIA" id="INPUT_ID_KRITERIA">
-                    <input type="hidden" class="form-control" name="ID_NILAI" value="<?php if (isset($kriteria)) {
-                       echo $kriteria[0]->ID_NILAI;
-                    } ?>">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-                    <button type="submit" class="btn btn-primary">Iya</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
