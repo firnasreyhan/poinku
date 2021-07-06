@@ -218,8 +218,8 @@ class AturanController extends CI_Controller
                 $kriteria = $this->KriteriaModel->getDetail(['ID_NILAI' => $param]);
                 $data['nilai'] = $this->NilaiModel->getDetailNilai(['ID_NILAI' => $param]);
 
-                print_r(isset($kriteria));
-                print_r(empty($kriteria));
+                print_r(count($kriteria));
+                // print_r(empty($kriteria));
 
                 // $this->load->view('template/header');
                 // $this->load->view('template/sidebar');
