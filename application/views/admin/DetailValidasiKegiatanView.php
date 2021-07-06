@@ -87,32 +87,39 @@
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <div class="row">
-                                <div class="col-6">
-                                    <h6 class="m-0 font-weight-bold text-primary">Bukti Kegiatan</h6>
+                    <?php
+                    if ($data->ID_JENIS != '14') {
+                    ?>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h6 class="m-0 font-weight-bold text-primary">Bukti Kegiatan</h6>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12" style="text-align: center;">
-                                    <?php 
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12" style="text-align: center;">
+                                        <?php
                                         if (strpos($detail_kegiatan[0]->BUKTI, ".pdf")) {
-                                    ?>
-                                    <iframe src="<?php echo $detail_kegiatan[0]->BUKTI ?>" style="height:750px" width="100%"></iframe>
-                                    <?php        
+                                        ?>
+                                            <iframe src="<?php echo $detail_kegiatan[0]->BUKTI ?>" style="height:750px" width="100%"></iframe>
+                                        <?php
                                         } else {
-                                    ?>
-                                    <img src="<?php echo $detail_kegiatan[0]->BUKTI ?>" class="img-responsive" width="100%">
-                                    <?php
+                                        ?>
+                                            <img src="<?php echo $detail_kegiatan[0]->BUKTI ?>" class="img-responsive" width="100%">
+                                        <?php
                                         }
-                                    ?>
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php
+                    }
+                    ?>
+
 
                 </div>
                 <!-- /.container-fluid -->
