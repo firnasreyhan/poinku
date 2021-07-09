@@ -243,7 +243,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Email</th>
-                                            <th>NAMA</th>
+                                            <th>Nama</th>
                                             <th>Kehadiran</th>
                                             <th>Kuesioner</th>
                                         </tr>
@@ -252,7 +252,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Email</th>
-                                            <th>NAMA</th>
+                                            <th>Nama</th>
                                             <th>Kehadiran</th>
                                             <th>Kuesioner</th>
                                         </tr>
