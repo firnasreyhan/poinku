@@ -401,8 +401,8 @@
                 <div class="modal-footer">
                     <input type="hidden" class="form-control" name="NRP" id="INPUT_NRP">
                     <input type="hidden" class="form-control" name="ID_ATURAN_AKTIF" value="<?php echo $id_aturan_aktif; ?>">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-                    <button type="submit" class="btn btn-primary">Iya</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>
