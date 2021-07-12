@@ -39,7 +39,7 @@ class TugasKhususController extends CI_Controller {
 	{
         $data = array(
             'STATUS' => 1,
-            'SEMESTER_PENGAJUAN' => date('Y').$this->input->post('SEMESTER') == 0 ? " / Genap" : " / Ganjil",
+            'SEMESTER_PENGAJUAN' => date('Y') . $this->input->post('SEMESTER') == 0 ? " / Genap" : " / Ganjil",
             'TANGGAL_VALIDASI' => date('Y-m-d H:i:s')
         );
 
