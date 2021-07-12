@@ -163,14 +163,20 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="mdlAdd">Terima Tugas Khusus</h5>
+                                <h5 class="modal-title" id="mdlAdd">Validasi Tugas Khusus</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <form action="<?php echo site_url("tugaskhusus/acc"); ?>" enctype="multipart/form-data" method="post">
                                 <div class="modal-body">
-                                    <p>Apakah anda yakin ingin menerima tugas khusus ini?</p>
+                                    <p>Apakah anda yakin ingin melakukan validasi tugas khusus ini?</p>
+                                    <div class="form-group">
+                                        <h5>Semester Pengajuan</h5>
+                                        <input type="radio" name="SEMESTER" value="0" checked /> Genap
+                                        <br />
+                                        <input type="radio" name="SEMESTER" value="1" /> Ganjil
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" class="form-control" name="NRP" placeholder="Email" value="<?php echo $mahasiswa[0]->NRP; ?>">
@@ -194,7 +200,7 @@
                             </div>
                             <form action="<?php echo site_url("tugaskhusus/tolak"); ?>" enctype="multipart/form-data" method="post">
                                 <div class="modal-body">
-                                    <p>Apakah anda yakin ingin tolak tugas khusus ini?</p>
+                                    <p>Apakah anda yakin ingin menolak tugas khusus ini?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" class="form-control" name="NRP" placeholder="Email" value="<?php echo $mahasiswa[0]->NRP; ?>">
