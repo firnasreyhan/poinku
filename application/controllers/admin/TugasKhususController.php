@@ -43,7 +43,7 @@ class TugasKhususController extends CI_Controller {
             'TANGGAL_VALIDASI' => date('Y-m-d H:i:s')
         );
 
-        echo date('Y') . $this->input->post('SEMESTER') == 0 ? " / Genap" : " / Ganjil";
+        echo date('Y');
 
         // $where = array(
         //     'NRP' => $this->input->post('NRP'),
