@@ -142,6 +142,16 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Validasi Tugas Khusus</span></a>
     </li>
+
+    <div class="sidebar-heading">
+        Riwayat
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('tugaskhusus') ?>">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Riwayat Pengajuan Tugas Khusus</span></a>
+    </li>
     
     <?php } else if($this->session->userdata('role') == "Event Manager"){ ?>
 
