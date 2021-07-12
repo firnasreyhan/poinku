@@ -12,7 +12,7 @@
         <div class="card-header py-3">
             <div class="row">
                 <div class="col-6">
-                    <h6 class="m-0 font-weight-bold text-primary">Daftar Mahasiswa</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Daftar Riwayat Tugas Khusus</h6>
                 </div>
             </div>
         </div>
