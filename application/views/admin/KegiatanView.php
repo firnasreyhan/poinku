@@ -29,6 +29,7 @@
                         <tr>
                             <th>No</th>
                             <th>NRP</th>
+                            <th>NRP</th>
                             <th>Jenis</th>
                             <th>Lingkup</th>
                             <th>Peran</th>
@@ -39,6 +40,7 @@
                     <tfoot>
                         <tr>
                             <th>No</th>
+                            <th>NRP</th>
                             <th>NRP</th>
                             <th>Jenis</th>
                             <th>Lingkup</th>
@@ -55,6 +57,7 @@
                             <tr>
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $key->NRP; ?></td>
+                                <td><?php echo $key->NAMA; ?></td>
                                 <td><?php echo $key->JENIS; ?></td>
                                 <td><?php echo $key->LINGKUP; ?></td>
                                 <td><?php echo $key->PERAN; ?></td>
