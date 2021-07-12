@@ -69,6 +69,8 @@ class TugasKhususController extends CI_Controller {
         $data = array(
             'NILAI' => "E",
             'STATUS' => 2,
+            'TAHUN_PENGAJUAN' => null,
+            'SEMESTER_PENGAJUAN' => null,
             'TANGGAL_VALIDASI' => null
         );
 

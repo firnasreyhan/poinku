@@ -172,7 +172,7 @@
                                 <div class="modal-body">
                                     <p>Apakah anda yakin ingin melakukan validasi tugas khusus ini?</p>
                                     <div class="form-group">
-                                        <h5>Semester Pengajuan</h5>
+                                        <p>Semester Pengajuan</p>
                                         <input type="radio" name="SEMESTER" value="0" checked /> Genap
                                         <br />
                                         <input type="radio" name="SEMESTER" value="1" /> Ganjil
