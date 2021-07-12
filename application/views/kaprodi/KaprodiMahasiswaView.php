@@ -22,16 +22,16 @@
                 <div class="row">
                     <div class="col-3">
                         <select class="form-control" name="SEMINAR_PENGAJUAN">
-                            <option value="0" <?php $pengajuan == 0 ? "checked" : "";?>>Semua</option>
+                            <option value="0" <?php $pengajuan == 0 ? "selected" : "";?>>Semua</option>
                             <?php
                             foreach ($semester_pengajuan as $row) {
                             ?>
-                                <option value="<?php echo $row->SEMESTER_PENGAJUAN ?>" <?php $pengajuan == $row->SEMESTER_PENGAJUAN ? "checked" : "";?>><?php echo $row->SEMESTER_PENGAJUAN ?></option>
+                                <option value="<?php echo $row->SEMESTER_PENGAJUAN ?>" <?php $pengajuan == $row->SEMESTER_PENGAJUAN ? "selected" : "";?>><?php echo $row->SEMESTER_PENGAJUAN ?></option>
                             <?php } ?>
                         </select>
                     </div>
                     <div class="col-1">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Cari</button>
                     </div>
                 </div>
             </form>
