@@ -148,9 +148,9 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('tugaskhusus') ?>">
+        <a class="nav-link" href="<?php echo site_url('riwayatTugasKhusus') ?>">
             <i class="fas fa-fw fa-table"></i>
-            <span>Riwayat Pengajuan Tugas Khusus</span></a>
+            <span>Riwayat Tugas Khusus</span></a>
     </li>
     
     <?php } else if($this->session->userdata('role') == "Event Manager"){ ?>

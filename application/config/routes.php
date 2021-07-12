@@ -119,6 +119,8 @@ $route['tugaskhusus/tolak'] = 'admin/TugasKhususController/tolak';
 $route['tugaskhusus/detail/(:any)'] = 'admin/TugasKhususController/detail/$1';
 $route['tugaskhusus/kegiatan/(:any)'] = 'admin/TugasKhususController/detailKegiatan/$1';
 
+$route['riwayatTugasKhusus'] = 'admin/RiwayatTugasKhususController';
+
 $route['nilai/insert'] = 'admin/AturanController/insertNilai';
 $route['nilai/delete'] = 'admin/AturanController/deleteNilai';
 $route['aturan/nilai/update/(:any)'] = 'admin/AturanController/detailNilai/$1';
