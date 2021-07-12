@@ -52,7 +52,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Jumlah Jumlah Pengajuan Diteriam</div>
+                                Jumlah Pengajuan Diterima</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_diterima; ?></div>
                         </div>
                         <div class="col-auto">
@@ -70,7 +70,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                Jumlah Jumlah Pengajuan Ditolak</div>
+                                Jumlah Pengajuan Ditolak</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_ditolak; ?></div>
                         </div>
                         <div class="col-auto">
