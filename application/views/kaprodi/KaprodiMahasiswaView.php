@@ -19,10 +19,16 @@
         <div class="card-body">
             <form action="<?php echo site_url("user/insert"); ?>" enctype="multipart/form-data" method="post">
                 <p>Semester Pengajuan</p>
-                <select class="form-control" name="ID_ROLE">
-                    <option value="">Semua</option>
-                </select>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <div class="row">
+                    <div class="col-3">
+                        <select class="form-control" name="ID_ROLE">
+                            <option value="">Semua</option>
+                        </select>
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>x
+                    </div>
+                </div>
                 <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
