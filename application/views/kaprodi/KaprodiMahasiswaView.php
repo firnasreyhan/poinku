@@ -17,10 +17,17 @@
             </div>
         </div>
         <div class="card-body">
-            <select class="form-control" name="ID_ROLE">
-                <option value="">-- Pilih Role --</option>
-            </select>
-            <br/>
+            <form action="<?php echo site_url("user/insert"); ?>" enctype="multipart/form-data" method="post">
+                <p>Semester Pengajuan</p>
+                <select class="form-control" name="ID_ROLE">
+                    <option value="">Semua</option>
+                </select>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div> -->
+            </form>
+            <br />
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
