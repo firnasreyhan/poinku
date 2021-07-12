@@ -8,7 +8,7 @@ class RiwayatTugasKhususController extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        if(($this->session->userdata('idRole') != '4') && ($this->session->userdata('idRole') != '5') && ($this->session->userdata('idRole') != '6')){
+        if ($this->session->userdata('role') != 'Admin') {
             $this->session->sess_destroy();
             redirect('login');
         }
