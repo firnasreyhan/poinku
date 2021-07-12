@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="<?php echo site_url("daftarMahasiswa"); ?>" enctype="multipart/form-data" method="post">
+            <form action="<?php echo site_url("riwayatTugasKhusus"); ?>" enctype="multipart/form-data" method="post">
                 <p>Semester Pengajuan</p>
                 <div class="row">
                     <div class="col-3">
