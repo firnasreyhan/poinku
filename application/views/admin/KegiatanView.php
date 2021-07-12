@@ -29,7 +29,7 @@
                         <tr>
                             <th>No</th>
                             <th>NRP</th>
-                            <th>NRP</th>
+                            <th>Nama</th>
                             <th>Jenis</th>
                             <th>Lingkup</th>
                             <th>Peran</th>
@@ -41,7 +41,7 @@
                         <tr>
                             <th>No</th>
                             <th>NRP</th>
-                            <th>NRP</th>
+                            <th>Nama</th>
                             <th>Jenis</th>
                             <th>Lingkup</th>
                             <th>Peran</th>

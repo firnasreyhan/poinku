@@ -23,6 +23,7 @@
                         <tr>
                             <th>No</th>
                             <th>NRP</th>
+                            <th>Nama</th>
                             <th>Tahun Aturan</th>
                             <th>Prodi</th>
                             <th>Angkatan</th>
@@ -34,6 +35,7 @@
                         <tr>
                             <th>No</th>
                             <th>NRP</th>
+                            <th>Nama</th>
                             <th>Tahun Aturan</th>
                             <th>Prodi</th>
                             <th>Angkatan</th>
@@ -49,6 +51,7 @@
                             <tr>
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $key->NRP; ?></td>
+                                <td><?php echo $key->NAMA; ?></td>
                                 <td><?php echo $key->TAHUN; ?></td>
                                 <td><?php echo $key->PRODI; ?></td>
                                 <td><?php echo $key->ANGKATAN; ?></td>
