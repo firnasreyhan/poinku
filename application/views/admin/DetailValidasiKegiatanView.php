@@ -136,14 +136,14 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="mdlAdd">Terima Kegiatan</h5>
+                                <h5 class="modal-title" id="mdlAdd">Validasi Kegiatan</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <form action="<?php echo site_url("kegiatan/acc"); ?>" enctype="multipart/form-data" method="post">
                                 <div class="modal-body">
-                                    <p>Apakah anda yakin ingin mnenerima kegiatan ini?</p>
+                                    <p>Apakah anda yakin ingin melakukan validasi kegiatan ini?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" class="form-control" name="ID_TUGAS_KHUSUS" placeholder="Email" id="INPUT_EMAIL" value="<?php echo $detail_kegiatan[0]->ID_TUGAS_KHUSUS; ?>">
@@ -167,7 +167,7 @@
                             </div>
                             <form action="<?php echo site_url("kegiatan/tolak"); ?>" enctype="multipart/form-data" method="post">
                                 <div class="modal-body">
-                                    <p>Apakah anda yakin ingin tolak kegiatan ini?</p>
+                                    <p>Apakah anda yakin ingin menolak kegiatan ini?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" class="form-control" name="ID_TUGAS_KHUSUS" placeholder="Email" id="ID" value="<?php echo $detail_kegiatan[0]->ID_TUGAS_KHUSUS; ?>">
