@@ -44,7 +44,7 @@ class TugasKhususController extends CI_Controller {
         );
 
         $tahun = date('Y');
-        $semester = $tahun . $this->input->post('SEMESTER') == 0 ? " / Genap" : " / Ganjil";
+        $semester = $tahun . " / Genap";
         echo $semester;
 
         // $where = array(
