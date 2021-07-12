@@ -39,8 +39,9 @@ class TugasKhususController extends CI_Controller {
 	{
         $data = array(
             'STATUS' => 1,
-            'TANGGAL_VALIDASI' => date('Y-m-d H:i:s'),
-            'SEMESTER_PENGAJUAN' => $this->input->post('SEMESTER')
+            'TAHUN_PENGAJUAN' => date('Y'),
+            'SEMESTER_PENGAJUAN' => $this->input->post('SEMESTER'),
+            'TANGGAL_VALIDASI' => date('Y-m-d H:i:s')
         );
 
         $where = array(
@@ -71,7 +72,7 @@ class TugasKhususController extends CI_Controller {
             'STATUS' => 2,
             'TAHUN_PENGAJUAN' => null,
             'SEMESTER_PENGAJUAN' => null,
-            'TANGGAL_VALIDASI' => null
+            'TANGGAL_VALIDASI' => date('Y-m-d H:i:s'),
         );
 
         $where = array(

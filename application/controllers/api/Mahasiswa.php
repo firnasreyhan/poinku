@@ -65,8 +65,7 @@ class Mahasiswa extends RestController
 
         $dataStore = array(
             'NILAI'             => $param['nilai'],
-            'TANGGAL_VALIDASI'  => date('Y-m-d H:i:s'),
-            'TAHUN_PENGAJUAN'   => date('Y'),
+            'TANGGAL_VALIDASI'  => null,
             'STATUS'            => 0
         );
 
