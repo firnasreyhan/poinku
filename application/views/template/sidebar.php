@@ -143,7 +143,7 @@
             <span>Validasi Tugas Khusus</span></a>
     </li>
 
-    <hr class="sidebar-divider my-0">
+    <hr class="sidebar-divider">
 
     <div class="sidebar-heading">
         Riwayat
