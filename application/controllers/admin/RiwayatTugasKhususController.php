@@ -64,7 +64,7 @@ class RiwayatTugasKhususController extends CI_Controller {
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('kaprodi/DetailMahasiswaView', $data);
+		$this->load->view('admin/DetailRiwayatTugasKhususView', $data);
 		// $this->load->view('template/modal');
 		$this->load->view('template/footer');
     }
@@ -82,7 +82,7 @@ class RiwayatTugasKhususController extends CI_Controller {
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('template/topbar');
-		$this->load->view('kaprodi/DetailKegiatanMahasiswaView', $data);
+		$this->load->view('admin/DetailKegiatanRiwayatTugasKhususView', $data);
 		// $this->load->view('template/modal');
 		$this->load->view('template/footer');
     }

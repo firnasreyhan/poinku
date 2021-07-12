@@ -120,6 +120,8 @@ $route['tugaskhusus/detail/(:any)'] = 'admin/TugasKhususController/detail/$1';
 $route['tugaskhusus/kegiatan/(:any)'] = 'admin/TugasKhususController/detailKegiatan/$1';
 
 $route['riwayatTugasKhusus'] = 'admin/RiwayatTugasKhususController';
+$route['riwayatTugasKhusus/detail/(:any)'] = 'admin/RiwayatTugasKhususController/detail/$1';
+$route['riwayatTugasKhusus/kegiatan/(:any)'] = 'admin/RiwayatTugasKhususController/detailKegiatan/$1';
 
 $route['nilai/insert'] = 'admin/AturanController/insertNilai';
 $route['nilai/delete'] = 'admin/AturanController/deleteNilai';
