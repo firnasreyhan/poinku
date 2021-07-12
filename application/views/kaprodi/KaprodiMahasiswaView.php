@@ -21,18 +21,19 @@
                 <p>Semester Pengajuan</p>
                 <div class="row">
                     <div class="col-3">
-                        <select class="form-control" name="ID_ROLE">
-                            <option value="">Semua</option>
+                        <select class="form-control" name="SEMINAR_PENGAJUAN">
+                            <option value="0">Semua</option>
+                            <?php
+                            foreach ($semester_pengajuan as $row) {
+                            ?>
+                                <option value="<?php echo $row->SEMESTER_PENGAJUAN ?>"><?php echo $row->SEMESTER_PENGAJUAN ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="col-1">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>x
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </div>
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div> -->
             </form>
             <br />
             <div class="table-responsive">

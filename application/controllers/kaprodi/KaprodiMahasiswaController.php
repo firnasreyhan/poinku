@@ -30,13 +30,17 @@ class KaprodiMahasiswaController extends CI_Controller {
 
         if ($idRole == '4') {
             $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'TI'";
+            $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = 'TI' GROUP BY SEMESTER_PENGAJUAN";
         } elseif ($idRole == '5') {
             $query = "SELECT * FROM view_mahasiswa WHERE PRODI = (PRODI = 'SI' OR PRODI = 'MI')";
+            $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = (PRODI = 'SI' OR PRODI = 'MI') GROUP BY SEMESTER_PENGAJUAN";
         } elseif ($idRole == '6') {
             $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'DKV'";
+            $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = 'DKV' GROUP BY SEMESTER_PENGAJUAN";
         }
 
         $data['mahasiswa'] = $this->MahasiswaModel->getForKaprodi($query);
+        $data['semester_pengajuan'] = $this->MahasiswaModel->getForKaprodi($querySemester);
 
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');
