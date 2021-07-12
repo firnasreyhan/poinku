@@ -20,6 +20,7 @@
             <select class="form-control" name="ID_ROLE">
                 <option value="">-- Pilih Role --</option>
             </select>
+            <br/>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
