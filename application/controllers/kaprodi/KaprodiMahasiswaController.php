@@ -30,13 +30,25 @@ class KaprodiMahasiswaController extends CI_Controller {
         $semester_pengajuan = $this->input->post('SEMINAR_PENGAJUAN');
 
         if ($idRole == '4') {
-            $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'TI'";
+            if ($semester_pengajuan == 0) {
+                $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'TI'";
+            } else {
+                $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'TI' AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";
+            }
             $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = 'TI' GROUP BY SEMESTER_PENGAJUAN";
         } elseif ($idRole == '5') {
-            $query = "SELECT * FROM view_mahasiswa WHERE PRODI = (PRODI = 'SI' OR PRODI = 'MI')";
+            if ($semester_pengajuan == 0) {
+                $query = "SELECT * FROM view_mahasiswa WHERE PRODI = (PRODI = 'SI' OR PRODI = 'MI')";
+            } else {
+                $query = "SELECT * FROM view_mahasiswa WHERE PRODI = '(PRODI = 'SI' OR PRODI = 'MI')' AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";
+            }
             $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = (PRODI = 'SI' OR PRODI = 'MI') GROUP BY SEMESTER_PENGAJUAN";
         } elseif ($idRole == '6') {
-            $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'DKV'";
+            if ($semester_pengajuan == 0) {
+                $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'DKV'";
+            } else {
+                $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'DKV' AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";
+            }
             $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = 'DKV' GROUP BY SEMESTER_PENGAJUAN";
         }
 
