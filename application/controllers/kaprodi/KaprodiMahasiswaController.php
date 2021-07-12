@@ -27,6 +27,7 @@ class KaprodiMahasiswaController extends CI_Controller {
     public function index()
     {
         $idRole = $this->session->userdata('idRole');
+        $semester_pengajuan = $this->input->post('SEMINAR_PENGAJUAN');
 
         if ($idRole == '4') {
             $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'TI'";
