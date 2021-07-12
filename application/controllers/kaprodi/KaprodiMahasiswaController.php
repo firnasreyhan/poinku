@@ -54,6 +54,7 @@ class KaprodiMahasiswaController extends CI_Controller {
 
         $data['mahasiswa'] = $this->MahasiswaModel->getForKaprodi($query);
         $data['semester_pengajuan'] = $this->MahasiswaModel->getForKaprodi($querySemester);
+        $data['pengajuan'] = $semester_pengajuan;
 
         $this->load->view('template/header');
 		$this->load->view('template/sidebar');
