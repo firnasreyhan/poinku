@@ -43,25 +43,27 @@ class TugasKhususController extends CI_Controller {
             'TANGGAL_VALIDASI' => date('Y-m-d H:i:s')
         );
 
-        $where = array(
-            'NRP' => $this->input->post('NRP'),
-        );
+        echo date('Y') . $this->input->post('SEMESTER') == 0 ? " / Genap" : " / Ganjil";
 
-        $this->MahasiswaModel->acc($data, $where);
+        // $where = array(
+        //     'NRP' => $this->input->post('NRP'),
+        // );
 
-        $query = $this->db->query('SELECT * FROM mahasiswa WHERE NRP="'.$this->input->post('NRP').'"')->result();
+        // $this->MahasiswaModel->acc($data, $where);
+
+        // $query = $this->db->query('SELECT * FROM mahasiswa WHERE NRP="'.$this->input->post('NRP').'"')->result();
         
-        foreach($query as $data){
-            $token = $data->TOKEN;
-        }
+        // foreach($query as $data){
+        //     $token = $data->TOKEN;
+        // }
 
-        $dataAccTugasKhususNotif = array(
-            'token' => $token,
-        );
+        // $dataAccTugasKhususNotif = array(
+        //     'token' => $token,
+        // );
 
-        $this->load->view('notifikasi/NotifikasiAccTugasKhususView', $dataAccTugasKhususNotif);
-        $this->session->set_tempdata('tugasKhususView', '<div class="alert alert-success" role="alert">Berhasil validasi tugas khusus</div>', 1);
-        redirect('tugaskhusus');
+        // $this->load->view('notifikasi/NotifikasiAccTugasKhususView', $dataAccTugasKhususNotif);
+        // $this->session->set_tempdata('tugasKhususView', '<div class="alert alert-success" role="alert">Berhasil validasi tugas khusus</div>', 1);
+        // redirect('tugaskhusus');
     }
     
     public function tolak()
