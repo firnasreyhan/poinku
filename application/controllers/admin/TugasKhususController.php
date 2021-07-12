@@ -37,40 +37,38 @@ class TugasKhususController extends CI_Controller {
     
     public function acc()
 	{
-        $data = array(
-            'STATUS' => 1,
-            'SEMESTER_PENGAJUAN' => date('Y') . $this->input->post('SEMESTER') == 0 ? " / Genap" : " / Ganjil",
-            'TANGGAL_VALIDASI' => date('Y-m-d H:i:s')
-        );
-
         $tahun = date('Y');
         if ($this->input->post('SEMESTER') == 0) {
             $semester = $tahun . " / Genap";
         } else {
             $semester = $tahun . " / Ganjil";
         }
+
+        $data = array(
+            'STATUS' => 1,
+            'SEMESTER_PENGAJUAN' => $semester,
+            'TANGGAL_VALIDASI' => date('Y-m-d H:i:s')
+        );
+
+        $where = array(
+            'NRP' => $this->input->post('NRP'),
+        );
+
+        $this->MahasiswaModel->acc($data, $where);
+
+        $query = $this->db->query('SELECT * FROM mahasiswa WHERE NRP="'.$this->input->post('NRP').'"')->result();
         
-        echo $semester;
+        foreach($query as $data){
+            $token = $data->TOKEN;
+        }
 
-        // $where = array(
-        //     'NRP' => $this->input->post('NRP'),
-        // );
+        $dataAccTugasKhususNotif = array(
+            'token' => $token,
+        );
 
-        // $this->MahasiswaModel->acc($data, $where);
-
-        // $query = $this->db->query('SELECT * FROM mahasiswa WHERE NRP="'.$this->input->post('NRP').'"')->result();
-        
-        // foreach($query as $data){
-        //     $token = $data->TOKEN;
-        // }
-
-        // $dataAccTugasKhususNotif = array(
-        //     'token' => $token,
-        // );
-
-        // $this->load->view('notifikasi/NotifikasiAccTugasKhususView', $dataAccTugasKhususNotif);
-        // $this->session->set_tempdata('tugasKhususView', '<div class="alert alert-success" role="alert">Berhasil validasi tugas khusus</div>', 1);
-        // redirect('tugaskhusus');
+        $this->load->view('notifikasi/NotifikasiAccTugasKhususView', $dataAccTugasKhususNotif);
+        $this->session->set_tempdata('tugasKhususView', '<div class="alert alert-success" role="alert">Berhasil validasi tugas khusus</div>', 1);
+        redirect('tugaskhusus');
     }
     
     public function tolak()
