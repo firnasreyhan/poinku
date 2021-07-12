@@ -76,7 +76,7 @@
                                 <td><?php echo $key->ANGKATAN; ?></td>
                                 <td><?php echo $key->NILAI; ?></td>
                                 <td style="text-align:right">
-                                    <a href="<?php echo site_url("daftarMahasiswa/detail/" . $key->NRP); ?>" class="btn btn-primary btn-icon-split">
+                                    <a href="<?php echo site_url("riwayatTugasKhusus/detail/" . $key->NRP); ?>" class="btn btn-primary btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-external-link-alt"></i>
                                         </span>
