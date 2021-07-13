@@ -22,12 +22,17 @@
                 <div class="row">
                     <div class="col-3">
                         <select class="form-control" name="SEMINAR_PENGAJUAN">
-                            <option value="0" <?php $pengajuan == 0 ? "selected" : "";?>>Semua</option>
+                            <option value="0" <?php $pengajuan == 0 ? "selected" : ""; ?>>Semua</option>
                             <?php
                             foreach ($semester_pengajuan as $row) {
+                                if ($row != null) {
                             ?>
-                                <option value="<?php echo $row->SEMESTER_PENGAJUAN ?>" <?php if ($pengajuan == $row->SEMESTER_PENGAJUAN) { echo "selected"; }; ?>><?php echo $row->SEMESTER_PENGAJUAN ?></option>
-                            <?php } ?>
+                                    <option value="<?php echo $row->SEMESTER_PENGAJUAN ?>" <?php if ($pengajuan == $row->SEMESTER_PENGAJUAN) {
+                                                                                                echo "selected";
+                                                                                            }; ?>><?php echo $row->SEMESTER_PENGAJUAN ?></option>
+                            <?php
+                                }
+                            } ?>
                         </select>
                     </div>
                     <div class="col-1">
