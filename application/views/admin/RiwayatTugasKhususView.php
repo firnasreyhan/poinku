@@ -25,7 +25,7 @@
                             <option value="0" <?php $pengajuan == 0 ? "selected" : ""; ?>>Semua</option>
                             <?php
                             foreach ($semester_pengajuan as $row) {
-                                if ($row != null) {
+                                if (isset($row)) {
                             ?>
                                     <option value="<?php echo $row->SEMESTER_PENGAJUAN ?>" <?php if ($pengajuan == $row->SEMESTER_PENGAJUAN) {
                                                                                                 echo "selected";
