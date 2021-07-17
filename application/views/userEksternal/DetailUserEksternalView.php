@@ -105,7 +105,7 @@
                 <div class="modal-footer">
                     <input type="hidden" class="form-control" name="ID_EVENT" value="<?php echo $detail_event[0]->ID_EVENT; ?>" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Daftar</button>
                 </div>
             </form>
         </div>
