@@ -241,7 +241,7 @@
                                             <tr>
                                                 <td>
                                                     <?php
-                                                    if ($key->STATUS != 0 && $key->STATUS != 1) {
+                                                    if ($key->STATUS == null || $key->STATUS == 2) {
                                                     ?>
                                                         <div class="custom-control custom-checkbox" style="text-align:center;">
                                                             <input type="checkbox" class="custom-control-input checkItem" id="chck_<?php echo $no; ?>" value="<?php echo $key->NRP; ?>">
