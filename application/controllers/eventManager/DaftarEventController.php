@@ -367,16 +367,18 @@ class DaftarEventController extends CI_Controller {
                 );
                 
                 //update tugas khusus
-                $dataTugasKhusus = $this->db->query("SELECT * FROM tugas_khusus WHERE NRP = '$email_substr' AND JUDUL = '$judul'")->result();
-                $whereTugasKhusus = array(
-                    'ID_TUGAS_KHUSUS'   => $dataTugasKhusus[0]->ID_TUGAS_KHUSUS
-                );
-        
-                $dataStoreTugasKhusus = array(
-                    'BUKTI '            => $sertifikat
-                );
-        
-                $this->TugasKhususModel->update($whereTugasKhusus, $dataStoreTugasKhusus);
+                if (strpos($email, "@mhs.stiki.ac.id")) {
+                    $dataTugasKhusus = $this->db->query("SELECT * FROM tugas_khusus WHERE NRP = '$email_substr' AND JUDUL = '$judul'")->result();
+                    $whereTugasKhusus = array(
+                        'ID_TUGAS_KHUSUS'   => $dataTugasKhusus[0]->ID_TUGAS_KHUSUS
+                    );
+            
+                    $dataStoreTugasKhusus = array(
+                        'BUKTI '            => $sertifikat
+                    );
+            
+                    $this->TugasKhususModel->update($whereTugasKhusus, $dataStoreTugasKhusus);
+                }
 
                 // //konfigurasi email
                 // $config['useragent'] = 'Poinku';
