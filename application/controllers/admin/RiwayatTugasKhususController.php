@@ -30,12 +30,12 @@ class RiwayatTugasKhususController extends CI_Controller {
         $semester_pengajuan = $this->input->post('SEMINAR_PENGAJUAN');
 
         if ($semester_pengajuan == 0) {
-            $query = "SELECT * FROM view_mahasiswa";
+            $query = "SELECT * FROM view_mahasiswa WHERE STATUS = '1'";
         } else {
-            $query = "SELECT * FROM view_mahasiswa WHERE SEMESTER_PENGAJUAN = '$semester_pengajuan'";
+            $query = "SELECT * FROM view_mahasiswa WHERE STATUS = '1' AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";
         }
 
-        $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa GROUP BY SEMESTER_PENGAJUAN";
+        $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE STATUS = '1' GROUP BY SEMESTER_PENGAJUAN";
 
         $data['mahasiswa'] = $this->MahasiswaModel->getForKaprodi($query);
         $data['semester_pengajuan'] = $this->MahasiswaModel->getForKaprodi($querySemester);
