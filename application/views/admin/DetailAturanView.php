@@ -240,10 +240,16 @@
                                         ?>
                                             <tr>
                                                 <td>
-                                                    <div class="custom-control custom-checkbox" style="text-align:center;">
-                                                        <input type="checkbox" class="custom-control-input checkItem" id="chck_<?php echo $no; ?>" value="<?php echo $key->NRP; ?>">
-                                                        <label class="custom-control-label" for="chck_<?php echo $no; ?>"></label>
-                                                    </div>
+                                                    <?php
+                                                    if ($key->STATUS != 0 || $key->STATUS != 1) {
+                                                    ?>
+                                                        <div class="custom-control custom-checkbox" style="text-align:center;">
+                                                            <input type="checkbox" class="custom-control-input checkItem" id="chck_<?php echo $no; ?>" value="<?php echo $key->NRP; ?>">
+                                                            <label class="custom-control-label" for="chck_<?php echo $no; ?>"></label>
+                                                        </div>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                 </td>
                                                 <td><?php echo $key->NRP; ?></td>
                                                 <td><?php echo $key->NAMA; ?></td>
