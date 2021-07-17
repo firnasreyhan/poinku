@@ -44,11 +44,17 @@ class UserEksternalController extends CI_Controller
         $nama           = $this->input->post('NAMA');
         $idEvent        = $this->input->post('ID_EVENT');
 
+        if (strpos($email, "@mhs.stiki.ac.id")) {
+            $isEksternal = 0;
+        } else {
+            $isEksternal = 1;
+        }
+
         $dataPresensi = array(
             'EMAIL'            => $email,
             'NAMA'             => $nama,
             'ID_EVENT'         => $idEvent,
-            'IS_EKSTERNAL'     => 1,
+            'IS_EKSTERNAL'     => $isEksternal,
         );
 
         $where = array(
