@@ -446,7 +446,10 @@ class DaftarEventController extends CI_Controller {
                     }
                 
                     $mail->send();
-                    if ($i == ($dataPresensiRow)) {
+                    if ($i == ($dataPresensiRow - 1)) {
+                        $this->session->set_tempdata('message', '<div class="alert alert-success" role="alert">Terkirim</div>', 1);
+                        redirect('daftarEvent/detail/'.$idEvent);
+                    } else {
                         $this->session->set_tempdata('message', '<div class="alert alert-success" role="alert">Terkirim</div>', 1);
                         redirect('daftarEvent/detail/'.$idEvent);
                     }
