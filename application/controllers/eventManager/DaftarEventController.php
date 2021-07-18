@@ -284,8 +284,8 @@ class DaftarEventController extends CI_Controller {
         $update = $this->DaftarEventModel->updateTemplateSertifikat($poster, $idEvent);
         if ($update == 1) {
             //get data database
-            $dataPresensi = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = '1' AND SERTIFIKAT IS NULL")->result();
-            $dataPresensiRow = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = '1' AND SERTIFIKAT  IS NULL")->num_rows();
+            $dataPresensi = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = 1 AND SERTIFIKAT IS NULL")->result();
+            $dataPresensiRow = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = 1  SERTIFIKAT IS NULL")->num_rows();
             $dataEvent = $this->db->query("SELECT * FROM event WHERE ID_EVENT = '$idEvent'")->result();
 
             // perulangan berdasarkan data presensi
@@ -333,19 +333,19 @@ class DaftarEventController extends CI_Controller {
                 file_put_contents($path_pdf, $resPdf);
         
                 //ambil data presensi yang baru
-                // $dataPresensiBaru = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1  AND SERTIFIKAT = null")->result();
+                $dataPresensiBaru = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1")->result();
                 
                 //ambil email dari data presensi baru
-                // foreach($dataPresensiBaru as $dtPresBr){
-                //     $dtEmail = $dtPresBr->EMAIL;
-                // }
+                foreach($dataPresensiBaru as $dtPresBr){
+                    $dtEmail = $dtPresBr->EMAIL;
+                }
 
                 $dataUpdateSertifikat = array(
                     'SERTIFIKAT' => base_url().'uploads/event/sertifikat/'.$idEvent.'/'.$file_pdf.'.pdf'
                 );
                 
                 $where = array(
-                    'EMAIL' => $email
+                    'EMAIL' => $dtEmail
                 );
 
                 //update data presensi dengan sertifikat baru
@@ -354,31 +354,17 @@ class DaftarEventController extends CI_Controller {
                 $this->db->update('presensi');
 
                 //ambil data presensi dengan sertifikat
-                $dataPresensiBaruSertifikat = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email'")->result();
+                $dataPresensiBaruSertifikat = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1")->result();
                 
-                // foreach($dataPresensiBaruSertifikat as $dtSer){
-                //     $sertifikat = $dtSer->SERTIFIKAT;
-                // }
+                foreach($dataPresensiBaruSertifikat as $dtSer){
+                    $sertifikat = $dtSer->SERTIFIKAT;
+                }
 
                 //data untuk email
                 $dataEmail = array(
-                    'SERTIFIKAT' => $dataPresensiBaruSertifikat[0]->SERTIFIKAT,
-                    'EMAIL' => $email,
+                    'SERTIFIKAT' => $sertifikat,
+                    'EMAIL' => $dtEmail,
                 );
-                
-                //update tugas khusus
-                if (strpos($email, "@mhs.stiki.ac.id")) {
-                    $dataTugasKhusus = $this->db->query("SELECT * FROM tugas_khusus WHERE NRP = '$email_substr' AND JUDUL = '$judul'")->result();
-                    $whereTugasKhusus = array(
-                        'ID_TUGAS_KHUSUS'   => $dataTugasKhusus[0]->ID_TUGAS_KHUSUS
-                    );
-            
-                    $dataStoreTugasKhusus = array(
-                        'BUKTI '            => $dataPresensiBaruSertifikat[0]->SERTIFIKAT
-                    );
-            
-                    $this->TugasKhususModel->update($whereTugasKhusus, $dataStoreTugasKhusus);
-                }
 
                 // //konfigurasi email
                 // $config['useragent'] = 'Poinku';
@@ -435,7 +421,7 @@ class DaftarEventController extends CI_Controller {
                 
                     //Recipients
                     $mail->setFrom('adm.tomboati@gmail.com', 'Admin Poinku');
-                    $mail->addAddress($email);     //Add a recipient
+                    $mail->addAddress($dtEmail);     //Add a recipient
                 
                     //Attachments
                     $mail->addAttachment($path_pdf);         //Add attachments
@@ -444,6 +430,20 @@ class DaftarEventController extends CI_Controller {
                     $mail->isHTML(true);                                  //Set email format to HTML
                     $mail->Subject = 'Sertifikat';
                     $mail->Body    = $this->load->view('template/emailSertifikat',$dataEmail,true);
+
+                    //update tugas khusus
+                    if (strpos($email, "@mhs.stiki.ac.id")) {
+                        $dataTugasKhusus = $this->db->query("SELECT * FROM tugas_khusus WHERE NRP = '$email_substr' AND JUDUL = '$judul'")->result();
+                        $whereTugasKhusus = array(
+                            'ID_TUGAS_KHUSUS'   => $dataTugasKhusus[0]->ID_TUGAS_KHUSUS
+                        );
+                
+                        $dataStoreTugasKhusus = array(
+                            'BUKTI '            => $sertifikat
+                        );
+                
+                        $this->TugasKhususModel->update($whereTugasKhusus, $dataStoreTugasKhusus);
+                    }
                 
                     $mail->send();
                     if ($i == ($dataPresensiRow - 1)) {
