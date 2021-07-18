@@ -288,176 +288,172 @@ class DaftarEventController extends CI_Controller {
             $dataPresensiRow = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = 1 AND SERTIFIKAT IS NULL")->num_rows();
             $dataEvent = $this->db->query("SELECT * FROM event WHERE ID_EVENT = '$idEvent'")->result();
 
-            print_r($dataPresensiRow);
             // perulangan berdasarkan data presensi
-            // for ($i=0; $i < $dataPresensiRow ; $i++) { 
-            //     $this->load->library('pdfgenerator');
-            //     $this->load->library('email');
+            for ($i=0; $i < $dataPresensiRow ; $i++) { 
+                $this->load->library('pdfgenerator');
+                $this->load->library('email');
 
-            //     //substring judul event
-            //     $judul = $dataEvent[0]->JUDUL;
-            //     // $judul = str_replace(' ', '_', $str);
-            //     $idEvent = $dataEvent[0]->ID_EVENT;
-            //     $templateSertifikat = $dataEvent[0]->TEMPLATE_SERTIFIKAT;
+                //substring judul event
+                $judul = $dataEvent[0]->JUDUL;
+                // $judul = str_replace(' ', '_', $str);
+                $idEvent = $dataEvent[0]->ID_EVENT;
+                $templateSertifikat = $dataEvent[0]->TEMPLATE_SERTIFIKAT;
                 
-            //     //data untuk sertifikat
-            //     $data = [
-            //         'nama' => $dataPresensi[$i]->NAMA,
-            //         'judul' => $judul,
-            //         'template_sertifikat' => $templateSertifikat,
-            //         'penyelenggara' => $this->session->userdata('nama')
-            //     ];
+                //data untuk sertifikat
+                $data = [
+                    'nama' => $dataPresensi[$i]->NAMA,
+                    'judul' => $judul,
+                    'template_sertifikat' => $templateSertifikat,
+                    'penyelenggara' => $this->session->userdata('nama')
+                ];
 
-            //     //substring email
-            //     $email = $dataPresensi[$i]->EMAIL;
-            //     $email_substr = substr($email,0,9);
+                //substring email
+                $email = $dataPresensi[$i]->EMAIL;
+                $email_substr = substr($email,0,9);
 
-            //     //config template untuk sertifikat
-            //     $html = $this->load->view('template/template_sertifikat', $data, true);	
-            //     $file_pdf = $email_substr;
-            //     $paper = 'A4';
-            //     $orientation = 'landscape';
+                //config template untuk sertifikat
+                $html = $this->load->view('template/template_sertifikat', $data, true);	
+                $file_pdf = $email_substr;
+                $paper = 'A4';
+                $orientation = 'landscape';
                 
-            //     //lokasi upload sertifikat
-            //     $path_pdf = 'uploads/event/sertifikat/'.$idEvent.'/'.$file_pdf.'.pdf';    
+                //lokasi upload sertifikat
+                $path_pdf = 'uploads/event/sertifikat/'.$idEvent.'/'.$file_pdf.'.pdf';    
 
-            //     //compile sertifikat
-            //     $resPdf = $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
-            //     if(!is_dir('./uploads/event/sertifikat/'.$idEvent.'')){
-            //         mkdir('./uploads/event/sertifikat/'.$idEvent.'', 0777, TRUE);
-            //         print_r(true);
-            //     } else {
-            //         print_r(false);
-            //     }
+                //compile sertifikat
+                $resPdf = $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
+                if(!is_dir('./uploads/event/sertifikat/'.$idEvent.'')){
+                    mkdir('./uploads/event/sertifikat/'.$idEvent.'', 0777, TRUE);
+                    print_r(true);
+                } else {
+                    print_r(false);
+                }
 
-            //     //simpan sertifikat ke direktori
-            //     file_put_contents($path_pdf, $resPdf);
+                //simpan sertifikat ke direktori
+                file_put_contents($path_pdf, $resPdf);
         
-            //     //ambil data presensi yang baru
-            //     $dataPresensiBaru = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1")->result();
+                //ambil data presensi yang baru
+                $dataPresensiBaru = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1")->result();
                 
-            //     //ambil email dari data presensi baru
-            //     foreach($dataPresensiBaru as $dtPresBr){
-            //         $dtEmail = $dtPresBr->EMAIL;
-            //     }
+                //ambil email dari data presensi baru
+                foreach($dataPresensiBaru as $dtPresBr){
+                    $dtEmail = $dtPresBr->EMAIL;
+                }
 
-            //     $dataUpdateSertifikat = array(
-            //         'SERTIFIKAT' => base_url().'uploads/event/sertifikat/'.$idEvent.'/'.$file_pdf.'.pdf'
-            //     );
+                $dataUpdateSertifikat = array(
+                    'SERTIFIKAT' => base_url().'uploads/event/sertifikat/'.$idEvent.'/'.$file_pdf.'.pdf'
+                );
                 
-            //     $where = array(
-            //         'EMAIL' => $dtEmail
-            //     );
+                $where = array(
+                    'EMAIL' => $dtEmail
+                );
 
-            //     //update data presensi dengan sertifikat baru
-            //     $this->db->set($dataUpdateSertifikat);
-            //     $this->db->where($where);
-            //     $this->db->update('presensi');
+                //update data presensi dengan sertifikat baru
+                $this->db->set($dataUpdateSertifikat);
+                $this->db->where($where);
+                $this->db->update('presensi');
 
-            //     //ambil data presensi dengan sertifikat
-            //     $dataPresensiBaruSertifikat = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1")->result();
+                //ambil data presensi dengan sertifikat
+                $dataPresensiBaruSertifikat = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1")->result();
                 
-            //     foreach($dataPresensiBaruSertifikat as $dtSer){
-            //         $sertifikat = $dtSer->SERTIFIKAT;
-            //     }
+                foreach($dataPresensiBaruSertifikat as $dtSer){
+                    $sertifikat = $dtSer->SERTIFIKAT;
+                }
 
-            //     //data untuk email
-            //     $dataEmail = array(
-            //         'SERTIFIKAT' => $sertifikat,
-            //         'EMAIL' => $dtEmail,
-            //     );
+                //data untuk email
+                $dataEmail = array(
+                    'SERTIFIKAT' => $sertifikat,
+                    'EMAIL' => $dtEmail,
+                );
 
-            //     // //konfigurasi email
-            //     // $config['useragent'] = 'Poinku';
-            //     // $config['protocol'] = 'smtp';
+                // //konfigurasi email
+                // $config['useragent'] = 'Poinku';
+                // $config['protocol'] = 'smtp';
                 
-            //     // $config['smtp_host'] = 'smtp.googlemail.com';
-            //     // $config['smtp_user'] = 'adm.tomboati@gmail.com'; //gantien dewe
-            //     // $config['smtp_pass'] = 'TomboAti123'; //gantien dewe sesuaino karo email e
-            //     // $config['smtp_port'] = 465; 
-            //     // $config['smtp_timeout'] = 15;
-            //     // $config['wordwrap'] = TRUE;
-            //     // $config['wrapchars'] = 76;
-            //     // $config['mailtype'] = 'html';
-            //     // $config['charset'] = 'UTF-8';
-            //     // $config['validate'] = FALSE;
-            //     // $config['priority'] = 3;
-            //     // $config['crlf'] = "\r\n";
-            //     // $config['newline'] = "\r\n";
-            //     // $config['bcc_batch_mode'] = FALSE;
-            //     // $config['bcc_batch_size'] = 200;
+                // $config['smtp_host'] = 'smtp.googlemail.com';
+                // $config['smtp_user'] = 'adm.tomboati@gmail.com'; //gantien dewe
+                // $config['smtp_pass'] = 'TomboAti123'; //gantien dewe sesuaino karo email e
+                // $config['smtp_port'] = 465; 
+                // $config['smtp_timeout'] = 15;
+                // $config['wordwrap'] = TRUE;
+                // $config['wrapchars'] = 76;
+                // $config['mailtype'] = 'html';
+                // $config['charset'] = 'UTF-8';
+                // $config['validate'] = FALSE;
+                // $config['priority'] = 3;
+                // $config['crlf'] = "\r\n";
+                // $config['newline'] = "\r\n";
+                // $config['bcc_batch_mode'] = FALSE;
+                // $config['bcc_batch_size'] = 200;
         
-            //     // $this->email->initialize($config);
+                // $this->email->initialize($config);
                 
-            //     // $this->email->from('adm.tomboati@gmail.com', 'Admin Poinku'); 
-            //     // $this->email->to($dtEmail); 
-            //     // $this->email->subject('Sertifikat');
-            //     // $msg =  $this->load->view('template/emailSertifikat',$dataEmail,true);
-            //     // $this->email->message($msg);
+                // $this->email->from('adm.tomboati@gmail.com', 'Admin Poinku'); 
+                // $this->email->to($dtEmail); 
+                // $this->email->subject('Sertifikat');
+                // $msg =  $this->load->view('template/emailSertifikat',$dataEmail,true);
+                // $this->email->message($msg);
 
-            //     // //cek email sent
-            //     // if ($this->email->send()) {
-            //     //     $this->session->set_tempdata('message', '<div class="alert alert-success" role="alert">
-            //     //     Terkirim
-            //     //   </div>', 1);
-            //     //   redirect('daftarEvent/detail/'.$idEvent);
-            //     // } else {
-            //     //     echo $this->email->print_debugger();
-            //     // }
+                // //cek email sent
+                // if ($this->email->send()) {
+                //     $this->session->set_tempdata('message', '<div class="alert alert-success" role="alert">
+                //     Terkirim
+                //   </div>', 1);
+                //   redirect('daftarEvent/detail/'.$idEvent);
+                // } else {
+                //     echo $this->email->print_debugger();
+                // }
 
-            //     require 'vendor/autoload.php';
-            //     //Instantiation and passing `true` enables exceptions
-            //     $mail = new PHPMailer(true);
+                require 'vendor/autoload.php';
+                //Instantiation and passing `true` enables exceptions
+                $mail = new PHPMailer(true);
 
-            //     try {
-            //         //Server settings
-            //         $mail->isSMTP();             
-            //         // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                                 //Send using SMTP
-            //         $mail->Host       = 'smtp.googlemail.com';                     //Set the SMTP server to send through
-            //         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            //         $mail->Username   = 'adm.tomboati@gmail.com';                     //SMTP username
-            //         $mail->Password   = 'TomboAti123';                               //SMTP password
-            //         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-            //         $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+                try {
+                    //Server settings
+                    $mail->isSMTP();             
+                    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                                 //Send using SMTP
+                    $mail->Host       = 'smtp.googlemail.com';                     //Set the SMTP server to send through
+                    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                    $mail->Username   = 'adm.tomboati@gmail.com';                     //SMTP username
+                    $mail->Password   = 'TomboAti123';                               //SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+                    $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
                 
-            //         //Recipients
-            //         $mail->setFrom('adm.tomboati@gmail.com', 'Admin Poinku');
-            //         $mail->addAddress($dtEmail);     //Add a recipient
+                    //Recipients
+                    $mail->setFrom('adm.tomboati@gmail.com', 'Admin Poinku');
+                    $mail->addAddress($dtEmail);     //Add a recipient
                 
-            //         //Attachments
-            //         $mail->addAttachment($path_pdf);         //Add attachments
+                    //Attachments
+                    $mail->addAttachment($path_pdf);         //Add attachments
                 
-            //         //Content
-            //         $mail->isHTML(true);                                  //Set email format to HTML
-            //         $mail->Subject = 'Sertifikat';
-            //         $mail->Body    = $this->load->view('template/emailSertifikat',$dataEmail,true);
+                    //Content
+                    $mail->isHTML(true);                                  //Set email format to HTML
+                    $mail->Subject = 'Sertifikat';
+                    $mail->Body    = $this->load->view('template/emailSertifikat',$dataEmail,true);
 
-            //         //update tugas khusus
-            //         if (strpos($email, "@mhs.stiki.ac.id")) {
-            //             $dataTugasKhusus = $this->db->query("SELECT * FROM tugas_khusus WHERE NRP = '$email_substr' AND JUDUL = '$judul'")->result();
-            //             $whereTugasKhusus = array(
-            //                 'ID_TUGAS_KHUSUS'   => $dataTugasKhusus[0]->ID_TUGAS_KHUSUS
-            //             );
+                    //update tugas khusus
+                    if (strpos($email, "@mhs.stiki.ac.id")) {
+                        $dataTugasKhusus = $this->db->query("SELECT * FROM tugas_khusus WHERE NRP = '$email_substr' AND JUDUL = '$judul'")->result();
+                        $whereTugasKhusus = array(
+                            'ID_TUGAS_KHUSUS'   => $dataTugasKhusus[0]->ID_TUGAS_KHUSUS
+                        );
                 
-            //             $dataStoreTugasKhusus = array(
-            //                 'BUKTI '            => $sertifikat
-            //             );
+                        $dataStoreTugasKhusus = array(
+                            'BUKTI '            => $sertifikat
+                        );
                 
-            //             $this->TugasKhususModel->update($whereTugasKhusus, $dataStoreTugasKhusus);
-            //         }
+                        $this->TugasKhususModel->update($whereTugasKhusus, $dataStoreTugasKhusus);
+                    }
                 
-            //         $mail->send();
-            //         if ($i == ($dataPresensiRow - 1)) {
-            //             $this->session->set_tempdata('message', '<div class="alert alert-success" role="alert">Terkirim</div>', 1);
-            //             redirect('daftarEvent/detail/'.$idEvent);
-            //         } else {
-            //             $this->session->set_tempdata('message', '<div class="alert alert-success" role="alert">Terkirim</div>', 1);
-            //             redirect('daftarEvent/detail/'.$idEvent);
-            //         }
-            //     } catch (Exception $e) {
-            //         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-            //     }
-            // }  
+                    $mail->send();
+                    if (($i + 1) == $dataPresensiRow) {
+                        $this->session->set_tempdata('message', '<div class="alert alert-success" role="alert">Terkirim</div>', 1);
+                        redirect('daftarEvent/detail/'.$idEvent);
+                    }
+                } catch (Exception $e) {
+                    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
+            }  
         }  
     }
 
