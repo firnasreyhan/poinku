@@ -284,8 +284,8 @@ class DaftarEventController extends CI_Controller {
         $update = $this->DaftarEventModel->updateTemplateSertifikat($poster, $idEvent);
         if ($update == 1) {
             //get data database
-            $dataPresensi = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = '1' AND SERTIFIKAT = null")->result();
-            $dataPresensiRow = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = '1' AND SERTIFIKAT = null")->num_rows();
+            $dataPresensi = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = '1' AND SERTIFIKAT IS NULL")->result();
+            $dataPresensiRow = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = '1' AND SERTIFIKAT  IS NULL")->num_rows();
             $dataEvent = $this->db->query("SELECT * FROM event WHERE ID_EVENT = '$idEvent'")->result();
 
             // perulangan berdasarkan data presensi
