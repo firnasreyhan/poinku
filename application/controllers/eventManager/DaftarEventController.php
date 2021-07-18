@@ -452,6 +452,9 @@ class DaftarEventController extends CI_Controller {
                     }
                 } catch (Exception $e) {
                     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+
+                    $this->session->set_tempdata('message', '<div class="alert alert-danger" role="alert">Terdapat email yang gagal dikirim</div>', 1);
+                    redirect('daftarEvent/detail/'.$idEvent);
                 }
             }  
         }  
