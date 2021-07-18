@@ -284,8 +284,8 @@ class DaftarEventController extends CI_Controller {
         $update = $this->DaftarEventModel->updateTemplateSertifikat($poster, $idEvent);
         if ($update == 1) {
             //get data database
-            $dataPresensi = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = 1")->result();
-            $dataPresensiRow = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = 1")->num_rows();
+            $dataPresensi = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = 1 AND SERTIFIKAT = null")->result();
+            $dataPresensiRow = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND STATUS = 1  AND SERTIFIKAT = null")->num_rows();
             $dataEvent = $this->db->query("SELECT * FROM event WHERE ID_EVENT = '$idEvent'")->result();
 
             // perulangan berdasarkan data presensi
@@ -333,19 +333,19 @@ class DaftarEventController extends CI_Controller {
                 file_put_contents($path_pdf, $resPdf);
         
                 //ambil data presensi yang baru
-                $dataPresensiBaru = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1")->result();
+                // $dataPresensiBaru = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1  AND SERTIFIKAT = null")->result();
                 
                 //ambil email dari data presensi baru
-                foreach($dataPresensiBaru as $dtPresBr){
-                    $dtEmail = $dtPresBr->EMAIL;
-                }
+                // foreach($dataPresensiBaru as $dtPresBr){
+                //     $dtEmail = $dtPresBr->EMAIL;
+                // }
 
                 $dataUpdateSertifikat = array(
                     'SERTIFIKAT' => base_url().'uploads/event/sertifikat/'.$idEvent.'/'.$file_pdf.'.pdf'
                 );
                 
                 $where = array(
-                    'EMAIL' => $dtEmail
+                    'EMAIL' => $email
                 );
 
                 //update data presensi dengan sertifikat baru
@@ -354,16 +354,16 @@ class DaftarEventController extends CI_Controller {
                 $this->db->update('presensi');
 
                 //ambil data presensi dengan sertifikat
-                $dataPresensiBaruSertifikat = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email' AND STATUS = 1")->result();
+                $dataPresensiBaruSertifikat = $this->db->query("SELECT * FROM presensi WHERE ID_EVENT = '$idEvent' AND EMAIL= '$email'")->result();
                 
-                foreach($dataPresensiBaruSertifikat as $dtSer){
-                    $sertifikat = $dtSer->SERTIFIKAT;
-                }
+                // foreach($dataPresensiBaruSertifikat as $dtSer){
+                //     $sertifikat = $dtSer->SERTIFIKAT;
+                // }
 
                 //data untuk email
                 $dataEmail = array(
-                    'SERTIFIKAT' => $sertifikat,
-                    'EMAIL' => $dtEmail,
+                    'SERTIFIKAT' => $dataPresensiBaruSertifikat[0]->SERTIFIKAT,
+                    'EMAIL' => $email,
                 );
                 
                 //update tugas khusus
@@ -374,7 +374,7 @@ class DaftarEventController extends CI_Controller {
                     );
             
                     $dataStoreTugasKhusus = array(
-                        'BUKTI '            => $sertifikat
+                        'BUKTI '            => $dataPresensiBaruSertifikat[0]->SERTIFIKAT
                     );
             
                     $this->TugasKhususModel->update($whereTugasKhusus, $dataStoreTugasKhusus);
@@ -435,7 +435,7 @@ class DaftarEventController extends CI_Controller {
                 
                     //Recipients
                     $mail->setFrom('adm.tomboati@gmail.com', 'Admin Poinku');
-                    $mail->addAddress($dtEmail);     //Add a recipient
+                    $mail->addAddress($email);     //Add a recipient
                 
                     //Attachments
                     $mail->addAttachment($path_pdf);         //Add attachments
