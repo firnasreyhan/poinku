@@ -20,6 +20,11 @@ class JenisKegiatanModel extends CI_Model
         return $this->db->query("SELECT jenis.ID_JENIS, jenis.JENIS FROM jenis INNER JOIN poin ON jenis.ID_JENIS = poin.ID_JENIS AND poin.ID_ATURAN = '$idAturan' GROUP BY jenis.ID_JENIS ORDER BY jenis.JENIS ASC")->result();
     }
 
+    public function getEventManager()
+    {
+        return $this->db->query("SELECT jenis.ID_JENIS, jenis.JENIS FROM poin INNER JOIN jenis on poin.ID_JENIS = jenis.ID_JENIS WHERE poin.ID_PERAN = '2' GROUP BY jenis.ID_JENIS; ORDER BY jenis.JENIS ASC")->result();
+    }
+
     public function insert($param)
     {
         return $this->db->insert('jenis', $param);
