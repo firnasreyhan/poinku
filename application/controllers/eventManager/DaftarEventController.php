@@ -41,7 +41,7 @@ class DaftarEventController extends CI_Controller {
         $this->PresensiModel->updateIsSeen();
         
         $data['jenis']      = $this->JenisKegiatanModel->getEventManager();
-        $data['lingkup']    = $this->LingkupKegiatanModel->get();
+        $data['lingkup']    = $this->LingkupKegiatanModel->getEventManager();
         $data['event']      = $this->DaftarEventModel->getAll($email);
 
         $this->load->view('template/header');
