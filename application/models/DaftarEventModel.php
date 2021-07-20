@@ -57,6 +57,7 @@ class DaftarEventModel extends CI_Model
         $this->db->join('jenis', 'event.ID_JENIS = jenis.ID_JENIS');
         $this->db->join('presensi', 'event.ID_EVENT = presensi.ID_EVENT');
         $this->db->where('presensi.EMAIL', $param);
+        $this->db->order_by("presensi.ID_EVENT", "DESC");
         return $this->db->get()->result();
     }
 
