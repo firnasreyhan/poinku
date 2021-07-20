@@ -13,8 +13,8 @@
       CURLOPT_POSTFIELDS =>'{
       "registration_ids":["'.$token.'"],
       "notification": {
-        "title": "Tugas Khusus telah divalidasi",
-        "body": "Klik untuk info lebih lanjut"
+        "title": "Tugas Khusus Telah Divalidasi",
+        "body": "Tugas Khusus anda telah divalidasi, silahkan periksa aplikasi anda"
       },
       "priority":"high"
     }',

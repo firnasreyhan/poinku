@@ -166,6 +166,7 @@
             <form action="<?php echo site_url("kegiatan/tolak"); ?>" enctype="multipart/form-data" method="post">
                 <div class="modal-body">
                     <p>Apakah anda yakin ingin menolak kegiatan ini?</p>
+                    <input type="text" class="form-control" name="ALASAN" placeholder="Alasan" required>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" class="form-control" name="ID_TUGAS_KHUSUS" placeholder="Email" id="ID">
