@@ -13,8 +13,8 @@
       CURLOPT_POSTFIELDS =>'{
       "registration_ids":["'.$token.'"],
       "notification": {
-        "title": "Kegiatan telah divalidasi",
-        "body": "Klik untuk info lebih lanjut"
+        "title": "Kegiatan Telah Divalidasi",
+        "body": "Kegiatan '.$judul.' anda telah divalidasi, silahkan periksa aplikasi anda"
       },
       "priority":"high"
     }',

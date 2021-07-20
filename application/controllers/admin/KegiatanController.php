@@ -47,14 +47,16 @@ class KegiatanController extends CI_Controller {
 
         $this->TugasKhususModel->acc($data, $where);
 
-        $query = $this->db->query('SELECT * FROM tugas_khusus JOIN mahasiswa ON mahasiswa.NRP = tugas_khusus.NRP WHERE ID_TUGAS_KHUSUS="'.$this->input->post('ID_TUGAS_KHUSUS').'"')->result();
+        $query = $this->db->query('SELECT * FROM tugas_khusus JOIN mahasiswa ON mahasiswa.NRP = tugas_khusus.NRP AND ID_TUGAS_KHUSUS="'.$this->input->post('ID_TUGAS_KHUSUS').'"')->result();
         
         foreach($query as $data){
             $token = $data->TOKEN;
+            $judul = $data->JUDUL;
         }
 
         $dataAccKegiatanNotif = array(
             'token' => $token,
+            'judul' => $judul
         );
 
         $this->load->view('notifikasi/NotifikasiAccKegiatanView', $dataAccKegiatanNotif);
@@ -75,14 +77,16 @@ class KegiatanController extends CI_Controller {
 
         $this->TugasKhususModel->tolak($data, $where);
         
-        $query = $this->db->query('SELECT * FROM tugas_khusus JOIN mahasiswa ON mahasiswa.NRP = tugas_khusus.NRP WHERE ID_TUGAS_KHUSUS="'.$this->input->post('ID_TUGAS_KHUSUS').'"')->result();
+        $query = $this->db->query('SELECT * FROM tugas_khusus JOIN mahasiswa ON mahasiswa.NRP = tugas_khusus.NRP AND ID_TUGAS_KHUSUS="'.$this->input->post('ID_TUGAS_KHUSUS').'"')->result();
         
         foreach($query as $data){
             $token = $data->TOKEN;
+            $judul = $data->JUDUL;
         }
 
         $dataTolakKegiatanNotif = array(
             'token' => $token,
+            'judul' => $judul
         );
 
         $this->load->view('notifikasi/NotifikasiTolakKegiatanView', $dataTolakKegiatanNotif);

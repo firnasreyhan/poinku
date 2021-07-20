@@ -13,8 +13,8 @@
       CURLOPT_POSTFIELDS =>'{
       "registration_ids":["'.$token.'"],
       "notification": {
-        "title": "Kegiatan ditolak",
-        "body": "Klik untuk info lebih lanjut"
+        "title": "Kegiatan Telah Ditolak",
+        "body": "Kegiatan '.$judul.' anda telah ditolak, silahkan periksa aplikasi anda"
       },
       "priority":"high"
     }',
