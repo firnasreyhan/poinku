@@ -30,7 +30,8 @@ class TugasKhususModel extends CI_Model
 
     public function getIsValidasi($param)
     {
-        return $this->db->where($param)->get('tugas_khusus')->result();
+        // return $this->db->where($param)->get('tugas_khusus')->result();
+        return $this->db->query("SELECT * FROM tugas_khusus WHERE NRP = $param AND STATUS_VALIDASI = 0 OR STATUS_VALIDASI = 2")->result();
     }
 
     public function getPoin($param)

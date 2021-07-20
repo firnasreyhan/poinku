@@ -301,12 +301,12 @@ class TugasKhusus extends RestController
     public function isValidasi_get()
     {
         $param = $this->get();
-        $dataStore = array(
-            'NRP'                      => $param['nrp'],
-            'STATUS_VALIDASI'          => 0
-        );
+        // $dataStore = array(
+        //     'NRP'                      => $param['nrp'],
+        //     'STATUS_VALIDASI'          => 0
+        // );
 
-        $isValidasi = $this->TugasKhususModel->getIsValidasi($dataStore);
+        $isValidasi = $this->TugasKhususModel->getIsValidasi($param['nrp']);
 
         if ($isValidasi == null) {
             $this->response(['status' => true, 'message' => 'Tugas khusus siap diajukan'], 200);
