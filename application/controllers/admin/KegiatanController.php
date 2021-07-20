@@ -86,7 +86,8 @@ class KegiatanController extends CI_Controller {
 
         $dataTolakKegiatanNotif = array(
             'token' => $token,
-            'judul' => $judul
+            'judul' => $judul,
+            'alasan' => $this->input->post('ALASAN')
         );
 
         $this->load->view('notifikasi/NotifikasiTolakKegiatanView', $dataTolakKegiatanNotif);

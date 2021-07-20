@@ -14,7 +14,7 @@
       "registration_ids":["'.$token.'"],
       "notification": {
         "title": "Kegiatan Telah Ditolak",
-        "body": "Kegiatan '.$judul.' anda telah ditolak, silahkan periksa aplikasi anda"
+        "body": "Kegiatan '.$judul.' anda telah ditolak dengan alasan '.$alasan.', silahkan periksa aplikasi anda"
       },
       "priority":"high"
     }',
