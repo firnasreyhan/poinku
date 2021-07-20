@@ -38,11 +38,20 @@ class TugasKhususController extends CI_Controller {
     public function acc()
 	{
         $tahun = date('Y');
-        if ($this->input->post('SEMESTER') == 0) {
+        $bulan = date('m');
+
+        if ($bulan >= 2 && $bulan <= 8) {
+            $tahun = $tahun - 1;
             $semester = $tahun . " / Genap";
-        } else {
+        } else if ($bulan >= 9 && $bulan < 2) {
             $semester = $tahun . " / Ganjil";
         }
+
+        // if ($this->input->post('SEMESTER') == 0) {
+        //     $semester = $tahun . " / Genap";
+        // } else {
+        //     $semester = $tahun . " / Ganjil";
+        // }
 
         $data = array(
             'STATUS' => 1,
