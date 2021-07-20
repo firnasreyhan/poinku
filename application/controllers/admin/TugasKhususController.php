@@ -94,6 +94,7 @@ class TugasKhususController extends CI_Controller {
 
         $dataTolakTugasKhususNotif = array(
             'token' => $token,
+            'alasan' => $this->input->post('ALASAN')
         );
 
         $this->load->view('notifikasi/NotifikasiTolakTugasKhususView', $dataTolakTugasKhususNotif);

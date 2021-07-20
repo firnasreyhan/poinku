@@ -201,6 +201,7 @@
                             <form action="<?php echo site_url("tugaskhusus/tolak"); ?>" enctype="multipart/form-data" method="post">
                                 <div class="modal-body">
                                     <p>Apakah anda yakin ingin menolak tugas khusus ini?</p>
+                                    <input type="text" class="form-control" name="ALASAN" placeholder="Alasan" required>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" class="form-control" name="NRP" placeholder="Email" value="<?php echo $mahasiswa[0]->NRP; ?>">
