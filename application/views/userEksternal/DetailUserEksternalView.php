@@ -96,7 +96,7 @@
             <form action="<?php echo site_url("daftarUserEksternal"); ?>" enctype="multipart/form-data" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="EMAIL" placeholder="Email" required>
+                        <input type="email" class="form-control" name="EMAIL" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" name="NAMA" placeholder="Nama Lengkap" required />

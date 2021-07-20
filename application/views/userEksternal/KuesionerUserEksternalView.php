@@ -25,7 +25,7 @@
                                     Email Terdaftar
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="EMAIL" placeholder="Email" required>
+                                    <input type="email" class="form-control" name="EMAIL" placeholder="Email" required>
                                 </div>
                                 <br />
                                 <div class="text-md font-weight-bold text-dark text-uppercase mb-1">
