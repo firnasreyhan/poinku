@@ -14,7 +14,7 @@
       "registration_ids":["'.$token.'"],
       "notification": {
         "title": "Tugas Khusus Telah Ditolak",
-        "body": "Tugas Khusus anda telah ditolak dengan alasan '.$alasan.', silahkan periksa aplikasi anda"
+        "body": "Dengan alasan '.$alasan.', silahkan periksa aplikasi anda"
       },
       "priority":"high"
     }',
