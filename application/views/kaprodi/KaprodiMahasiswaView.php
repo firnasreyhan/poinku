@@ -18,17 +18,17 @@
         </div>
         <div class="card-body">
             <form action="<?php echo site_url("daftarMahasiswa"); ?>" enctype="multipart/form-data" method="post">
-                <p>Semester Pengajuan <?php echo $pengajuan ?></p>
+                <p>Semester Pengajuan</p>
                 <div class="row">
                     <div class="col-3">
                         <select class="form-control" name="SEMINAR_PENGAJUAN">
-                            <option value="0" <?php $pengajuan == 0 ? "selected" : "";?>>Semua</option>
+                            <option value="0" <?php if ($pengajuan == 0) { echo "selected"; }; ?>>Semua</option>
                             <?php
                             foreach ($semester_pengajuan as $row) {
                             ?>
                                 <option value="<?php echo $row->SEMESTER_PENGAJUAN ?>" <?php if ($pengajuan == $row->SEMESTER_PENGAJUAN) { echo "selected"; }; ?>><?php echo $row->SEMESTER_PENGAJUAN ?></option>
                             <?php } ?>
-                            <option value="999" <?php $pengajuan == 999 ? "selected" : "";?>>Belum Mengajukan</option>
+                            <option value="999" <?php if ($pengajuan == 999) { echo "selected"; }; ?>>Belum Mengajukan</option>
                         </select>
                     </div>
                     <div class="col-1">
