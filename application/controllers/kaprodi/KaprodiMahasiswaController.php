@@ -35,21 +35,21 @@ class KaprodiMahasiswaController extends CI_Controller {
             } else {
                 $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'TI' AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";
             }
-            $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = 'TI' GROUP BY SEMESTER_PENGAJUAN";
+            $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = 'TI' AND SEMESTER_PENGAJUAN IS NOT NULL GROUP BY SEMESTER_PENGAJUAN";
         } elseif ($idRole == '5') {
             if ($semester_pengajuan == 0) {
                 $query = "SELECT * FROM view_mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI')";
             } else {
                 $query = "SELECT * FROM view_mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI') AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";
             }
-            $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI') GROUP BY SEMESTER_PENGAJUAN";
+            $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI') AND SEMESTER_PENGAJUAN IS NOT NULL GROUP BY SEMESTER_PENGAJUAN";
         } elseif ($idRole == '6') {
             if ($semester_pengajuan == 0) {
                 $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'DKV'";
             } else {
                 $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'DKV' AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";
             }
-            $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = 'DKV' GROUP BY SEMESTER_PENGAJUAN";
+            $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = 'DKV' AND SEMESTER_PENGAJUAN IS NOT NULL GROUP BY SEMESTER_PENGAJUAN";
         }
 
         $data['mahasiswa'] = $this->MahasiswaModel->getForKaprodi($query);
