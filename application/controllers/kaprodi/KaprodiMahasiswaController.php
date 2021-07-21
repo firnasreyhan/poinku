@@ -32,7 +32,7 @@ class KaprodiMahasiswaController extends CI_Controller {
         if ($idRole == '4') {
             if ($semester_pengajuan == 0) {
                 $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'TI'";
-            } elseif ($semester_pengajuan == -1) {
+            } elseif ($semester_pengajuan == 999) {
                 $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'TI' AND SEMESTER_PENGAJUAN IS NULL";
             } else {
                 $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'TI' AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";
@@ -41,7 +41,7 @@ class KaprodiMahasiswaController extends CI_Controller {
         } elseif ($idRole == '5') {
             if ($semester_pengajuan == 0) {
                 $query = "SELECT * FROM view_mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI')";
-            } elseif ($semester_pengajuan == -1) {
+            } elseif ($semester_pengajuan == 999) {
                 $query = "SELECT * FROM view_mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI') AND SEMESTER_PENGAJUAN IS NULL";
             } else {
                 $query = "SELECT * FROM view_mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI') AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";
@@ -50,7 +50,7 @@ class KaprodiMahasiswaController extends CI_Controller {
         } elseif ($idRole == '6') {
             if ($semester_pengajuan == 0) {
                 $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'DKV'";
-            } elseif ($semester_pengajuan == -1) {
+            } elseif ($semester_pengajuan == 999) {
                 $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'DKV' AND SEMESTER_PENGAJUAN IS NULL";
             } else {
                 $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'DKV' AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";

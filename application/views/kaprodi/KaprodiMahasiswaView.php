@@ -28,7 +28,7 @@
                             ?>
                                 <option value="<?php echo $row->SEMESTER_PENGAJUAN ?>" <?php if ($pengajuan == $row->SEMESTER_PENGAJUAN) { echo "selected"; }; ?>><?php echo $row->SEMESTER_PENGAJUAN ?></option>
                             <?php } ?>
-                            <option value="-1" <?php $pengajuan == -1 ? "selected" : "";?>>Belum Mengajukan</option>
+                            <option value="999" <?php $pengajuan == 999 ? "selected" : "";?>>Belum Mengajukan</option>
                         </select>
                     </div>
                     <div class="col-1">
