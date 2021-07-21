@@ -41,7 +41,7 @@ class DashboardKaprodiController extends CI_Controller {
         } elseif ($idRole == '5') {
             $queryMahasiswa = "SELECT COUNT(NRP) as 'JUMLAH' FROM view_mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI')";
             $queryPengajuan = "SELECT COUNT(NRP) as 'JUMLAH' FROM view_mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI') AND STATUS = '0'";
-            $queryDiterima = "SELECT COUNT(NRP) as 'JUMLAH' FROM view_mahasiswa WHERE (PRODI = 'TI' OR PRODI = 'MI') AND STATUS = '1'";
+            $queryDiterima = "SELECT COUNT(NRP) as 'JUMLAH' FROM view_mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI') AND STATUS = '1'";
             $queryDitolak = "SELECT COUNT(NRP) as 'JUMLAH' FROM view_mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI') AND STATUS = '2'";
 
             $data['jumlah_angkatan'] = $this->MahasiswaModel->countAngkatan("(PRODI = 'SI' OR PRODI = 'MI')");

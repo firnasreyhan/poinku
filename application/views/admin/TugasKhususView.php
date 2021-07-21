@@ -142,12 +142,12 @@
             <form action="<?php echo site_url("tugaskhusus/acc"); ?>" enctype="multipart/form-data" method="post">
                 <div class="modal-body">
                     <p>Apakah anda yakin ingin melakukan validasi tugas khusus ini?</p>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <p>Semester Pengajuan</p>
                         <input type="radio" name="SEMESTER" value="0" checked /> Genap
                         <br />
                         <input type="radio" name="SEMESTER" value="1" /> Ganjil
-                    </div>
+                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" class="form-control" name="NRP" placeholder="Email" id="INPUT_NRP">
