@@ -38,11 +38,11 @@ class KaprodiMahasiswaController extends CI_Controller {
             $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = 'TI' GROUP BY SEMESTER_PENGAJUAN";
         } elseif ($idRole == '5') {
             if ($semester_pengajuan == 0) {
-                $query = "SELECT * FROM view_mahasiswa WHERE PRODI = (PRODI = 'SI' OR PRODI = 'MI')";
+                $query = "SELECT * FROM view_mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI')";
             } else {
-                $query = "SELECT * FROM view_mahasiswa WHERE PRODI = '(PRODI = 'SI' OR PRODI = 'MI')' AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";
+                $query = "SELECT * FROM view_mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI') AND SEMESTER_PENGAJUAN = '$semester_pengajuan'";
             }
-            $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE PRODI = (PRODI = 'SI' OR PRODI = 'MI') GROUP BY SEMESTER_PENGAJUAN";
+            $querySemester = "SELECT SEMESTER_PENGAJUAN FROM mahasiswa WHERE (PRODI = 'SI' OR PRODI = 'MI') GROUP BY SEMESTER_PENGAJUAN";
         } elseif ($idRole == '6') {
             if ($semester_pengajuan == 0) {
                 $query = "SELECT * FROM view_mahasiswa WHERE PRODI = 'DKV'";
