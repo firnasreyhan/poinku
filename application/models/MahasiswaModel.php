@@ -92,7 +92,7 @@ class MahasiswaModel extends CI_Model
 
     public function countNilai($param)
     {
-        return $this->db->query("SELECT NILAI, COUNT(NILAI) AS 'JUMLAH' FROM view_mahasiswa WHERE $param AND STATUS = '1' GROUP BY NILAI ORDER BY NILAI ASC")->result();
+        return $this->db->query("SELECT NILAI, COUNT(NILAI) AS 'JUMLAH' FROM view_mahasiswa WHERE $param GROUP BY NILAI ORDER BY NILAI ASC")->result();
     }
 
     public function removeToken($param)
