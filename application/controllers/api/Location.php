@@ -20,8 +20,7 @@ class Location extends RestController {
         print_r($param);
 
         foreach($param as $value){
-            echo $value->latitude;
-            echo $value->longitude;
+            echo $value;
         }
 
         // $dataStore = array(
