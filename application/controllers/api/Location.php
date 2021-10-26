@@ -19,6 +19,7 @@ class Location extends RestController {
         $param = $this->post();
         // print_r($param);
 
+        $index = 1;
         foreach($param as $value){
             $dataStore = array(
                 'latitude'   => $value['latitude'],
@@ -26,6 +27,9 @@ class Location extends RestController {
             );
 
             $this->LocationModel->insert($dataStore);
+            if ($index == count($param)) {
+                $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+            }
         }
 
         // $dataStore = array(
