@@ -30,6 +30,7 @@ class Location extends RestController {
             if ($index == count($param)) {
                 $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
             }
+            $index++;
         }
 
         // $dataStore = array(
