@@ -17,14 +17,15 @@ class Location extends RestController {
     public function location_post()
     {
         $param = $this->post();
+        print_r($param);
 
-        $dataStore = array(
-            'latitude'   => $param['latitude'],
-            'longitude'  => $param['longitude']
-        );
+        // $dataStore = array(
+        //     'latitude'   => $param['latitude'],
+        //     'longitude'  => $param['longitude']
+        // );
 
-        $this->LocationModel->insert($dataStore);
-        $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+        // $this->LocationModel->insert($dataStore);
+        // $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
     }
 }
 
