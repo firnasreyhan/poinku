@@ -20,7 +20,7 @@ class Location extends RestController {
         print_r($param);
 
         foreach($param as $value){
-            echo $value;
+            $this->LocationModel->insert($value);
         }
 
         // $dataStore = array(
