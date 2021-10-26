@@ -17,7 +17,7 @@ class Location extends RestController {
     public function location_post()
     {
         $param = $this->post();
-        print_r($param);
+        // print_r($param);
 
         foreach($param as $value){
             $this->LocationModel->insert($value);
