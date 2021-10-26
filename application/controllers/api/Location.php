@@ -19,6 +19,11 @@ class Location extends RestController {
         $param = $this->post();
         print_r($param);
 
+        foreach($param as $value){
+            echo $value->latitude;
+            echo $value->longitude;
+        }
+
         // $dataStore = array(
         //     'latitude'   => $param['latitude'],
         //     'longitude'  => $param['longitude']
